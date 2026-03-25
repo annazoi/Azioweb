@@ -1,12 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-	MagnifyingGlassIcon, 
-	PencilSquareIcon, 
-	CommandLineIcon, 
-	RocketLaunchIcon 
-} from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, PencilSquareIcon, CommandLineIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
 
 const Process = () => {
 	const steps = [
@@ -14,25 +9,29 @@ const Process = () => {
 			id: '01',
 			name: 'Discovery',
 			icon: MagnifyingGlassIcon,
-			description: 'We dive deep into your business requirements, target audience, and market to define the strategy and project scope.',
+			description:
+				'We dive deep into your business requirements, target audience, and market to define the strategy and project scope.',
 		},
 		{
 			id: '02',
 			name: 'Design',
 			icon: PencilSquareIcon,
-			description: 'We create intuitive wireframes and stunning high-fidelity prototypes, focusing on UX/UI that converts.',
+			description:
+				'We create intuitive wireframes and stunning high-fidelity prototypes, focusing on UX/UI that converts.',
 		},
 		{
 			id: '03',
 			name: 'Development',
 			icon: CommandLineIcon,
-			description: 'Our engineers build robust, scalable architecture using modern technologies, with regular iterations and testing.',
+			description:
+				'Our engineers build robust, scalable architecture using modern technologies, with regular iterations and testing.',
 		},
 		{
 			id: '04',
 			name: 'Launch & Scale',
 			icon: RocketLaunchIcon,
-			description: 'We deploy securely, monitor performance, and provide ongoing maintenance to help your product grow.',
+			description:
+				'We deploy securely, monitor performance, and provide ongoing maintenance to help your product grow.',
 		},
 	];
 
@@ -42,14 +41,15 @@ const Process = () => {
 				<h3 className="text-primary font-bold tracking-wider uppercase text-sm">How We Work</h3>
 				<h2 className="header text-gradient">Our Development Process</h2>
 				<p className="text-slate-400 max-w-2xl leading-relaxed text-lg mx-auto">
-					A transparent, proven methodology that ensures we deliver high-quality software on time and within budget.
+					A transparent, proven methodology that ensures we deliver high-quality software on time and within
+					budget.
 				</p>
 			</div>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
 				{/* Connecting lines for desktop */}
 				<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-12"></div>
-				
+
 				{steps.map((step, index) => {
 					const Icon = step.icon;
 					return (
@@ -68,12 +68,10 @@ const Process = () => {
 									{step.id}
 								</div>
 							</div>
-							
+
 							<div className="flex flex-col gap-3">
 								<h3 className="text-xl font-bold text-white">{step.name}</h3>
-								<p className="text-slate-400 text-sm leading-relaxed px-4">
-									{step.description}
-								</p>
+								<p className="text-slate-400 text-sm leading-relaxed px-4">{step.description}</p>
 							</div>
 						</motion.div>
 					);
