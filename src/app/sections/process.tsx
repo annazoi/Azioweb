@@ -48,7 +48,7 @@ const Process = () => {
 
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
 				{/* Connecting lines for desktop */}
-				<div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-12"></div>
+				<div className="hidden lg:none absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-12"></div>
 
 				{steps.map((step, index) => {
 					const Icon = step.icon;
