@@ -86,8 +86,8 @@ const Projects = () => {
 		{
 			id: '4',
 			name: 'Relay',
-			photo: '',
-			photos: [],
+			photo: drobeHome,
+			photos: [drobeHome, drobeHome],
 			description: 'Fourth project description.',
 			url: 'https://relay.annazoi.dev/',
 		},
@@ -129,7 +129,8 @@ const Projects = () => {
 			<div className="flex flex-col items-center gap-4 mb-16">
 				<h3 className="header text-gradient">Case Studies</h3>
 				<p className="text-slate-400 text-center max-w-2xl">
-					A selection of our recent enterprise-grade solutions, ranging from scalable web apps to modern AI-driven platforms.
+					A selection of our recent enterprise-grade solutions, ranging from scalable web apps to modern AI-driven
+					platforms.
 				</p>
 			</div>
 

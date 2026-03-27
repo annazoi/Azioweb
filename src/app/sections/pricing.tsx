@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const Pricing = () => {
 	const tiers = [
@@ -102,8 +103,8 @@ const Pricing = () => {
 						</ul>
 
 						<div className="mt-8">
-							<a 
-								href="#contact" 
+							<Link 
+								href="/book" 
 								className={`block w-full text-center py-4 rounded-full font-bold transition-all duration-300
 									${tier.popular 
 										? 'bg-primary text-white hover:bg-primary/90 hover:scale-[1.02] shadow-lg shadow-primary/20' 
@@ -112,7 +113,7 @@ const Pricing = () => {
 								`}
 							>
 								Get Started
-							</a>
+							</Link>
 						</div>
 					</motion.div>
 				))}

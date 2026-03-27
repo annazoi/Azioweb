@@ -4,6 +4,7 @@ import './style.css';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import { ArrowRightIcon, CalendarDaysIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const Hero = () => {
 	const stats = [
@@ -46,10 +47,10 @@ const Hero = () => {
 					</p>
 					
 					<div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto justify-center">
-						<a href="#contact" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(79,57,246,0.4)]">
+						<Link href="/book" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(79,57,246,0.4)]">
 							<span>Book a Discovery Call</span>
 							<CalendarDaysIcon className="size-5" />
-						</a>
+						</Link>
 						<a href="#services" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 backdrop-blur-md">
 							<span>Explore Our Services</span>
 							<ArrowRightIcon className="size-5" />
