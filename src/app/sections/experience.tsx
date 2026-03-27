@@ -118,10 +118,12 @@ const Experience = () => {
 		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4">
 				<h3 className="header text-gradient">Client Successes</h3>
-				<p className="text-slate-400 text-center max-w-2xl">A selection of e-commerce, booking, and dynamic web portals we have delivered.</p>
+				<p className="text-slate-400 text-center max-w-2xl">
+					A selection of e-commerce, booking, and dynamic web portals we have delivered.
+				</p>
 			</div>
 
-			<div className="relative group/carousel">
+			{/* <div className="relative group/carousel">
 				<div className="overflow-hidden p-4 -m-4">
 					<motion.div
 						className="flex"
@@ -129,14 +131,12 @@ const Experience = () => {
 						transition={isAnimating ? { duration: 0.6, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
 						onAnimationComplete={handleAnimationComplete}
 					>
-						{/* 3. Grouping logic: Χωρίζουμε τα extendedSites σε slides */}
 						{Array.from({ length: Math.ceil(extendedSites.length / itemsPerSlide) }, (_, i) => {
 							const slideItems = extendedSites.slice(i * itemsPerSlide, (i + 1) * itemsPerSlide);
 
 							return (
 								<div key={i} className="min-w-full lg:px-4 flex flex-col gap-12 lg:gap-20">
 									{slideItems.map((site, idx) => {
-										// Βρίσκουμε το αρχικό index για το σωστό zigzag εφέ
 										const originalIndex = sites.findIndex((s) => s.id === site.id);
 
 										return (
@@ -191,7 +191,7 @@ const Experience = () => {
 				>
 					<ChevronRightIcon className="h-6 w-6" />
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 };

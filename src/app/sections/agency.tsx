@@ -22,12 +22,13 @@ const Agency = () => {
 		<div id="agency" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-12">
 			<div className="flex flex-col items-center gap-4 text-center">
 				<h3 className="text-primary font-bold tracking-wider uppercase text-sm">Who We Are</h3>
-				<h2 className="header text-gradient">The AzioWeb Story</h2>
+				<h2 className="header text-gradient">The Azioweb Story</h2>
 				<p className="text-slate-400 text-center max-w-2xl leading-relaxed text-lg">
-					We are a boutique software development agency, forged by a passion for cutting-edge technology and impactful design.
+					We are a boutique software development agency, forged by a passion for cutting-edge technology and
+					impactful design.
 				</p>
 			</div>
-			
+
 			<div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 glass rounded-[3rem] px-8 py-16 relative overflow-hidden group/agency border border-white/5">
 				{/* Background Element */}
 				<div className="absolute inset-0 bg-primary/5 opacity-0 group-hover/agency:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -39,16 +40,19 @@ const Agency = () => {
 						<span className="text-gradient">Massive Impact.</span>
 					</h3>
 					<p className="text-slate-300 text-lg leading-relaxed">
-						Unlike large agencies where you get lost in the shuffle, we operate as a tight-knit unit of elite developers and designers. We become an extension of your own team.
+						Unlike large agencies where you get lost in the shuffle, we operate as a tight-knit unit of elite
+						developers and designers. We become an extension of your own team.
 					</p>
 					<p className="text-slate-400 leading-relaxed">
-						We were founded with a simple goal: build software that stands out. Whether it's a high-converting landing page, a complex SaaS platform, or a native mobile app, our expert team brings decades of combined experience to ensure your product isn't just functional—it's phenomenal.
+						We were founded with a simple goal: build software that stands out. Whether it's a high-converting
+						landing page, a complex SaaS platform, or a native mobile app, our expert team brings decades of
+						combined experience to ensure your product isn't just functional—it's phenomenal.
 					</p>
 				</div>
 
 				<div className="relative z-10 lg:w-1/2 flex flex-col gap-6 w-full">
 					{values.map((val, idx) => (
-						<motion.div 
+						<motion.div
 							key={idx}
 							initial={{ opacity: 0, x: 20 }}
 							whileInView={{ opacity: 1, x: 0 }}

@@ -23,8 +23,10 @@ const notoSansMono = Noto_Sans_Mono({
 });
 
 export const metadata: Metadata = {
-	title: 'Anna Zoi | Full-Stack Developer',
-	description: 'Personal portfolio of Anna Zoi, a Full-Stack Developer specializing in intuitive digital products.',
+	title: 'Azioweb | Book a Call',
+	description:
+		'Book a call with AzioWeb to discuss your software development needs. We partner with ambitious brands to transform complex ideas into robust, enterprise-grade web and mobile applications.',
+	keywords: 'book a call, software development, agency, web development, web design, Next.js, React, mobile apps',
 };
 
 export default function RootLayout({
@@ -34,7 +36,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} ${notoSansMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 selection:text-white`}>
+			<body
+				className={`${inter.className} ${notoSansMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 selection:text-white`}
+			>
 				{children}
 			</body>
 		</html>

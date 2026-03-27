@@ -3,7 +3,7 @@ import AdminDashboard from './AdminDashboard';
 import { redirect } from 'next/navigation';
 
 export const metadata = {
-	title: 'Admin Dashboard | AzioWeb',
+	title: 'Admin Dashboard | Azioweb',
 };
 
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ pw?: string }> }) {

@@ -1,10 +1,6 @@
 'use client';
 
-import {
-	Disclosure,
-	DisclosureButton,
-	DisclosurePanel,
-} from '@headlessui/react';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
@@ -37,7 +33,7 @@ export default function Navbar() {
 			as="nav"
 			className={classNames(
 				'sticky top-0 z-50 transition-all duration-500',
-				scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-white/10 py-2' : 'bg-transparent py-4'
+				scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-white/10 py-2' : 'bg-transparent py-4',
 			)}
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -53,9 +49,12 @@ export default function Navbar() {
 					<div className="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start">
 						<div className="flex shrink-0 items-center gap-4">
 							<a href="/" className="hover:opacity-80 transition-opacity">
-								<img alt="Anna Zoi" src="/logo-1.svg" className="h-10 w-auto" />
+								<img alt="Azioweb" src="/logo-nav.png" className="h-10 w-auto" />
 							</a>
-							<a href="mailto:hello@azioweb.com" className="hidden lg:block text-slate-400 hover:text-white transition-colors text-sm font-medium">
+							<a
+								href="mailto:hello@azioweb.com"
+								className="hidden lg:block text-slate-400 hover:text-white transition-colors text-sm font-medium"
+							>
 								<span>hello@azioweb.com</span>
 							</a>
 						</div>
@@ -91,7 +90,9 @@ export default function Navbar() {
 							href={item.href}
 							aria-current={item.current ? 'page' : undefined}
 							className={classNames(
-								item.current ? 'bg-primary/20 text-primary-foreground border-primary/30' : 'text-slate-300 hover:bg-white/5 hover:text-white border-transparent',
+								item.current
+									? 'bg-primary/20 text-primary-foreground border-primary/30'
+									: 'text-slate-300 hover:bg-white/5 hover:text-white border-transparent',
 								'block rounded-xl px-4 py-2 text-base font-medium transition-all border ring-1 ring-white/5',
 							)}
 						>

@@ -6,25 +6,28 @@ const Testimonials = () => {
 	const testimonials = [
 		{
 			id: 1,
-			content: "AzioWeb completely transformed our digital presence. They took our vague ideas and built a platform that outshines our competitors. Their technical expertise and communication are unmatched.",
-			author: "Sarah Jenkins",
-			role: "CTO, TechFlow Inc.",
-			initials: "SJ"
+			content:
+				'Azioweb completely transformed our digital presence. They took our vague ideas and built a platform that outshines our competitors. Their technical expertise and communication are unmatched.',
+			author: 'Sarah Jenkins',
+			role: 'CTO, TechFlow Inc.',
+			initials: 'SJ',
 		},
 		{
 			id: 2,
-			content: "Working with them was an absolute pleasure. They delivered our MVP ahead of schedule and the code quality was exceptional. Highly recommended for any serious SaaS project.",
-			author: "Marcus Thorne",
-			role: "Founder, SaaSify",
-			initials: "MT"
+			content:
+				'Working with them was an absolute pleasure. They delivered our MVP ahead of schedule and the code quality was exceptional. Highly recommended for any serious SaaS project.',
+			author: 'Marcus Thorne',
+			role: 'Founder, SaaSify',
+			initials: 'MT',
 		},
 		{
 			id: 3,
-			content: "Their UX/UI design capabilities are incredible. We saw a 40% increase in user retention after they redesigned our mobile application. True professionals.",
-			author: "Elena Rodriguez",
-			role: "Product Manager, Innovate AI",
-			initials: "ER"
-		}
+			content:
+				'Their UX/UI design capabilities are incredible. We saw a 40% increase in user retention after they redesigned our mobile application. True professionals.',
+			author: 'Elena Rodriguez',
+			role: 'Product Manager, Innovate AI',
+			initials: 'ER',
+		},
 	];
 
 	return (
@@ -33,7 +36,8 @@ const Testimonials = () => {
 				<h3 className="text-primary font-bold tracking-wider uppercase text-sm">Client Reviews</h3>
 				<h2 className="header text-gradient">What Our Partners Say</h2>
 				<p className="text-slate-400 max-w-2xl leading-relaxed text-lg mx-auto">
-					Don't just take our word for it. Here's what ambitious founders and technology leaders think about working with us.
+					Don't just take our word for it. Here's what ambitious founders and technology leaders think about
+					working with us.
 				</p>
 			</div>
 
@@ -48,10 +52,8 @@ const Testimonials = () => {
 						className="flex flex-col gap-6 p-8 rounded-3xl glass relative border border-white/5 hover:border-primary/20 transition-all duration-300"
 					>
 						{/* Quote Mark */}
-						<div className="text-primary/20 text-6xl font-serif absolute top-4 left-6 pointer-events-none">
-							"
-						</div>
-						
+						<div className="text-primary/20 text-6xl font-serif absolute top-4 left-6 pointer-events-none">"</div>
+
 						<p className="text-slate-300 italic text-lg leading-relaxed relative z-10 pt-4">
 							{testimonial.content}
 						</p>
