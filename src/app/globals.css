@@ -5,10 +5,10 @@
 		--background: #03040b;
 		--foreground: #f8fafc;
 
-		--primary: #5f6efc;
+		--primary: #5d5fef;
 		--primary-foreground: #ffffff;
 
-		--secondary: #17182f;
+		--secondary: #7071af;
 		--secondary-foreground: #94a3b8;
 
 		--accent: #7c3aed;
@@ -51,7 +51,7 @@
 		background: rgba(255, 255, 255, 0.03);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		/* border: 1px solid rgba(255, 255, 255, 0.1); */
 	}
 
 	.text-gradient {

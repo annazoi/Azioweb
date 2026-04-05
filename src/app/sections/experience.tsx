@@ -1,151 +1,191 @@
 'use client';
 
-import { Site } from '@/interfaces';
+import { Site, Project } from '@/interfaces';
+import ProjectModal from '@/components/ui/project-modal';
 import Image from 'next/image';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { a } from 'framer-motion/client';
 import latherlab from '@/assets/sites/latherlab.jpg';
 
+import auraLogin from '@/assets/projects/aura/login.jpg';
+import auraChats from '@/assets/projects/aura/chats.jpg';
+import auraChat from '@/assets/projects/aura/chat.jpg';
+import auraAi from '@/assets/projects/aura/ai.jpg';
+import auraAiProgressing from '@/assets/projects/aura/ai-1.jpg';
+import auraSummary from '@/assets/projects/aura/ai-2.jpg';
+import auraSentimentAnlysis from '@/assets/projects/aura/ai-3.jpg';
+import auraCall from '@/assets/projects/aura/call.jpg';
+import auraCreateChat from '@/assets/projects/aura/create-chat.jpg';
+import habitryLanding from '@/assets/projects/habitry/landing.jpg';
+import habitryDashboard from '@/assets/projects/habitry/dashboard.jpg';
+import habitryAddActivity from '@/assets/projects/habitry/addActivity.jpg';
+import habitryCalendar from '@/assets/projects/habitry/calendar.jpg';
+import habitryLogin from '@/assets/projects/habitry/login.jpg';
+import drobeLogin from '@/assets/projects/drobe/login.jpg';
+import drobeHome from '@/assets/projects/drobe/home.jpg';
+import drobeStudio from '@/assets/projects/drobe/studio.jpg';
+import drobeOutfits from '@/assets/projects/drobe/outfits.jpg';
+import drobeAddPhoto from '@/assets/projects/drobe/add_photo.jpg';
+import drobeClothingCutout from '@/assets/projects/drobe/clothing_cutout.jpg';
+import drobeSaveClothingItem from '@/assets/projects/drobe/save_clothing_item.jpg';
+import drobeArchives from '@/assets/projects/drobe/archives.jpg';
+import drobeClothingOverview from '@/assets/projects/drobe/clothing_overview.jpg';
+import drobeCreatedClothingItem from '@/assets/projects/drobe/created_clothing_item.jpg';
+
 const Experience = () => {
-	const sites: Site[] = [
+	const sites: Project[] = [
 		{
-			id: '1',
+			id: 'site-1',
 			name: 'Lather Lab',
 			photo: latherlab,
+			photos: [latherlab],
 			url: 'https://latherlab.azioweb.com/',
 			description:
 				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
+		},
+		{
+			id: 'site-2',
+			name: 'Lather Lab',
+			photo: latherlab,
+			photos: [latherlab],
+			url: 'https://latherlab.azioweb.com/',
+			description:
+				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
+		},
+
+		{
+			id: '1',
+			name: 'Aura Platform',
+			photo: auraChat,
+			photos: [
+				auraLogin,
+				auraChats,
+				auraChat,
+				auraAi,
+				auraAiProgressing,
+				auraSummary,
+				auraSentimentAnlysis,
+				auraCall,
+				auraCreateChat,
+			],
+			description: 'Next-Gen collaboration and secure messaging system with AI-powered task management.',
+			url: 'https://aura.annazoi.dev/',
+			tag: 'AI/ML',
 		},
 		{
 			id: '2',
-			name: 'Lather Lab',
-			photo: latherlab,
-			url: 'https://latherlab.azioweb.com/',
-			description:
-				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
+			name: 'Habitry App',
+			photo: habitryDashboard,
+			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
+			description: 'AI-driven lifestyle and habit tracking application focusing on user retention and health data.',
+			url: 'https://habitry.annazoi.dev/',
+			tag: 'MOBILE APP',
+		},
+		{
+			id: '3',
+			name: 'Drobe App',
+			photo: drobeHome,
+			photos: [
+				drobeLogin,
+				drobeHome,
+				drobeStudio,
+				drobeOutfits,
+				drobeAddPhoto,
+				drobeClothingCutout,
+				drobeSaveClothingItem,
+				drobeArchives,
+				drobeClothingOverview,
+				drobeCreatedClothingItem,
+			],
+			description: 'AI-driven lifestyle and wardrobe management application focusing on user outfit tracking.',
+			url: 'https://drobe.annazoi.dev/',
+			tag: 'MOBILE APP',
+		},
+		{
+			id: '4',
+			name: 'Aura Analytics',
+			photo: auraSummary,
+			photos: [auraSummary, auraSentimentAnlysis, auraLogin],
+			description: 'Comprehensive data visualization, sentiment analysis, and reporting dashboard.',
+			url: 'https://aura.annazoi.dev/',
+			tag: 'DASHBOARD',
 		},
 	];
 
-	// 1. Δυναμικό itemsPerSlide (2 για desktop, 1 για mobile)
-	const [itemsPerSlide, setItemsPerSlide] = useState(2);
+	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	useEffect(() => {
-		const handleResize = () => {
-			// Αν το πλάτος είναι κάτω από 1024px (lg), δείχνε 1 project
-			setItemsPerSlide(window.innerWidth < 1024 ? 1 : 2);
-		};
-		handleResize();
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
-
-	// 2. Δημιουργία extended λίστας βάσει του itemsPerSlide
-	const extendedSites = [...sites.slice(-itemsPerSlide), ...sites, ...sites.slice(0, itemsPerSlide)];
-
-	const [index, setIndex] = useState(itemsPerSlide);
-	const [isAnimating, setIsAnimating] = useState(true);
-
-	// Επαναφορά του index αν αλλάξει το itemsPerSlide κατά το resize
-	useEffect(() => {
-		setIndex(itemsPerSlide);
-	}, [itemsPerSlide]);
-
-	const next = () => setIndex((prev) => prev + itemsPerSlide);
-	const prev = () => setIndex((prev) => prev - itemsPerSlide);
-
-	const handleAnimationComplete = () => {
-		if (index >= sites.length + itemsPerSlide) {
-			setIsAnimating(false);
-			setIndex(itemsPerSlide);
-		} else if (index < itemsPerSlide) {
-			setIsAnimating(false);
-			setIndex(sites.length);
+	const handleProjectClick = (site: Project) => {
+		if (site.photos && site.photos.length > 0) {
+			setSelectedProject(site);
+			setIsModalOpen(true);
+		} else {
+			window.open(site.url, '_blank');
 		}
-		setTimeout(() => setIsAnimating(true), 50);
 	};
 
 	return (
-		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
-			<div className="flex flex-col items-center gap-4">
-				<h2 className="header">
-					Client <span className="text-gradient">Successes</span>
+		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 flex flex-col gap-16">
+			{/* New Header */}
+			<div className="flex justify-between items-end mb-12 border-b border-white/5 pb-8">
+				<h2 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter">
+					The Showcase<span className="text-primary">.</span>
 				</h2>
-				<p className="text-slate-400 text-center max-w-2xl">
-					A selection of e-commerce, booking, and dynamic web portals we have delivered.
+				<p className="text-primary font-bold tracking-widest uppercase text-xs hidden sm:block">
+					Selected Works 2024
 				</p>
 			</div>
 
-			<div className="relative group/carousel">
-				<div className="overflow-hidden p-4 -m-4">
+			{/* Masonry Grid Layout */}
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-24">
+				{sites.map((site, index) => (
 					<motion.div
-						className="flex"
-						animate={{ x: `-${(index / itemsPerSlide) * 100}%` }}
-						transition={isAnimating ? { duration: 0.6, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
-						onAnimationComplete={handleAnimationComplete}
+						key={site.id}
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, margin: '-100px' }}
+						transition={{ duration: 0.6, delay: 0.1 }}
+						onClick={() => handleProjectClick(site)}
+						className={`group cursor-pointer flex flex-col gap-5 ${index % 2 !== 0 ? 'md:mt-32' : ''}`}
 					>
-						{Array.from({ length: Math.ceil(extendedSites.length / itemsPerSlide) }, (_, i) => {
-							const slideItems = extendedSites.slice(i * itemsPerSlide, (i + 1) * itemsPerSlide);
+						{/* Image Card Container */}
+						<div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
+							<Image
+								src={site.photo}
+								alt={site.name}
+								fill
+								className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+							/>
+							{/* Subtle darkness gradient at the bottom for image consistency */}
+							<div className="absolute inset-x-0 bottom-0 p-2 transition-all backdrop-blur-xl bg-black/40 duration-500 text-slate-400 text-[10px] p-4 font-black uppercase tracking-[0.2em] mt-1.5 text-white glass">
+								{site.description}
+							</div>
+						</div>
 
-							return (
-								<div key={i} className="min-w-full lg:px-4 flex flex-col gap-12 lg:gap-20">
-									{slideItems.map((site, idx) => {
-										const originalIndex = sites.findIndex((s) => s.id === site.id);
-
-										return (
-											<a href={site.url} target="_blank" key={`${site.id}-${i}-${idx}`}>
-												<div
-													className={`hover:bg-white/5 transition-all duration-300 p-8 rounded-3xl flex flex-col lg:flex-row items-center gap-8 lg:gap-16 
-                                                 ${(i * itemsPerSlide + idx) % 2 !== 0 ? 'lg:flex-row-reverse' : ''} group cursor-pointer`}
-												>
-													<div className="flex-1 flex flex-col gap-6 w-full">
-														<div className="flex flex-col gap-2">
-															<p className="text-primary font-bold tracking-wider uppercase text-xs">
-																Featured Site
-															</p>
-															<h3 className="text-3xl font-bold text-white transition-colors">
-																{site.name}
-															</h3>
-														</div>
-														<div className="bg-black/80 backdrop-blur-lg p-6 rounded-3xl relative z-10 border border-primary/30 group-hover:border-primary/40 transition-all shadow-2xl">
-															<p className="text-slate-200 leading-relaxed font-medium">
-																{site.description}
-															</p>
-														</div>
-													</div>
-
-													<div className="flex-1 relative aspect-[16/10] w-full max-w-2xl overflow-hidden rounded-3xl border border-white/10 shadow-2xl group-hover:border-primary/50 transition-all duration-500">
-														<Image
-															src={site.photo}
-															alt={site.name}
-															fill
-															className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-														/>
-													</div>
-												</div>
-											</a>
-										);
-									})}
-								</div>
-							);
-						})}
+						{/* Minimal Text Details */}
+						<div className="flex items-center justify-between ml-2">
+							<div className="flex flex-col">
+								<h3 className="text-2xl font-bold text-white transition-colors duration-300 group-hover:text-secondary">
+									{site.name}
+								</h3>
+								<p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5">
+									{site.tag || 'Featured Site'}
+								</p>
+							</div>
+							<div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mr-2">
+								<ArrowUpRightIcon className="w-6 h-6 text-secondary" strokeWidth={2.5} />
+							</div>
+						</div>
 					</motion.div>
-				</div>
-
-				<button
-					onClick={prev}
-					className="absolute -left-4 top-1/2 -translate-y-1/2 glass p-3 rounded-full text-white z-20 opacity-0 group-hover/carousel:opacity-100 transition-all cursor-pointer hover:bg-primary/20 hover:border-primary/40"
-				>
-					<ChevronLeftIcon className="h-6 w-6" />
-				</button>
-				<button
-					onClick={next}
-					className="absolute -right-4 top-1/2 -translate-y-1/2 glass p-3 rounded-full text-white z-20 opacity-0 group-hover/carousel:opacity-100 transition-all cursor-pointer hover:bg-primary/20 hover:border-primary/40"
-				>
-					<ChevronRightIcon className="h-6 w-6" />
-				</button>
+				))}
 			</div>
+
+			{/* Existing Project Modal Core */}
+			{selectedProject && (
+				<ProjectModal project={selectedProject} onOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+			)}
 		</div>
 	);
 };

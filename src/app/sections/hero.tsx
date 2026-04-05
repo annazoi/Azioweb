@@ -15,7 +15,7 @@ const Hero = () => {
 	];
 
 	return (
-		<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-14 hero flex flex-col gap-20 relative" id="hero">
+		<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-34 hero flex flex-col gap-20 relative" id="hero">
 			<div className="flex flex-col items-center text-center m-auto gap-8 lg:gap-10 relative z-10 pt-10">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -23,10 +23,10 @@ const Hero = () => {
 					transition={{ duration: 0.5 }}
 					className="flex flex-col gap-6 items-center"
 				>
-					<div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md">
+					<div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-lg backdrop-blur-md">
 						<span className="relative flex h-3 w-3">
-							<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-							<span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+							<span className="animate-ping absolute inline-flex h-full w-full rounded-lg bg-primary opacity-75"></span>
+							<span className="relative inline-flex rounded-lg h-3 w-3 bg-primary"></span>
 						</span>
 						<span className="text-sm font-medium text-slate-300">Available for new projects</span>
 					</div>
@@ -44,14 +44,14 @@ const Hero = () => {
 					<div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto justify-center">
 						<Link
 							href="/book"
-							className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(79,57,246,0.4)]"
+							className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-secondary  text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
 						>
 							<span>Book a Discovery Call</span>
 							<CalendarDaysIcon className="size-5" />
 						</Link>
 						<a
 							href="#services"
-							className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 backdrop-blur-md"
+							className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 backdrop-blur-md"
 						>
 							<span>Explore Our Services</span>
 							<ArrowRightIcon className="size-5" />
@@ -60,7 +60,7 @@ const Hero = () => {
 				</motion.div>
 			</div>
 
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10 mt-10 p-8 glass rounded-3xl">
+			<div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10 mt-10 p-8 glass rounded-lg">
 				{stats.map((item, index) => (
 					<motion.div
 						key={index}

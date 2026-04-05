@@ -1,86 +1,99 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MagnifyingGlassIcon, PencilSquareIcon, CommandLineIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
 
 const Process = () => {
 	const steps = [
 		{
 			id: '01',
 			name: 'Discovery',
-			icon: MagnifyingGlassIcon,
-			description:
-				'We dive deep into your business requirements, target audience, and market to define the strategy and project scope.',
+			description: 'Deep dive into your brand architecture and market positioning.',
 		},
 		{
 			id: '02',
-			name: 'Design',
-			icon: PencilSquareIcon,
-			description:
-				'We create intuitive wireframes and stunning high-fidelity prototypes, focusing on UX/UI that converts.',
+			name: 'Curated Design',
+			description: 'Applying our signature editorial lens to your digital interface.',
 		},
 		{
 			id: '03',
-			name: 'Development',
-			icon: CommandLineIcon,
-			description:
-				'Our engineers build robust, scalable architecture using modern technologies, with regular iterations and testing.',
+			name: 'Precision Build',
+			description: 'Development using the latest high-performance tech stacks.',
 		},
 		{
 			id: '04',
-			name: 'Launch & Scale',
-			icon: RocketLaunchIcon,
-			description:
-				'We deploy securely, monitor performance, and provide ongoing maintenance to help your product grow.',
+			name: 'Scale & Launch',
+			description: 'Global deployment and continuous optimization for growth.',
 		},
 	];
 
 	return (
-		<div id="process" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
-			<div className="flex flex-col items-center gap-4 text-center">
-				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">How We Work</h3>
-				<h2 className="header">
-					Our Development <span className="text-gradient">Process</span>
-				</h2>
-				<p className="text-slate-400 max-w-2xl leading-relaxed text-sm italic mx-auto">
-					A transparent, proven methodology that ensures we deliver high-quality software on time and within
-					budget.
-				</p>
+		<div
+			id="process"
+			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 flex flex-col gap-12 relative overflow-hidden"
+		>
+			{/* The Header */}
+			{/* <div className="flex justify-center items-center mb-16"> */}
+			<div className="hidden lg:block pb-2 text-right">
+				<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#The Method</p>
 			</div>
+			{/* </div> */}
 
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-8">
-				{steps.map((step, index) => {
-					const Icon = step.icon;
-					return (
-						<motion.div
-							key={step.id}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: index * 0.15 }}
-							viewport={{ once: true, amount: 0.5 }}
-							className="relative flex flex-col items-center text-center gap-8 group"
-						>
-							<div className="relative">
-								<div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-white/10 flex items-center justify-center bg-slate-900/40 relative z-10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-slate-950">
-									<Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
-								</div>
-								{/* Numbered Bubble */}
-								<div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary flex items-center justify-center text-[8px] sm:text-[10px] font-black text-white border-2 border-background z-20">
-									{step.id}
-								</div>
-							</div>
+			{/* Timeline Container */}
+			<div className="relative mx-auto w-full max-w-4xl py-10">
+				{/* Center Line (Hidden slightly at top and bottom to create fade illusion) */}
+				<div className="absolute left-[17px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent md:-translate-x-1/2" />
 
-							<div className="flex flex-col gap-3">
-								<h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-widest">
-									{step.name}
-								</h3>
-								<p className="text-[10px] sm:text-xs text-slate-400 leading-relaxed italic px-2 sm:px-4">
-									{step.description}
-								</p>
-							</div>
-						</motion.div>
-					);
-				})}
+				<div className="flex flex-col gap-12 md:gap-20 relative z-10 w-full">
+					{steps.map((step, index) => {
+						const isEven = index % 2 === 0; // 0 (Left), 1 (Right)
+						return (
+							<motion.div
+								key={step.id}
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true, margin: '-50px' }}
+								transition={{ duration: 0.6, delay: 0.1 }}
+								className="relative flex w-full group"
+							>
+								{/* Desktop Left Box */}
+								<div
+									className={`hidden md:flex flex-col w-1/2 pr-12 justify-center text-right ${
+										isEven ? 'opacity-100' : 'opacity-0 invisible'
+									}`}
+								>
+									<h3 className="text-2xl font-bold text-white mb-2 transition-colors duration-300 group-hover:text-slate-300">
+										{step.name}
+									</h3>
+									<p className="text-[#C8C4D9] text-[15px] leading-relaxed ml-auto max-w-[280px]">
+										{step.description}
+									</p>
+								</div>
+
+								{/* Center Bubble */}
+								<div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-[40px] h-[40px] rounded-full bg-[#27292f] border border-white/5 flex items-center justify-center shadow-2xl shrink-0 z-20 group-hover:scale-110 group-hover:bg-[#333740] transition-all duration-500">
+									<span className="text-[14px] font-bold font-bold tracking-widest text-[#C8C4D9]">
+										{step.id}
+									</span>
+								</div>
+
+								{/* Desktop Right Box & Mobile Box */}
+								<div
+									className={`pl-14 md:pl-12 w-full md:w-1/2 flex flex-col justify-center text-left ${
+										isEven ? 'md:hidden' : 'md:opacity-100'
+									}`}
+								>
+									{/* Note: this acts as the sole rendering on mobile devices so data is linearly stacked. On Desktop for even rows, the left box takes over. */}
+									<h3 className="text-xl md:text-2xl font-bold text-white mb-2 transition-colors duration-300 group-hover:text-slate-300">
+										{step.name}
+									</h3>
+									<p className="text-[#C8C4D9] text-[14px] md:text-[15px] leading-relaxed max-w-[280px]">
+										{step.description}
+									</p>
+								</div>
+							</motion.div>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

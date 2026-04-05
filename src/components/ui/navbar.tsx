@@ -32,11 +32,11 @@ export default function Navbar() {
 		<Disclosure
 			as="nav"
 			className={classNames(
-				'sticky top-0 z-50 transition-all duration-500 backdrop-blur-xl',
-				scrolled ? 'bg-background/50 border-b border-white/10 py-2' : 'bg-background/30 py-4 bg-primary/5',
+				'fixed top-0 w-full z-50 transition-all duration-500 py-4',
+				scrolled ? 'backdrop-blur-xl shadow-2xl' : 'backdrop-blur-xl',
 			)}
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div className="relative flex h-16 items-center justify-between transition-all duration-500">
 					<div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
 						<DisclosureButton className="group relative inline-flex items-center justify-center rounded-xl p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none ring-1 ring-white/10">
@@ -53,13 +53,13 @@ export default function Navbar() {
 							</a>
 							<a
 								href="mailto:hello@azioweb.com"
-								className="hidden lg:block text-slate-400 hover:text-white transition-colors text-sm font-medium"
+								className="hidden lg:block text-slate-400 hover:text-white transition-colors font-bold"
 							>
-								<span>hello@azioweb.com</span>
+								<span>AZIOWEB.COM</span>
 							</a>
 						</div>
-						<div className="hidden sm:ml-auto sm:block">
-							<div className="flex space-x-2">
+						<div className="hidden sm:ml-auto sm:block content-center">
+							<div className="flex space-x-2 gap-8">
 								{navigation.map((item) => (
 									<a
 										key={item.name}
@@ -67,9 +67,9 @@ export default function Navbar() {
 										aria-current={item.current ? 'page' : undefined}
 										className={classNames(
 											item.current
-												? 'bg-primary/20 text-primary-foreground border-primary/30'
-												: 'text-slate-300 hover:bg-white/5 hover:text-white border-transparent',
-											'rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 border ring-1 ring-white/5',
+												? 'text-secondary font-bold'
+												: 'text-slate-400 hover:text-white border-transparent',
+											'transition-all duration-300',
 										)}
 									>
 										{item.name}
@@ -81,7 +81,7 @@ export default function Navbar() {
 				</div>
 			</div>
 
-			<DisclosurePanel className="sm:hidden glass mx-4 rounded-3xl mt-2 overflow-hidden border border-white/10">
+			<DisclosurePanel className="sm:hidden relative z-10 glass mx-4 rounded-3xl mt-2 overflow-hidden border border-white/10">
 				<div className="space-y-1 px-4 pt-2 pb-6 border-t border-white/10 mt-2">
 					{navigation.map((item) => (
 						<DisclosureButton
