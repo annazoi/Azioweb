@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import {
 	ComputerDesktopIcon,
 	DevicePhoneMobileIcon,
@@ -10,6 +11,8 @@ import {
 	ChartBarIcon,
 	ServerStackIcon,
 	CpuChipIcon,
+	ChevronLeftIcon,
+	ChevronRightIcon,
 } from '@heroicons/react/24/outline';
 
 const Services = () => {
@@ -20,8 +23,7 @@ const Services = () => {
 			icon: ComputerDesktopIcon,
 			description:
 				'We build scalable, high-performance web applications using modern frameworks like React and Next.js.',
-			technologies: ['React', 'Next.js', 'Node.js', 'PostgreSQL'],
-			// Scattered Top Left
+			technologies: ['React', 'Next.js', 'Node.js'],
 			gridArea: 'col-start-1 row-start-1 justify-self-center self-center -ml-8 mt-12',
 		},
 		{
@@ -30,8 +32,7 @@ const Services = () => {
 			icon: ServerStackIcon,
 			description:
 				'We design, migrate, and manage scalable cloud infrastructures ensuring high availability and maximum security.',
-			technologies: ['AWS', 'Kubernetes', 'Terraform'],
-			// Scattered Top Center
+			technologies: ['AWS', 'Kubernetes'],
 			gridArea: 'col-start-2 row-start-1 justify-self-end self-end mr-2 xl:mr-8 mb-6',
 		},
 		{
@@ -39,8 +40,7 @@ const Services = () => {
 			name: 'Mobile App Development',
 			icon: DevicePhoneMobileIcon,
 			description: 'Cross-platform native-feeling applications that engage users on both iOS and Android platforms.',
-			technologies: ['React Native', 'Ionic', 'TypeScript'],
-			// Scattered Top Right
+			technologies: ['React Native', 'Ionic'],
 			gridArea: 'col-start-3 row-start-1 justify-self-end self-start mt-6 xl:mt-12 mr-8',
 		},
 		{
@@ -49,8 +49,7 @@ const Services = () => {
 			icon: CloudIcon,
 			description:
 				'From MVPs to complex cloud architectures. We architect robust systems designed for massive scale.',
-			technologies: ['Microservices', 'Docker', 'NestJS'],
-			// Scattered Middle Left
+			technologies: ['Microservices', 'Docker'],
 			gridArea: 'col-start-1 row-start-2 justify-self-start self-start -mt-8 xl:-mt-12 ml-6',
 		},
 		{
@@ -59,8 +58,7 @@ const Services = () => {
 			icon: PaintBrushIcon,
 			description:
 				'Data-driven design that prioritizes user experience and conversion to align with business goals.',
-			technologies: ['Figma', 'Prototyping', 'Tailwind'],
-			// Scattered Middle Right
+			technologies: ['Figma', 'Prototyping'],
 			gridArea: 'col-start-3 row-start-2 justify-self-center self-end mb-12 ml-12 xl:ml-20',
 		},
 		{
@@ -68,8 +66,7 @@ const Services = () => {
 			name: 'Custom API Integrations',
 			icon: CodeBracketIcon,
 			description: 'Connect disparate systems and automate workflows. We build secure APIs for your ecosystem.',
-			technologies: ['REST', 'GraphQL', 'WebSockets'],
-			// Scattered Bottom Left
+			technologies: ['REST', 'GraphQL'],
 			gridArea: 'col-start-1 row-start-3 justify-self-center self-end mb-8 xl:mb-16 -ml-12',
 		},
 		{
@@ -77,9 +74,8 @@ const Services = () => {
 			name: 'AI & Machine Learning',
 			icon: CpuChipIcon,
 			description:
-				'Empowering enterprises with intelligent automation, data pipelines, and intelligent AI model integrations.',
+				'Empowering enterprises with intelligent automation, data pipelines, and intelligent AI models.',
 			technologies: ['Python', 'LLMs', 'OpenAI'],
-			// Scattered Bottom Center
 			gridArea: 'col-start-2 row-start-3 justify-self-start self-start mt-8 xl:mt-12 -ml-6',
 		},
 		{
@@ -89,24 +85,85 @@ const Services = () => {
 			description:
 				'We optimize your applications for maximum speed and search engine visibility for organic growth.',
 			technologies: ['Core Web Vitals', 'SSR/SSG'],
-			// Scattered Bottom Right
 			gridArea: 'col-start-3 row-start-3 justify-self-end self-center mr-6 xl:mr-12 mt-12',
 		},
 	];
 
-	// Larger, more dramatic chaotic floating animations based on deterministic indices
+	// -- MOBILE SLIDER LOGIC --
+	const [currentIndex, setCurrentIndex] = useState(1);
+	const [isAnimating, setIsAnimating] = useState(true);
+	const [canNavigate, setCanNavigate] = useState(true);
+	const [isPaused, setIsPaused] = useState(false);
+	const itemsPerSlide = 1;
+
+	// Create duplicated array padded with clones for infinite sliding
+	const duplicatedServices = [
+		...services.slice(-itemsPerSlide),
+		...services,
+		...services.slice(0, itemsPerSlide),
+	];
+
+	const next = () => {
+		if (!canNavigate) return;
+		setCanNavigate(false);
+		setCurrentIndex((prev) => prev + 1);
+	};
+
+	const prev = () => {
+		if (!canNavigate) return;
+		setCanNavigate(false);
+		setCurrentIndex((prev) => prev - 1);
+	};
+
+	const handleDotClick = (dotIndex: number) => {
+		if (!canNavigate) return;
+		setCanNavigate(false);
+		setCurrentIndex(itemsPerSlide + dotIndex);
+	};
+
+	const handleAnimationComplete = () => {
+		setCanNavigate(true);
+		if (currentIndex >= services.length + itemsPerSlide) {
+			setIsAnimating(false);
+			setCurrentIndex(currentIndex - services.length);
+		} else if (currentIndex <= 0) {
+			setIsAnimating(false);
+			setCurrentIndex(currentIndex + services.length);
+		}
+	};
+
+	useEffect(() => {
+		if (!isAnimating) {
+			const timer = setTimeout(() => setIsAnimating(true), 50);
+			return () => clearTimeout(timer);
+		}
+	}, [isAnimating]);
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			if (!isPaused && isAnimating) {
+				setCurrentIndex((prev) => prev + 1);
+			}
+		}, 5000);
+		return () => clearInterval(timer);
+	}, [isPaused, isAnimating]);
+
+	let activeDotIndex = (currentIndex - itemsPerSlide) % services.length;
+	if (activeDotIndex < 0) activeDotIndex += services.length;
+	// -------------------------
+
+	// -- DESKTOP PHYSICS --
 	const floatingVariants = {
-		animate: (i: number) => {
-			// Generate deterministic pseudo-random values based on index to prevent hydration mismatch
-			const randomY = -25 + (i % 4) * 15; // Range between -25 and 20
-			const randomX = -20 + (i % 3) * 20; // Range between -20 and 20
+		floating: (i: number) => {
+			const randomY = -25 + (i % 4) * 15;
+			const randomX = -20 + (i % 3) * 20;
 			return {
 				y: [0, randomY, 0],
 				x: [0, randomX, 0],
 				transition: {
 					duration: 6 + (i % 4) * 1.5,
 					repeat: Infinity,
-					ease: 'easeInOut',
+					ease: 'easeInOut' as const,
 					delay: i * 0.4,
 				},
 			};
@@ -169,18 +226,20 @@ const Services = () => {
 	const MobileServiceCard = ({ service }: { service: any }) => {
 		const Icon = service.icon;
 		return (
-			<div className="group relative flex flex-col gap-5 p-6 rounded-3xl glass hover:bg-white/[0.05] transition-all duration-300 border border-white/5 hover:border-primary/30 w-full h-full">
-				<div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none" />
+			<div className="group relative flex flex-col gap-5 p-8 rounded-[2.5rem] glass hover:bg-white/[0.05] transition-all duration-300 border border-white/5 hover:border-primary/30 w-full h-full min-h-[300px]">
+				<div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem] pointer-events-none" />
 
-				<div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/5">
+				<div className="w-14 h-14 shrink-0 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-lg shadow-primary/5">
 					<Icon className="w-7 h-7 text-primary" />
 				</div>
 
-				<div className="flex flex-col gap-2 relative z-10 w-full">
-					<h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors leading-tight">
+				<div className="flex flex-col gap-3 relative z-10 w-full mb-8">
+					<h3 className="text-xl font-bold text-white leading-tight">
 						{service.name}
 					</h3>
-					<p className="text-slate-400 leading-relaxed text-sm line-clamp-3">{service.description}</p>
+					<p className="text-slate-400 leading-relaxed text-sm">
+						{service.description}
+					</p>
 				</div>
 
 				<div className="mt-auto pt-4 border-t border-white/5 relative z-10 w-full">
@@ -188,7 +247,7 @@ const Services = () => {
 						{service.technologies.map((tech: string) => (
 							<span
 								key={tech}
-								className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-800/50 text-slate-300 border border-white/5"
+								className="text-[10px] font-black px-3 py-1.5 rounded-full bg-slate-900 text-slate-300 border border-white/5"
 							>
 								{tech}
 							</span>
@@ -203,7 +262,7 @@ const Services = () => {
 		<div id="services" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32 relative">
 			{/* DESKTOP LAYOUT (Grid Orbit with floating animations) */}
 			<div className="hidden lg:grid grid-cols-[1fr_auto_1fr] grid-rows-3 relative w-full h-[950px] xl:h-[1050px] gap-2 xl:gap-4">
-				{/* Center Title Area - Locked in Row 2, Col 2 strictly */}
+				{/* Center Title Area */}
 				<motion.div
 					initial={{ opacity: 0, scale: 0.9 }}
 					whileInView={{ opacity: 1, scale: 1 }}
@@ -224,7 +283,7 @@ const Services = () => {
 					</p>
 				</motion.div>
 
-				{/* Safe Grid Boundaries for Scattered Cards */}
+				{/* Scattered Cards */}
 				{services.map((service, index) => (
 					<motion.div
 						key={service.id}
@@ -234,38 +293,69 @@ const Services = () => {
 						transition={{ duration: 0.6, delay: index * 0.1 }}
 						className={`z-10 ${service.gridArea}`}
 					>
-						<motion.div custom={index} variants={floatingVariants} animate="animate" className="h-full">
+						<motion.div custom={index} variants={floatingVariants} animate="floating" className="h-full">
 							<DesktopServiceCard service={service} />
 						</motion.div>
 					</motion.div>
 				))}
 			</div>
 
-			{/* MOBILE & TABLET LAYOUT (Standard Grid) */}
-			<div className="flex lg:hidden flex-col gap-12">
-				<div className="flex flex-col items-center gap-4 text-center">
+			{/* MOBILE & TABLET LAYOUT (Interactive Slider like Projects) */}
+			<div className="flex lg:hidden flex-col w-full overflow-hidden mb-12">
+				<div className="flex flex-col items-center gap-4 text-center mb-10 px-4">
 					<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Our Expertise</h3>
 					<h2 className="header">
 						Services We <span className="text-gradient">Offer</span>
 					</h2>
 					<p className="text-slate-400 max-w-2xl leading-relaxed text-sm italic mx-auto">
-						We provide full-cycle software development services tailored to your specific business needs. From
-						initial concept to deployment and scaling.
+						We provide full-cycle software development services tailored to your specific business needs.
 					</p>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 place-items-stretch w-full">
-					{services.map((service, index) => (
+				<div 
+					className="relative group/carousel px-8"
+					onTouchStart={() => setIsPaused(true)}
+					onTouchEnd={() => setIsPaused(false)}
+				>
+					<div className="relative overflow-hidden w-full rounded-[3rem]">
 						<motion.div
-							key={service.id}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: index * 0.1 }}
-							className="w-full flex"
+							className="flex"
+							animate={{ x: `-${currentIndex * 100}%` }}
+							transition={isAnimating ? { duration: 0.5, ease: [0.32, 0.72, 0, 1] } : { duration: 0 }}
+							onAnimationComplete={handleAnimationComplete}
 						>
-							<MobileServiceCard service={service} />
+							{duplicatedServices.map((service, idx) => (
+								<div key={`${service.id}-${idx}`} className="p-2 relative shrink-0 w-full h-auto">
+									<MobileServiceCard service={service} />
+								</div>
+							))}
 						</motion.div>
+					</div>
+
+					<button
+						onClick={prev}
+						className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 text-white backdrop-blur-xl border border-white/10 transition-all duration-300 hover:bg-primary hover:border-primary shadow-xl"
+					>
+						<ChevronLeftIcon className="size-5" />
+					</button>
+
+					<button
+						onClick={next}
+						className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 text-white backdrop-blur-xl border border-white/10 transition-all duration-300 hover:bg-primary hover:border-primary shadow-xl"
+					>
+						<ChevronRightIcon className="size-5" />
+					</button>
+				</div>
+
+				<div className="flex justify-center gap-2 mt-8 px-4 overflow-x-auto no-scrollbar py-2">
+					{services.map((_, i) => (
+						<button
+							key={i}
+							onClick={() => handleDotClick(i)}
+							className={`h-2 shrink-0 rounded-full transition-all duration-300 ${
+								i === activeDotIndex ? 'w-8 bg-primary shadow-[0_0_10px_rgba(37,99,235,0.8)]' : 'w-2 bg-white/20 hover:bg-white/40'
+							}`}
+						/>
 					))}
 				</div>
 			</div>
