@@ -19,27 +19,69 @@ export const metadata = {
 	keywords: 'software development, agency, web development, web design, Next.js, React, mobile apps',
 };
 
+const ParallaxSection = ({ children, bgImage }: { children: React.ReactNode; bgImage: string }) => (
+	<section className="relative w-full overflow-hidden">
+		{/* Parallax Static Background */}
+		<div
+			className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+			style={{
+				backgroundImage: `url('${bgImage}')`,
+				backgroundAttachment: 'fixed',
+			}}
+		/>
+
+		{/* Premium Dark Overlay with a very subtle blur to merge the sections nicely */}
+		<div className="absolute inset-0 z-0 bg-slate-950/85 backdrop-blur-[2px]" />
+
+		{/* Section Content */}
+		<div className="relative z-10 w-full pb-8">{children}</div>
+	</section>
+);
+
 export default function Home() {
 	return (
 		<div>
 			<Navbar />
-			<main className="relative">
-				{/* Background Blobs */}
-				<div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
-				<div className="absolute top-[30%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] -z-10" />
-				<div className="absolute top-[60%] left-[5%] w-[400px] h-[400px] bg-rose-500/10 rounded-full blur-[100px] -z-10 animate-pulse" />
-				<div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10" />
+			<main className="relative bg-slate-950">
+				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+					<Hero />
+				</ParallaxSection>
 
-				<Hero />
-				<Services />
-				<Agency />
-				<Process />
-				<Projects />
-				<Experience />
-				<Testimonials />
-				<Pricing />
-				<FAQ />
-				<Contact />
+				<ParallaxSection bgImage="/backgrounds/bg2.jpg">
+					<Services />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg3.png">
+					<Agency />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+					<Process />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg2.jpg">
+					<Projects />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg3.png">
+					<Experience />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+					<Testimonials />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg2.jpg">
+					<Pricing />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg3.png">
+					<FAQ />
+				</ParallaxSection>
+
+				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+					<Contact />
+				</ParallaxSection>
 			</main>
 
 			<Footer />
