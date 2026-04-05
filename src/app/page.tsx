@@ -34,7 +34,7 @@ const ParallaxSection = ({ children, bgImage }: { children: React.ReactNode; bgI
 		<div className="absolute inset-0 z-0 bg-slate-950/85 backdrop-blur-[2px]" />
 
 		{/* Section Content */}
-		<div className="relative z-10 w-full pb-8">{children}</div>
+		<div className="relative z-10 w-full pb-30">{children}</div>
 	</section>
 );
 
@@ -47,11 +47,11 @@ export default function Home() {
 					<Hero />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg2.jpg">
+				<ParallaxSection bgImage="/backgrounds/bg5.jpg">
 					<Services />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg3.png">
+				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
 					<Agency />
 				</ParallaxSection>
 
@@ -59,15 +59,15 @@ export default function Home() {
 					<Process />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg2.jpg">
+				<ParallaxSection bgImage="/backgrounds/bg6.jpg">
 					<Projects />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg3.png">
+				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
 					<Experience />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+				<ParallaxSection bgImage="/backgrounds/bg4.jpg">
 					<Testimonials />
 				</ParallaxSection>
 
@@ -75,11 +75,11 @@ export default function Home() {
 					<Pricing />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg3.png">
+				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
 					<FAQ />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+				<ParallaxSection bgImage="/backgrounds/bg4.jpg">
 					<Contact />
 				</ParallaxSection>
 			</main>

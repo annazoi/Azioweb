@@ -15,16 +15,7 @@ const Hero = () => {
 	];
 
 	return (
-		<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-6 hero flex flex-col gap-20 relative" id="hero">
-			{/* Decorative background elements */}
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1000px] pointer-events-none">
-				<div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
-				<div
-					className="absolute bottom-10 right-10 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse"
-					style={{ animationDelay: '2s' }}
-				></div>
-			</div>
-
+		<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-14 hero flex flex-col gap-20 relative" id="hero">
 			<div className="flex flex-col items-center text-center m-auto gap-8 lg:gap-10 relative z-10 pt-10">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -79,11 +70,11 @@ const Hero = () => {
 						viewport={{ once: true, amount: 0.5 }}
 						className="text-center flex flex-col items-center justify-center"
 					>
-						<p className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
+						<p className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary mb-2">
 							<CountUp end={item.value} duration={2.5} enableScrollSpy />
 							{item.suffix}
 						</p>
-						<span className="text-sm font-medium text-slate-400 uppercase tracking-widest">{item.label}</span>
+						<span className="text-sm font-medium text-slate-300 uppercase tracking-widest">{item.label}</span>
 					</motion.div>
 				))}
 			</div>

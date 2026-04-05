@@ -43,7 +43,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-30 flex flex-col gap-12 lg:gap-24 mb-32">
+		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-30 flex flex-col gap-6 lg:gap-4">
 			<div className="flex flex-col gap-4">
 				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Get In Touch</h3>
 				<h2 className="header !text-left max-w-2xl">

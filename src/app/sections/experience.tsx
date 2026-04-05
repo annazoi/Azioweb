@@ -18,6 +18,14 @@ const Experience = () => {
 			description:
 				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
 		},
+		{
+			id: '2',
+			name: 'Lather Lab',
+			photo: latherlab,
+			url: 'https://latherlab.azioweb.com/',
+			description:
+				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
+		},
 	];
 
 	// 1. Δυναμικό itemsPerSlide (2 για desktop, 1 για mobile)
@@ -59,7 +67,7 @@ const Experience = () => {
 	};
 
 	return (
-		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
+		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4">
 				<h2 className="header">
 					Client <span className="text-gradient">Successes</span>
@@ -88,7 +96,7 @@ const Experience = () => {
 										return (
 											<a href={site.url} target="_blank" key={`${site.id}-${i}-${idx}`}>
 												<div
-													className={`hover:bg-primary/5 transition-all duration-300 p-8 rounded-3xl flex flex-col lg:flex-row items-center gap-8 lg:gap-16 
+													className={`hover:bg-white/5 transition-all duration-300 p-8 rounded-3xl flex flex-col lg:flex-row items-center gap-8 lg:gap-16 
                                                  ${(i * itemsPerSlide + idx) % 2 !== 0 ? 'lg:flex-row-reverse' : ''} group cursor-pointer`}
 												>
 													<div className="flex-1 flex flex-col gap-6 w-full">
@@ -96,11 +104,11 @@ const Experience = () => {
 															<p className="text-primary font-bold tracking-wider uppercase text-xs">
 																Featured Site
 															</p>
-															<h3 className="text-3xl font-bold text-white group-hover:text-primary transition-colors">
+															<h3 className="text-3xl font-bold text-white transition-colors">
 																{site.name}
 															</h3>
 														</div>
-														<div className="bg-black/80 backdrop-blur-lg p-6 rounded-3xl relative z-10 border border-primary/30 group-hover:border-primary/60 transition-all shadow-[0_0_15px_rgba(79,57,246,0.2)]">
+														<div className="bg-black/80 backdrop-blur-lg p-6 rounded-3xl relative z-10 border border-primary/30 group-hover:border-primary/40 transition-all shadow-2xl">
 															<p className="text-slate-200 leading-relaxed font-medium">
 																{site.description}
 															</p>

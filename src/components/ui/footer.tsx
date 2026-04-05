@@ -1,12 +1,16 @@
 const Footer = () => {
+	const currentYear = new Date().getFullYear();
+	const startYear = 2026;
+	const yearText = currentYear > startYear ? `${startYear}-${currentYear}` : `${startYear}`;
+
 	return (
-		<footer className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-8 mt-20">
+		<footer className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 flex flex-col sm:flex-row justify-between items-center gap-8 ">
 			<div className="flex items-center gap-2">
 				<img src="/logo-nav.png" alt="Azioweb" className="h-8 w-auto brightness-200" />
 			</div>
 
 			<div className="text-slate-500 text-[10px] font-black uppercase tracking-widest italic">
-				© 2024 Azioweb. All rights reserved.
+				© {yearText} Azioweb. All rights reserved.
 			</div>
 
 			<div className="flex items-center gap-6">

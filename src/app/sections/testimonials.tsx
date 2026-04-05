@@ -31,7 +31,7 @@ const Testimonials = () => {
 	];
 
 	return (
-		<div id="testimonials" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
+		<div id="testimonials" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
 				<h3 className="text-primary font-bold tracking-wider uppercase text-sm">Client Reviews</h3>
 				<h2 className="header">
@@ -61,7 +61,7 @@ const Testimonials = () => {
 						</p>
 
 						<div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/10 relative z-10">
-							<div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold tracking-wider shadow-lg shadow-primary/20">
+							<div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary flex items-center justify-center text-white font-bold tracking-wider">
 								{testimonial.initials}
 							</div>
 							<div className="flex flex-col">

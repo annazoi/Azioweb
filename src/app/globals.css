@@ -5,7 +5,7 @@
 		--background: #03040b;
 		--foreground: #f8fafc;
 
-		--primary: #4f39f6;
+		--primary: #5f6efc;
 		--primary-foreground: #ffffff;
 
 		--secondary: #17182f;
@@ -25,7 +25,11 @@
 	body {
 		background-color: var(--background);
 		color: var(--foreground);
-		font-family: 'Inter', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Inter',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		overflow-x: hidden;
@@ -51,7 +55,7 @@
 	}
 
 	.text-gradient {
-		background: linear-gradient(to right, #818cf8, #c084fc, #fb7185);
+		background: linear-gradient(to right, #6877fc, #818cf8, #96a1ff);
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;

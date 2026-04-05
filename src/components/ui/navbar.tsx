@@ -32,8 +32,8 @@ export default function Navbar() {
 		<Disclosure
 			as="nav"
 			className={classNames(
-				'sticky top-0 z-50 transition-all duration-500',
-				scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-white/10 py-2' : 'bg-transparent py-4',
+				'sticky top-0 z-50 transition-all duration-500 backdrop-blur-xl',
+				scrolled ? 'bg-background/50 border-b border-white/10 py-2' : 'bg-background/30 py-4 bg-primary/5',
 			)}
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

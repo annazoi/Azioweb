@@ -34,7 +34,7 @@ const FAQ = () => {
 	];
 
 	return (
-		<div id="faq" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-32 mb-32 flex flex-col gap-16">
+		<div id="faq" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
 				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Have Questions?</h3>
 				<h2 className="header">
@@ -57,7 +57,7 @@ const FAQ = () => {
 					>
 						{({ open }) => (
 							<>
-								<DisclosureButton className="flex w-full justify-between items-center px-10 py-8 text-left text-sm lg:text-base font-black text-white hover:text-primary transition-colors focus:outline-none">
+								<DisclosureButton className="cursor-pointer flex w-full justify-between items-center px-10 py-8 text-left text-sm lg:text-base font-black text-white hover:text-primary transition-colors focus:outline-none">
 									<span>{faq.question}</span>
 									<ChevronUpIcon
 										className={`${
@@ -65,7 +65,7 @@ const FAQ = () => {
 										} h-4 w-4 text-primary transition-transform duration-300`}
 									/>
 								</DisclosureButton>
-								<DisclosurePanel className="px-10 pb-8 text-slate-400 text-xs lg:text-sm leading-relaxed italic">
+								<DisclosurePanel className="px-10 pb-8 text-slate-300 text-xs lg:text-sm leading-relaxed italic">
 									{faq.answer}
 								</DisclosurePanel>
 							</>

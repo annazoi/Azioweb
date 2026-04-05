@@ -36,7 +36,7 @@ const Process = () => {
 	];
 
 	return (
-		<div id="process" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
+		<div id="process" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
 				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">How We Work</h3>
 				<h2 className="header">
