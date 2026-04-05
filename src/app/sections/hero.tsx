@@ -15,7 +15,7 @@ const Hero = () => {
 	];
 
 	return (
-		<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-20 hero flex flex-col gap-20 relative" id="hero">
+		<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-6 hero flex flex-col gap-20 relative" id="hero">
 			{/* Decorative background elements */}
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1000px] pointer-events-none">
 				<div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
@@ -40,12 +40,12 @@ const Hero = () => {
 						<span className="text-sm font-medium text-slate-300">Available for new projects</span>
 					</div>
 
-					<h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+					<h1 className="header lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
 						We build scalable, high-performance <br className="hidden lg:block" />
 						<span className="text-gradient">Digital Products.</span>
 					</h1>
 
-					<p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+					<p className="text-sm lg:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
 						Azioweb is a premium software development agency. We partner with ambitious brands to transform
 						complex ideas into robust, enterprise-grade web and mobile applications.
 					</p>

@@ -10,6 +10,8 @@ import Pricing from '@/app/sections/pricing';
 import FAQ from '@/app/sections/faq';
 import Contact from '@/app/sections/contact';
 
+import Footer from '@/components/ui/footer';
+
 export const metadata = {
 	title: 'Azioweb | Premium Software Development Agency',
 	description:
@@ -21,7 +23,13 @@ export default function Home() {
 	return (
 		<div>
 			<Navbar />
-			<main>
+			<main className="relative">
+				{/* Background Blobs */}
+				<div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
+				<div className="absolute top-[30%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] -z-10" />
+				<div className="absolute top-[60%] left-[5%] w-[400px] h-[400px] bg-rose-500/10 rounded-full blur-[100px] -z-10 animate-pulse" />
+				<div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10" />
+
 				<Hero />
 				<Services />
 				<Agency />
@@ -34,7 +42,7 @@ export default function Home() {
 				<Contact />
 			</main>
 
-			<footer></footer>
+			<Footer />
 		</div>
 	);
 }

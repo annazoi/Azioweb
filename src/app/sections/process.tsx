@@ -38,18 +38,17 @@ const Process = () => {
 	return (
 		<div id="process" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
-				<h3 className="text-primary font-bold tracking-wider uppercase text-sm">How We Work</h3>
-				<h2 className="header text-gradient">Our Development Process</h2>
-				<p className="text-slate-400 max-w-2xl leading-relaxed text-lg mx-auto">
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">How We Work</h3>
+				<h2 className="header">
+					Our Development <span className="text-gradient">Process</span>
+				</h2>
+				<p className="text-slate-400 max-w-2xl leading-relaxed text-sm italic mx-auto">
 					A transparent, proven methodology that ensures we deliver high-quality software on time and within
 					budget.
 				</p>
 			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-				{/* Connecting lines for desktop */}
-				<div className="hidden lg:none absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-12"></div>
-
+			<div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-8">
 				{steps.map((step, index) => {
 					const Icon = step.icon;
 					return (
@@ -59,19 +58,25 @@ const Process = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: index * 0.15 }}
 							viewport={{ once: true, amount: 0.5 }}
-							className="relative flex flex-col items-center text-center gap-6"
+							className="relative flex flex-col items-center text-center gap-8 group"
 						>
-							<div className="w-24 h-24 rounded-full glass bg-background flex items-center justify-center relative z-10 border-2 border-primary/30 group hover:border-primary transition-colors duration-300">
-								<div className="absolute inset-0 bg-primary/5 rounded-full z-0 group-hover:bg-primary/20 transition-colors duration-300"></div>
-								<Icon className="w-10 h-10 text-primary relative z-10" />
-								<div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shadow-lg shadow-primary/40">
+							<div className="relative">
+								<div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-white/10 flex items-center justify-center bg-slate-900/40 relative z-10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-slate-950">
+									<Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
+								</div>
+								{/* Numbered Bubble */}
+								<div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary flex items-center justify-center text-[8px] sm:text-[10px] font-black text-white border-2 border-background z-20">
 									{step.id}
 								</div>
 							</div>
 
 							<div className="flex flex-col gap-3">
-								<h3 className="text-xl font-bold text-white">{step.name}</h3>
-								<p className="text-slate-400 text-sm leading-relaxed px-4">{step.description}</p>
+								<h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-widest">
+									{step.name}
+								</h3>
+								<p className="text-[10px] sm:text-xs text-slate-400 leading-relaxed italic px-2 sm:px-4">
+									{step.description}
+								</p>
 							</div>
 						</motion.div>
 					);

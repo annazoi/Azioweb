@@ -34,7 +34,9 @@ const Testimonials = () => {
 		<div id="testimonials" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
 				<h3 className="text-primary font-bold tracking-wider uppercase text-sm">Client Reviews</h3>
-				<h2 className="header text-gradient">What Our Partners Say</h2>
+				<h2 className="header">
+					What Our <span className="text-gradient">Partners</span> Say
+				</h2>
 				<p className="text-slate-400 max-w-2xl leading-relaxed text-lg mx-auto">
 					Don't just take our word for it. Here's what ambitious founders and technology leaders think about
 					working with us.

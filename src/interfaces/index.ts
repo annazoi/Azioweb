@@ -12,6 +12,7 @@ export interface Project {
 	photos?: any[];
 	description: string;
 	url: string;
+	tag?: string;
 }
 
 export interface Site {

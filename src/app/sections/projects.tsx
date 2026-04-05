@@ -1,10 +1,10 @@
 'use client';
 
 import './style.css';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useCallback, useEffect, useState } from 'react';
 
 import auraLogin from '@/assets/projects/aura/login.jpg';
 import auraChats from '@/assets/projects/aura/chats.jpg';
@@ -38,7 +38,7 @@ const Projects = () => {
 	const projects: Project[] = [
 		{
 			id: '1',
-			name: 'Aura',
+			name: 'Aura Platform',
 			photo: auraChat,
 			photos: [
 				auraLogin,
@@ -51,174 +51,220 @@ const Projects = () => {
 				auraCall,
 				auraCreateChat,
 			],
-			description: 'Focused on real-time collaboration, secure messaging, and smart AI assistants.',
+			description: 'Next-Gen collaboration and secure messaging system with AI-powered task management.',
 			url: 'https://aura.annazoi.dev/',
+			tag: 'AI/ML',
 		},
 		{
 			id: '2',
-			name: 'Habitry',
-			photo: habitryLanding,
+			name: 'Habitry App',
+			photo: habitryDashboard,
 			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
-			description:
-				'A modern, AI-powered habit tracking application designed to help users build positive habits and achieve their goals through intelligent insights and personalized guidance.',
+			description: 'AI-driven lifestyle and habit tracking application focusing on user retention and health data.',
 			url: 'https://habitry.annazoi.dev/',
+			tag: 'MOBILE APP',
 		},
 		{
 			id: '3',
-			name: 'Drobe',
+			name: 'Drobe App',
 			photo: drobeHome,
 			photos: [
-				drobeHome,
 				drobeLogin,
+				drobeHome,
 				drobeStudio,
 				drobeOutfits,
 				drobeAddPhoto,
 				drobeClothingCutout,
-				drobeCreatedClothingItem,
 				drobeSaveClothingItem,
 				drobeArchives,
 				drobeClothingOverview,
+				drobeCreatedClothingItem,
 			],
-			description:
-				'A modern digital wardrobe app that lets users organize their clothes with smart background removal for clean, ready-to-use photos. Users can mix and match items on an easy-to-use canvas to plan outfits and share their style with others. Built with React and NestJS, Drobe combines AI-powered image processing with a fast, scalable, and cross-platform-ready design.',
+			description: 'AI-driven lifestyle and wardrobe management application focusing on user outfit tracking.',
 			url: 'https://drobe.annazoi.dev/',
+			tag: 'MOBILE APP',
 		},
 		{
 			id: '4',
-			name: 'Relay',
-			photo: drobeHome,
-			photos: [drobeHome, drobeHome],
-			description: 'Fourth project description.',
-			url: 'https://relay.annazoi.dev/',
+			name: 'Aura Analytics',
+			photo: auraSummary,
+			photos: [auraSummary, auraSentimentAnlysis, auraLogin],
+			description: 'Comprehensive data visualization, sentiment analysis, and reporting dashboard.',
+			url: 'https://aura.annazoi.dev/',
+			tag: 'DASHBOARD',
 		},
 	];
 
-	const [visible, setVisible] = useState(2);
-	const [index, setIndex] = useState(2);
+	const [itemsPerSlide, setItemsPerSlide] = useState(3);
+	const [currentIndex, setCurrentIndex] = useState(3);
+	const [isAnimating, setIsAnimating] = useState(true);
+	const [canNavigate, setCanNavigate] = useState(true);
+	const [isPaused, setIsPaused] = useState(false);
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
 		const handleResize = () => {
-			if (window.innerWidth < 768) {
-				setVisible(1);
-			} else if (window.innerWidth < 1024) {
-				setVisible(2);
-			} else {
-				setVisible(2);
-			}
-		};
+			let newItemsPerSlide = 3;
+			if (window.innerWidth < 640) newItemsPerSlide = 1;
+			else if (window.innerWidth < 1024) newItemsPerSlide = 2;
 
+			setItemsPerSlide(newItemsPerSlide);
+			setCurrentIndex(newItemsPerSlide); // Reset to base safe index on resize
+		};
 		handleResize();
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
-	const extendedProjects = [...projects.slice(-visible), ...projects, ...projects.slice(0, visible)];
+	// Create duplicated array padded with clones for infinite sliding
+	const duplicatedProjects = [
+		...projects.slice(-itemsPerSlide),
+		...projects,
+		...projects.slice(0, itemsPerSlide),
+	];
 
-	const next = () => setIndex((prev) => prev + 1);
-	const prev = () => setIndex((prev) => prev - 1);
+	const next = () => {
+		if (!canNavigate) return;
+		setCanNavigate(false);
+		setCurrentIndex((prev) => prev + 1);
+	};
+
+	const prev = () => {
+		if (!canNavigate) return;
+		setCanNavigate(false);
+		setCurrentIndex((prev) => prev - 1);
+	};
+
+	const handleDotClick = (dotIndex: number) => {
+		if (!canNavigate) return;
+		setCanNavigate(false);
+		setCurrentIndex(itemsPerSlide + dotIndex);
+	};
+
+	const handleAnimationComplete = () => {
+		setCanNavigate(true);
+		if (currentIndex >= projects.length + itemsPerSlide) {
+			setIsAnimating(false);
+			setCurrentIndex(currentIndex - projects.length);
+		} else if (currentIndex <= 0) {
+			setIsAnimating(false);
+			setCurrentIndex(currentIndex + projects.length);
+		}
+	};
+
+	// Restores the animation flag cleanly after a silent jump
+	useEffect(() => {
+		if (!isAnimating) {
+			const timer = setTimeout(() => setIsAnimating(true), 50);
+			return () => clearTimeout(timer);
+		}
+	}, [isAnimating]);
+
+	// Auto-play interval
+	useEffect(() => {
+		const timer = setInterval(() => {
+			if (!isPaused && isAnimating) {
+				setCurrentIndex((prev) => prev + 1);
+			}
+		}, 5000);
+		return () => clearInterval(timer);
+	}, [isPaused, isAnimating]);
 
 	const handleProjectClick = (project: Project) => {
 		setSelectedProject(project);
 		setIsModalOpen(true);
 	};
 
+	let activeDotIndex = (currentIndex - itemsPerSlide) % projects.length;
+	if (activeDotIndex < 0) activeDotIndex += projects.length;
+
 	return (
-		<div className="mx-auto mt-32 px-4 relative overflow-hidden max-w-7xl" id="work">
+		<div className="mx-auto mt-32 px-4 relative max-w-7xl" id="work">
 			<div className="flex flex-col items-center gap-4 mb-16">
-				<h3 className="header text-gradient">Case Studies</h3>
-				<p className="text-slate-400 text-center max-w-2xl">
-					A selection of our recent enterprise-grade solutions, ranging from scalable web apps to modern AI-driven
+				<h3 className="header">
+					Case <span className="text-gradient">Studies</span>
+				</h3>
+				<p className="text-slate-400 text-center max-w-2xl italic text-sm">
+					A selection of our recent enterprise-grade solutions, from scalable web-apps to modern AI-driven
 					platforms.
 				</p>
 			</div>
 
-			<div className="relative group/carousel">
-				<motion.div
-					className="flex"
-					animate={{
-						x: `-${index * (100 / visible)}%`,
-					}}
-					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-					onAnimationComplete={() => {
-						if (index >= projects.length + visible) {
-							setIndex(visible);
-						}
-						if (index < visible) {
-							setIndex(projects.length + visible - 1);
-						}
-					}}
-				>
-					{extendedProjects.map((project, i) => (
-						<div
-							key={i}
-							className="flex-shrink-0 px-4 relative project group"
-							style={{ width: `${100 / visible}%` }}
-						>
-							<div onClick={() => handleProjectClick(project)} className="block relative h-full cursor-pointer">
-								{/* Animated Border Wrapper */}
-								<div className="relative p-[1px] rounded-[2rem] overflow-hidden bg-white/10 group-hover:bg-transparent transition-colors duration-500">
-									<div className="absolute inset-0 opacity-0 group-hover:opacity-100 animate-border-flow transition-opacity duration-500" />
-
-									<div className="relative overflow-hidden rounded-[calc(2rem-1px)] aspect-[16/10] bg-slate-900 border border-white/5 shadow-2xl flex items-center justify-center">
+			<div 
+				className="relative group/carousel -mx-4 px-4"
+				onMouseEnter={() => setIsPaused(true)}
+				onMouseLeave={() => setIsPaused(false)}
+			>
+				<div className="relative overflow-hidden w-full rounded-3xl">
+					<motion.div
+						className="flex"
+						animate={{ x: `-${currentIndex * (100 / itemsPerSlide)}%` }}
+						transition={isAnimating ? { duration: 0.5, ease: [0.32, 0.72, 0, 1] } : { duration: 0 }}
+						onAnimationComplete={handleAnimationComplete}
+					>
+						{duplicatedProjects.map((project, idx) => (
+							<div key={`${project.id}-${idx}`} className="p-3 relative" style={{ minWidth: `${100 / itemsPerSlide}%` }}>
+								<div
+									onClick={() => handleProjectClick(project)}
+									className="group relative cursor-pointer overflow-hidden rounded-[2.5rem] bg-slate-900/50 p-1 transition-all h-full"
+								>
+									<div className="relative aspect-[4/3] overflow-hidden rounded-[2.3rem] bg-slate-800 h-full">
 										<Image
 											src={project.photo}
 											alt={project.name}
-											// fill
-											className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-40 group-hover:opacity-60 rounded-2xl scale-105"
+											className="h-full w-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-105"
 										/>
-										<div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-95" />
+										<div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-										{/* Cyber Tag */}
-										<div className="absolute top-6 left-6 flex items-center gap-2 scale-90 opacity-100 group-hover:opacity-0 group-hover:scale-75 transition-all duration-500 origin-top-left">
-											<div className="bg-primary cyber-clip px-6 py-2 shadow-[0_0_20px_rgba(79,57,246,0.6)]">
-												<p className="text-[10px] font-black tracking-[0.2em] text-white uppercase glow-text-primary italic">
-													{project.name}
-												</p>
-											</div>
+										{/* Top Tag */}
+										<div className="absolute top-6 left-6 z-10">
+											<span className="bg-primary/80 backdrop-blur-md text-white text-[10px] font-black tracking-widest px-4 py-1.5 rounded-lg border border-white/10 italic">
+												{project.tag}
+											</span>
 										</div>
 
-										{/* Immersive Reveal */}
-										<div className="absolute inset-0 flex flex-col justify-center p-6 scale-95 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-											<div className="bg-black/60 backdrop-blur-2xl p-6 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] flex flex-col gap-4">
-												<div className="flex justify-between items-start">
-													<h4 className="text-2xl font-bold text-white tracking-tight">{project.name}</h4>
-													<div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center animate-pulse border border-primary/30">
-														<div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(79,57,246,1)]" />
-													</div>
-												</div>
-												<p className="text-sm text-slate-200 leading-relaxed font-medium line-clamp-3">
+										{/* Content Overlay */}
+										<div className="absolute -bottom-4 left-0 right-0 p-8 transition-all group-hover:bottom-0 duration-500 z-10">
+											<div className="glass p-4 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl transition-all">
+												<h4 className="text-lg font-bold text-white mb-1">{project.name}</h4>
+												<p className="text-slate-300 text-xs leading-relaxed line-clamp-2">
 													{project.description}
 												</p>
-												<div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest mt-2 group/btn cursor-pointer">
-													<span>View Details</span>
-													<div className="w-8 h-px bg-primary/30 group-hover/btn:w-12 transition-all duration-300" />
-												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					))}
-				</motion.div>
+						))}
+					</motion.div>
+				</div>
 
 				<button
 					onClick={prev}
-					className="absolute -left-2 top-1/2 -translate-y-1/2 glass p-3 rounded-full text-white z-10 opacity-0 group-hover/carousel:opacity-100 -translate-x-4 group-hover/carousel:translate-x-0 transition-all duration-300 hover:bg-primary/20 hover:border-primary/40 ring-1 ring-white/10 cursor-pointer"
-					aria-label="Previous project"
+					className="absolute -left-2 lg:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-primary/60 hover:border-primary/30"
 				>
-					<ChevronLeftIcon className="h-6 w-6 " />
+					<ChevronLeftIcon className="size-5" />
 				</button>
 
 				<button
 					onClick={next}
-					className="absolute -right-2 top-1/2 -translate-y-1/2 glass p-3 rounded-full text-white z-10 opacity-0 group-hover/carousel:opacity-100 translate-x-4 group-hover/carousel:translate-x-0 transition-all duration-300 hover:bg-primary/20 hover:border-primary/40 ring-1 ring-white/10 cursor-pointer"
-					aria-label="Next project"
+					className="absolute -right-2 lg:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-primary/60 hover:border-primary/30"
 				>
-					<ChevronRightIcon className="h-6 w-6 " />
+					<ChevronRightIcon className="size-5" />
 				</button>
+			</div>
+
+			<div className="flex justify-center gap-2 mt-8">
+				{projects.map((_, i) => (
+					<button
+						key={i}
+						onClick={() => handleDotClick(i)}
+						className={`h-2 rounded-full transition-all duration-300 ${
+							i === activeDotIndex ? 'w-8 bg-primary' : 'w-2 bg-white/20 hover:bg-white/40'
+						}`}
+					/>
+				))}
 			</div>
 
 			{selectedProject && (

@@ -9,7 +9,7 @@ interface Textarea {
 export default function Textarea({ name, label, value, onChange, required }: Textarea) {
 	return (
 		<div className="w-full group">
-			<label htmlFor={name} className="block text-sm font-medium text-slate-400 group-focus-within:text-primary transition-colors mb-2 ml-1">
+			<label htmlFor={name} className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 italic mb-3 ml-1 group-focus-within:text-primary transition-colors">
 				{label}
 			</label>
 			<div className="relative">

@@ -206,7 +206,8 @@ export default function BookPage() {
 										required
 										value={formData.name}
 										onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-										className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50"
+										className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 font-light"
+										placeholder="Enter your full name"
 									/>
 								</div>
 								<div className="flex flex-col gap-2">
@@ -216,7 +217,8 @@ export default function BookPage() {
 										required
 										value={formData.email}
 										onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-										className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50"
+										className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 font-light"
+										placeholder="Enter your email"
 									/>
 								</div>
 							</div>
@@ -225,7 +227,8 @@ export default function BookPage() {
 								<input
 									value={formData.phone}
 									onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
-									className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50"
+									className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 font-light"
+									placeholder="Enter your phone number"
 								/>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -234,7 +237,7 @@ export default function BookPage() {
 									rows={4}
 									value={formData.notes}
 									onChange={(e) => setFormData((p) => ({ ...p, notes: e.target.value }))}
-									className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 resize-none"
+									className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 resize-none font-light"
 									placeholder="Tell us what you're building..."
 								/>
 							</div>

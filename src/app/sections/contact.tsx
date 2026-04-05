@@ -7,12 +7,13 @@ import { useState } from 'react';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
+import { EnvelopeIcon } from '@heroicons/react/24/outline';
+
 const Contact = () => {
 	const [form, setForm] = useState({
 		firstName: '',
 		lastName: '',
 		email: '',
-		phone: '',
 		message: '',
 	});
 	const [status, setStatus] = useState<Status>('idle');
@@ -32,7 +33,7 @@ const Contact = () => {
 			});
 			if (res.ok) {
 				setStatus('success');
-				setForm({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+				setForm({ firstName: '', lastName: '', email: '', message: '' });
 			} else {
 				setStatus('error');
 			}
@@ -42,103 +43,89 @@ const Contact = () => {
 	};
 
 	return (
-		<div
-			id="contact"
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col lg:flex-col gap-6 lg:gap-16 mb-20"
-		>
-			<h3 className="header text-left text-gradient">Get In Touch</h3>
-			<div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
-				<div className="flex-1 flex flex-col gap-8 text-center lg:text-left">
-					<div className="flex flex-col gap-4">
-						<h2 className="text-4xl lg:text-5xl font-extrabold text-white">
-							Let's build something <span className="text-gradient">amazing</span> together.
-						</h2>
-					</div>
-					<p className="text-slate-400 text-lg leading-relaxed">
-						Ready to transform your ideas into reality? Tell us about your project, and our team will get back to you with a comprehensive proposal.
-					</p>
-					<div className="flex flex-col gap-4 mt-4">
-						<a
-							href="mailto:hello@azioweb.com"
-							className="text-xl font-semibold text-white hover:text-primary transition-colors"
-						>
-							hello@azioweb.com
-						</a>
-					</div>
-				</div>
+		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-30 flex flex-col gap-12 lg:gap-24 mb-32">
+			<div className="flex flex-col gap-4">
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Get In Touch</h3>
+				<h2 className="header !text-left max-w-2xl">
+					Let's build something <span className="text-gradient">amazing</span> together.
+				</h2>
+			</div>
 
+			<div className="flex flex-col lg:flex-row gap-16 lg:gap-32 items-start">
+				<div className="flex-1 flex flex-col gap-8">
+					<p className="text-slate-400 text-sm leading-relaxed max-w-md italic">
+						Ready to transform your ideas into reality? Tell us about your project, and our team will get back to
+						you with a comprehensive proposal.
+					</p>
+
+					<a
+						href="mailto:hello@azioweb.com"
+						className="flex items-center gap-3 text-lg font-black text-white hover:text-primary transition-colors group"
+					>
+						<EnvelopeIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+						<span>hello@azioweb.com</span>
+					</a>
+				</div>
 				<motion.div
-					className="flex-1"
+					className="flex-1 w-full lg:w-[500px]"
 					animate={{ y: [0, -12, 0] }}
 					transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
 				>
 					<form
 						onSubmit={handleSubmit}
-						className="glass p-8 lg:p-12 rounded-[3rem] shadow-2xl border-white/5 relative overflow-hidden group/form"
+						className="bg-slate-900/40 p-10 rounded-[2.5rem] border border-white/5 flex flex-col gap-8"
 					>
-						<div className="flex flex-col gap-8 relative z-10">
-							<div className="flex flex-col sm:flex-row gap-8">
-								<Input
-									name="First name"
-									label="First name *"
-									value={form.firstName}
-									required
-									onChange={handleChange('firstName')}
-								/>
-								<Input
-									name="Last name"
-									label="Last name *"
-									value={form.lastName}
-									required
-									onChange={handleChange('lastName')}
-								/>
-							</div>
-							<div className="flex flex-col sm:flex-row gap-8">
-								<Input
-									name="Email address"
-									label="Email address *"
-									type="email"
-									value={form.email}
-									required
-									onChange={handleChange('email')}
-								/>
-								<Input
-									name="Phone number"
-									label="Phone number"
-									type="tel"
-									value={form.phone}
-									onChange={handleChange('phone')}
-								/>
-							</div>
-							<div>
-								<Textarea
-									name="Your message"
-									label="Message *"
-									value={form.message}
-									required
-									onChange={handleChange('message')}
-								/>
-							</div>
-
-							{status === 'success' && (
-								<StatusMessage type="success" message="✅ Message sent! We'll get back to you within 24 hours." />
-							)}
-							{status === 'error' && (
-								<StatusMessage
-									type="error"
-									message="❌ Something went wrong. Please try again or email us directly."
-								/>
-							)}
-
-							<button
-								type="submit"
-								disabled={status === 'sending'}
-								className="bg-primary text-white font-bold py-4 rounded-2xl hover:bg-primary/80 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 mt-4 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
-							>
-								{status === 'sending' ? 'Sending…' : 'Send Message'}
-							</button>
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+							<Input
+								name="First name"
+								label="First name *"
+								value={form.firstName}
+								required
+								onChange={handleChange('firstName')}
+							/>
+							<Input
+								name="Last name"
+								label="Last name *"
+								value={form.lastName}
+								required
+								onChange={handleChange('lastName')}
+							/>
 						</div>
-						<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover/form:opacity-100 transition-opacity" />
+
+						<Input
+							name="Email address"
+							label="Email address *"
+							type="email"
+							value={form.email}
+							required
+							onChange={handleChange('email')}
+						/>
+
+						<Textarea
+							name="Your message"
+							label="Message *"
+							value={form.message}
+							required
+							onChange={handleChange('message')}
+						/>
+
+						{status === 'success' && (
+							<StatusMessage type="success" message="✅ Message sent! We'll get back to you within 24 hours." />
+						)}
+						{status === 'error' && (
+							<StatusMessage
+								type="error"
+								message="❌ Something went wrong. Please try again or email us directly."
+							/>
+						)}
+
+						<button
+							type="submit"
+							disabled={status === 'sending'}
+							className="cursor-pointer bg-primary text-white font-black text-xs uppercase tracking-widest py-5 rounded-2xl hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 disabled:opacity-60 italic"
+						>
+							{status === 'sending' ? 'Sending…' : 'Send Message'}
+						</button>
 					</form>
 				</motion.div>
 			</div>

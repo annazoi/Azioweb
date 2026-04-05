@@ -2,77 +2,21 @@
 
 import { Site } from '@/interfaces';
 import Image from 'next/image';
-import aura from '@/assets/projects/aura/chat.png';
-import habitry from '@/assets/projects/habitry/landing.png';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import aveliavilla from '@/assets/sites/aveliavilla.jpg';
-import sunterra from '@/assets/sites/sunterra.jpg';
-import melba from '@/assets/sites/melba.jpg';
-import cretantour from '@/assets/sites/cretantour.jpg';
-import diorebeauty from '@/assets/sites/diorebeauty.jpg';
-import xylouris from '@/assets/sites/xylouris.jpg';
-import transfersheraklion from '@/assets/sites/transfersheraklion.jpg';
 import { a } from 'framer-motion/client';
+import latherlab from '@/assets/sites/latherlab.jpg';
 
 const Experience = () => {
 	const sites: Site[] = [
 		{
 			id: '1',
-			name: 'Avelia Villa',
-			photo: aveliavilla,
-			url: 'https://aveliavilla.gr/',
+			name: 'Lather Lab',
+			photo: latherlab,
+			url: 'https://latherlab.azioweb.com/',
 			description:
-				'A vacation villa website that presents photos of the villa and detailed information about its facilities. Visitors can explore activities available in the surrounding area and make a booking directly through the website.',
-		},
-		{
-			id: '4',
-			name: 'Melba',
-			photo: melba,
-			url: 'https://melba.gr/',
-			description:
-				'A website for a sweets shop, offering visitors information about the menu, products, and store details. Users can explore available treats, learn more about the brand, and easily contact the store for inquiries.',
-		},
-		{
-			id: '2',
-			name: 'Sunterra',
-			photo: sunterra,
-			url: 'https://sunterra.gr/',
-			description:
-				'A vacation rental website that allows users to browse and book holiday homes. The platform showcases available properties with detailed descriptions and photos, making it simple for visitors to find and reserve accommodations.',
-		},
-		{
-			id: '3',
-			name: 'Xylouris',
-			photo: xylouris,
-			url: 'https://xylouris.gr/',
-			description:
-				'A traditional restaurant website where visitors can view photos of dishes, explore recipes, and make a table reservation through an easy-to-use interface.',
-		},
-		{
-			id: '5',
-			name: 'Cretantour',
-			photo: cretantour,
-			url: 'https://cretantour.com/',
-			description:
-				'A tour operator website that presents the excursions organized by the company in Crete. Visitors can browse available tours, create a custom tour based on their preferences, and explore the company’s content and material.',
-		},
-		{
-			id: '6',
-			name: 'Diore Beauty',
-			photo: diorebeauty,
-			url: 'https://diorebeauty.gr/',
-			description:
-				'A booking website for a beauty salon in Heraklion, allowing customers to schedule appointments for services such as manicure, pedicure, and other beauty treatments through an online reservation system.',
-		},
-		{
-			id: '7',
-			name: 'Transfer Heraklion',
-			photo: transfersheraklion,
-			url: 'https://www.testdomain.gr/transfersheraklion.com/',
-			description:
-				'A booking website for a beauty salon in Heraklion, allowing customers to schedule appointments for services such as manicure, pedicure, and other beauty treatments through an online reservation system.',
+				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
 		},
 	];
 
@@ -117,13 +61,15 @@ const Experience = () => {
 	return (
 		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4">
-				<h3 className="header text-gradient">Client Successes</h3>
+				<h2 className="header">
+					Client <span className="text-gradient">Successes</span>
+				</h2>
 				<p className="text-slate-400 text-center max-w-2xl">
 					A selection of e-commerce, booking, and dynamic web portals we have delivered.
 				</p>
 			</div>
 
-			{/* <div className="relative group/carousel">
+			<div className="relative group/carousel">
 				<div className="overflow-hidden p-4 -m-4">
 					<motion.div
 						className="flex"
@@ -191,7 +137,7 @@ const Experience = () => {
 				>
 					<ChevronRightIcon className="h-6 w-6" />
 				</button>
-			</div> */}
+			</div>
 		</div>
 	);
 };
