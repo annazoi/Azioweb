@@ -73,8 +73,7 @@ const Services = () => {
 			id: 'ai',
 			name: 'AI & Machine Learning',
 			icon: CpuChipIcon,
-			description:
-				'Empowering enterprises with intelligent automation, data pipelines, and intelligent AI models.',
+			description: 'Empowering enterprises with intelligent automation, data pipelines, and intelligent AI models.',
 			technologies: ['Python', 'LLMs', 'OpenAI'],
 			gridArea: 'col-start-2 row-start-3 justify-self-start self-start mt-8 xl:mt-12 -ml-6',
 		},
@@ -97,11 +96,7 @@ const Services = () => {
 	const itemsPerSlide = 1;
 
 	// Create duplicated array padded with clones for infinite sliding
-	const duplicatedServices = [
-		...services.slice(-itemsPerSlide),
-		...services,
-		...services.slice(0, itemsPerSlide),
-	];
+	const duplicatedServices = [...services.slice(-itemsPerSlide), ...services, ...services.slice(0, itemsPerSlide)];
 
 	const next = () => {
 		if (!canNavigate) return;
@@ -234,12 +229,8 @@ const Services = () => {
 				</div>
 
 				<div className="flex flex-col gap-3 relative z-10 w-full mb-8">
-					<h3 className="text-xl font-bold text-white leading-tight">
-						{service.name}
-					</h3>
-					<p className="text-slate-400 leading-relaxed text-sm">
-						{service.description}
-					</p>
+					<h3 className="text-xl font-bold text-white leading-tight">{service.name}</h3>
+					<p className="text-slate-400 leading-relaxed text-sm">{service.description}</p>
 				</div>
 
 				<div className="mt-auto pt-4 border-t border-white/5 relative z-10 w-full">
@@ -312,7 +303,7 @@ const Services = () => {
 					</p>
 				</div>
 
-				<div 
+				<div
 					className="relative group/carousel px-8"
 					onTouchStart={() => setIsPaused(true)}
 					onTouchEnd={() => setIsPaused(false)}
@@ -353,7 +344,9 @@ const Services = () => {
 							key={i}
 							onClick={() => handleDotClick(i)}
 							className={`h-2 shrink-0 rounded-full transition-all duration-300 ${
-								i === activeDotIndex ? 'w-8 bg-primary shadow-[0_0_10px_rgba(37,99,235,0.8)]' : 'w-2 bg-white/20 hover:bg-white/40'
+								i === activeDotIndex
+									? 'w-8 bg-primary shadow-[0_0_10px_rgba(37,99,235,0.8)]'
+									: 'w-2 bg-white/20 hover:bg-white/40'
 							}`}
 						/>
 					))}
