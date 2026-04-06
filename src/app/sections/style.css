@@ -1,135 +1,5 @@
-.about .text h2 {
-	font-size: clamp(2.5rem, 8vw, 4rem);
-	font-weight: 800;
-	line-height: 1.1;
-	letter-spacing: -0.02em;
-}
-
-.about .text h3 {
-	font-size: 1.5rem;
-	font-weight: 500;
-	color: #818cf8;
-}
-
-.about .text p {
-	font-size: 1.125rem;
-	line-height: 1.7;
-	color: #94a3b8;
-	max-width: 36rem;
-}
-
-.about .text .link {
-	border: 1px solid rgba(79, 57, 246, 0.3);
-	padding: 0.75rem 1.5rem;
-	border-radius: 9999px;
-	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	margin-top: 1rem;
-	display: flex;
-	gap: 0.5rem;
-	align-items: center;
-	width: fit-content;
-	cursor: pointer;
-	background: rgba(79, 57, 246, 0.05);
-}
-
-.about .text .link:hover {
-	background-color: #4f39f6;
-	border-color: #4f39f6;
-	transform: translateY(-2px);
-	box-shadow: 0 10px 20px -10px rgba(79, 57, 246, 0.5);
-}
-
-.about .photo img {
-	border-radius: 2.5rem;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	max-width: 100%;
-	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-	box-shadow: 0 0 40px -10px rgba(79, 57, 246, 0.1);
-}
-
-.about .photo img:hover {
-	border-color: #4f39f6;
-	box-shadow: 0 0 50px -5px rgba(79, 57, 246, 0.3);
-}
-
-.about .statics {
-	display: grid;
-	grid-template-cols: repeat(auto-fit, minmax(140px, 1fr));
-	gap: 2.5rem;
-}
-
-.about .statics div {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	align-items: center;
-	text-align: center;
-}
-
-.about .statics p {
-	font-size: 3rem;
-	font-weight: 800;
-	color: #ffffff;
-}
-
 .project:hover .description {
 	background-color: #5f6396;
-}
-
-/* .project {
-	border-top: 2.5rem solid #1f1a30;
-	border-right: 2.5rem solid #1f1a30;
-	border-left: 2.5rem solid #1f1a30;
-	border-radius: 10px;
-	transition: all 0.3s linear;
-	background-color: #1f1a30;
-	position: relative;
-}
-
-.project:hover {
-	border-top: 2.5rem solid #2c2546;
-	border-right: 2.5rem solid #2c2546;
-	border-left: 2.5rem solid #2c2546;
-	background-color: #2c2546;
-}
-
-.project img {
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-
-.project .name {
-	background-image: linear-gradient(to bottom, rgb(65, 26, 83), #4f39f6);
-} */
-
-.skill {
-	padding: 1.5rem;
-	border-radius: 1.5rem;
-	background-color: rgba(23, 24, 47, 0.4);
-	border: 1px solid rgba(255, 255, 255, 0.05);
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	backdrop-filter: blur(8px);
-	filter: grayscale(100%) opacity(0.6);
-}
-
-.skill:hover {
-	background-color: rgba(79, 57, 246, 0.1);
-	border-color: rgba(79, 57, 246, 0.4);
-	transform: translateY(-5px);
-	filter: grayscale(0%) opacity(1) brightness(110%);
-	box-shadow: 0 10px 30px -10px rgba(79, 57, 246, 0.3);
-}
-
-.skill img {
-	transition: scale 0.2s ease-in-out;
-}
-
-.skill:hover img {
-	scale: 1.15;
-}
-
-.skill {
-	filter: brightness(50%);
 }
 
 .header {
@@ -140,46 +10,14 @@
 	color: #ffffff;
 }
 
-.education img {
-	width: 100%;
-	height: auto;
-	border: 0.2rem solid #4f39f6;
-	border-radius: 50%;
-	transition: all 0.3s linear;
-	max-width: 12rem;
-}
-
-.education img:hover {
-	border: 0.2rem solid #744484;
-}
-
-.education .background {
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: 120%;
-	background-image: url('@/assets/studies.png');
-}
-
 .experience .name:hover .photo {
 	background-color: #5f6396;
-}
-
-.experience img {
 }
 
 .experience .photo:hover {
 	border-top: 1.2rem solid #373a58;
 	border-left: 2rem solid #373a58;
 	background-color: #373a58;
-}
-
-.project img {
-	filter: brightness(90%);
-	transition: all 0.3s ease-in-out;
-}
-
-.project:hover img {
-	filter: unset;
 }
 
 .experience img {
@@ -189,37 +27,4 @@
 
 .experience img:hover {
 	filter: unset;
-}
-
-@media screen and (max-width: 1024px) {
-	.about .text h2,
-	.about .text h3,
-	.about .text p {
-		text-align: center;
-	}
-
-	.about .text a {
-		margin: auto;
-	}
-
-	.about .text p {
-		max-width: unset;
-	}
-}
-
-@media screen and (max-width: 640px) {
-	.skill img {
-		max-width: 30px;
-		height: auto;
-	}
-
-	.skill {
-		padding: 0.5rem;
-		filter: brightness(70%);
-		/* filter: unset; */
-	}
-
-	.skill h2 {
-		font-size: 16px;
-	}
 }

@@ -311,7 +311,7 @@ const Experience = () => {
 										className={`group cursor-pointer flex flex-col gap-5 ${index % 2 !== 0 ? 'md:mt-30' : ''}`}
 									>
 										{/* Image Card Container */}
-										<div className="lg:h-[40rem] h-[30rem] relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
+										<div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
 											<Image
 												src={site.photo}
 												alt={site.name}

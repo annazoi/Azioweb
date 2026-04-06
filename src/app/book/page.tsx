@@ -1,12 +1,35 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CalendarDaysIcon, ClockIcon, CheckCircleIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { createAppointment, getAppointmentsByDate } from '@/app/actions/booking';
+import galaxy from '@/assets/uploads/galaxy.png';
+import Image from 'next/image';
+import Navbar from '@/components/ui/navbar';
+import Footer from '@/components/ui/footer';
 
-const TIME_SLOTS = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
+const TIME_SLOTS = [
+	{ label: '09:00 AM', value: '09:00' },
+	{ label: '10:00 AM', value: '10:00' },
+	{ label: '11:00 AM', value: '11:00' },
+	{ label: '01:30 PM', value: '13:30' },
+	{ label: '02:30 PM', value: '14:30' },
+	{ label: '04:00 PM', value: '16:00' },
+	{ label: '05:00 PM', value: '17:00' },
+	{ label: '06:00 PM', value: '18:00' },
+];
+
+const isSameDay = (d1: Date, d2: Date) =>
+	d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
+
+const formatShort = (date: Date) => ({
+	weekday: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date),
+	day: date.getDate(),
+	month: new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date),
+});
+
+const formatSelected = (date: Date) =>
+	new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(date);
 
 export default function BookPage() {
 	const [selectedDate, setSelectedDate] = useState<Date>(() => {
@@ -14,35 +37,38 @@ export default function BookPage() {
 		d.setHours(0, 0, 0, 0);
 		return d;
 	});
+
 	const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
 	const [bookedSlots, setBookedSlots] = useState<string[]>([]);
-	const [step, setStep] = useState(1); // 1: Date/Time, 2: Form, 3: Success
 	const [isLoading, setIsLoading] = useState(false);
+	const [isSuccess, setIsSuccess] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
-		phone: '',
 		notes: '',
 	});
 
-	const next14Days = Array.from({ length: 14 }).map((_, i) => {
+	const next14Days = Array.from({ length: 7 }).map((_, i) => {
 		const d = new Date();
 		d.setHours(0, 0, 0, 0);
 		d.setDate(d.getDate() + i);
 		return d;
 	});
 
-	useEffect(() => {
-		async function fetchAvailability() {
-			const appointments = await getAppointmentsByDate(selectedDate);
-			setBookedSlots(appointments.map((a: any) => a.time));
-			if (selectedSlot && appointments.some((a: any) => a.time === selectedSlot)) {
-				setSelectedSlot(null);
-			}
+	const fetchAvailability = useCallback(async () => {
+		const appointments = await getAppointmentsByDate(selectedDate);
+		const times = appointments.map((a: { time: string }) => a.time);
+		setBookedSlots(times);
+		if (selectedSlot && times.includes(selectedSlot)) {
+			setSelectedSlot(null);
 		}
+	}, [selectedDate, selectedSlot]);
+
+	useEffect(() => {
 		fetchAvailability();
-	}, [selectedDate]);
+	}, [fetchAvailability]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -52,7 +78,10 @@ export default function BookPage() {
 		setError(null);
 
 		const result = await createAppointment({
-			...formData,
+			name: formData.name,
+			email: formData.email,
+			phone: '',
+			notes: formData.notes,
 			date: selectedDate,
 			time: selectedSlot,
 		});
@@ -60,230 +89,409 @@ export default function BookPage() {
 		setIsLoading(false);
 
 		if (result.success) {
-			setStep(3);
+			setIsSuccess(true);
 		} else {
-			setError(result.error || 'Something went wrong.');
+			setError(result.error || 'Something went wrong. Please try again.');
 		}
 	};
 
-	const formatDateLabel = (date: Date) => {
-		return {
-			weekday: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date),
-			day: date.getDate(),
-			month: new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date),
-			full: new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(date),
-		};
-	};
-
-	const isSameDay = (d1: Date, d2: Date) => {
-		return d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
-	};
+	const selectedSlotLabel = TIME_SLOTS.find((s) => s.value === selectedSlot)?.label ?? null;
 
 	return (
-		<div className="min-h-screen bg-background pb-20 pt-10 px-4">
-			<div className="mx-auto max-w-4xl">
-				<Link
-					href="/"
-					className="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors group"
-				>
-					<ArrowLeftIcon className="size-4 group-hover:-translate-x-1 transition-transform" />
-					<span>Back to Home</span>
-				</Link>
+		<div className="min-h-screen text-white" style={{ backgroundColor: '#111318', fontFamily: 'Inter, sans-serif' }}>
+			<Navbar />
 
-				{step === 1 && (
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						className="flex flex-col gap-10"
-					>
-						<div className="text-center lg:text-left flex flex-col gap-4">
-							<h1 className="text-4xl lg:text-6xl font-extrabold text-white tracking-tight">
-								Schedule a <span className="text-gradient">Discovery Call.</span>
-							</h1>
-							<p className="text-slate-400 text-lg">
-								Choose a date and time that works best for you. Let's discuss your next project.
-							</p>
+			{/* Main */}
+			<main className="pt-32 pb-5 px-6 max-w-7xl mx-auto">
+				{isSuccess ? (
+					<SuccessState date={selectedDate} slot={selectedSlotLabel} />
+				) : (
+					<>
+						{/* Hero */}
+						<div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden z-0 pointer-events-none">
+							<Image src={galaxy} alt="Galaxy" className="w-full h-full object-cover grayscale opacity-30" />
+							<div
+								className="absolute inset-0"
+								style={{
+									background:
+										'linear-gradient(to right, #111318 0%, transparent 20%, transparent 80%, #111318 100%), linear-gradient(to bottom, #111318 0%, transparent 20%, transparent 80%, #111318 100%)',
+								}}
+							/>
 						</div>
-
-						<div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-							{/* Date Picker */}
-							<div className="flex flex-col gap-4">
-								<div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-widest text-sm">
-									<CalendarDaysIcon className="size-5" />
-									<span>Select Date</span>
-								</div>
-								<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 gap-3">
-									{next14Days.map((date) => {
-										const info = formatDateLabel(date);
-										const active = isSameDay(selectedDate, date);
-										return (
-											<button
-												key={date.toISOString()}
-												onClick={() => setSelectedDate(date)}
-												className={`p-4 rounded-2xl border transition-all flex flex-col items-center gap-1 ${
-													active
-														? 'bg-primary border-primary text-white shadow-lg shadow-primary/20'
-														: 'bg-white/5 border-white/10 text-slate-400 hover:border-white/30 hover:bg-white/10'
-												}`}
-											>
-												<span className="text-xs uppercase font-bold opacity-60">{info.weekday}</span>
-												<span className="text-xl font-bold">{info.day}</span>
-												<span className="text-xs font-medium">{info.month}</span>
-											</button>
-										);
-									})}
-								</div>
-							</div>
-
-							{/* Time Slots */}
-							<div className="flex flex-col gap-4">
-								<div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-widest text-sm">
-									<ClockIcon className="size-5" />
-									<span>Available Times</span>
-								</div>
-								<div className="grid grid-cols-2 gap-3">
-									{TIME_SLOTS.map((slot) => {
-										const isBooked = bookedSlots.includes(slot);
-										const now = new Date();
-										const isToday = isSameDay(selectedDate, now);
-										const isPast = isToday && parseInt(slot.split(':')[0]) <= now.getHours();
-										const disabled = isBooked || isPast;
-
-										return (
-											<button
-												key={slot}
-												disabled={disabled}
-												onClick={() => setSelectedSlot(slot)}
-												className={`p-4 rounded-2xl border transition-all text-center font-bold ${
-													selectedSlot === slot
-														? 'bg-accent border-accent text-white shadow-lg shadow-accent/20'
-														: disabled
-															? 'bg-white/5 border-transparent text-slate-600 cursor-not-allowed line-through'
-															: 'bg-white/5 border-white/10 text-white hover:border-white/30 hover:bg-white/10'
-												}`}
-											>
-												{slot}
-											</button>
-										);
-									})}
-								</div>
-								{selectedSlot && (
-									<motion.button
-										initial={{ opacity: 0, scale: 0.95 }}
-										animate={{ opacity: 1, scale: 1 }}
-										onClick={() => setStep(2)}
-										className="mt-6 w-full py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] transition-all"
-									>
-										Confirm for {formatDateLabel(selectedDate).full} at {selectedSlot}
-									</motion.button>
-								)}
-							</div>
-						</div>
-					</motion.div>
-				)}
-
-				{step === 2 && (
-					<motion.div
-						initial={{ opacity: 0, x: 20 }}
-						animate={{ opacity: 1, x: 0 }}
-						className="glass p-8 lg:p-12 rounded-[3rem] border-white/10"
-					>
-						<button
-							onClick={() => setStep(1)}
-							className="text-slate-400 hover:text-white mb-6 flex items-center gap-2 text-sm"
-						>
-							<ArrowLeftIcon className="size-4" /> Change Date/Time
-						</button>
-						<h2 className="text-3xl font-bold text-white mb-8">
-							Tell us about your <span className="text-gradient">Project.</span>
-						</h2>
-
-						<form onSubmit={handleSubmit} className="flex flex-col gap-6">
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-								<div className="flex flex-col gap-2">
-									<label className="text-slate-300 text-sm font-medium">Full Name *</label>
-									<input
-										required
-										value={formData.name}
-										onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-										className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 font-light"
-										placeholder="Enter your full name"
-									/>
-								</div>
-								<div className="flex flex-col gap-2">
-									<label className="text-slate-300 text-sm font-medium">Email Address *</label>
-									<input
-										type="email"
-										required
-										value={formData.email}
-										onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-										className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 font-light"
-										placeholder="Enter your email"
-									/>
-								</div>
-							</div>
-							<div className="flex flex-col gap-2">
-								<label className="text-slate-300 text-sm font-medium">Phone (Optional)</label>
-								<input
-									value={formData.phone}
-									onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
-									className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 font-light"
-									placeholder="Enter your phone number"
-								/>
-							</div>
-							<div className="flex flex-col gap-2">
-								<label className="text-slate-300 text-sm font-medium">Notes / Project Idea</label>
-								<textarea
-									rows={4}
-									value={formData.notes}
-									onChange={(e) => setFormData((p) => ({ ...p, notes: e.target.value }))}
-									className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 resize-none font-light"
-									placeholder="Tell us what you're building..."
-								/>
-							</div>
-
-							{error && (
-								<div className="text-red-400 text-sm font-medium bg-red-400/10 p-4 rounded-xl border border-red-400/20">
-									{error}
-								</div>
-							)}
-
-							<button
-								type="submit"
-								disabled={isLoading}
-								className="mt-4 w-full py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:bg-primary/90 disabled:opacity-50 transition-all font-xl"
+						<section className="relative z-10 max-w-3xl mb-12">
+							<h1
+								className="font-black leading-[0.95] mb-6"
+								style={{ fontSize: 'clamp(2.5rem, 6vw, 2.5rem)', letterSpacing: '-0.04em' }}
 							>
-								{isLoading
-									? 'Booking...'
-									: `Schedule Call for ${formatDateLabel(selectedDate).month} ${formatDateLabel(selectedDate).day} @ ${selectedSlot}`}
-							</button>
-						</form>
-					</motion.div>
-				)}
+								Schedule a <span style={{ color: 'var(--secondary)' }}>Discovery Call.</span>
+							</h1>
+							<p
+								className="text-sm md:text-[1rem] leading-relaxed font-medium max-w-xl"
+								style={{ color: '#CCC3D7' }}
+							>
+								Choose a date and time that works best for you. Let&apos;s discuss your next project and build
+								something extraordinary.
+							</p>
+						</section>
 
-				{step === 3 && (
-					<motion.div
-						initial={{ opacity: 0, scale: 0.9 }}
-						animate={{ opacity: 1, scale: 1 }}
-						className="flex flex-col items-center justify-center gap-6 py-20 text-center"
-					>
-						<div className="w-24 h-24 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/30">
-							<CheckCircleIcon className="size-16 text-green-500" />
+						{/* Booking Grid */}
+						<div className="grid grid-cols-1 lg:grid-cols-11 gap-12 items-start">
+							{/* Left: Date + Time */}
+							<div className="lg:col-span-7 relative z-10 space-y-12">
+								{/* Date Picker */}
+								<div className="space-y-6">
+									<div className="flex items-center justify-between">
+										<h3 className="text-sm font-bold uppercase tracking-[0.1em]" style={{ color: '#D3BBFF' }}>
+											Select Date
+										</h3>
+										<span className="text-sm font-medium" style={{ color: '#CCC3D7' }}>
+											{formatShort(selectedDate).month} {new Date().getFullYear()}
+										</span>
+									</div>
+
+									<div className="flex gap-4 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none' }}>
+										{next14Days.map((date) => {
+											const info = formatShort(date);
+											const active = isSameDay(selectedDate, date);
+
+											return (
+												<button
+													key={date.toISOString()}
+													onClick={() => setSelectedDate(date)}
+													className="flex-shrink-0 w-20 h-24 rounded-xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer border-2"
+													style={
+														active
+															? {
+																	background: 'var(--secondary)',
+																	borderColor: 'var(--secondary)',
+																	boxShadow: '0 0 20px rgba(var(--secondary),0.3)',
+																}
+															: {
+																	background: '#1a1b21',
+																	borderColor: 'transparent',
+																	opacity: 0.6,
+																}
+													}
+													onMouseEnter={(e) => {
+														if (!active) e.currentTarget.style.opacity = '1';
+													}}
+													onMouseLeave={(e) => {
+														if (!active) e.currentTarget.style.opacity = '0.6';
+													}}
+												>
+													<span
+														className="text-xs font-bold uppercase tracking-widest mb-1"
+														style={{ color: active ? 'white' : '#CCC3D7' }}
+													>
+														{info.weekday}
+													</span>
+													<span
+														className="text-xl font-black"
+														style={{ color: active ? 'white' : '#e2e2e9' }}
+													>
+														{info.day}
+													</span>
+												</button>
+											);
+										})}
+									</div>
+								</div>
+
+								{/* Time Slots */}
+								<div className="space-y-6">
+									<h3 className="text-sm font-bold uppercase tracking-[0.1em]" style={{ color: '#D3BBFF' }}>
+										Available Slots
+									</h3>
+									<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+										{TIME_SLOTS.map((slot) => {
+											const isBooked = bookedSlots.includes(slot.value);
+											const now = new Date();
+											const isToday = isSameDay(selectedDate, now);
+											const slotHour = parseInt(slot.value.split(':')[0]);
+											const isPast = isToday && slotHour <= now.getHours();
+											const disabled = isBooked || isPast;
+											const active = selectedSlot === slot.value;
+
+											return (
+												<button
+													key={slot.value}
+													disabled={disabled}
+													onClick={() => setSelectedSlot(slot.value)}
+													className="py-4 px-6 rounded-xl text-center font-bold transition-all duration-300 cursor-pointer"
+													style={
+														active
+															? {
+																	background: 'var(--secondary)',
+																	color: 'white',
+																	boxShadow: '0 4px 15px rgba(var(--secondary),0.3)',
+																	border: 'none',
+																}
+															: disabled
+																? {
+																		background: '#0c0e13',
+																		color: '#4a4455',
+																		border: '1px solid transparent',
+																		cursor: 'not-allowed',
+																		textDecoration: 'line-through',
+																	}
+																: {
+																		background: '#0c0e13',
+																		color: '#e2e2e9',
+																		border: '1px solid rgba(74,68,85,0.2)',
+																	}
+													}
+													onMouseEnter={(e) => {
+														if (!disabled && !active) {
+															(e.currentTarget as HTMLButtonElement).style.background = '#33353a';
+														}
+													}}
+													onMouseLeave={(e) => {
+														if (!disabled && !active) {
+															(e.currentTarget as HTMLButtonElement).style.background = '#0c0e13';
+														}
+													}}
+												>
+													{slot.label}
+												</button>
+											);
+										})}
+									</div>
+								</div>
+							</div>
+
+							{/* Right: Form Card */}
+							<aside className="lg:col-span-4 relative z-10 sticky top-28">
+								<div
+									className="rounded-xl p-8 border relative overflow-hidden shadow-2xl -mt-[6rem]"
+									style={{ background: '#1a1b21', borderColor: 'rgba(74,68,85,0.1)' }}
+								>
+									{/* Glow bg */}
+									<div
+										className="absolute -top-24 -right-24 w-48 h-48 rounded-full pointer-events-none"
+										style={{ background: 'rgba(109,40,217,0.15)', filter: 'blur(80px)' }}
+									/>
+
+									<h2 className="text-3xl font-black tracking-tight mb-8" style={{ color: '#e2e2e9' }}>
+										Almost There.
+									</h2>
+
+									<div className="space-y-6">
+										{/* Selected Slot Summary */}
+										<div
+											className="rounded-xl p-4 flex items-start gap-4"
+											style={{ background: 'rgba(12,14,19,0.5)', alignItems: 'center' }}
+										>
+											<svg
+												width="24"
+												height="24"
+												fill="none"
+												stroke="#D3BBFF"
+												strokeWidth="1.5"
+												viewBox="0 0 24 24"
+												className="flex-shrink-0 mt-0.5"
+											>
+												<rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+												<line x1="16" y1="2" x2="16" y2="6" />
+												<line x1="8" y1="2" x2="8" y2="6" />
+												<line x1="3" y1="10" x2="21" y2="10" />
+											</svg>
+											<div>
+												<p
+													className="text-xs font-bold uppercase tracking-widest mb-1"
+													style={{ color: '#CCC3D7' }}
+												>
+													Selected Slot
+												</p>
+												<p className="font-bold" style={{ color: '#e2e2e9' }}>
+													{selectedSlot
+														? `${formatSelected(selectedDate)} • ${selectedSlotLabel}`
+														: 'No slot selected yet'}
+												</p>
+											</div>
+										</div>
+
+										{/* Form */}
+										<form onSubmit={handleSubmit} className="space-y-4">
+											<div>
+												<label
+													className="block mb-2 px-1 text-[10px] font-black uppercase tracking-widest"
+													style={{ color: '#CCC3D7' }}
+												>
+													Full Name
+												</label>
+												<input
+													required
+													type="text"
+													placeholder="Enter your name"
+													value={formData.name}
+													onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+													className="w-full rounded-xl p-4 text-sm transition-all outline-none"
+													style={{
+														background: '#0c0e13',
+														border: '1px solid transparent',
+														color: '#e2e2e9',
+													}}
+													onFocus={(e) => {
+														e.currentTarget.style.borderColor = '#D3BBFF';
+														e.currentTarget.style.boxShadow = '0 0 0 4px rgba(211,187,255,0.08)';
+													}}
+													onBlur={(e) => {
+														e.currentTarget.style.borderColor = 'transparent';
+														e.currentTarget.style.boxShadow = 'none';
+													}}
+												/>
+											</div>
+
+											<div>
+												<label
+													className="block mb-2 px-1 text-[10px] font-black uppercase tracking-widest"
+													style={{ color: '#CCC3D7' }}
+												>
+													Email Address
+												</label>
+												<input
+													required
+													type="email"
+													placeholder="Enter your email"
+													value={formData.email}
+													onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+													className="w-full rounded-xl p-4 text-sm transition-all outline-none"
+													style={{
+														background: '#0c0e13',
+														border: '1px solid transparent',
+														color: '#e2e2e9',
+													}}
+													onFocus={(e) => {
+														e.currentTarget.style.borderColor = '#D3BBFF';
+														e.currentTarget.style.boxShadow = '0 0 0 4px rgba(211,187,255,0.08)';
+													}}
+													onBlur={(e) => {
+														e.currentTarget.style.borderColor = 'transparent';
+														e.currentTarget.style.boxShadow = 'none';
+													}}
+												/>
+											</div>
+
+											<div>
+												<label
+													className="block mb-2 px-1 text-[10px] font-black uppercase tracking-widest"
+													style={{ color: '#CCC3D7' }}
+												>
+													Project Details
+												</label>
+												<textarea
+													rows={3}
+													placeholder="Tell us about your vision..."
+													value={formData.notes}
+													onChange={(e) => setFormData((p) => ({ ...p, notes: e.target.value }))}
+													className="w-full rounded-xl p-4 text-sm transition-all outline-none resize-none"
+													style={{
+														background: '#0c0e13',
+														border: '1px solid transparent',
+														color: '#e2e2e9',
+													}}
+													onFocus={(e) => {
+														e.currentTarget.style.borderColor = '#D3BBFF';
+														e.currentTarget.style.boxShadow = '0 0 0 4px rgba(211,187,255,0.08)';
+													}}
+													onBlur={(e) => {
+														e.currentTarget.style.borderColor = 'transparent';
+														e.currentTarget.style.boxShadow = 'none';
+													}}
+												/>
+											</div>
+
+											{error && (
+												<div
+													className="text-sm font-medium p-4 rounded-xl"
+													style={{
+														color: '#ffb4ab',
+														background: 'rgba(147,0,10,0.2)',
+														border: '1px solid rgba(255,180,171,0.2)',
+													}}
+												>
+													{error}
+												</div>
+											)}
+
+											<button
+												type="submit"
+												disabled={isLoading || !selectedSlot}
+												className="w-full py-5 rounded-xl font-black uppercase text-sm tracking-widest mt-4 transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed "
+												style={{
+													background: 'var(--secondary)',
+													color: 'white',
+													cursor: 'pointer',
+													boxShadow: '0 8px 30px rgba(var(--secondary),0.4)',
+												}}
+												onMouseEnter={(e) => {
+													e.currentTarget.style.background = 'var(--primary)';
+													e.currentTarget.style.color = 'white';
+												}}
+												onMouseLeave={(e) => {
+													e.currentTarget.style.background = 'var(--secondary)';
+													e.currentTarget.style.color = 'white';
+												}}
+											>
+												{isLoading ? 'Booking...' : 'Confirm Booking'}
+											</button>
+										</form>
+									</div>
+								</div>
+							</aside>
 						</div>
-						<h2 className="text-4xl font-extrabold text-white">Appointment Scheduled!</h2>
-						<p className="text-slate-400 text-lg max-w-sm">
-							We've received your request for {formatDateLabel(selectedDate).full} at {selectedSlot}. Check your
-							email for confirmation.
-						</p>
-						<Link
-							href="/"
-							className="mt-8 bg-white/5 border border-white/10 px-8 py-4 rounded-full font-bold text-white hover:bg-white/10 transition-all"
-						>
-							Return to Website
-						</Link>
-					</motion.div>
+					</>
 				)}
+			</main>
+
+			{/* Footer */}
+			<Footer />
+
+			{/* Background Decoration */}
+			<div className="fixed top-0 right-0 -z-10 w-1/2 h-full opacity-10 pointer-events-none overflow-hidden">
+				<img src={galaxy.src} alt="Background" className="w-full h-full object-cover grayscale" />
 			</div>
+		</div>
+	);
+}
+
+function SuccessState({ date, slot }: { date: Date; slot: string | null }) {
+	const formatted = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(date);
+
+	return (
+		<div className="flex flex-col items-center justify-center gap-6 py-32 text-center">
+			<div
+				className="w-24 h-24 rounded-full flex items-center justify-center"
+				style={{ background: 'rgba(109,40,217,0.2)', border: '1px solid rgba(211,187,255,0.3)' }}
+			>
+				<svg width="48" height="48" fill="none" stroke="#D3BBFF" strokeWidth="1.5" viewBox="0 0 24 24">
+					<path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+				</svg>
+			</div>
+			<h2 className="text-4xl font-black" style={{ color: '#e2e2e9', letterSpacing: '-0.04em' }}>
+				You&apos;re Confirmed.
+			</h2>
+			<p className="text-lg max-w-sm leading-relaxed" style={{ color: '#CCC3D7' }}>
+				Your discovery call is booked for <span style={{ color: '#D3BBFF', fontWeight: 700 }}>{formatted}</span>
+				{slot && (
+					<>
+						{' '}
+						at <span style={{ color: '#D3BBFF', fontWeight: 700 }}>{slot}</span>
+					</>
+				)}
+				. Check your email for confirmation.
+			</p>
+			<Link
+				href="/"
+				className="mt-8 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all duration-300"
+				style={{
+					background: 'rgba(255,255,255,0.05)',
+					border: '1px solid rgba(255,255,255,0.1)',
+					color: '#e2e2e9',
+				}}
+			>
+				Return to Website
+			</Link>
 		</div>
 	);
 }

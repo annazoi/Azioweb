@@ -29,7 +29,7 @@ const Process = () => {
 	return (
 		<div
 			id="process"
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 flex flex-col gap-12 relative overflow-hidden"
+			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-0 flex flex-col gap-12 relative overflow-hidden"
 		>
 			{/* The Header */}
 			{/* <div className="flex justify-center items-center mb-16"> */}

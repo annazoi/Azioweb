@@ -74,7 +74,7 @@ const Services = () => {
 	];
 
 	return (
-		<div id="services" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 flex flex-col gap-12 relative ">
+		<div id="services" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 flex flex-col gap-12 relative ">
 			{/* Mastered Crafts Header */}
 			<div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 mb-4 pb-8">
 				<div className="flex flex-col gap-4 max-w-2xl">
@@ -82,7 +82,7 @@ const Services = () => {
 						Services We Offer<span className="text-primary">.</span>
 					</h2>
 					<p className="text-slate-400 text-[15px] leading-relaxed max-w-lg">
-						We don't just build features; we architect ecosystems that grow with your user base.
+						We don't just build features, we architect ecosystems that grow with your user base.
 					</p>
 				</div>
 				<div className="hidden lg:block pb-2">

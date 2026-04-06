@@ -5,11 +5,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
 const navigation = [
-	{ name: 'Home', href: '#hero', current: true },
-	{ name: 'Services', href: '#services', current: false },
-	{ name: 'Process', href: '#process', current: false },
-	{ name: 'Work', href: '#clients', current: false },
-	{ name: 'Contact', href: '#contact', current: false },
+	{ name: 'Home', href: '/#hero', current: true },
+	{ name: 'Services', href: '/#services', current: false },
+	{ name: 'Process', href: '/#process', current: false },
+	{ name: 'Work', href: '/#clients', current: false },
+	{ name: 'Contact', href: '/#contact', current: false },
 ];
 
 function classNames(...classes: (string | false | null | undefined)[]) {
