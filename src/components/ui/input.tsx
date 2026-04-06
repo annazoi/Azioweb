@@ -10,7 +10,10 @@ interface Input {
 export default function Input({ name, label, value, type = 'text', onChange, required }: Input) {
 	return (
 		<div className="w-full group">
-			<label htmlFor={name} className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 italic mb-3 ml-1 group-focus-within:text-primary transition-colors">
+			<label
+				htmlFor={name}
+				className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 italic mb-3 ml-1 group-focus-within:text-primary transition-colors"
+			>
 				{label}
 			</label>
 			<div className="relative">
@@ -22,7 +25,7 @@ export default function Input({ name, label, value, type = 'text', onChange, req
 					value={value}
 					onChange={onChange}
 					required={required}
-					className="block w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 glass"
+					className="block w-full bg-white/5 rounded-2xl py-4 px-6 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 glass"
 				/>
 			</div>
 		</div>

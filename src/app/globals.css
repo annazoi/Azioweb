@@ -19,6 +19,9 @@
 
 		--border: rgba(255, 255, 255, 0.1);
 
+		--background-secondary: #181822ff;
+		--background-opacity: rgba(24, 24, 34, 0.801);
+
 		scroll-behavior: smooth;
 	}
 

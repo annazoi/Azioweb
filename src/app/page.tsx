@@ -45,7 +45,7 @@ export const ParallaxSection = ({
 		{bgImage && <div className="absolute inset-0 z-0 bg-gray-950/85 backdrop-blur-[2px]" />}
 
 		{/* Section Content */}
-		<div className="relative z-10 w-full pb-30">{children}</div>
+		<div className="relative z-10 w-full pb-20">{children}</div>
 	</section>
 );
 
@@ -58,15 +58,15 @@ export default function Home() {
 					<Hero />
 				</ParallaxSection>
 
-				<ParallaxSection style={{ backgroundColor: '#181822ff', backgroundAttachment: 'unset' }}>
+				<ParallaxSection style={{ backgroundColor: 'var(--background-secondary)', backgroundAttachment: 'unset' }}>
 					<Services />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg4.jpg">
+				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
 					<Process />
 				</ParallaxSection>
 
-				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
+				<ParallaxSection style={{ backgroundColor: 'var(--background-secondary)', backgroundAttachment: 'unset' }}>
 					<Experience />
 				</ParallaxSection>
 
@@ -74,7 +74,7 @@ export default function Home() {
 					<FAQ />
 				</ParallaxSection> */}
 
-				<ParallaxSection bgImage="/backgrounds/bg4.jpg">
+				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
 					<Contact />
 				</ParallaxSection>
 			</main>

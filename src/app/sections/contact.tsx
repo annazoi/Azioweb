@@ -43,7 +43,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-30 flex flex-col gap-6 lg:gap-4">
+		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 flex flex-col gap-6 lg:gap-4">
 			<div className="flex flex-col gap-4">
 				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Get In Touch</h3>
 				<h2 className="header !text-left max-w-2xl">
@@ -73,7 +73,7 @@ const Contact = () => {
 				>
 					<form
 						onSubmit={handleSubmit}
-						className="bg-slate-900/40 p-10 rounded-[2.5rem] border border-white/5 flex flex-col gap-8"
+						className="bg-[var(--background-opacity)] p-10 rounded-[2.5rem] flex flex-col gap-8"
 					>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
 							<Input
@@ -110,19 +110,19 @@ const Contact = () => {
 						/>
 
 						{status === 'success' && (
-							<StatusMessage type="success" message="✅ Message sent! We'll get back to you within 24 hours." />
+							<StatusMessage type="success" message="Message sent! We'll get back to you within 24 hours." />
 						)}
 						{status === 'error' && (
 							<StatusMessage
 								type="error"
-								message="❌ Something went wrong. Please try again or email us directly."
+								message="Something went wrong. Please try again or email us directly."
 							/>
 						)}
 
 						<button
 							type="submit"
 							disabled={status === 'sending'}
-							className="cursor-pointer bg-primary text-white font-black text-xs uppercase tracking-widest py-5 rounded-2xl hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 disabled:opacity-60 italic"
+							className="cursor-pointer bg-secondary text-white font-black text-xs uppercase tracking-widest py-5 rounded-2xl hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 disabled:opacity-60 italic"
 						>
 							{status === 'sending' ? 'Sending…' : 'Send Message'}
 						</button>

@@ -74,7 +74,7 @@ const Services = () => {
 	];
 
 	return (
-		<div id="services" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 flex flex-col gap-12 relative ">
+		<div id="services" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 flex flex-col gap-12 relative ">
 			{/* Mastered Crafts Header */}
 			<div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 mb-4 pb-8">
 				<div className="flex flex-col gap-4 max-w-2xl">
@@ -101,7 +101,7 @@ const Services = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.5, delay: index * 0.05 }}
-							className="bg-[#0c0e12] p-10 flex flex-col gap-6 group hover:bg-[#13161c] transition-colors duration-500 min-h-[320px]"
+							className="bg-[#0c0e12] p-10 flex flex-col gap-6 group hover:bg-[#13161c] transition-all duration-500 min-h-[320px] hover:-translate-y-2"
 						>
 							<div className="w-12 h-12 bg-[#181b22] flex items-center justify-center mb-1 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/20">
 								<Icon className="w-6 h-6 text-[#9ba1ac] group-hover:text-primary transition-all duration-500" />

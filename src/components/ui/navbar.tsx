@@ -7,9 +7,8 @@ import { useEffect, useState } from 'react';
 const navigation = [
 	{ name: 'Home', href: '#hero', current: true },
 	{ name: 'Services', href: '#services', current: false },
-	{ name: 'Agency', href: '#agency', current: false },
-	{ name: 'Work', href: '#work', current: false },
-	{ name: 'Pricing', href: '#pricing', current: false },
+	{ name: 'Process', href: '#process', current: false },
+	{ name: 'Work', href: '#clients', current: false },
 	{ name: 'Contact', href: '#contact', current: false },
 ];
 
@@ -48,14 +47,14 @@ export default function Navbar() {
 					</div>
 					<div className="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start">
 						<div className="flex shrink-0 items-center gap-4">
-							<a href="/" className="hover:opacity-80 transition-opacity">
-								<img alt="Azioweb" src="/logo-nav.png" className="h-10 w-auto" />
-							</a>
 							<a
-								href="mailto:hello@azioweb.com"
-								className="hidden lg:block text-slate-400 hover:text-white transition-colors font-bold"
+								href="/"
+								className="hidden lg:block text-slate-400 hover:text-white transition-all duration-500"
 							>
-								<span>AZIOWEB.COM</span>
+								<div className="flex items-center gap-2">
+									<img alt="Azioweb" src="/logo-nav.png" className="h-10 w-auto" />
+									<h2 className="text-xl font-bold">azioweb.com</h2>
+								</div>
 							</a>
 						</div>
 						<div className="hidden sm:ml-auto sm:block content-center">
