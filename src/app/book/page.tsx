@@ -109,7 +109,7 @@ export default function BookPage() {
 					<>
 						{/* Hero */}
 						<div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden z-0 pointer-events-none">
-							<Image src={galaxy} alt="Galaxy" className="w-full h-full object-cover grayscale opacity-30" />
+							{/* <Image src={galaxy} alt="Galaxy" className="w-full h-full object-cover grayscale opacity-30" /> */}
 							<div
 								className="absolute inset-0"
 								style={{
@@ -459,39 +459,94 @@ function SuccessState({ date, slot }: { date: Date; slot: string | null }) {
 	const formatted = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(date);
 
 	return (
-		<div className="flex flex-col items-center justify-center gap-6 py-32 text-center">
-			<div
-				className="w-24 h-24 rounded-full flex items-center justify-center"
-				style={{ background: 'rgba(109,40,217,0.2)', border: '1px solid rgba(211,187,255,0.3)' }}
-			>
-				<svg width="48" height="48" fill="none" stroke="#D3BBFF" strokeWidth="1.5" viewBox="0 0 24 24">
-					<path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-				</svg>
+		<div className="flex flex-col items-center justify-center gap-6 py-12 md:py-16 px-4 w-full">
+			{/* Main Success Card */}
+			<div className="bg-[var(--background-secondary)] p-10 md:p-14 rounded-[2rem] shadow-2xl flex flex-col items-center text-center w-full max-w-[540px] relative overflow-hidden">
+				{/* Check Icon */}
+				<div className="w-20 h-20 rounded-2xl bg-[#2a2a35]/60 flex items-center justify-center mb-8 z-10">
+					<div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(91,95,255,0.4)]">
+						<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M5 13l4 4L19 7" />
+						</svg>
+					</div>
+				</div>
+
+				<h2 className="text-[34px] md:text-[40px] font-extrabold text-white tracking-tight mb-8 z-10 leading-none">
+					You're Confirmed.
+				</h2>
+
+				{/* Details Box */}
+				<div className="w-full bg-[#2a2a35]/60 p-8 rounded-xl mb-8 z-10 shadow-inner">
+					<p className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em] mb-4">Discovery Call</p>
+					<p className="text-base md:text-[17px] font-medium text-slate-300 leading-relaxed max-w-[280px] mx-auto">
+						Your discovery call is booked for <span className="text-white font-bold">{formatted}</span>
+						{slot && (
+							<>
+								{' '}
+								at <span className="text-white font-bold">{slot}</span>
+							</>
+						)}
+						.
+					</p>
+				</div>
+
+				{/* Email Note */}
+				<div className="flex items-center gap-2.5 mb-8 z-10">
+					<svg className="w-[14px] h-[14px] text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
+							d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+						/>
+					</svg>
+					<span className="text-xs font-semibold text-slate-400">Check your email for confirmation.</span>
+				</div>
+
+				{/* Add to Calendar Button */}
+				<button className="cursor-pointer w-[85%] bg-gradient-to-r from-[#9b8dff] to-[#6b58ff] hover:opacity-90 transition-opacity text-white font-extrabold text-[13px] uppercase tracking-widest rounded-xl py-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(107,88,255,0.25)] mb-8 z-10 focus:outline-none">
+					ADD TO CALENDAR
+					<svg className="w-[18px] h-[18px] pb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
+							d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+						/>
+					</svg>
+				</button>
+
+				<Link
+					href="/"
+					className="text-[10px] font-black text-slate-400 hover:text-white transition-colors uppercase tracking-[0.2em] z-10 py-2"
+				>
+					RETURN TO WEBSITE
+				</Link>
 			</div>
-			<h2 className="text-4xl font-black" style={{ color: '#e2e2e9', letterSpacing: '-0.04em' }}>
-				You&apos;re Confirmed.
-			</h2>
-			<p className="text-lg max-w-sm leading-relaxed" style={{ color: '#CCC3D7' }}>
-				Your discovery call is booked for <span style={{ color: '#D3BBFF', fontWeight: 700 }}>{formatted}</span>
-				{slot && (
-					<>
-						{' '}
-						at <span style={{ color: '#D3BBFF', fontWeight: 700 }}>{slot}</span>
-					</>
-				)}
-				. Check your email for confirmation.
-			</p>
-			<Link
-				href="/"
-				className="mt-8 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all duration-300"
-				style={{
-					background: 'rgba(255,255,255,0.05)',
-					border: '1px solid rgba(255,255,255,0.1)',
-					color: '#e2e2e9',
-				}}
-			>
-				Return to Website
-			</Link>
+
+			{/* <div className="grid grid-cols-3 gap-3 md:gap-4 mt-8 w-full max-w-[540px] mx-auto">
+				<div className="rounded-xl overflow-hidden aspect-[4/3] bg-[#1a1b21] border border-white/5 relative group cursor-pointer shadow-lg shadow-black/20">
+					<img
+						src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=400&h=300&fit=crop"
+						className="w-full h-full object-cover grayscale opacity-50 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+						alt="Architecture"
+					/>
+				</div>
+				<div className="rounded-xl overflow-hidden aspect-[4/3] bg-[#1a1b21] border border-white/5 relative group cursor-pointer shadow-lg shadow-black/20">
+					<img
+						src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=400&h=300&fit=crop"
+						className="w-full h-full object-cover grayscale opacity-50 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+						alt="Interior"
+					/>
+				</div>
+				<div className="rounded-xl overflow-hidden aspect-[4/3] bg-[#1a1b21] border border-white/5 relative group cursor-pointer shadow-lg shadow-black/20">
+					<img
+						src="https://images.unsplash.com/photo-1541888086925-ec7590212a43?q=80&w=400&h=300&fit=crop"
+						className="w-full h-full object-cover grayscale opacity-50 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+						alt="Minimalist detail"
+					/>
+				</div>
+			</div> */}
 		</div>
 	);
 }
