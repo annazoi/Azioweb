@@ -70,7 +70,7 @@ const Process = () => {
 								</div>
 
 								{/* Center Bubble */}
-								<div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-[40px] h-[40px] rounded-full bg-[#27292f] border border-white/5 flex items-center justify-center shadow-2xl shrink-0 z-20 group-hover:scale-110 group-hover:bg-[#333740] transition-all duration-500">
+								<div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-[40px] h-[40px] rounded-full bg-[#27292f] flex items-center justify-center shadow-2xl shrink-0 z-20 group-hover:scale-110 group-hover:bg-[#333740] transition-all duration-500">
 									<span className="text-[14px] font-bold font-bold tracking-widest text-[#C8C4D9]">
 										{step.id}
 									</span>

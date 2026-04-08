@@ -258,11 +258,11 @@ const Experience = () => {
 			</div>
 
 			{/* Slider Wrapper */}
-			<div className="w-full relative group" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+			<div className="w-full relative" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
 				{/* Left Arrow */}
 				<button
 					onClick={prevSlide}
-					className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/20 transition-all shadow-xl"
+					className="absolute left-3 cursor-pointer top-[9rem] md:-left-6 md:top-1/2 -translate-y-1/2 z-20 p-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/20 transition-all shadow-xl"
 					aria-label="Previous slide"
 				>
 					<ArrowLeftIcon className="w-5 h-5 md:w-6 md:h-6 text-white" />
@@ -270,7 +270,7 @@ const Experience = () => {
 				{/* Right Arrow */}
 				<button
 					onClick={nextSlide}
-					className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/20 transition-all shadow-xl"
+					className="absolute right-3 cursor-pointer top-[9rem] md:-right-6 md:top-1/2 -translate-y-1/2 z-20 p-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/20 transition-all shadow-xl"
 					aria-label="Next slide"
 				>
 					<ArrowRightIcon className="w-5 h-5 md:w-6 md:h-6 text-white" />
@@ -298,12 +298,14 @@ const Experience = () => {
 										>
 											{/* Image Card Container */}
 											<div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
-												<Image
-													src={site.photo}
-													alt={site.name}
-													fill
-													className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-												/>
+												{site.photo && site.photo !== "" && (
+													<Image
+														src={site.photo}
+														alt={site.name}
+														fill
+														className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+													/>
+												)}
 
 												{/* Premium Dark Overlay with subtle blur to merge with the whole project */}
 												<div className="hidden md:block absolute inset-0 z-0 bg-gray-950/40 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-gray-950/20 group-hover:backdrop-blur-none pointer-events-none" />
