@@ -24,7 +24,7 @@ export default function Textarea({ name, label, value, onChange, required }: Tex
 					value={value}
 					onChange={onChange}
 					required={required}
-					className="block w-full bg-white/5 rounded-2xl py-4 px-6 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 glass resize-none"
+					className="block w-full bg-white/5 rounded-2xl py-3 md:py-4 px-6 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 glass resize-none"
 				/>
 			</div>
 		</div>

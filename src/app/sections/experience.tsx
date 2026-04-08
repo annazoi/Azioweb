@@ -242,116 +242,103 @@ const Experience = () => {
 	}, [isTransitioning]);
 
 	return (
-		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 flex flex-col gap-16">
+		<div
+			id="clients"
+			className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-20 pt-10 flex flex-col md:gap-16 gap-5"
+		>
 			{/* New Header */}
-			<div className="flex justify-between items-end mb-12 border-b border-white/5 pb-8 shrink-0">
-				<h2 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter">
+
+			<div className="flex justify-between items-end md:border-b md:border-white/5 border-transparent px-2 md:px-0 md:pb-8 pb-4 shrink-0">
+				<h2 className="header font-black text-white uppercase tracking-tighter">
 					The Showcase<span className="text-primary">.</span>
 				</h2>
-				<div className="hidden sm:flex items-center gap-4">
-					<button
-						onClick={prevSlide}
-						className="p-3 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
-						aria-label="Previous slide"
-					>
-						<ArrowLeftIcon className="w-6 h-6 text-white" />
-					</button>
-					<button
-						onClick={nextSlide}
-						className="p-3 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
-						aria-label="Next slide"
-					>
-						<ArrowRightIcon className="w-6 h-6 text-white" />
-					</button>
-				</div>
-			</div>
-
-			{/* Mobile navigation controls */}
-			<div className="flex justify-between items-center sm:hidden mb-4 border-b border-white/5 pb-4 shrink-0">
-				<p className="text-primary font-bold tracking-widest uppercase text-xs hidden xs:block">
-					Selected Works 2024
-				</p>
-				<div className="flex items-center gap-3">
-					<button
-						onClick={prevSlide}
-						className="p-2 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
-						aria-label="Previous slide"
-					>
-						<ArrowLeftIcon className="w-4 h-4 text-white" />
-					</button>
-					<button
-						onClick={nextSlide}
-						className="p-2 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
-						aria-label="Next slide"
-					>
-						<ArrowRightIcon className="w-4 h-4 text-white" />
-					</button>
+				<div className="hidden lg:block pb-2 text-right">
+					<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#Selected Works</p>
 				</div>
 			</div>
 
 			{/* Slider Wrapper */}
-			<div className="w-full relative overflow-hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-				{/* Track Container */}
-				<div
-					className="flex w-full will-change-transform items-start"
-					style={{
-						transform: `translateX(-${currentIndex * 100}%)`,
-						transition: transitionEnabled ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-					}}
+			<div className="w-full relative group" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+				{/* Left Arrow */}
+				<button
+					onClick={prevSlide}
+					className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/20 transition-all shadow-xl"
+					aria-label="Previous slide"
 				>
-					{/* Slide Items */}
-					{displaySlides.map((slide, slideIndex) => (
-						<div key={slideIndex} className="w-full flex-shrink-0 flex-grow-0 basis-full">
-							{/* Highly Reusable Slide Layout Base */}
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-2 px-1">
-								{slide.map((site, index) => (
-									<div
-										key={`${site.id}-${slideIndex}-${index}`}
-										onClick={() => handleProjectClick(site)}
-										className={`group cursor-pointer flex flex-col gap-5 ${index % 2 !== 0 ? 'md:mt-30' : ''}`}
-									>
-										{/* Image Card Container */}
-										<div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
-											<Image
-												src={site.photo}
-												alt={site.name}
-												fill
-												className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-											/>
+					<ArrowLeftIcon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+				</button>
+				{/* Right Arrow */}
+				<button
+					onClick={nextSlide}
+					className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/20 transition-all shadow-xl"
+					aria-label="Next slide"
+				>
+					<ArrowRightIcon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+				</button>
 
-											{/* Premium Dark Overlay with subtle blur to merge with the whole project */}
-											<div className="hidden md:block absolute inset-0 z-0 bg-gray-950/40 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-gray-950/20 group-hover:backdrop-blur-none pointer-events-none" />
+				<div className="w-full overflow-hidden px-1 md:px-0">
+					{/* Track Container */}
+					<div
+						className="flex w-full will-change-transform items-start"
+						style={{
+							transform: `translateX(-${currentIndex * 100}%)`,
+							transition: transitionEnabled ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+						}}
+					>
+						{/* Slide Items */}
+						{displaySlides.map((slide, slideIndex) => (
+							<div key={slideIndex} className="w-full flex-shrink-0 flex-grow-0 basis-full">
+								{/* Highly Reusable Slide Layout Base */}
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-2 px-1">
+									{slide.map((site, index) => (
+										<div
+											key={`${site.id}-${slideIndex}-${index}`}
+											onClick={() => handleProjectClick(site)}
+											className={`group cursor-pointer flex flex-col gap-5 ${index % 2 !== 0 ? 'md:mt-30' : ''}`}
+										>
+											{/* Image Card Container */}
+											<div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
+												<Image
+													src={site.photo}
+													alt={site.name}
+													fill
+													className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+												/>
 
-											{/* Subtle darkness gradient at the bottom for image consistency */}
-											<div className="hidden md:block absolute inset-x-0 bottom-0 p-2 z-10 transition-all backdrop-blur-xl bg-black/40 duration-500 text-slate-400 text-[10px] p-4 font-black uppercase tracking-[0.2em] mt-1.5 text-white glass">
-												{site.description}
+												{/* Premium Dark Overlay with subtle blur to merge with the whole project */}
+												<div className="hidden md:block absolute inset-0 z-0 bg-gray-950/40 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-gray-950/20 group-hover:backdrop-blur-none pointer-events-none" />
+
+												{/* Subtle darkness gradient at the bottom for image consistency */}
+												<div className="hidden md:block absolute inset-x-0 bottom-0 p-2 z-10 transition-all backdrop-blur-xl bg-black/40 duration-500 text-slate-400 text-[10px] p-4 font-black uppercase tracking-[0.2em] mt-1.5 text-white glass">
+													{site.description}
+												</div>
+											</div>
+
+											{/* Minimal Text Details */}
+											<div className="flex flex-col gap-4 ml-2">
+												<div className="flex items-center justify-between">
+													<div className="flex flex-col">
+														<h3 className="text-2xl font-bold text-white">{site.name}</h3>
+														<p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5">
+															{site.tag || 'Featured Site'}
+														</p>
+													</div>
+													<div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mr-2">
+														<ArrowUpRightIcon className="w-6 h-6 text-secondary" strokeWidth={2.5} />
+													</div>
+												</div>
+
+												{/* Description on Mobile */}
+												<p className="md:hidden text-slate-400 text-[13px] leading-relaxed mr-2">
+													{site.description}
+												</p>
 											</div>
 										</div>
-
-										{/* Minimal Text Details */}
-										<div className="flex flex-col gap-4 ml-2">
-											<div className="flex items-center justify-between">
-												<div className="flex flex-col">
-													<h3 className="text-2xl font-bold text-white">{site.name}</h3>
-													<p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5">
-														{site.tag || 'Featured Site'}
-													</p>
-												</div>
-												<div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mr-2">
-													<ArrowUpRightIcon className="w-6 h-6 text-secondary" strokeWidth={2.5} />
-												</div>
-											</div>
-
-											{/* Description on Mobile */}
-											<p className="md:hidden text-slate-400 text-[13px] leading-relaxed mr-2">
-												{site.description}
-											</p>
-										</div>
-									</div>
-								))}
+									))}
+								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
 

@@ -29,7 +29,7 @@ const Process = () => {
 	return (
 		<div
 			id="process"
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-0 flex flex-col gap-12 relative overflow-hidden"
+			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-20 pt-10 pb-0 flex flex-col gap-12 relative overflow-hidden"
 		>
 			{/* The Header */}
 			{/* <div className="flex justify-center items-center mb-16"> */}
@@ -39,7 +39,7 @@ const Process = () => {
 			{/* </div> */}
 
 			{/* Timeline Container */}
-			<div className="relative mx-auto w-full max-w-4xl py-10">
+			<div className="relative mx-auto w-full max-w-4xl">
 				{/* Center Line (Hidden slightly at top and bottom to create fade illusion) */}
 				<div className="absolute left-[17px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent md:-translate-x-1/2" />
 

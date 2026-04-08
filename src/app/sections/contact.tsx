@@ -43,7 +43,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 flex flex-col gap-6 lg:gap-4">
+		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:mt-20 mt-10 flex flex-col gap-6 lg:gap-4">
 			<div className="flex flex-col gap-4">
 				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Get In Touch</h3>
 				<h2 className="header !text-left max-w-2xl">
@@ -51,7 +51,7 @@ const Contact = () => {
 				</h2>
 			</div>
 
-			<div className="flex flex-col lg:flex-row gap-16 lg:gap-32 items-start">
+			<div className="flex flex-col lg:flex-row gap-10 lg:gap-32 items-start">
 				<div className="flex-1 flex flex-col gap-8">
 					<p className="text-slate-400 text-sm leading-relaxed max-w-md italic">
 						Ready to transform your ideas into reality? Tell us about your project, and our team will get back to
@@ -60,7 +60,7 @@ const Contact = () => {
 
 					<a
 						href="mailto:hello@azioweb.com"
-						className="flex items-center gap-3 text-lg font-black text-white hover:text-primary transition-colors group"
+						className="flex items-center gap-2 md:gap-3 md:text-lg text-sm font-black text-white hover:text-primary transition-colors group"
 					>
 						<EnvelopeIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
 						<span>hello@azioweb.com</span>
@@ -73,7 +73,7 @@ const Contact = () => {
 				>
 					<form
 						onSubmit={handleSubmit}
-						className="bg-[var(--background-opacity)] p-10 rounded-[2.5rem] flex flex-col gap-8"
+						className="bg-[var(--background-opacity)] px-4 py-6 md:px-10 md:py-10 md:rounded-[2rem] rounded-2xl flex flex-col gap-8"
 					>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
 							<Input

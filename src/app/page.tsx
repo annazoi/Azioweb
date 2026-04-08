@@ -45,7 +45,7 @@ export const ParallaxSection = ({
 		{bgImage && <div className="absolute inset-0 z-0 bg-gray-950/85 backdrop-blur-[2px]" />}
 
 		{/* Section Content */}
-		<div className="relative z-10 w-full pb-20">{children}</div>
+		<div className="relative z-10 w-full md:pb-20 pb-10">{children}</div>
 	</section>
 );
 
