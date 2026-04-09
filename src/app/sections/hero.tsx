@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const Hero = () => {
 	const stats = [
-		{ value: 50, label: 'Successful Projects', suffix: '+' },
+		{ value: 10, label: 'Successful Projects', suffix: '+' },
 		{ value: 100, label: 'Client Satisfaction', suffix: '%' },
 		{ value: 5, label: 'Years of Excellence', suffix: '+' },
 		{ value: 10, label: 'Expert Developers', suffix: '+' },

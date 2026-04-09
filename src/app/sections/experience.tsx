@@ -40,21 +40,11 @@ const Experience = () => {
 			photo: latherlab,
 			photos: [latherlab],
 			url: 'https://latherlab.azioweb.com/',
-			description:
-				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
-		},
-		{
-			id: 'site-2',
-			name: 'Lather Lab',
-			photo: latherlab,
-			photos: [latherlab],
-			url: 'https://latherlab.azioweb.com/',
-			description:
-				'A handmade soap e-commerce website featuring natural soap products with ingredient details and images. Customers can browse, add to cart, and purchase securely via integrated payments. Includes a client interface and an admin dashboard for managing products, orders, and inventory.',
+			description: 'Handmade soap e-commerce platform with product browsing and secure checkout.',
 		},
 
 		{
-			id: '1',
+			id: 'site-2',
 			name: 'Aura Platform',
 			photo: auraChat,
 			photos: [
@@ -68,21 +58,21 @@ const Experience = () => {
 				auraCall,
 				auraCreateChat,
 			],
-			description: 'Next-Gen collaboration and secure messaging system with AI-powered task management.',
+			description: 'Next-Gen collaboration and secure messaging system with AI-powered features.',
 			url: 'https://aura.annazoi.dev/',
 			tag: 'AI/ML',
 		},
 		{
-			id: '2',
+			id: 'site-3',
 			name: 'Habitry App',
-			photo: habitryDashboard,
+			photo: habitryLanding,
 			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
 			description: 'AI-driven lifestyle and habit tracking application focusing on user retention and health data.',
 			url: 'https://habitry.annazoi.dev/',
 			tag: 'MOBILE APP',
 		},
 		{
-			id: '3',
+			id: 'site-4',
 			name: 'Drobe App',
 			photo: drobeHome,
 			photos: [
@@ -100,15 +90,6 @@ const Experience = () => {
 			description: 'AI-driven lifestyle and wardrobe management application focusing on user outfit tracking.',
 			url: 'https://drobe.annazoi.dev/',
 			tag: 'MOBILE APP',
-		},
-		{
-			id: '4',
-			name: 'Aura Analytics',
-			photo: auraSummary,
-			photos: [auraSummary, auraSentimentAnlysis, auraLogin],
-			description: 'Comprehensive data visualization, sentiment analysis, and reporting dashboard.',
-			url: 'https://aura.annazoi.dev/',
-			tag: 'DASHBOARD',
 		},
 	];
 
@@ -298,7 +279,7 @@ const Experience = () => {
 										>
 											{/* Image Card Container */}
 											<div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20">
-												{site.photo && site.photo !== "" && (
+												{site.photo && site.photo !== '' && (
 													<Image
 														src={site.photo}
 														alt={site.name}
