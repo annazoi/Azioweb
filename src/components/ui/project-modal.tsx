@@ -85,13 +85,13 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 										<>
 											<button
 												onClick={prev}
-												className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
+												className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
 											>
 												<ChevronLeftIcon className="size-5" />
 											</button>
 											<button
 												onClick={next}
-												className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
+												className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
 											>
 												<ChevronRightIcon className="size-5" />
 											</button>

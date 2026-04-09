@@ -1,7 +1,7 @@
 'use client';
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
 const navigation = [
@@ -36,7 +36,11 @@ export default function Navbar() {
 			)}
 		>
 			<div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div className="relative flex h-16 items-center justify-between transition-all duration-500">
+				<div className="relative flex h-10 sm:h-16 items-center justify-between transition-all duration-500">
+					<a href="/" className="flex items-center gap-2">
+						<img alt="Azioweb" src="/logo-nav.png" className="h-8 w-auto lg:hidden" />
+						{/* <span className="text-xl font-bold text-white tracking-tight">azioweb</span> */}
+					</a>
 					<div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
 						<DisclosureButton className="group relative inline-flex items-center justify-center rounded-xl p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none ring-1 ring-white/10">
 							<span className="absolute -inset-0.5" />
@@ -53,7 +57,7 @@ export default function Navbar() {
 							>
 								<div className="flex items-center gap-2">
 									<img alt="Azioweb" src="/logo-nav.png" className="h-10 w-auto" />
-									<h2 className="text-xl font-bold">azioweb.com</h2>
+									<h2 className="text-xl font-bold uppercase">azioweb</h2>
 								</div>
 							</a>
 						</div>
@@ -80,24 +84,89 @@ export default function Navbar() {
 				</div>
 			</div>
 
-			<DisclosurePanel className="sm:hidden relative z-10 glass mx-4 rounded-3xl mt-2 overflow-hidden border border-white/10">
-				<div className="space-y-1 px-4 pt-2 pb-6 border-t border-white/10 mt-2">
-					{navigation.map((item) => (
-						<DisclosureButton
-							key={item.name}
-							as="a"
-							href={item.href}
-							aria-current={item.current ? 'page' : undefined}
-							className={classNames(
-								item.current
-									? 'bg-primary/20 text-primary-foreground border-primary/30'
-									: 'text-slate-300 hover:bg-white/5 hover:text-white border-transparent',
-								'block rounded-xl px-4 py-2 text-base font-medium transition-all border ring-1 ring-white/5',
-							)}
-						>
-							{item.name}
+			<DisclosurePanel
+				transition
+				className="sm:hidden fixed inset-0 z-[60] bg-[#0a0a0f] flex flex-col overflow-y-auto w-full h-screen transition-all duration-300 ease-in-out data-closed:opacity-0"
+			>
+				{/* Custom Top Header inside Menu */}
+				<div className="flex items-center justify-between px-4 py-4 bg-[#14151a] shadow-2xl">
+					<a href="/" className="flex items-center gap-2">
+						<img alt="Azioweb" src="/logo-nav.png" className="h-8 w-auto" />
+						{/* <span className="text-xl font-bold text-white tracking-tight">azioweb</span> */}
+					</a>
+					<DisclosureButton className="inline-flex items-center justify-center rounded-xl p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none ring-1 ring-white/10">
+						<span className="sr-only">Close main menu</span>
+						<XMarkIcon aria-hidden="true" className="size-6" />
+					</DisclosureButton>
+				</div>
+
+				<div className="px-6 pt-12 pb-8 flex flex-col gap-6 flex-1">
+					{navigation.map((item, index) => (
+						<DisclosureButton key={item.name} as="a" href={item.href} className="flex items-center gap-6 group">
+							<span className="text-[10px] font-black tracking-widest text-slate-600 mt-2">0{index + 1}</span>
+							<span
+								className={classNames(
+									item.current ? 'text-white' : 'text-slate-500 group-hover:text-white',
+									'text-5xl font-black transition-colors tracking-tighter',
+								)}
+							>
+								{item.name}
+							</span>
 						</DisclosureButton>
 					))}
+				</div>
+
+				<div className="px-6 pb-12 flex flex-col gap-6 mt-auto">
+					<div className="flex flex-col gap-4">
+						<span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
+							Ready to build your legacy?
+						</span>
+						<div className="flex flex-col gap-3">
+							<DisclosureButton
+								as="a"
+								href="/book"
+								className="w-full bg-[#96a0ff] text-white py-4 rounded-xl flex items-center justify-center font-bold text-sm tracking-wide hover:bg-[#a6b0ff] transition-colors"
+							>
+								Get in Touch
+								<EnvelopeIcon className="w-4 h-4 ml-2" />
+							</DisclosureButton>
+							{/* <button className="w-full bg-transparent cursor-pointer border border-white/5 text-white py-4 rounded-xl flex items-center justify-center font-bold text-sm tracking-wide hover:bg-white/5 transition-colors">
+								View Showreel
+							</button> */}
+						</div>
+					</div>
+
+					<div className="flex flex-col gap-4 mt-2">
+						<div className="flex gap-6 text-[10px] font-black tracking-widest text-slate-400 uppercase">
+							<a
+								href="https://twitter.com/azioweb"
+								target="_blank"
+								className="hover:text-white transition-colors"
+							>
+								Twitter
+							</a>
+							<a
+								href="https://linkedin.com/company/azioweb"
+								target="_blank"
+								className="hover:text-white transition-colors"
+							>
+								LinkedIn
+							</a>
+							{/* <a
+								href="https://instagram.com/azioweb"
+								target="_blank"
+								className="hover:text-white transition-colors"
+							>
+								Instagram
+							</a> */}
+						</div>
+						<div className="flex gap-2 items-center text-xs text-slate-500/50">
+							<MapPinIcon className="w-3 h-3" />
+							<span>Athens, GR</span>
+							<span>•</span>
+							<span>10:24 EET</span>
+						</div>
+					</div>
 				</div>
 			</DisclosurePanel>
 		</Disclosure>

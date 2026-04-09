@@ -58,13 +58,13 @@ const Contact = () => {
 						you with a comprehensive proposal.
 					</p>
 
-					<a
+					{/* <a
 						href="mailto:hello@azioweb.com"
 						className="flex items-center gap-2 md:gap-3 md:text-lg text-sm font-black text-white hover:text-primary transition-colors group"
 					>
 						<EnvelopeIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
 						<span>hello@azioweb.com</span>
-					</a>
+					</a> */}
 				</div>
 				<motion.div
 					className="flex-1 w-full lg:w-[500px]"

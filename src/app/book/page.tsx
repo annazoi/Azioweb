@@ -102,7 +102,7 @@ export default function BookPage() {
 			<Navbar />
 
 			{/* Main */}
-			<main className="pt-32 pb-5 px-6 max-w-7xl mx-auto">
+			<main className="pt-24 md:pt-32 pb-5 px-6 max-w-7xl mx-auto">
 				{isSuccess ? (
 					<SuccessState date={selectedDate} slot={selectedSlotLabel} />
 				) : (

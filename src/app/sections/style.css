@@ -5,7 +5,7 @@
 .header {
 	font-size: clamp(1.4rem, 5vw, 2.5rem);
 	letter-spacing: -0.02em;
-	text-align: center;
+	/* text-align: center; */
 	font-weight: 800;
 	color: #ffffff;
 }

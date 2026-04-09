@@ -147,7 +147,7 @@ const Services = () => {
 			{/* Mastered Crafts Header */}
 			<div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 md:mb-4 mb-0 pb-8">
 				<div className="flex flex-col gap-4 max-w-2xl">
-					<h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight">
+					<h2 className="header font-bold text-white tracking-tight">
 						Services We Offer<span className="text-primary">.</span>
 					</h2>
 					<p className="text-slate-400 text-[15px] leading-relaxed max-w-lg">
@@ -260,7 +260,7 @@ const Services = () => {
 				{/* Mobile CTA Tile */}
 				<Link
 					href="/book"
-					className="bg-[#ced4ff] p-10 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[240px] relative overflow-hidden rounded-3xl"
+					className="bg-[#ced4ff] md:p-10 p-6 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[240px] relative overflow-hidden rounded-3xl"
 				>
 					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
 						Ready to start building?

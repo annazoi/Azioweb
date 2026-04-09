@@ -242,14 +242,14 @@ const Projects = () => {
 
 				<button
 					onClick={prev}
-					className="absolute -left-2 lg:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-primary/60 hover:border-primary/30"
+					className="absolute left-2 lg:-left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-primary/60 hover:border-primary/30"
 				>
 					<ChevronLeftIcon className="size-5" />
 				</button>
 
 				<button
 					onClick={next}
-					className="absolute -right-2 lg:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-primary/60 hover:border-primary/30"
+					className="absolute right-2 lg:-right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10 opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-primary/60 hover:border-primary/30"
 				>
 					<ChevronRightIcon className="size-5" />
 				</button>
