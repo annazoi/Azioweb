@@ -13,6 +13,8 @@ export interface Project {
 	description: string;
 	url: string;
 	tag?: string;
+	highlights?: string[];
+	details?: string;
 }
 
 export interface Site {

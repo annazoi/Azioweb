@@ -6,6 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 
+import aura from '@/assets/projects/aura.jpg';
 import auraLogin from '@/assets/projects/aura/login.jpg';
 import auraChats from '@/assets/projects/aura/chats.jpg';
 import auraChat from '@/assets/projects/aura/chat.jpg';
@@ -39,7 +40,7 @@ const Projects = () => {
 		{
 			id: '1',
 			name: 'Aura Platform',
-			photo: auraChat,
+			photo: aura,
 			photos: [
 				auraLogin,
 				auraChats,
@@ -118,11 +119,7 @@ const Projects = () => {
 	}, []);
 
 	// Create duplicated array padded with clones for infinite sliding
-	const duplicatedProjects = [
-		...projects.slice(-itemsPerSlide),
-		...projects,
-		...projects.slice(0, itemsPerSlide),
-	];
+	const duplicatedProjects = [...projects.slice(-itemsPerSlide), ...projects, ...projects.slice(0, itemsPerSlide)];
 
 	const next = () => {
 		if (!canNavigate) return;
@@ -181,17 +178,17 @@ const Projects = () => {
 
 	return (
 		<div className="mx-auto mt-32 px-4 relative max-w-7xl" id="work">
-			<div className="flex flex-col items-center gap-4 mb-16">
-				<h3 className="header">
-					Case <span className="text-gradient">Studies</span>
-				</h3>
-				<p className="text-slate-400 text-center max-w-2xl italic text-sm">
-					A selection of our recent enterprise-grade solutions, from scalable web-apps to modern AI-driven
-					platforms.
-				</p>
+			<div className="flex justify-between items-end pb-8 shrink-0 mb-16">
+				<h2 className="header font-black text-white uppercase tracking-tighter">
+					Case <span className="text-primary">Studies</span>
+					<span className="text-primary">.</span>
+				</h2>
+				<div className="hidden lg:block pb-2 text-right">
+					<p className="text-white/20 font-black tracking-wider text-xl uppercase">#Selected Works</p>
+				</div>
 			</div>
 
-			<div 
+			<div
 				className="relative group/carousel -mx-4 px-4"
 				onMouseEnter={() => setIsPaused(true)}
 				onMouseLeave={() => setIsPaused(false)}
@@ -204,7 +201,11 @@ const Projects = () => {
 						onAnimationComplete={handleAnimationComplete}
 					>
 						{duplicatedProjects.map((project, idx) => (
-							<div key={`${project.id}-${idx}`} className="p-3 relative" style={{ minWidth: `${100 / itemsPerSlide}%` }}>
+							<div
+								key={`${project.id}-${idx}`}
+								className="p-3 relative"
+								style={{ minWidth: `${100 / itemsPerSlide}%` }}
+							>
 								<div
 									onClick={() => handleProjectClick(project)}
 									className="group relative cursor-pointer overflow-hidden rounded-[2.5rem] bg-slate-900/50 p-1 transition-all h-full"
