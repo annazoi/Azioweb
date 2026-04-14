@@ -29,6 +29,8 @@ export const metadata: Metadata = {
 	keywords: 'book a call, software development, agency, web development, web design, Next.js, React, mobile apps',
 };
 
+import { CustomCursor } from '@/components/ui/CustomCursor';
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -39,6 +41,7 @@ export default function RootLayout({
 			<body
 				className={`${inter.className} ${notoSansMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 selection:text-white`}
 			>
+				<CustomCursor />
 				{children}
 			</body>
 		</html>

@@ -37,6 +37,12 @@
 		-moz-osx-font-smoothing: grayscale;
 		overflow-x: hidden;
 	}
+
+	@media (hover: hover) and (pointer: fine) {
+		* {
+			cursor: none !important;
+		}
+	}
 }
 
 @theme inline {
