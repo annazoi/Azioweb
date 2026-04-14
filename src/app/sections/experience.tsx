@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ArrowsPointingOutIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import latherlab from '@/assets/projects/latherlab.png';
+import relay from '@/assets/projects/relay.png';
 
 import aura from '@/assets/projects/aura/aura.jpg';
 import auraLogin from '@/assets/projects/aura/login.jpg';
@@ -123,11 +124,11 @@ const Experience = () => {
 		},
 		{
 			id: 'site-5',
-			name: 'Aura Sentiment',
-			photo: auraSentimentAnlysis,
-			photos: [auraSentimentAnlysis],
+			name: 'Relay Platform',
+			photo: relay,
+			photos: [relay],
 			description: 'Advanced AI analysis for real-time customer sentiment and social trends.',
-			url: 'https://aura.annazoi.dev/',
+			url: 'https://relay.annazoi.dev/',
 			tag: 'DASHBOARD',
 			highlights: [
 				'Real-time social media data ingestion',

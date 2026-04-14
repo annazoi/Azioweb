@@ -5,17 +5,3 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
-
-model Appointment {
-  id        String   @id @default(uuid())
-  name      String
-  email     String
-  phone     String?
-  notes     String?
-  date      DateTime
-  time      String
-  status    String   @default("pending") // "pending", "confirmed", "cancelled"
-  createdAt DateTime @default(now())
-
-  @@unique([date, time])
-}
