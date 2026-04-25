@@ -3,31 +3,36 @@
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'next/navigation';
 
 const Pricing = () => {
+	const { t } = useTranslation();
+	const params = useParams<{ locale: string }>();
+	const locale = params?.locale ?? 'en';
 	const tiers = [
 		{
 			id: 'essential',
-			name: 'MVP / Startup',
-			price: 'From $15k',
-			description: 'Perfect for early-stage startups needing a quick, robust MVP.',
-			features: ['High-conversion landing page', 'Core application features', '4-8 weeks delivery'],
+			name: t('pricing.tiers.essential.name'),
+			price: t('pricing.tiers.essential.price'),
+			description: t('pricing.tiers.essential.description'),
+			features: t('pricing.tiers.essential.features', { returnObjects: true }) as string[],
 			popular: false,
 		},
 		{
 			id: 'growth',
-			name: 'Enterprise App',
-			price: 'From $40k',
-			description: 'Ideal for growing businesses requiring scalable applications.',
-			features: ['Full-stack custom development', 'Advanced UI/UX & Prototyping', '3-6 months delivery'],
+			name: t('pricing.tiers.growth.name'),
+			price: t('pricing.tiers.growth.price'),
+			description: t('pricing.tiers.growth.description'),
+			features: t('pricing.tiers.growth.features', { returnObjects: true }) as string[],
 			popular: true,
 		},
 		{
 			id: 'dedicated',
-			name: 'Dedicated Team',
-			price: 'Retainer',
-			description: 'Ongoing development, maintenance, and expert support.',
-			features: ['Dedicated full-stack squad', 'Agile sprint management', '24/7 Priority support'],
+			name: t('pricing.tiers.dedicated.name'),
+			price: t('pricing.tiers.dedicated.price'),
+			description: t('pricing.tiers.dedicated.description'),
+			features: t('pricing.tiers.dedicated.features', { returnObjects: true }) as string[],
 			popular: false,
 		},
 	];
@@ -35,12 +40,12 @@ const Pricing = () => {
 	return (
 		<div id="pricing" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
-				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Flexible Plans</h3>
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">{t('pricing.tag')}</h3>
 				<h2 className="header">
-					Transparent <span className="text-gradient">Pricing</span>
+					{t('pricing.titlePrefix')} <span className="text-gradient">{t('pricing.titleAccent')}</span>
 				</h2>
 				<p className="text-slate-400 max-w-2xl leading-relaxed text-sm italic mx-auto">
-					No hidden fees, no surprises. We offer structured engagements tailored to your scale.
+					{t('pricing.subtitle')}
 				</p>
 			</div>
 
@@ -63,7 +68,7 @@ const Pricing = () => {
 						{tier.popular && (
 							<div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
 								<span className="bg-primary text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-lg shadow-lg shadow-primary/40 italic">
-									Most Popular
+									{t('pricing.mostPopular')}
 								</span>
 							</div>
 						)}
@@ -87,7 +92,7 @@ const Pricing = () => {
 
 						<div className="mt-auto pt-4">
 							<Link
-								href="/book"
+								href={`/${locale}/book`}
 								className={`block w-full text-center py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300
 									${
 										tier.popular
@@ -96,7 +101,7 @@ const Pricing = () => {
 									}
 								`}
 							>
-								Get Started
+								{t('pricing.getStarted')}
 							</Link>
 						</div>
 					</motion.div>

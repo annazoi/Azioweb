@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
 	ComputerDesktopIcon,
 	DevicePhoneMobileIcon,
@@ -15,63 +15,61 @@ import {
 	ArrowLeftIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'next/navigation';
 
 const Services = () => {
+	const { t } = useTranslation();
+	const params = useParams<{ locale: string }>();
+	const locale = params?.locale ?? 'en';
 	const services = [
 		{
 			id: 'web',
-			name: 'Web Development',
+			name: t('services.cards.web.name'),
 			icon: ComputerDesktopIcon,
-			description:
-				'High-performance React & Next.js applications optimized for speed, SEO, and seamless user experiences.',
+			description: t('services.cards.web.description'),
 		},
 		{
 			id: 'mobile',
-			name: 'Mobile Development',
+			name: t('services.cards.mobile.name'),
 			icon: DevicePhoneMobileIcon,
-			description: 'Native-feel cross-platform apps using React Native and Flutter for iOS and Android deployment.',
+			description: t('services.cards.mobile.description'),
 		},
 		{
 			id: 'saas',
-			name: 'Fast MVP',
+			name: t('services.cards.saas.name'),
 			icon: CloudIcon,
-			description:
-				'Rapid prototyping and launch strategies for startups looking to validate ideas in weeks, not months.',
+			description: t('services.cards.saas.description'),
 		},
 		{
 			id: 'ai',
-			name: 'AI Integration',
+			name: t('services.cards.ai.name'),
 			icon: CpuChipIcon,
-			description:
-				'Custom LLM implementations and machine learning workflows to automate your core business processes.',
+			description: t('services.cards.ai.description'),
 		},
 		{
 			id: 'api',
-			name: 'Integrations',
+			name: t('services.cards.api.name'),
 			icon: CodeBracketIcon,
-			description:
-				'Connecting disparate systems with robust API architectures and microservices that work in harmony.',
+			description: t('services.cards.api.description'),
 		},
 		{
 			id: 'uiux',
-			name: 'UI/UX Design',
+			name: t('services.cards.uiux.name'),
 			icon: PaintBrushIcon,
-			description:
-				'Data-driven product design that prioritizes user experience, aesthetics, and optimal conversion rates.',
+			description: t('services.cards.uiux.description'),
 		},
 		{
 			id: 'cloud',
-			name: 'Cloud Infrastructure',
+			name: t('services.cards.cloud.name'),
 			icon: ServerStackIcon,
-			description:
-				'We design, migrate, and manage scalable cloud infrastructures ensuring high availability and maximum security.',
+			description: t('services.cards.cloud.description'),
 		},
 		{
 			id: 'seo',
-			name: 'Performance & SEO',
+			name: t('services.cards.seo.name'),
 			icon: ChartBarIcon,
-			description:
-				'We optimize your applications for maximum speed and search engine visibility to drive massive organic growth.',
+			description: t('services.cards.seo.description'),
 		},
 	];
 
@@ -93,19 +91,19 @@ const Services = () => {
 		setTouchStartX(null);
 	};
 
-	const nextSlide = () => {
+	const nextSlide = useCallback(() => {
 		if (isTransitioning || displayServices.length === 0) return;
 		setIsTransitioning(true);
 		setTransitionEnabled(true);
 		setCurrentIndex((prev) => prev + 1);
-	};
+	}, [displayServices.length, isTransitioning]);
 
-	const prevSlide = () => {
+	const prevSlide = useCallback(() => {
 		if (isTransitioning || displayServices.length === 0) return;
 		setIsTransitioning(true);
 		setTransitionEnabled(true);
 		setCurrentIndex((prev) => prev - 1);
-	};
+	}, [displayServices.length, isTransitioning]);
 
 	useEffect(() => {
 		if (displayServices.length === 0) return;
@@ -137,7 +135,7 @@ const Services = () => {
 			nextSlide();
 		}, 4000);
 		return () => clearInterval(interval);
-	}, [isTransitioning]);
+	}, [nextSlide]);
 
 	return (
 		<div
@@ -148,20 +146,20 @@ const Services = () => {
 			<div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 md:mb-4 mb-0 pb-8">
 				<div className="flex flex-col gap-4 max-w-2xl">
 					<h2 className="header font-bold text-white tracking-tight">
-						Services We Offer<span className="text-primary">.</span>
+						{t('services.title')}<span className="text-primary">.</span>
 					</h2>
 					<p className="text-slate-400 text-[15px] leading-relaxed max-w-lg">
-						We don't just build features, we architect ecosystems that grow with your user base.
+						{t('services.subtitle')}
 					</p>
 				</div>
 				<div className="hidden lg:block pb-2">
-					<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#Services</p>
+					<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#{t('services.hashTag')}</p>
 				</div>
 			</div>
 
 			{/* Mobile Header Text */}
 			<div className="md:hidden -mt-4 mb-2 shrink-0">
-				<p className="text-secondary font-bold tracking-widest uppercase text-xs block">Explore Services</p>
+				<p className="text-secondary font-bold tracking-widest uppercase text-xs block">{t('services.explore')}</p>
 			</div>
 
 			{/* DESKTOP: Bento 3x3 Grid (Hidden on Mobile) */}
@@ -189,14 +187,14 @@ const Services = () => {
 				})}
 				{/* Desktop CTA Tile (Fills the 9th slot seamlessly) */}
 				<Link
-					href="/book"
+					href={`/${locale}/book`}
 					className="bg-[#ced4ff] p-10 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[320px] relative overflow-hidden"
 				>
 					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
-						Ready to start building?
+						{t('services.cta.title')}
 					</h3>
 					<div className="flex items-center gap-2 text-[#4c1d95] font-bold text-sm z-10 mt-auto group-hover:translate-x-2 transition-transform duration-300">
-						<span>Book a consultation</span>
+						<span>{t('services.cta.action')}</span>
 						<ArrowRightIcon className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
 					</div>
 					<div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -259,14 +257,14 @@ const Services = () => {
 
 				{/* Mobile CTA Tile */}
 				<Link
-					href="/book"
+					href={`/${locale}/book`}
 					className="bg-[#ced4ff] md:p-10 p-6 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[240px] relative overflow-hidden rounded-3xl"
 				>
 					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
-						Ready to start building?
+						{t('services.cta.title')}
 					</h3>
 					<div className="flex items-center gap-2 text-[#4c1d95] font-bold text-sm z-10 mt-auto group-hover:translate-x-2 transition-transform duration-300">
-						<span>Book a consultation</span>
+						<span>{t('services.cta.action')}</span>
 						<ArrowRightIcon className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
 					</div>
 					<div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />

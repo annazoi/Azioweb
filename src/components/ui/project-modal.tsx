@@ -1,7 +1,10 @@
+'use client';
+
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { XMarkIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { Project } from '@/interfaces';
+import { useTranslation } from 'react-i18next';
 
 interface ProjectModalProps {
 	project: Project;
@@ -10,6 +13,8 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onOpen, onClose }: ProjectModalProps) {
+	const { t } = useTranslation();
+
 	return (
 		<Dialog open={onOpen} onClose={onClose} className="relative z-[100]">
 			<DialogBackdrop
@@ -61,7 +66,7 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 								{/* Highlights */}
 								{project.highlights && project.highlights.length > 0 && (
 									<div className="space-y-6">
-										<p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Highlights</p>
+										<p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('projectModal.highlights')}</p>
 										<ul className="space-y-4">
 											{project.highlights.map((highlight, i) => (
 												<li key={i} className="flex items-start gap-3">
@@ -76,7 +81,7 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 								{/* Project Details */}
 								{project.details && (
 									<div className="space-y-4">
-										<p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Project Details</p>
+										<p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('projectModal.details')}</p>
 										<p className="text-white/80 text-sm font-medium leading-relaxed">
 											{project.details}
 										</p>
@@ -91,7 +96,7 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 										rel="noopener noreferrer"
 										className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-br from-primary to-[#8A5CF5] text-white font-bold text-sm transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/20 active:scale-95 group"
 									>
-										Visit Site
+										{t('projectModal.visitSite')}
 										<ArrowTopRightOnSquareIcon className="size-4 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
 									</a>
 								</div>

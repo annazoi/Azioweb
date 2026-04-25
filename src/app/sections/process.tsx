@@ -1,28 +1,30 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Process = () => {
+	const { t } = useTranslation();
 	const steps = [
 		{
 			id: '01',
-			name: 'Discovery',
-			description: 'Deep dive into your brand architecture and market positioning.',
+			name: t('process.steps.discovery.name'),
+			description: t('process.steps.discovery.description'),
 		},
 		{
 			id: '02',
-			name: 'Curated Design',
-			description: 'Applying our signature editorial lens to your digital interface.',
+			name: t('process.steps.design.name'),
+			description: t('process.steps.design.description'),
 		},
 		{
 			id: '03',
-			name: 'Precision Build',
-			description: 'Development using the latest high-performance tech stacks.',
+			name: t('process.steps.build.name'),
+			description: t('process.steps.build.description'),
 		},
 		{
 			id: '04',
-			name: 'Scale & Launch',
-			description: 'Global deployment and continuous optimization for growth.',
+			name: t('process.steps.launch.name'),
+			description: t('process.steps.launch.description'),
 		},
 	];
 
@@ -34,7 +36,7 @@ const Process = () => {
 			{/* The Header */}
 			{/* <div className="flex justify-center items-center mb-16"> */}
 			<div className="hidden lg:block pb-2 text-right">
-				<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#The Method</p>
+				<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#{t('process.tag')}</p>
 			</div>
 			{/* </div> */}
 

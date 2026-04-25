@@ -4,12 +4,12 @@ import Input from '@/components/ui/input';
 import { motion } from 'framer-motion';
 import StatusMessage from '@/components/ui/StatusMessage';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
-
 const Contact = () => {
+	const { t } = useTranslation();
 	const [form, setForm] = useState({
 		firstName: '',
 		lastName: '',
@@ -45,17 +45,16 @@ const Contact = () => {
 	return (
 		<div id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:mt-20 mt-10 flex flex-col gap-6 lg:gap-4">
 			<div className="flex flex-col gap-4">
-				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Get In Touch</h3>
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">{t('contact.tag')}</h3>
 				<h2 className="header !text-left max-w-2xl">
-					Let's build something <span className="text-gradient">amazing</span> together.
+					{t('contact.titlePrefix')} <span className="text-gradient">{t('contact.titleAccent')}</span> {t('contact.titleSuffix')}
 				</h2>
 			</div>
 
 			<div className="flex flex-col lg:flex-row gap-10 lg:gap-32 items-start">
 				<div className="flex-1 flex flex-col gap-8">
 					<p className="text-slate-400 text-sm leading-relaxed max-w-md italic">
-						Ready to transform your ideas into reality? Tell us about your project, and our team will get back to
-						you with a comprehensive proposal.
+						{t('contact.description')}
 					</p>
 
 					{/* <a
@@ -77,15 +76,15 @@ const Contact = () => {
 					>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
 							<Input
-								name="First name"
-								label="First name *"
+								name={t('contact.form.firstName')}
+								label={t('contact.form.firstNameLabel')}
 								value={form.firstName}
 								required
 								onChange={handleChange('firstName')}
 							/>
 							<Input
-								name="Last name"
-								label="Last name *"
+								name={t('contact.form.lastName')}
+								label={t('contact.form.lastNameLabel')}
 								value={form.lastName}
 								required
 								onChange={handleChange('lastName')}
@@ -93,8 +92,8 @@ const Contact = () => {
 						</div>
 
 						<Input
-							name="Email address"
-							label="Email address *"
+							name={t('contact.form.email')}
+							label={t('contact.form.emailLabel')}
 							type="email"
 							value={form.email}
 							required
@@ -102,20 +101,20 @@ const Contact = () => {
 						/>
 
 						<Textarea
-							name="Your message"
-							label="Message *"
+							name={t('contact.form.message')}
+							label={t('contact.form.messageLabel')}
 							value={form.message}
 							required
 							onChange={handleChange('message')}
 						/>
 
 						{status === 'success' && (
-							<StatusMessage type="success" message="Message sent! We'll get back to you within 24 hours." />
+							<StatusMessage type="success" message={t('contact.form.success')} />
 						)}
 						{status === 'error' && (
 							<StatusMessage
 								type="error"
-								message="Something went wrong. Please try again or email us directly."
+								message={t('contact.form.error')}
 							/>
 						)}
 
@@ -124,7 +123,7 @@ const Contact = () => {
 							disabled={status === 'sending'}
 							className="cursor-pointer bg-secondary text-white font-black text-xs uppercase tracking-widest py-5 rounded-2xl hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20 disabled:opacity-60 italic"
 						>
-							{status === 'sending' ? 'Sending…' : 'Send Message'}
+							{status === 'sending' ? t('contact.form.sending') : t('contact.form.submit')}
 						</button>
 					</form>
 				</motion.div>

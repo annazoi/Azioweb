@@ -1,16 +1,24 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'next/navigation';
+
 const Footer = () => {
+	const { t } = useTranslation();
+	const params = useParams<{ locale: string }>();
+	const locale = params?.locale ?? 'en';
 	const currentYear = new Date().getFullYear();
 	const startYear = 2026;
 	const yearText = currentYear > startYear ? `${startYear}-${currentYear}` : `${startYear}`;
 
 	return (
 		<footer className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 flex flex-col sm:flex-row justify-between items-center gap-8 ">
-			<a href="/" className="flex items-center gap-2">
+			<a href={`/${locale}`} className="flex items-center gap-2">
 				<img src="/logo-nav.png" alt="Azioweb" className="h-8 w-auto brightness-200" />
 			</a>
 
 			<div className="text-slate-500 text-[10px] font-black uppercase tracking-widest italic">
-				© {yearText} Azioweb. All rights reserved.
+				{t('footer.copyright', { yearText })}
 			</div>
 
 			<div className="flex items-center gap-6">

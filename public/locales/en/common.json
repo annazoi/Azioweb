@@ -1,0 +1,271 @@
+{
+  "hero": {
+    "title_part1": "We build scalable, high-performance",
+    "title_part2": "Digital Products.",
+    "description": "Azioweb is a premium software development agency. We partner with ambitious brands to transform complex ideas into robust, enterprise-grade web and mobile applications.",
+    "book_call": "Book a Discovery Call",
+    "explore_services": "Explore Our Services",
+    "stats": {
+      "projects": "Successful Projects",
+      "satisfaction": "Client Satisfaction",
+      "years": "Years of Excellence",
+      "developers": "Expert Developers"
+    }
+  },
+  "navbar": {
+    "openMenu": "Open main menu",
+    "closeMenu": "Close main menu",
+    "links": {
+      "home": "Home",
+      "services": "Services",
+      "process": "Process",
+      "work": "Work",
+      "contact": "Contact"
+    },
+    "cta": {
+      "ready": "Ready to build your legacy?",
+      "getInTouch": "Get in Touch"
+    },
+    "location": "Athens, GR"
+  },
+  "services": {
+    "title": "Services We Offer",
+    "subtitle": "We don't just build features, we architect ecosystems that grow with your user base.",
+    "hashTag": "Services",
+    "explore": "Explore Services",
+    "cta": {
+      "title": "Ready to start building?",
+      "action": "Book a consultation"
+    },
+    "cards": {
+      "web": {
+        "name": "Web Development",
+        "description": "Tailored websites that represent your brand and help your business grow, including e-commerce, booking platforms, and custom solutions."
+      },
+      "mobile": {
+        "name": "Mobile Development",
+        "description": "Cross-platform mobile applications with a native feel, built for both iOS and Android."
+      },
+      "saas": {
+        "name": "Fast MVP",
+        "description": "Rapid prototyping and launch strategies for startups looking to validate ideas in weeks, not months."
+      },
+      "ai": {
+        "name": "AI Integration",
+        "description": "Automation and smart solutions that improve workflows and streamline business processes."
+      },
+      "api": {
+        "name": "Integrations",
+        "description": "Making your systems work together seamlessly."
+      },
+      "uiux": {
+        "name": "UI/UX Design",
+        "description": "Data-driven product design that prioritizes user experience, aesthetics, and optimal conversion rates."
+      },
+      "cloud": {
+        "name": "Cloud Infrastructure",
+        "description": "We design, migrate, and manage scalable cloud infrastructures ensuring high availability and maximum security."
+      },
+      "seo": {
+        "name": "Performance and SEO",
+        "description": "We optimize your applications for maximum speed and search engine visibility to drive organic growth."
+      }
+    }
+  },
+  "process": {
+    "tag": "The Method",
+    "steps": {
+      "discovery": {
+        "name": "Discovery",
+        "description": "Deep dive into your brand architecture and market positioning."
+      },
+      "design": {
+        "name": "Curated Design",
+        "description": "Applying our signature editorial lens to your digital interface."
+      },
+      "build": {
+        "name": "Precision Build",
+        "description": "Development using the latest high-performance tech stacks."
+      },
+      "launch": {
+        "name": "Scale and Launch",
+        "description": "Global deployment and continuous optimization for growth."
+      }
+    }
+  },
+  "experience": {
+    "tag": "The Showcase",
+    "title": "Built with Precision.",
+    "projects": {
+      "aura": {
+        "description": "Next-gen collaboration and secure messaging system with AI-powered features.",
+        "tag": "AI/ML",
+        "highlights": [
+          "AI-driven sentiment analysis of real-time chats",
+          "Secure peer-to-peer encrypted messaging",
+          "Dynamic dashboard with actionable analytics"
+        ],
+        "details": "The platform's core is designed for high-performance teams, integrating seamlessly with existing workflows while providing unique AI insights into project health."
+      },
+      "latherLab": {
+        "description": "Handmade soap e-commerce platform with product browsing and secure checkout.",
+        "highlights": [
+          "Clean, minimalist product catalog",
+          "Secure integrated payment gateway",
+          "Customer review and rating system"
+        ],
+        "details": "Built with a focus on artisanal presentation, Lather Lab ensures a smooth customer journey from ingredient discovery to final purchase."
+      },
+      "drobe": {
+        "description": "AI-driven lifestyle and wardrobe management application focusing on user outfit tracking.",
+        "tag": "MOBILE APP",
+        "highlights": [
+          "AI-powered clothing background removal",
+          "Daily outfit suggestions based on weather",
+          "Virtual wardrobe inventory tracking"
+        ],
+        "details": "Drobe helps users make the most of their existing wardrobe by digitizing their clothing items and providing smart coordination suggestions."
+      },
+      "habitry": {
+        "description": "AI-driven lifestyle and habit tracking application focusing on user retention and health data.",
+        "tag": "MOBILE APP",
+        "highlights": [
+          "Gamified habit progression tracking",
+          "AI behavioral analysis for habit optimization",
+          "Comprehensive wellness reporting"
+        ],
+        "details": "Habitry goes beyond simple streaks, using advanced analytics to help users identify patterns and successfully adopt long-term positive behaviors."
+      },
+      "relay": {
+        "description": "Advanced AI analysis for real-time customer sentiment and social trends.",
+        "tag": "DASHBOARD",
+        "highlights": [
+          "Real-time social media data ingestion",
+          "Natural Language Processing (NLP) sentiment scoring",
+          "Automated alert triggers for negative sentiment"
+        ],
+        "details": "Derived from the Aura platform, this standalone dashboard specializes in brand monitoring and provides deep dives into public perception."
+      },
+      "auraCall": {
+        "description": "Secure, low-latency video and voice calling for modern teams.",
+        "tag": "COMMUNICATION",
+        "highlights": [
+          "WebRTC-based low-latency architecture",
+          "End-to-end encrypted voice and video streams",
+          "Integrated screen sharing and collaboration tools"
+        ],
+        "details": "Aura Call prioritizes stability and security, ensuring teams can connect reliably from any location without compromising on privacy."
+      }
+    }
+  },
+  "contact": {
+    "tag": "Get In Touch",
+    "titlePrefix": "Let's build something",
+    "titleAccent": "amazing",
+    "titleSuffix": "together.",
+    "description": "Ready to transform your ideas into reality? Tell us about your project, and our team will get back to you with a comprehensive proposal.",
+    "form": {
+      "firstName": "First name",
+      "firstNameLabel": "First name *",
+      "lastName": "Last name",
+      "lastNameLabel": "Last name *",
+      "email": "Email address",
+      "emailLabel": "Email address *",
+      "message": "Your message",
+      "messageLabel": "Message *",
+      "success": "Message sent! We'll get back to you within 24 hours.",
+      "error": "Something went wrong. Please try again or email us directly.",
+      "sending": "Sending...",
+      "submit": "Send Message"
+    }
+  },
+  "book": {
+    "titlePrefix": "Schedule a",
+    "titleAccent": "Discovery Call.",
+    "description": "Choose a time that works best for you. Let's discuss your next project and build something extraordinary together.",
+    "backgroundAlt": "Background"
+  },
+  "projectModal": {
+    "highlights": "Highlights",
+    "details": "Project Details",
+    "visitSite": "Visit Site"
+  },
+  "footer": {
+    "copyright": "© {{yearText}} Azioweb. All rights reserved."
+  },
+  "pricing": {
+    "tag": "Flexible Plans",
+    "titlePrefix": "Transparent",
+    "titleAccent": "Pricing",
+    "subtitle": "No hidden fees, no surprises. We offer structured engagements tailored to your scale.",
+    "mostPopular": "Most Popular",
+    "getStarted": "Get Started",
+    "tiers": {
+      "essential": {
+        "name": "MVP / Startup",
+        "price": "From $15k",
+        "description": "Perfect for early-stage startups needing a quick, robust MVP.",
+        "features": [
+          "High-conversion landing page",
+          "Core application features",
+          "4-8 weeks delivery"
+        ]
+      },
+      "growth": {
+        "name": "Enterprise App",
+        "price": "From $40k",
+        "description": "Ideal for growing businesses requiring scalable applications.",
+        "features": [
+          "Full-stack custom development",
+          "Advanced UI/UX and Prototyping",
+          "3-6 months delivery"
+        ]
+      },
+      "dedicated": {
+        "name": "Dedicated Team",
+        "price": "Retainer",
+        "description": "Ongoing development, maintenance, and expert support.",
+        "features": [
+          "Dedicated full-stack squad",
+          "Agile sprint management",
+          "24/7 priority support"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "tag": "Have Questions?",
+    "titlePrefix": "Frequently Asked",
+    "titleAccent": "Questions",
+    "items": [
+      {
+        "question": "How much does a typical project cost?",
+        "answer": "Project costs vary widely based on scope, complexity, and technology stack. Generally, our projects start at $10k for specialized MVPs and can scale into enterprise budgets. We provide detailed estimates after our discovery call."
+      },
+      {
+        "question": "How long does it take to build an application?",
+        "answer": "A simple landing page or MVP can take 4-6 weeks. More complex SaaS platforms or mobile applications typically take 3-6 months. We break down the timeline into clear milestones during planning."
+      },
+      {
+        "question": "Do you provide ongoing support after launch?",
+        "answer": "Yes! We offer post-launch maintenance, bug-fixes, and continuous feature development retainers to ensure your application stays secure and up-to-date as your user base grows."
+      },
+      {
+        "question": "What technologies do you specialize in?",
+        "answer": "We primarily use modern web and mobile technologies: React, Next.js, and Tailwind CSS for the frontend; Node.js, NestJS, and PostgreSQL for the backend; and React Native for mobile apps."
+      },
+      {
+        "question": "How do we communicate during the project?",
+        "answer": "We believe in total transparency. You'll receive weekly updates, access to our project management board (Jira/Asana), and direct communication with the lead engineers via a private Slack channel."
+      }
+    ]
+  },
+  "examples": {
+    "welcome": "Welcome, {{name}}!",
+    "inbox_one": "You have {{count}} message",
+    "inbox_other": "You have {{count}} messages",
+    "nested": {
+      "title": "Nested key example"
+    }
+  }
+}

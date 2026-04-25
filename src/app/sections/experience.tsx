@@ -5,6 +5,7 @@ import ProjectModal from '@/components/ui/project-modal';
 import Image from 'next/image';
 import { ArrowsPointingOutIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import latherlab from '@/assets/projects/latherlab.png';
 import relay from '@/assets/projects/relay.png';
 
@@ -37,6 +38,7 @@ import drobeClothingOverview from '@/assets/projects/drobe/clothing_overview.jpg
 import drobeCreatedClothingItem from '@/assets/projects/drobe/created_clothing_item.jpg';
 
 const Experience = () => {
+	const { t } = useTranslation();
 	const sites: Project[] = [
 		{
 			id: 'site-2',
@@ -53,16 +55,15 @@ const Experience = () => {
 				auraCall,
 				auraCreateChat,
 			],
-			description: 'Next-Gen collaboration and secure messaging system with AI-powered features.',
+			description: t('experience.projects.aura.description'),
 			url: 'https://aura.annazoi.dev/',
-			tag: 'AI/ML',
+			tag: t('experience.projects.aura.tag'),
 			highlights: [
-				'AI-driven sentiment analysis of real-time chats',
-				'Secure peer-to-peer encrypted messaging',
-				'Dynamic dashboard with actionable analytics',
+				t('experience.projects.aura.highlights.0'),
+				t('experience.projects.aura.highlights.1'),
+				t('experience.projects.aura.highlights.2'),
 			],
-			details:
-				"The platform's core is designed for high-performance teams, integrating seamlessly with existing workflows while providing unique AI insights into project health.",
+			details: t('experience.projects.aura.details'),
 		},
 		{
 			id: 'site-1',
@@ -70,14 +71,13 @@ const Experience = () => {
 			photo: latherlab,
 			photos: [latherlab],
 			url: 'https://latherlab.azioweb.com/',
-			description: 'Handmade soap e-commerce platform with product browsing and secure checkout.',
+			description: t('experience.projects.latherLab.description'),
 			highlights: [
-				'Clean, minimalist product catalog',
-				'Secure integrated payment gateway',
-				'Customer review and rating system',
+				t('experience.projects.latherLab.highlights.0'),
+				t('experience.projects.latherLab.highlights.1'),
+				t('experience.projects.latherLab.highlights.2'),
 			],
-			details:
-				'Built with a focus on artisanal presentation, Lather Lab ensures a smooth customer journey from ingredient discovery to final purchase.',
+			details: t('experience.projects.latherLab.details'),
 		},
 		{
 			id: 'site-4',
@@ -95,64 +95,60 @@ const Experience = () => {
 				drobeClothingOverview,
 				drobeCreatedClothingItem,
 			],
-			description: 'AI-driven lifestyle and wardrobe management application focusing on user outfit tracking.',
+			description: t('experience.projects.drobe.description'),
 			url: 'https://drobe.annazoi.dev/',
-			tag: 'MOBILE APP',
+			tag: t('experience.projects.drobe.tag'),
 			highlights: [
-				'AI-powered clothing background removal',
-				'Daily outfit suggestions based on weather',
-				'Virtual wardrobe inventory tracking',
+				t('experience.projects.drobe.highlights.0'),
+				t('experience.projects.drobe.highlights.1'),
+				t('experience.projects.drobe.highlights.2'),
 			],
-			details:
-				'Drobe helps users make the most of their existing wardrobe by digitizing their clothing items and providing smart coordination suggestions.',
+			details: t('experience.projects.drobe.details'),
 		},
 		{
 			id: 'site-3',
 			name: 'Habitry App',
 			photo: habitry,
 			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
-			description: 'AI-driven lifestyle and habit tracking application focusing on user retention and health data.',
+			description: t('experience.projects.habitry.description'),
 			url: 'https://habitry.annazoi.dev/',
-			tag: 'MOBILE APP',
+			tag: t('experience.projects.habitry.tag'),
 			highlights: [
-				'Gamified habit progression tracking',
-				'AI behavioral analysis for habit optimization',
-				'Comprehensive wellness reporting',
+				t('experience.projects.habitry.highlights.0'),
+				t('experience.projects.habitry.highlights.1'),
+				t('experience.projects.habitry.highlights.2'),
 			],
-			details:
-				'Habitry goes beyond simple streaks, using advanced analytics to help users identify patterns and successfully adopt long-term positive behaviors.',
+			details: t('experience.projects.habitry.details'),
 		},
 		{
 			id: 'site-5',
 			name: 'Relay Platform',
 			photo: relay,
 			photos: [relay],
-			description: 'Advanced AI analysis for real-time customer sentiment and social trends.',
+			description: t('experience.projects.relay.description'),
 			url: 'https://relay.annazoi.dev/',
-			tag: 'DASHBOARD',
+			tag: t('experience.projects.relay.tag'),
 			highlights: [
-				'Real-time social media data ingestion',
-				'Natural Language Processing (NLP) sentiment scoring',
-				'Automated alert triggers for negative sentiment',
+				t('experience.projects.relay.highlights.0'),
+				t('experience.projects.relay.highlights.1'),
+				t('experience.projects.relay.highlights.2'),
 			],
-			details:
-				'Derived from the Aura platform, this standalone dashboard specializes in brand monitoring and provides deep dives into public perception.',
+			details: t('experience.projects.relay.details'),
 		},
 		{
 			id: 'site-6',
 			name: 'Aura Call',
 			photo: auraCall,
 			photos: [auraCall],
-			description: 'Secure, low-latency video and voice calling for modern teams.',
+			description: t('experience.projects.auraCall.description'),
 			url: 'https://aura.annazoi.dev/',
-			tag: 'COMMUNICATION',
+			tag: t('experience.projects.auraCall.tag'),
 			highlights: [
-				'WebRTC-based low-latency architecture',
-				'End-to-end encrypted voice and video streams',
-				'Integrated screen sharing and collaboration tools',
+				t('experience.projects.auraCall.highlights.0'),
+				t('experience.projects.auraCall.highlights.1'),
+				t('experience.projects.auraCall.highlights.2'),
 			],
-			details:
-				'Aura Call prioritizes stability and security, ensuring teams can connect reliably from any location without compromising on privacy.',
+			details: t('experience.projects.auraCall.details'),
 		},
 	];
 
@@ -170,8 +166,8 @@ const Experience = () => {
 	return (
 		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-32 pt-20">
 			<div className="flex flex-col items-center text-center gap-4 mb-24">
-				<span className="text-white/40 text-[10px] font-bold tracking-[0.5em] uppercase">The Showcase</span>
-				<h2 className="header font-black text-white tracking-tighter">Built with Precision.</h2>
+				<span className="text-white/40 text-[10px] font-bold tracking-[0.5em] uppercase">{t('experience.tag')}</span>
+				<h2 className="header font-black text-white tracking-tighter">{t('experience.title')}</h2>
 			</div>
 
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -209,9 +205,9 @@ const ProjectCard = ({
 	aspect,
 	onProjectClick,
 }: {
-	site: any;
+	site: Project;
 	aspect: string;
-	onProjectClick: (site: any) => void;
+	onProjectClick: (site: Project) => void;
 }) => {
 	return (
 		<div

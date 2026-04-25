@@ -3,42 +3,39 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const FAQ = () => {
+	const { t } = useTranslation();
 	const faqs = [
 		{
-			question: 'How much does a typical project cost?',
-			answer:
-				'Project costs vary widely based on scope, complexity, and technology stack. Generally, our projects start at $10k for specialized MVPs and can scale into enterprise budgets. We provide detailed estimates after our discovery call.',
+			question: t('faq.items.0.question'),
+			answer: t('faq.items.0.answer'),
 		},
 		{
-			question: 'How long does it take to build an application?',
-			answer:
-				'A simple landing page or MVP can take 4-6 weeks. More complex SaaS platforms or mobile applications typically take 3-6 months. We break down the timeline into clear milestones during planning.',
+			question: t('faq.items.1.question'),
+			answer: t('faq.items.1.answer'),
 		},
 		{
-			question: 'Do you provide ongoing support after launch?',
-			answer:
-				'Yes! We offer post-launch maintenance, bug-fixes, and continuous feature development retainers to ensure your application stays secure and up-to-date as your user base grows.',
+			question: t('faq.items.2.question'),
+			answer: t('faq.items.2.answer'),
 		},
 		{
-			question: 'What technologies do you specialize in?',
-			answer:
-				'We primarily use modern web and mobile technologies: React, Next.js, and Tailwind CSS for the frontend; Node.js, NestJS, and PostgreSQL for the backend; and React Native for mobile apps.',
+			question: t('faq.items.3.question'),
+			answer: t('faq.items.3.answer'),
 		},
 		{
-			question: 'How do we communicate during the project?',
-			answer:
-				"We believe in total transparency. You'll receive weekly updates, access to our project management board (Jira/Asana), and direct communication with the lead engineers via a private Slack channel.",
+			question: t('faq.items.4.question'),
+			answer: t('faq.items.4.answer'),
 		},
 	];
 
 	return (
 		<div id="faq" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
-				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Have Questions?</h3>
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">{t('faq.tag')}</h3>
 				<h2 className="header">
-					Frequently Asked <span className="text-gradient">Questions</span>
+					{t('faq.titlePrefix')} <span className="text-gradient">{t('faq.titleAccent')}</span>
 				</h2>
 			</div>
 

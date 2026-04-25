@@ -96,8 +96,8 @@ export const CustomCursor = () => {
 				ref={cursorRef}
 				className={`fixed top-0 left-0 h-5 w-5 -ml-2.5 -mt-2.5 rounded-full border-2 border-primary transition-all duration-300 ease-out will-change-transform ${
 					isHovering
-						? 'scale-[3.5] bg-primary/10 border-primary shadow-[0_0_30px_rgba(93,95,239,0.6)]'
-						: 'scale-100 bg-transparent border-primary/70'
+						? 'opacity-0 scale-100'
+						: 'opacity-100 scale-100 bg-transparent border-primary/70'
 				}`}
 			/>
 			{/* Inner Dot */}
