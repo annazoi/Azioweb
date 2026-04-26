@@ -94,16 +94,20 @@ export const CustomCursor = () => {
 			{/* Outer Circle (The Ring) */}
 			<div
 				ref={cursorRef}
-				className={`fixed top-0 left-0 h-5 w-5 -ml-2.5 -mt-2.5 rounded-full border-2 border-primary transition-all duration-300 ease-out will-change-transform ${
-					isHovering
-						? 'opacity-0 scale-100'
-						: 'opacity-100 scale-100 bg-transparent border-primary/70'
-				}`}
-			/>
+				className="fixed top-0 left-0 -ml-2.5 -mt-2.5 will-change-transform"
+			>
+				<div
+					className={`h-5 w-5 rounded-full border-2 transition-all duration-300 ease-out ${
+						isHovering
+							? ' scale-150 border-secondary'
+							: 'opacity-100 scale-100 bg-transparent border-secondary'
+					}`}
+				/>
+			</div>
 			{/* Inner Dot */}
 			<div
 				ref={dotRef}
-				className="fixed top-0 left-0 h-1.5 w-1.5 -ml-[3px] -mt-[3px] bg-primary rounded-full will-change-transform"
+				className="fixed top-0 left-0 h-1.5 w-1.5 -ml-[3px] -mt-[3px] bg-secondary rounded-full will-change-transform"
 			/>
 		</div>
 	);

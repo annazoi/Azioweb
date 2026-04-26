@@ -9,8 +9,8 @@ export default function LanguageSwitcher() {
 	const router = useRouter();
 	const currentPathname = usePathname();
 
-	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const newLocale = e.target.value;
+	const switchLocale = (newLocale: string) => {
+		if (newLocale === currentLocale) return;
 
 		// set cookie for next-i18n-router
 		const days = 30;
@@ -27,17 +27,24 @@ export default function LanguageSwitcher() {
 	};
 
 	return (
-		<select
-			onChange={handleChange}
-			value={currentLocale}
-			className="bg-transparent text-white border border-gray-600 rounded-md px-2 py-1 text-sm outline-none focus:border-secondary transition-colors"
-		>
-			<option value="en" className="text-black">
+		<div className="flex items-center gap-2 text-sm">
+			<button
+				type="button"
+				onClick={() => switchLocale('en')}
+				className={currentLocale === 'en' ? 'text-secondary font-semibold' : 'text-white'}
+				aria-pressed={currentLocale === 'en'}
+			>
 				EN
-			</option>
-			<option value="el" className="text-black">
+			</button>
+			<span className="text-white/60">|</span>
+			<button
+				type="button"
+				onClick={() => switchLocale('el')}
+				className={currentLocale === 'el' ? 'text-secondary font-semibold' : 'text-white'}
+				aria-pressed={currentLocale === 'el'}
+			>
 				EL
-			</option>
-		</select>
+			</button>
+		</div>
 	);
 }
