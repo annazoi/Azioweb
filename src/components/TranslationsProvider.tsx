@@ -3,7 +3,7 @@
 import { I18nextProvider } from 'react-i18next';
 import { useMemo } from 'react';
 import initTranslations from '@/app/i18n';
-import { createInstance } from 'i18next';
+import { createInstance, type Resource } from 'i18next';
 
 export default function TranslationsProvider({
   children,
@@ -14,7 +14,7 @@ export default function TranslationsProvider({
   children: React.ReactNode;
   locale: string;
   namespaces: string[];
-  resources: Record<string, unknown>;
+  resources: Resource;
 }) {
   const instance = useMemo(() => {
     const i18nInstance = createInstance();
