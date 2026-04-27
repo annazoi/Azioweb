@@ -144,7 +144,7 @@
           "Natural Language Processing (NLP) sentiment scoring",
           "Automated alert triggers for negative sentiment"
         ],
-        "details": "Derived from the Aura platform, this standalone dashboard specializes in brand monitoring and provides deep dives into public perception."
+        "details": "A social networking application where users can share posts, interact with others, and discover short-form videos and content through an engaging feed."
       },
       "auraCall": {
         "description": "Secure, low-latency video and voice calling for modern teams.",
