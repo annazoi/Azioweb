@@ -118,7 +118,7 @@ export default function Navbar() {
 							<span
 								className={classNames(
 									item.current ? 'text-white' : 'text-slate-500 group-hover:text-white',
-									'text-5xl font-black transition-colors tracking-tighter',
+									'text-4xl font-black transition-colors tracking-tighter',
 								)}
 							>
 								{item.name}

@@ -164,9 +164,11 @@ const Experience = () => {
 		}
 	};
 	return (
-		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-32 pt-20">
-			<div className="flex flex-col items-center text-center gap-4 mb-24">
-				<span className="text-white/40 text-[10px] font-bold tracking-[0.5em] uppercase">{t('experience.tag')}</span>
+		<div id="clients" className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-32 pt-10">
+			<div className="flex flex-col items-center text-center gap-4 mb-8 md:mb-24">
+				<span className="text-white/40 text-[10px] font-bold tracking-[0.5em] uppercase">
+					{t('experience.tag')}
+				</span>
 				<h2 className="header font-black text-white tracking-tighter">{t('experience.title')}</h2>
 			</div>
 
