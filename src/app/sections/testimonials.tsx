@@ -7,7 +7,7 @@ const Testimonials = () => {
 		{
 			id: 1,
 			content:
-				'Azioweb completely transformed our digital presence. They took our vague ideas and built a platform that outshines our competitors. Their technical expertise and communication are unmatched.',
+				'Azioweb completely transformed our product. They took our vague ideas and delivered a polished platform—with AI features we actually shipped to customers. Technical depth and communication were outstanding.',
 			author: 'Sarah Jenkins',
 			role: 'CTO, TechFlow Inc.',
 			initials: 'SJ',
@@ -15,7 +15,7 @@ const Testimonials = () => {
 		{
 			id: 2,
 			content:
-				'Working with them was an absolute pleasure. They delivered our MVP ahead of schedule and the code quality was exceptional. Highly recommended for any serious SaaS project.',
+				'Working with them was an absolute pleasure. They delivered our MVP ahead of schedule, wired in smart automation where it counted, and the codebase stayed clean. Highly recommended for AI-forward SaaS.',
 			author: 'Marcus Thorne',
 			role: 'Founder, SaaSify',
 			initials: 'MT',

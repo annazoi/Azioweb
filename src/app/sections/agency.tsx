@@ -6,15 +6,17 @@ const Agency = () => {
 	const values = [
 		{
 			title: 'Quality First',
-			description: 'We never compromise on code quality or user experience. Every detail matters.',
+			description:
+				'Solid engineering and UX—even more important when AI is in the loop. We test, observe, and harden integrations before users depend on them.',
 		},
 		{
 			title: 'Client-Centric',
-			description: 'Your success is our success. We build long-term partnerships, not just projects.',
+			description: 'Your success is our success. We ship alongside you—from discovery to models in production—with clear milestones and measurable outcomes.',
 		},
 		{
 			title: 'Agile & Adaptive',
-			description: 'We iterate rapidly, stay flexible to changes, and deliver value consistently.',
+			description:
+				'Models, APIs, and product needs move fast. We iterate in short loops so your AI capabilities improve continuously without compromising stability.',
 		},
 	];
 
@@ -26,8 +28,8 @@ const Agency = () => {
 					The Azioweb <span className="text-gradient">Story</span>
 				</h2>
 				<p className="text-slate-400 max-w-2xl leading-relaxed text-sm italic mx-auto">
-					We are a boutique software development agency, forged by a passion for cutting-edge technology and
-					impactful design.
+					We are an AI-focused product studio—pairing sharp product craft with practical ML and LLM integrations
+					that belong in your app, not slide decks.
 				</p>
 			</div>
 
@@ -45,9 +47,9 @@ const Agency = () => {
 							developers and designers.
 						</p>
 						<p className="text-slate-400 text-xs leading-relaxed italic">
-							We were founded with a simple goal: build software that stands out. Whether it's a high-converting
-							landing page, a complex SaaS platform, or a native mobile app, our expert team brings decades of
-							combined experience to ensure your product isn't just functional—it's phenomenal.
+							We were founded to build software that stands out—including intelligent features where they save
+							time, boost retention, or unlock new workflows. From SaaS and marketplaces to native mobile, we ship
+							AI integrations you can run, monitor, and trust.
 						</p>
 					</div>
 				</div>

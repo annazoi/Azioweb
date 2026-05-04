@@ -38,8 +38,9 @@ export async function generateMetadata({
 	return {
 		title: 'Azioweb | Book a Call',
 		description:
-			'Book a call with AzioWeb to discuss your software development needs. We partner with ambitious brands to transform complex ideas into robust, enterprise-grade web and mobile applications.',
-		keywords: 'book a call, software development, agency, web development, web design, Next.js, React, mobile apps',
+			'Book a call with Azioweb—an AI-focused product studio. Discuss web and mobile roadmaps with practical AI integrations, from first prototype to scalable production releases.',
+		keywords:
+			'book a call, AI product development, AI integration, LLM consulting, web development, mobile apps, Next.js, React',
 		alternates: {
 			canonical: `/${locale}`,
 			languages: languageAlternates,

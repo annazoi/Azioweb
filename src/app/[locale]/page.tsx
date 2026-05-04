@@ -13,10 +13,11 @@ import Contact from '@/app/sections/contact';
 import Footer from '@/components/ui/footer';
 
 export const metadata = {
-	title: 'Azioweb | Premium Software Development Agency',
+	title: 'Azioweb | AI-First Product Studio',
 	description:
-		'Azioweb is a premium software development agency. We partner with ambitious brands to transform complex ideas into robust, enterprise-grade web and mobile applications.',
-	keywords: 'software development, agency, web development, web design, Next.js, React, mobile apps',
+		'Azioweb is an AI-focused product studio. We build web and mobile applications with production-ready AI integrations—copilots, automation, retrieval, and custom models tailored to your product.',
+	keywords:
+		'AI software development, AI integration, LLM apps, web development, mobile apps, Next.js, React, React Native, product studio',
 };
 
 export const ParallaxSection = ({

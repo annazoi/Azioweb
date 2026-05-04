@@ -1,8 +1,8 @@
 {
 	"hero": {
-		"title_part1": "We build scalable, high-performance",
-		"title_part2": "Digital Products.",
-		"description": "Azioweb is a premium software development agency. We partner with ambitious brands to transform complex ideas into robust, enterprise-grade web and mobile applications.",
+		"title_part1": "AI-focused products:",
+		"title_part2": "web, mobile & smart integrations.",
+		"description": "Azioweb is an AI-first product studio. We design and ship web and mobile applications with practical AI integrations - copilots, automation, search, and custom models - embedded where they create real value for users and operations.",
 		"book_call": "Book a Discovery Call",
 		"explore_services": "Explore Our Services",
 		"stats": {
@@ -23,14 +23,14 @@
 			"contact": "Contact"
 		},
 		"cta": {
-			"ready": "Ready to build your legacy?",
+			"ready": "Ready to ship AI-powered software?",
 			"getInTouch": "Get in Touch"
 		},
 		"location": "Athens, GR"
 	},
 	"services": {
 		"title": "Services We Offer",
-		"subtitle": "We don't just build features, we architect ecosystems that grow with your user base.",
+		"subtitle": "From core product engineering to LLM features and data pipelines, we architect systems that scale, and stay intelligent, as your user base grows.",
 		"hashTag": "Services",
 		"explore": "Explore Services",
 		"cta": {
@@ -40,19 +40,19 @@
 		"cards": {
 			"web": {
 				"name": "Web Development",
-				"description": "Tailored websites that represent your brand and help your business grow, including e-commerce, booking platforms, and custom solutions."
+				"description": "High-performance web apps and platforms with AI-assisted UX, personalization, and admin tooling where it matters."
 			},
 			"mobile": {
 				"name": "Mobile Development",
-				"description": "Cross-platform mobile applications with a native feel, built for both iOS and Android."
+				"description": "Cross-platform iOS and Android apps with native feel: on-device and cloud AI features wired into the product experience."
 			},
 			"saas": {
 				"name": "Fast MVP",
-				"description": "Rapid prototyping and launch strategies for startups looking to validate ideas in weeks, not months."
+				"description": "Rapid builds that still leave room for AI: validate the idea, ship core flows, and layer intelligent features without painting yourself into a corner."
 			},
 			"ai": {
 				"name": "AI Integration",
-				"description": "Automation and smart solutions that improve workflows and streamline business processes."
+				"description": "Production-grade AI in your stack: prompts and agents, RAG over your data, embeddings, moderation, fine-tuning roadmaps, and observability."
 			},
 			"api": {
 				"name": "Integrations",
@@ -85,7 +85,7 @@
 			},
 			"build": {
 				"name": "Precision Build",
-				"description": "Development using the latest high-performance tech stacks."
+				"description": "Modern full-stack engineering with AI features integrated securely, observable, and ready to iterate."
 			},
 			"launch": {
 				"name": "Scale and Launch",
@@ -130,10 +130,10 @@
 					"Real-time social media data ingestion",
 					"Natural Language Processing (NLP) sentiment scoring"
 				],
-				"details": "A social networking application where users can share posts, interact with others, and discover short-form videos and content through an engaging feed."
+				"details": "Operations and marketing teams use Relay to monitor brand health, trigger alerts on sentiment shifts, and act on NLP-driven summaries instead of drowning in raw feeds."
 			},
 			"auraCall": {
-				"description": "Secure, low-latency video and voice calling for modern teams.",
+				"description": "Secure, low-latency video and voice calling for modern teams—with room for transcription and AI meeting helpers.",
 				"tag": "COMMUNICATION",
 				"highlights": [
 					"WebRTC-based low-latency architecture",
@@ -149,7 +149,7 @@
 		"titlePrefix": "Let's build something",
 		"titleAccent": "amazing",
 		"titleSuffix": "together.",
-		"description": "Ready to transform your ideas into reality? Tell us about your project, and our team will get back to you with a comprehensive proposal.",
+		"description": "Tell us what you’re building: we’ll propose a path that includes pragmatic AI integrations, timelines, and how we keep models and data secure.",
 		"form": {
 			"firstName": "First name",
 			"firstNameLabel": "First name *",
@@ -168,7 +168,7 @@
 	"book": {
 		"titlePrefix": "Schedule a",
 		"titleAccent": "Discovery Call.",
-		"description": "Choose a time that works best for you. Let's discuss your next project and build something extraordinary together.",
+		"description": "Choose a time that works for you. We’ll unpack your roadmap, where AI fits, and how we ship integrations your users can rely on.",
 		"backgroundAlt": "Background"
 	},
 	"projectModal": {
@@ -197,13 +197,21 @@
 				"name": "Enterprise App",
 				"price": "From $40k",
 				"description": "Ideal for growing businesses requiring scalable applications.",
-				"features": ["Full-stack custom development", "Advanced UI/UX and Prototyping", "3-6 months delivery"]
+				"features": [
+					"Full-stack custom development with AI integrations",
+					"Advanced UI/UX and Prototyping",
+					"3-6 months delivery"
+				]
 			},
 			"dedicated": {
 				"name": "Dedicated Team",
 				"price": "Retainer",
 				"description": "Ongoing development, maintenance, and expert support.",
-				"features": ["Dedicated full-stack squad", "Agile sprint management", "24/7 priority support"]
+				"features": [
+					"Dedicated full-stack squad",
+					"Agile sprint management",
+					"Priority support with ongoing AI and integration iteration"
+				]
 			}
 		}
 	},
@@ -226,7 +234,7 @@
 			},
 			{
 				"question": "What technologies do you specialize in?",
-				"answer": "We primarily use modern web and mobile technologies: React, Next.js, and Tailwind CSS for the frontend; Node.js, NestJS, and PostgreSQL for the backend; and React Native for mobile apps."
+				"answer": "We build with modern web and mobile stacks—React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, and React Native—and we integrate AI through LLM APIs, embeddings and vector stores, agent workflows, and solid evaluation and guardrails so features stay reliable in production."
 			},
 			{
 				"question": "How do we communicate during the project?",

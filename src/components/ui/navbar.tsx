@@ -85,9 +85,9 @@ export default function Navbar() {
 								))}
 							</div>
 						</div>
-						<div className="hidden sm:flex sm:ml-6 items-center">
+						{/* <div className="hidden sm:flex sm:ml-6 items-center">
 							<LanguageSwitcher />
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
