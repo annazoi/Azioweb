@@ -1,8 +1,8 @@
 {
 	"hero": {
-		"title_part1": "AI-focused products:",
-		"title_part2": "web, mobile & smart integrations.",
-		"description": "Azioweb is an AI-first product studio. We design and ship web and mobile applications with practical AI integrations - copilots, automation, search, and custom models - embedded where they create real value for users and operations.",
+		"title_part1": "AI-powered products",
+		"title_part2": "that bring more leads.",
+		"description": "We build web and mobile products with practical AI to help you get leads, convert faster, and grow.",
 		"book_call": "Book a Discovery Call",
 		"explore_services": "Explore Our Services",
 		"stats": {
@@ -30,7 +30,7 @@
 	},
 	"services": {
 		"title": "Services We Offer",
-		"subtitle": "From core product engineering to LLM features and data pipelines, we architect systems that scale, and stay intelligent, as your user base grows.",
+		"subtitle": "From idea to launch, we build simple, AI-ready products that scale.",
 		"hashTag": "Services",
 		"explore": "Explore Services",
 		"cta": {
@@ -40,19 +40,19 @@
 		"cards": {
 			"web": {
 				"name": "Web Development",
-				"description": "High-performance web apps and platforms with AI-assisted UX, personalization, and admin tooling where it matters."
+				"description": "Fast websites and web apps that turn visitors into leads."
 			},
 			"mobile": {
 				"name": "Mobile Development",
-				"description": "Cross-platform iOS and Android apps with native feel: on-device and cloud AI features wired into the product experience."
+				"description": "iOS and Android apps with clean flows and useful AI features."
 			},
 			"saas": {
 				"name": "Fast MVP",
-				"description": "Rapid builds that still leave room for AI: validate the idea, ship core flows, and layer intelligent features without painting yourself into a corner."
+				"description": "Launch fast, test demand, and improve with real user feedback."
 			},
 			"ai": {
 				"name": "AI Integration",
-				"description": "Production-grade AI in your stack: prompts and agents, RAG over your data, embeddings, moderation, fine-tuning roadmaps, and observability."
+				"description": "Add practical AI automation and assistants that save time."
 			},
 			"api": {
 				"name": "Integrations",
@@ -60,15 +60,15 @@
 			},
 			"uiux": {
 				"name": "UI/UX Design",
-				"description": "Data-driven product design that prioritizes user experience, aesthetics, and optimal conversion rates."
+				"description": "Clear, friendly design that improves trust and conversion."
 			},
 			"cloud": {
 				"name": "Cloud Infrastructure",
-				"description": "We design, migrate, and manage scalable cloud infrastructures ensuring high availability and maximum security."
+				"description": "Stable and secure cloud setup, ready for growth."
 			},
 			"seo": {
 				"name": "Performance and SEO",
-				"description": "We optimize your applications for maximum speed and search engine visibility to drive organic growth."
+				"description": "Better speed and SEO so more people find your business."
 			}
 		}
 	},
@@ -77,19 +77,19 @@
 		"steps": {
 			"discovery": {
 				"name": "Discovery",
-				"description": "Deep dive into your brand architecture and market positioning."
+				"description": "We learn your goals, audience, and priorities."
 			},
 			"design": {
 				"name": "Curated Design",
-				"description": "Applying our signature editorial lens to your digital interface."
+				"description": "We design a clear and user-friendly experience."
 			},
 			"build": {
 				"name": "Precision Build",
-				"description": "Modern full-stack engineering with AI features integrated securely, observable, and ready to iterate."
+				"description": "We build fast, add practical AI, and keep it easy to scale."
 			},
 			"launch": {
 				"name": "Scale and Launch",
-				"description": "Global deployment and continuous optimization for growth."
+				"description": "We launch, track results, and keep improving."
 			}
 		}
 	},
@@ -149,7 +149,7 @@
 		"titlePrefix": "Let's build something",
 		"titleAccent": "amazing",
 		"titleSuffix": "together.",
-		"description": "Tell us what you’re building: we’ll propose a path that includes pragmatic AI integrations, timelines, and how we keep models and data secure.",
+		"description": "Tell us what you want to build. We share a clear plan, timeline, and where AI can help.",
 		"form": {
 			"firstName": "First name",
 			"firstNameLabel": "First name *",
@@ -168,7 +168,7 @@
 	"book": {
 		"titlePrefix": "Schedule a",
 		"titleAccent": "Discovery Call.",
-		"description": "Choose a time that works for you. We’ll unpack your roadmap, where AI fits, and how we ship integrations your users can rely on.",
+		"description": "Pick a time and we will map your goals and best AI opportunities.",
 		"backgroundAlt": "Background"
 	},
 	"projectModal": {
@@ -183,20 +183,20 @@
 		"tag": "Flexible Plans",
 		"titlePrefix": "Transparent",
 		"titleAccent": "Pricing",
-		"subtitle": "No hidden fees, no surprises. We offer structured engagements tailored to your scale.",
+		"subtitle": "Simple pricing, clear scope, no surprises.",
 		"mostPopular": "Most Popular",
 		"getStarted": "Get Started",
 		"tiers": {
 			"essential": {
 				"name": "MVP / Startup",
 				"price": "From $15k",
-				"description": "Perfect for early-stage startups needing a quick, robust MVP.",
+				"description": "Great for early teams that need to launch quickly.",
 				"features": ["High-conversion landing page", "Core application features", "4-8 weeks delivery"]
 			},
 			"growth": {
 				"name": "Enterprise App",
 				"price": "From $40k",
-				"description": "Ideal for growing businesses requiring scalable applications.",
+				"description": "For growing companies that need scalable products with AI.",
 				"features": [
 					"Full-stack custom development with AI integrations",
 					"Advanced UI/UX and Prototyping",
@@ -206,7 +206,7 @@
 			"dedicated": {
 				"name": "Dedicated Team",
 				"price": "Retainer",
-				"description": "Ongoing development, maintenance, and expert support.",
+				"description": "A long-term team for growth, support, and AI improvements.",
 				"features": [
 					"Dedicated full-stack squad",
 					"Agile sprint management",
@@ -220,25 +220,22 @@
 		"titlePrefix": "Frequently Asked",
 		"titleAccent": "Questions",
 		"items": [
-			{
-				"question": "How much does a typical project cost?",
-				"answer": "Project costs vary widely based on scope, complexity, and technology stack. Generally, our projects start at $10k for specialized MVPs and can scale into enterprise budgets. We provide detailed estimates after our discovery call."
-			},
+			
 			{
 				"question": "How long does it take to build an application?",
-				"answer": "A simple landing page or MVP can take 4-6 weeks. More complex SaaS platforms or mobile applications typically take 3-6 months. We break down the timeline into clear milestones during planning."
+				"answer": "A simple MVP takes about 4-6 weeks. Larger products take 3-6 months with clear milestones."
 			},
 			{
 				"question": "Do you provide ongoing support after launch?",
-				"answer": "Yes! We offer post-launch maintenance, bug-fixes, and continuous feature development retainers to ensure your application stays secure and up-to-date as your user base grows."
+				"answer": "Yes. We offer support, fixes, and new features after launch."
 			},
 			{
 				"question": "What technologies do you specialize in?",
-				"answer": "We build with modern web and mobile stacks—React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, and React Native—and we integrate AI through LLM APIs, embeddings and vector stores, agent workflows, and solid evaluation and guardrails so features stay reliable in production."
+				"answer": "We use modern web and mobile tools and add practical AI that drives real results."
 			},
 			{
 				"question": "How do we communicate during the project?",
-				"answer": "We believe in total transparency. You'll receive weekly updates, access to our project management board (Jira/Asana), and direct communication with the lead engineers via a private Slack channel."
+				"answer": "You get weekly updates, a shared project board, and direct contact with our team."
 			}
 		]
 	},
