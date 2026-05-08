@@ -56,7 +56,7 @@ const Experience = () => {
 				svyazCreateChat,
 			],
 			description: t('experience.projects.svyaz.description'),
-			url: 'https://svyaz.annazoi.dev/',
+			url: 'https://svyaz.azioweb.com/',
 			tag: t('experience.projects.svyaz.tag'),
 			highlights: [
 				t('experience.projects.svyaz.highlights.0'),
