@@ -71,9 +71,9 @@ export default function Home() {
 					<Experience />
 				</ParallaxSection>
 
-				{/* <ParallaxSection style={{ backgroundColor: '#1A1B21' }}>
+				<ParallaxSection style={{ backgroundColor: '#15171d', backgroundAttachment: 'unset' }}>
 					<FAQ />
-				</ParallaxSection> */}
+				</ParallaxSection>
 
 				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
 					<Contact />
