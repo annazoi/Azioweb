@@ -97,7 +97,7 @@
 		"tag": "The Showcase",
 		"title": "Built with Precision.",
 		"projects": {
-			"aura": {
+			"svyaz": {
 				"description": "Next-gen collaboration and secure messaging system with AI-powered features.",
 				"tag": "AI/ML",
 				"highlights": [
@@ -132,7 +132,7 @@
 				],
 				"details": "Operations and marketing teams use Relay to monitor brand health, trigger alerts on sentiment shifts, and act on NLP-driven summaries instead of drowning in raw feeds."
 			},
-			"auraCall": {
+			"svyazCall": {
 				"description": "Secure, low-latency video and voice calling for modern teams—with room for transcription and AI meeting helpers.",
 				"tag": "COMMUNICATION",
 				"highlights": [
@@ -140,7 +140,7 @@
 					"End-to-end encrypted voice and video streams",
 					"Integrated screen sharing and collaboration tools"
 				],
-				"details": "Aura Call prioritizes stability and security, ensuring teams can connect reliably from any location without compromising on privacy."
+				"details": "Svyaz Call prioritizes stability and security, ensuring teams can connect reliably from any location without compromising on privacy."
 			}
 		}
 	},

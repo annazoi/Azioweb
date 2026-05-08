@@ -9,16 +9,16 @@ import { useTranslation } from 'react-i18next';
 import latherlab from '@/assets/projects/latherlab.png';
 import relay from '@/assets/projects/relay.png';
 
-import aura from '@/assets/projects/aura/aura.jpg';
-import auraLogin from '@/assets/projects/aura/login.jpg';
-import auraChats from '@/assets/projects/aura/chats.jpg';
-import auraChat from '@/assets/projects/aura/chat.jpg';
-import auraAi from '@/assets/projects/aura/ai.jpg';
-import auraAiProgressing from '@/assets/projects/aura/ai-1.jpg';
-import auraSummary from '@/assets/projects/aura/ai-2.jpg';
-import auraSentimentAnlysis from '@/assets/projects/aura/ai-3.jpg';
-import auraCall from '@/assets/projects/aura/call.jpg';
-import auraCreateChat from '@/assets/projects/aura/create-chat.jpg';
+import svyaz from '@/assets/projects/svyaz/svyaz.jpg';
+import svyazLogin from '@/assets/projects/svyaz/login.jpg';
+import svyazChats from '@/assets/projects/svyaz/chats.jpg';
+import svyazChat from '@/assets/projects/svyaz/chat.jpg';
+import svyazAi from '@/assets/projects/svyaz/ai.jpg';
+import svyazAiProgressing from '@/assets/projects/svyaz/ai-1.jpg';
+import svyazSummary from '@/assets/projects/svyaz/ai-2.jpg';
+import svyazSentimentAnlysis from '@/assets/projects/svyaz/ai-3.jpg';
+import svyazCall from '@/assets/projects/svyaz/call.jpg';
+import svyazCreateChat from '@/assets/projects/svyaz/create-chat.jpg';
 import habitry from '@/assets/projects/habitry/habitry.png';
 import habitryLanding from '@/assets/projects/habitry/landing.jpg';
 import habitryDashboard from '@/assets/projects/habitry/dashboard.jpg';
@@ -42,28 +42,28 @@ const Experience = () => {
 	const sites: Project[] = [
 		{
 			id: 'site-2',
-			name: 'Aura Platform',
-			photo: aura,
+			name: 'Svyaz Platform',
+			photo: svyaz,
 			photos: [
-				auraLogin,
-				auraChats,
-				auraChat,
-				auraAi,
-				auraAiProgressing,
-				auraSummary,
-				auraSentimentAnlysis,
-				auraCall,
-				auraCreateChat,
+				svyazLogin,
+				svyazChats,
+				svyazChat,
+				svyazAi,
+				svyazAiProgressing,
+				svyazSummary,
+				svyazSentimentAnlysis,
+				svyazCall,
+				svyazCreateChat,
 			],
-			description: t('experience.projects.aura.description'),
-			url: 'https://aura.annazoi.dev/',
-			tag: t('experience.projects.aura.tag'),
+			description: t('experience.projects.svyaz.description'),
+			url: 'https://svyaz.annazoi.dev/',
+			tag: t('experience.projects.svyaz.tag'),
 			highlights: [
-				t('experience.projects.aura.highlights.0'),
-				t('experience.projects.aura.highlights.1'),
-				t('experience.projects.aura.highlights.2'),
+				t('experience.projects.svyaz.highlights.0'),
+				t('experience.projects.svyaz.highlights.1'),
+				t('experience.projects.svyaz.highlights.2'),
 			],
-			details: t('experience.projects.aura.details'),
+			details: t('experience.projects.svyaz.details'),
 		},
 		{
 			id: 'site-1',
@@ -137,18 +137,18 @@ const Experience = () => {
 		},
 		{
 			id: 'site-6',
-			name: 'Aura Call',
-			photo: auraCall,
-			photos: [auraCall],
-			description: t('experience.projects.auraCall.description'),
-			url: 'https://aura.annazoi.dev/',
-			tag: t('experience.projects.auraCall.tag'),
+			name: 'Svyaz Call',
+			photo: svyazCall,
+			photos: [svyazCall],
+			description: t('experience.projects.svyazCall.description'),
+			url: 'https://svyaz.annazoi.dev/',
+			tag: t('experience.projects.svyazCall.tag'),
 			highlights: [
-				t('experience.projects.auraCall.highlights.0'),
-				t('experience.projects.auraCall.highlights.1'),
-				t('experience.projects.auraCall.highlights.2'),
+				t('experience.projects.svyazCall.highlights.0'),
+				t('experience.projects.svyazCall.highlights.1'),
+				t('experience.projects.svyazCall.highlights.2'),
 			],
-			details: t('experience.projects.auraCall.details'),
+			details: t('experience.projects.svyazCall.details'),
 		},
 	];
 

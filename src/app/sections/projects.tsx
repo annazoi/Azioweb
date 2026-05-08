@@ -6,16 +6,16 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 
-import aura from '@/assets/projects/aura.jpg';
-import auraLogin from '@/assets/projects/aura/login.jpg';
-import auraChats from '@/assets/projects/aura/chats.jpg';
-import auraChat from '@/assets/projects/aura/chat.jpg';
-import auraAi from '@/assets/projects/aura/ai.jpg';
-import auraAiProgressing from '@/assets/projects/aura/ai-1.jpg';
-import auraSummary from '@/assets/projects/aura/ai-2.jpg';
-import auraSentimentAnlysis from '@/assets/projects/aura/ai-3.jpg';
-import auraCall from '@/assets/projects/aura/call.jpg';
-import auraCreateChat from '@/assets/projects/aura/create-chat.jpg';
+import svyaz from '@/assets/projects/svyaz/svyaz.jpg';
+import svyazLogin from '@/assets/projects/svyaz/login.jpg';
+import svyazChats from '@/assets/projects/svyaz/chats.jpg';
+import svyazChat from '@/assets/projects/svyaz/chat.jpg';
+import svyazAi from '@/assets/projects/svyaz/ai.jpg';
+import svyazAiProgressing from '@/assets/projects/svyaz/ai-1.jpg';
+import svyazSummary from '@/assets/projects/svyaz/ai-2.jpg';
+import svyazSentimentAnlysis from '@/assets/projects/svyaz/ai-3.jpg';
+import svyazCall from '@/assets/projects/svyaz/call.jpg';
+import svyazCreateChat from '@/assets/projects/svyaz/create-chat.jpg';
 import habitryLanding from '@/assets/projects/habitry/landing.jpg';
 import habitryDashboard from '@/assets/projects/habitry/dashboard.jpg';
 import habitryAddActivity from '@/assets/projects/habitry/addActivity.jpg';
@@ -39,21 +39,21 @@ const Projects = () => {
 	const projects: Project[] = [
 		{
 			id: '1',
-			name: 'Aura Platform',
-			photo: aura,
+			name: 'Svyaz',
+			photo: svyaz,
 			photos: [
-				auraLogin,
-				auraChats,
-				auraChat,
-				auraAi,
-				auraAiProgressing,
-				auraSummary,
-				auraSentimentAnlysis,
-				auraCall,
-				auraCreateChat,
+				svyazLogin,
+				svyazChats,
+				svyazChat,
+				svyazAi,
+				svyazAiProgressing,
+				svyazSummary,
+				svyazSentimentAnlysis,
+				svyazCall,
+				svyazCreateChat,
 			],
 			description: 'Next-Gen collaboration and secure messaging system with AI-powered task management.',
-			url: 'https://aura.annazoi.dev/',
+			url: 'https://svyaz.annazoi.dev/',
 			tag: 'AI/ML',
 		},
 		{
@@ -87,11 +87,11 @@ const Projects = () => {
 		},
 		{
 			id: '4',
-			name: 'Aura Analytics',
-			photo: auraSummary,
-			photos: [auraSummary, auraSentimentAnlysis, auraLogin],
+			name: 'Svyaz Analytics',
+			photo: svyazSummary,
+			photos: [svyazSummary, svyazSentimentAnlysis, svyazLogin],
 			description: 'Comprehensive data visualization, sentiment analysis, and reporting dashboard.',
-			url: 'https://aura.annazoi.dev/',
+			url: 'https://svyaz.annazoi.dev/',
 			tag: 'DASHBOARD',
 		},
 	];
