@@ -36,6 +36,7 @@ import drobeSaveClothingItem from '@/assets/projects/drobe/save_clothing_item.jp
 import drobeArchives from '@/assets/projects/drobe/archives.jpg';
 import drobeClothingOverview from '@/assets/projects/drobe/clothing_overview.jpg';
 import drobeCreatedClothingItem from '@/assets/projects/drobe/created_clothing_item.jpg';
+import domus from '@/assets/projects/domus/domus.jpg';
 
 const Experience = () => {
 	const { t } = useTranslation();
@@ -105,21 +106,18 @@ const Experience = () => {
 			],
 			details: t('experience.projects.drobe.details'),
 		},
+
 		{
-			id: 'site-3',
-			name: 'Habitry App',
-			photo: habitry,
-			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
-			description: t('experience.projects.habitry.description'),
-			url: 'https://habitry.annazoi.dev/',
-			tag: t('experience.projects.habitry.tag'),
-			highlights: [
-				t('experience.projects.habitry.highlights.0'),
-				t('experience.projects.habitry.highlights.1'),
-				t('experience.projects.habitry.highlights.2'),
-			],
-			details: t('experience.projects.habitry.details'),
+			id: 'site-6',
+			name: 'Domus Platform',
+			photo: domus,
+			photos: [domus],
+			description: t('experience.projects.domus.description'),
+			url: 'https://domus.azioweb.com/',
+			tag: t('experience.projects.domus.tag'),
+			details: t('experience.projects.domus.details'),
 		},
+		
 		{
 			id: 'site-5',
 			name: 'Relay Platform',
@@ -136,20 +134,21 @@ const Experience = () => {
 			details: t('experience.projects.relay.details'),
 		},
 		{
-			id: 'site-6',
-			name: 'Svyaz Call',
-			photo: svyazCall,
-			photos: [svyazCall],
-			description: t('experience.projects.svyazCall.description'),
-			url: 'https://svyaz.annazoi.dev/',
-			tag: t('experience.projects.svyazCall.tag'),
+			id: 'site-3',
+			name: 'Habitry App',
+			photo: habitry,
+			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
+			description: t('experience.projects.habitry.description'),
+			url: 'https://habitry.annazoi.dev/',
+			tag: t('experience.projects.habitry.tag'),
 			highlights: [
-				t('experience.projects.svyazCall.highlights.0'),
-				t('experience.projects.svyazCall.highlights.1'),
-				t('experience.projects.svyazCall.highlights.2'),
+				t('experience.projects.habitry.highlights.0'),
+				t('experience.projects.habitry.highlights.1'),
+				t('experience.projects.habitry.highlights.2'),
 			],
-			details: t('experience.projects.svyazCall.details'),
+			details: t('experience.projects.habitry.details'),
 		},
+	
 	];
 
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);

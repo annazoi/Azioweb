@@ -1,7 +1,6 @@
 import Navbar from '@/components/ui/navbar';
 import Hero from '@/app/sections/hero';
 import Services from '@/app/sections/services';
-import Projects from '@/app/sections/projects';
 import Experience from '@/app/sections/experience';
 import Process from '@/app/sections/process';
 import Testimonials from '@/app/sections/testimonials';
@@ -71,9 +70,9 @@ export default function Home() {
 					<Experience />
 				</ParallaxSection>
 
-				<ParallaxSection style={{ backgroundColor: '#15171d', backgroundAttachment: 'unset' }}>
+				{/* <ParallaxSection style={{ backgroundColor: '#15171d', backgroundAttachment: 'unset' }}>
 					<FAQ />
-				</ParallaxSection>
+				</ParallaxSection> */}
 
 				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
 					<Contact />

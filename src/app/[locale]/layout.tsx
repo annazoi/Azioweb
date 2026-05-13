@@ -41,6 +41,11 @@ export async function generateMetadata({
 			'Book a call with Azioweb—an AI-focused product studio. Discuss web and mobile roadmaps with practical AI integrations, from first prototype to scalable production releases.',
 		keywords:
 			'book a call, AI product development, AI integration, LLM consulting, web development, mobile apps, Next.js, React',
+		icons: {
+			icon: [{ url: '/logo.svg', type: 'image/svg+xml' }],
+			shortcut: ['/logo.svg'],
+			apple: [{ url: '/logo-white.svg' }],
+		},
 		alternates: {
 			canonical: `/${locale}`,
 			languages: languageAlternates,
