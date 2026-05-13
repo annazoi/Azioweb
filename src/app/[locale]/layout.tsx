@@ -42,9 +42,9 @@ export async function generateMetadata({
 		keywords:
 			'book a call, AI product development, AI integration, LLM consulting, web development, mobile apps, Next.js, React',
 		icons: {
-			icon: [{ url: '/logo.svg', type: 'image/svg+xml' }],
-			shortcut: ['/logo.svg'],
-			apple: [{ url: '/logo-white.svg' }],
+			icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+			shortcut: ['/favicon.ico'],
+			apple: [{ url: '/favicon.ico' }],
 		},
 		alternates: {
 			canonical: `/${locale}`,
