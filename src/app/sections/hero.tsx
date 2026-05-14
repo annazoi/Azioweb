@@ -1,85 +1,88 @@
 'use client';
 
-import './style.css';
-import { motion } from 'framer-motion';
-import CountUp from 'react-countup';
-import { ArrowRightIcon, CalendarDaysIcon } from '@heroicons/react/24/outline';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowDownIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'next/navigation';
+
+const HERO_BG = '/img/azioweb.jpg';
 
 const Hero = () => {
 	const { t } = useTranslation();
-	const params = useParams<{ locale: string }>();
-	const locale = params?.locale ?? 'en';
-	const stats = [
-		{ value: 10, label: t('hero.stats.projects'), suffix: '+' },
-		{ value: 100, label: t('hero.stats.satisfaction'), suffix: '%' },
-		{ value: 5, label: t('hero.stats.years'), suffix: '+' },
-		{ value: 10, label: t('hero.stats.developers'), suffix: '+' },
-	];
+	const sectionRef = useRef<HTMLElement>(null);
+	const [time, setTime] = useState('');
+
+	useEffect(() => {
+		const tick = () => {
+			setTime(
+				new Date().toLocaleTimeString('en-GB', {
+					hour: 'numeric',
+					minute: '2-digit',
+					hour12: true,
+					timeZone: 'Europe/London',
+				}),
+			);
+		};
+		tick();
+		const id = window.setInterval(tick, 30000);
+		return () => window.clearInterval(id);
+	}, []);
+
+	const { scrollYProgress } = useScroll({
+		target: sectionRef,
+		offset: ['start start', 'end start'],
+	});
+	const bgY = useTransform(scrollYProgress, [0, 1], [0, 180]);
 
 	return (
-		<div
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:mt-34 mt-20 hero flex flex-col md:gap-20 gap-10 relative"
+		<section
+			ref={sectionRef}
 			id="hero"
+			className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-black"
 		>
-			<div className="flex flex-col items-center text-center m-auto gap-8 lg:gap-10 relative z-10 pt-10">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
+			<motion.div
+				className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat will-change-transform"
+				style={{
+					backgroundImage: `url('${HERO_BG}')`,
+					y: bgY,
+					scale: 1.12,
+				}}
+			/>
+			<div className="absolute inset-0 z-[1] bg-black/55" aria-hidden />
+			<div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 pb-8 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
+				<motion.p
+					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
-					className="flex flex-col gap-6 items-center"
+					transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+					className="ml-auto w-full max-w-[22rem] text-left text-2xl font-medium leading-snug tracking-tight text-white sm:max-w-lg sm:text-3xl md:max-w-xl md:text-4xl lg:max-w-2xl lg:text-[2.65rem] lg:leading-[1.15]"
 				>
-					<h1 className="header lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-						{t('hero.title_part1')} <br className="hidden lg:block" />
-						<span className="text-gradient">{t('hero.title_part2')}</span>
-					</h1>
-
-					<p className="text-sm lg:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
-						{t('hero.description')}
-					</p>
-
-					<div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto justify-center">
+					{t('hero.statement')}
+				</motion.p>
+				<div className="min-h-[4rem] flex-1" aria-hidden />
+				<div className="mt-auto flex flex-col gap-6 sm:gap-10">
+					<div className="flex flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm">
+						<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+							<span>{t('hero.studioTag')}</span>
+							<ClockIcon className="size-4 shrink-0 opacity-80" strokeWidth={1.5} />
+							<span>
+								{time} {t('hero.locationLabel')}
+							</span>
+						</div>
 						<Link
-							href={`/${locale}/book`}
-							className="w-full sm:w-auto flex items-center justify-center gap-2 bg-secondary hover:bg-primary text-white px-8 py-4 rounded-xl md:rounded-lg font-semibold transition-all duration-300"
-						>
-							<span>{t('hero.book_call')}</span>
-							<CalendarDaysIcon className="size-5" />
-						</Link>
-						<a
 							href="#services"
-							className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl md:rounded-lg font-semibold transition-all duration-300 backdrop-blur-md"
+							className="flex items-center gap-2 self-start transition-opacity hover:opacity-70 sm:self-auto"
 						>
-							<span>{t('hero.explore_services')}</span>
-							<ArrowRightIcon className="size-5" />
-						</a>
+							<span>{t('hero.scrollExplore')}</span>
+							<ArrowDownIcon className="size-4" strokeWidth={2} />
+						</Link>
 					</div>
-				</motion.div>
+					<div className="overflow-hidden pb-2">
+						
+					</div>
+				</div>
 			</div>
-
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10 md:mt-10 mt-0 p-8 glass rounded-lg">
-				{stats.map((item, index) => (
-					<motion.div
-						key={index}
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: index * 0.1 }}
-						viewport={{ once: true, amount: 0.5 }}
-						className="text-center flex flex-col items-center justify-center"
-					>
-						<p className="md:text-4xl text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-secondary mb-2">
-							<CountUp end={item.value} duration={2.5} enableScrollSpy />
-							{item.suffix}
-						</p>
-						<span className="md:text-sm text-xs font-medium text-slate-300 uppercase tracking-widest">
-							{item.label}
-						</span>
-					</motion.div>
-				))}
-			</div>
-		</div>
+		</section>
 	);
 };
 

@@ -1,18 +1,14 @@
 {
 	"hero": {
-		"title_part1": "AI-powered products",
-		"title_part2": "web, mobile & smart integrations.",
-		"description": "Azioweb is an AI-focused product studio. We build web and mobile applications with production-ready AI integrations, automation, retrieval, and custom models tailored to your product.",
-		"book_call": "Book a Discovery Call",
-		"explore_services": "Explore Our Services",
-		"stats": {
-			"projects": "Successful Projects",
-			"satisfaction": "Client Satisfaction",
-			"years": "Years of Excellence",
-			"developers": "Expert Developers"
-		}
+		"statement": "Design for those who want to become a better version of themselves.",
+		"studioTag": "Global product design studio",
+		"scrollExplore": "Scroll to explore",
+		"watermark": "AZIOWEB",
+		"locationLabel": "London, UK"
 	},
 	"navbar": {
+		"menuLabel": ":: Menu",
+		"menuAvailability": "2/3 slots for May",
 		"openMenu": "Open main menu",
 		"closeMenu": "Close main menu",
 		"links": {
@@ -28,47 +24,37 @@
 		},
 		"location": "Athens, GR"
 	},
+	"about": {
+		"headline": "We craft design that turns ambitious ideas into products people trust.",
+		"col1BoldOpen": "About us.",
+		"col1Rest": "Azioweb is a research-driven product studio that treats every project like its own product. We go deep into your market and your users before designing a single screen.",
+		"col1BoldClose": "The result: digital experiences that don't just look sharp, they perform.",
+		"col2": "We design intuitive interfaces for web and mobile products, from first wireframe to development-ready files.",
+		"cta": "Explore our process"
+	},
 	"services": {
-		"title": "Services We Offer",
-		"subtitle": "From idea to launch, we build simple, AI-ready products that scale.",
-		"hashTag": "Services",
-		"explore": "Explore Services",
-		"cta": {
-			"title": "Ready to start building?",
-			"action": "Book a consultation"
-		},
+		"headlineLine1": "Our tools &",
+		"headlineLine2": "your brand.",
+		"intro": "We design products that live in the digital world: intuitive UX, sharp UI, immersive 3D and motion. From research to launch, we craft bold, seamless experiences.",
+		"ctaWork": "See how we work",
+		"infoLabel": "Info",
+		"cardCtaAria": "Book a consultation",
 		"cards": {
-			"web": {
-				"name": "Web Development",
-				"description": "Fast websites and web apps that turn visitors into leads."
+			"uxui": {
+				"title": "UX/UI Design",
+				"description": "Every screen has a purpose. From wireframes to pixel-perfect UI, we create experiences that guide users and drive business goals."
 			},
-			"mobile": {
-				"name": "Mobile Development",
-				"description": "iOS and Android apps with clean flows and useful AI features."
+			"nocode": {
+				"title": "No-code Development",
+				"description": "We build responsive, production-ready websites in Webflow and Framer, so your product launches faster without sacrificing quality. One team from concept to live site."
 			},
-			"saas": {
-				"name": "Fast MVP",
-				"description": "Launch fast, test demand, and improve with real user feedback."
+			"corporate": {
+				"title": "Corporate Design",
+				"description": "Pitch decks, brand presentations, and visual identities that match the ambition of your business. We design corporate materials that feel modern, polished, and unmistakably yours."
 			},
-			"ai": {
-				"name": "AI Integration",
-				"description": "Add practical AI automation and assistants that save time."
-			},
-			"api": {
-				"name": "Integrations",
-				"description": "Making your systems work together seamlessly."
-			},
-			"uiux": {
-				"name": "UI/UX Design",
-				"description": "Clear, friendly design that improves trust and conversion."
-			},
-			"cloud": {
-				"name": "Cloud Infrastructure",
-				"description": "Stable and secure cloud setup, ready for growth."
-			},
-			"seo": {
-				"name": "Performance and SEO",
-				"description": "Better speed and SEO so more people find your business."
+			"threeD": {
+				"title": "3D Design",
+				"description": "Immersive 3D visuals and motion design that give your product a cinematic edge. From animated product showcases to interface elements with depth."
 			}
 		}
 	},
@@ -94,8 +80,12 @@
 		}
 	},
 	"experience": {
-		"tag": "The Showcase",
-		"title": "Built with Precision.",
+		"headlineBold": "Our highlights.",
+		"headlineMuted": "Recent projects we're proud of.",
+		"introLeftBefore": "We work with startups, scaleups, and",
+		"introLeftBold": "established brands",
+		"introLeftAfter": "to launch digital products that stand out and convert.",
+		"introRight": "Explore how Azioweb has helped businesses elevate their digital presence.",
 		"projects": {
 			"svyaz": {
 				"description": "Next-gen collaboration and secure messaging system with AI-powered features.",
@@ -131,6 +121,12 @@
 					"Natural Language Processing (NLP) sentiment scoring"
 				],
 				"details": "Operations and marketing teams use Relay to monitor brand health, trigger alerts on sentiment shifts, and act on NLP-driven summaries instead of drowning in raw feeds."
+			},
+			"domus": {
+				"description": "Property and workspace discovery platform with listings, search, and tools for modern teams.",
+				"tag": "SAAS",
+				"highlights": ["Fast search and filters", "Scalable listing architecture"],
+				"details": "Domus helps teams surface the right spaces and workflows with a focused, performance-minded web experience."
 			},
 			"svyazCall": {
 				"description": "Secure, low-latency video and voice calling for modern teams—with room for transcription and AI meeting helpers.",
@@ -177,7 +173,21 @@
 		"visitSite": "Visit Site"
 	},
 	"footer": {
-		"copyright": "© {{yearText}} Azioweb. All rights reserved."
+		"locationLabel": "London, UK",
+		"headline": "Design for those who want to become a better version of themselves.",
+		"getInTouch": "Get in touch",
+		"copyrightCaps": "{{year}} AZIOWEB STUDIO, ALL RIGHTS RESERVED",
+		"exploreHeading": "Explore",
+		"socialsHeading": "Socials",
+		"linkHome": "Home",
+		"linkPricing": "Pricing",
+		"linkHowWeWork": "How we work",
+		"linkBehance": "Behance",
+		"linkLinkedIn": "LinkedIn",
+		"linkX": "The X",
+		"terms": "TERMS",
+		"privacy": "PRIVACY POLICY",
+		"watermark": "AZIOWEB"
 	},
 	"pricing": {
 		"tag": "Flexible Plans",

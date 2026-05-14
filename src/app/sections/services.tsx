@@ -1,276 +1,121 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect, useCallback } from 'react';
-import {
-	ComputerDesktopIcon,
-	DevicePhoneMobileIcon,
-	CloudIcon,
-	PaintBrushIcon,
-	CodeBracketIcon,
-	ChartBarIcon,
-	ServerStackIcon,
-	CpuChipIcon,
-	ArrowRightIcon,
-	ArrowLeftIcon,
-} from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { ArrowUpRightIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'next/navigation';
+
+const toolBadges = [
+	{ key: 'wf', abbr: 'Wf', className: 'bg-[#4353FF] text-white' },
+	{ key: 'fg', abbr: 'Fg', className: 'bg-[#F24E1E] text-white' },
+	{ key: 'c4', abbr: 'C4', className: 'bg-[#4A4A4A] text-white' },
+	{ key: 'fr', abbr: 'Fr', className: 'bg-[#0055FF] text-white' },
+	{ key: 'sp', abbr: 'Sp', className: 'bg-[#FF6B9D] text-white' },
+	{ key: 'ae', abbr: 'Ae', className: 'bg-[#9999FF] text-white' },
+	{ key: 'ps', abbr: 'Ps', className: 'bg-[#31A8FF] text-white' },
+	{ key: 'pp', abbr: 'Pp', className: 'bg-[#D24726] text-white' },
+	{ key: 'st', abbr: '', className: 'bg-[#E8E8E8] text-neutral-700', icon: SparklesIcon },
+	{ key: 'ai', abbr: 'Ai', className: 'bg-[#FF9A00] text-white' },
+] as const;
+
+function ToolBadgeRow({ className }: { className: string }) {
+	return (
+		<div className={className} aria-hidden>
+			{toolBadges.map((tool) => {
+				const Icon = 'icon' in tool ? tool.icon : null;
+				return (
+					<div
+						key={tool.key}
+						className={`flex size-10 shrink-0 items-center justify-center rounded-xl text-[11px] font-bold sm:size-11 sm:text-xs ${tool.className}`}
+					>
+						{Icon ? <Icon className="size-5" strokeWidth={1.8} /> : tool.abbr}
+					</div>
+				);
+			})}
+		</div>
+	);
+}
 
 const Services = () => {
 	const { t } = useTranslation();
-	const params = useParams<{ locale: string }>();
-	const locale = params?.locale ?? 'en';
-	const services = [
+	const cards = [
 		{
-			id: 'web',
-			name: t('services.cards.web.name'),
-			icon: ComputerDesktopIcon,
-			description: t('services.cards.web.description'),
+			id: 'uxui',
+			title: t('services.cards.uxui.title'),
+			description: t('services.cards.uxui.description'),
 		},
 		{
-			id: 'mobile',
-			name: t('services.cards.mobile.name'),
-			icon: DevicePhoneMobileIcon,
-			description: t('services.cards.mobile.description'),
+			id: 'nocode',
+			title: t('services.cards.nocode.title'),
+			description: t('services.cards.nocode.description'),
 		},
 		{
-			id: 'saas',
-			name: t('services.cards.saas.name'),
-			icon: CloudIcon,
-			description: t('services.cards.saas.description'),
+			id: 'corporate',
+			title: t('services.cards.corporate.title'),
+			description: t('services.cards.corporate.description'),
 		},
 		{
-			id: 'ai',
-			name: t('services.cards.ai.name'),
-			icon: CpuChipIcon,
-			description: t('services.cards.ai.description'),
-		},
-		{
-			id: 'api',
-			name: t('services.cards.api.name'),
-			icon: CodeBracketIcon,
-			description: t('services.cards.api.description'),
-		},
-		{
-			id: 'uiux',
-			name: t('services.cards.uiux.name'),
-			icon: PaintBrushIcon,
-			description: t('services.cards.uiux.description'),
-		},
-		{
-			id: 'cloud',
-			name: t('services.cards.cloud.name'),
-			icon: ServerStackIcon,
-			description: t('services.cards.cloud.description'),
-		},
-		{
-			id: 'seo',
-			name: t('services.cards.seo.name'),
-			icon: ChartBarIcon,
-			description: t('services.cards.seo.description'),
+			id: 'threeD',
+			title: t('services.cards.threeD.title'),
+			description: t('services.cards.threeD.description'),
 		},
 	];
 
-	// --- Mobile Infinite Slider Logic ---
-	const displayServices = services.length > 0 ? [services[services.length - 1], ...services, services[0]] : [];
-	const [currentIndex, setCurrentIndex] = useState(1);
-	const [transitionEnabled, setTransitionEnabled] = useState(true);
-	const [isTransitioning, setIsTransitioning] = useState(false);
-	const [touchStartX, setTouchStartX] = useState<number | null>(null);
-
-	const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
-	const handleTouchEnd = (e: React.TouchEvent) => {
-		if (touchStartX === null) return;
-		const diff = touchStartX - e.changedTouches[0].clientX;
-		if (Math.abs(diff) > 50) {
-			if (diff > 0) nextSlide();
-			else prevSlide();
-		}
-		setTouchStartX(null);
-	};
-
-	const nextSlide = useCallback(() => {
-		if (isTransitioning || displayServices.length === 0) return;
-		setIsTransitioning(true);
-		setTransitionEnabled(true);
-		setCurrentIndex((prev) => prev + 1);
-	}, [displayServices.length, isTransitioning]);
-
-	const prevSlide = useCallback(() => {
-		if (isTransitioning || displayServices.length === 0) return;
-		setIsTransitioning(true);
-		setTransitionEnabled(true);
-		setCurrentIndex((prev) => prev - 1);
-	}, [displayServices.length, isTransitioning]);
-
-	useEffect(() => {
-		if (displayServices.length === 0) return;
-		let timeout: NodeJS.Timeout;
-
-		if (currentIndex === displayServices.length - 1) {
-			timeout = setTimeout(() => {
-				setTransitionEnabled(false);
-				setCurrentIndex(1);
-				setIsTransitioning(false);
-			}, 500);
-		} else if (currentIndex === 0) {
-			timeout = setTimeout(() => {
-				setTransitionEnabled(false);
-				setCurrentIndex(displayServices.length - 2);
-				setIsTransitioning(false);
-			}, 500);
-		} else {
-			timeout = setTimeout(() => {
-				setIsTransitioning(false);
-			}, 500);
-		}
-
-		return () => clearTimeout(timeout);
-	}, [currentIndex, displayServices.length]);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			nextSlide();
-		}, 4000);
-		return () => clearInterval(interval);
-	}, [nextSlide]);
-
 	return (
-		<div
+		<section
 			id="services"
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-20 pt-10 flex flex-col gap-4 relative "
+			className="mx-auto max-w-7xl px-4 pb-16 pt-12 text-black sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-20"
 		>
-			{/* Mastered Crafts Header */}
-			<div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 md:mb-4 mb-0 pb-8">
-				<div className="flex flex-col gap-4 max-w-2xl">
-					<h2 className="header font-bold text-white tracking-tight">
-						{t('services.title')}<span className="text-primary">.</span>
+			<div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-x-16 lg:gap-y-0">
+				<div className="flex flex-col gap-5 lg:gap-6">
+					<h2 className="text-[clamp(2rem,5vw,3.75rem)] font-black leading-[1.05] tracking-tight text-black">
+						{t('services.headlineLine1')}
 					</h2>
-					<p className="text-slate-400 text-[15px] leading-relaxed max-w-lg">
-						{t('services.subtitle')}
-					</p>
+					<ToolBadgeRow className="-mx-1 flex flex-wrap gap-2 px-1 pb-1 sm:gap-2.5 lg:hidden" />
+					<p className="max-w-lg text-[15px] leading-relaxed text-black/90">{t('services.intro')}</p>
+					<Link
+						href="/#process"
+						className="inline-flex w-fit items-center gap-2 rounded-full bg-[#E8E8E8] px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-[#DDDDDD]"
+					>
+						<ArrowUpRightIcon className="size-4 shrink-0 text-neutral-600" strokeWidth={2} />
+						{t('services.ctaWork')}
+					</Link>
 				</div>
-				<div className="hidden lg:block pb-2">
-					<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#{t('services.hashTag')}</p>
+				<div className="flex flex-col gap-5 lg:items-end">
+					<ToolBadgeRow className="hidden flex-wrap justify-end gap-2 sm:gap-2.5 lg:flex" />
+					<h2 className="text-right text-[clamp(2rem,5vw,3.75rem)] font-black leading-[1.05] tracking-tight text-black lg:w-full">
+						{t('services.headlineLine2')}
+					</h2>
 				</div>
 			</div>
 
-			{/* Mobile Header Text */}
-			<div className="md:hidden -mt-4 mb-2 shrink-0">
-				<p className="text-secondary font-bold tracking-widest uppercase text-xs block">{t('services.explore')}</p>
-			</div>
-
-			{/* DESKTOP: Bento 3x3 Grid (Hidden on Mobile) */}
-			<div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-1 overflow-hidden shadow-2xl relative z-10 w-full">
-				{services.map((service, index) => {
-					const Icon = service.icon;
-					return (
-						<motion.div
-							key={`desktop-${service.id}`}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: index * 0.05 }}
-							className="bg-[#0c0e12] p-10 flex flex-col gap-6 group text-left hover:bg-[#13161c] transition-all duration-500 min-h-[320px] hover:-translate-y-2"
+			<div className="mt-14 grid grid-cols-1 gap-6 sm:mt-16 md:grid-cols-2 md:gap-8 lg:mt-20">
+				{cards.map((card, index) => (
+					<motion.article
+						key={card.id}
+						initial={{ opacity: 0, y: 24 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, margin: '-40px' }}
+						transition={{ duration: 0.45, delay: index * 0.06 }}
+						className={`relative flex flex-col rounded-[1.75rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:p-9 md:p-10 ${index % 2 === 1 ? 'md:mt-12 lg:mt-16' : ''}`}
+					>
+						<h3 className="text-xl font-bold tracking-tight text-black sm:text-[22px]">{card.title}</h3>
+						<div className="my-5 h-px w-full bg-[#E0E0E0]" />
+						<p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#AAAAAA]">
+							{t('services.infoLabel')}
+						</p>
+						<p className="max-w-none pb-14 text-[15px] leading-relaxed text-black/90 sm:pr-4">{card.description}</p>
+						<Link
+							href="/book"
+							className="absolute bottom-8 right-8 flex size-10 items-center justify-center rounded-full border border-[#E0E0E0] bg-white text-neutral-600 transition-colors hover:border-[#CCCCCC] hover:bg-[#FAFAFA] sm:bottom-9 sm:right-9"
+							aria-label={t('services.cardCtaAria')}
 						>
-							<div className="w-12 h-12 bg-[#181b22] flex items-center justify-center mb-1 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/20">
-								<Icon className="w-6 h-6 text-[#9ba1ac] group-hover:text-primary transition-all duration-500" />
-							</div>
-							<div className="flex flex-col gap-3 relative z-10 gap-2">
-								<h3 className="text-[22px] font-bold text-white tracking-tight">{service.name}</h3>
-								<p className="text-[#848c9b] text-[14px] leading-relaxed max-w-[95%]">{service.description}</p>
-							</div>
-						</motion.div>
-					);
-				})}
-				{/* Desktop CTA Tile (Fills the 9th slot seamlessly) */}
-				<Link
-					href={`/${locale}/book`}
-					className="bg-[#ced4ff] p-10 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[320px] relative overflow-hidden"
-				>
-					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
-						{t('services.cta.title')}
-					</h3>
-					<div className="flex items-center gap-2 text-[#4c1d95] font-bold text-sm z-10 mt-auto group-hover:translate-x-2 transition-transform duration-300">
-						<span>{t('services.cta.action')}</span>
-						<ArrowRightIcon className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-					</div>
-					<div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-				</Link>
+							<ArrowUpRightIcon className="size-4" strokeWidth={2} />
+						</Link>
+					</motion.article>
+				))}
 			</div>
-
-			{/* MOBILE: Infinite Slider (Hidden on Desktop) */}
-			<div className="md:hidden flex flex-col gap-2 relative z-10 w-full overflow-hidden">
-				<div
-					className="w-full relative overflow-hidden"
-					onTouchStart={handleTouchStart}
-					onTouchEnd={handleTouchEnd}
-				>
-					<div
-						className="flex w-full will-change-transform items-start pb-4"
-						style={{
-							transform: `translateX(-${currentIndex * 100}%)`,
-							transition: transitionEnabled ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-						}}
-					>
-						{displayServices.map((service, index) => {
-							const Icon = service.icon;
-							return (
-								<div
-									key={`mobile-${service.id}-${index}`}
-									className="w-full flex-shrink-0 flex-grow-0 basis-full"
-								>
-									<div className="bg-[#0c0e12] p-8 flex flex-col gap-6 group text-center hover:bg-[#13161c] transition-all duration-500 min-h-[240px] rounded-3xl">
-										<div className="w-12 h-12 bg-[#181b22] flex items-center justify-center m-auto rounded-xl">
-											<Icon className="w-6 h-6 text-[#9ba1ac] transition-all duration-500" />
-										</div>
-										<div className="flex flex-col gap-3 relative z-10">
-											<h3 className="text-[22px] font-bold text-white tracking-tight">{service.name}</h3>
-											<p className="text-[#848c9b] text-[14px] leading-relaxed max-w-[95%] mx-auto">
-												{service.description}
-											</p>
-										</div>
-									</div>
-								</div>
-							);
-						})}
-					</div>
-
-					{/* Mobile navigation controls (Inline with slider elements) */}
-					<button
-						onClick={prevSlide}
-						className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center p-2 border border-white/10 rounded-full bg-[#0c0e12]/80 backdrop-blur hover:bg-white/10 transition-colors w-10 h-10"
-						aria-label="Previous slide"
-					>
-						<ArrowLeftIcon className="w-5 h-5 text-white" />
-					</button>
-					<button
-						onClick={nextSlide}
-						className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center p-2 border border-white/10 rounded-full bg-[#0c0e12]/80 backdrop-blur hover:bg-white/10 transition-colors w-10 h-10"
-						aria-label="Next slide"
-					>
-						<ArrowRightIcon className="w-5 h-5 text-white" />
-					</button>
-				</div>
-
-				{/* Mobile CTA Tile */}
-				<Link
-					href={`/${locale}/book`}
-					className="bg-[#ced4ff] md:p-10 p-6 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[240px] relative overflow-hidden rounded-3xl"
-				>
-					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
-						{t('services.cta.title')}
-					</h3>
-					<div className="flex items-center gap-2 text-[#4c1d95] font-bold text-sm z-10 mt-auto group-hover:translate-x-2 transition-transform duration-300">
-						<span>{t('services.cta.action')}</span>
-						<ArrowRightIcon className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-					</div>
-					<div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-				</Link>
-			</div>
-		</div>
+		</section>
 	);
 };
 

@@ -4,19 +4,17 @@ import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'next/navigation';
+import common from '../../../public/locales/en/common.json';
 
 const Pricing = () => {
 	const { t } = useTranslation();
-	const params = useParams<{ locale: string }>();
-	const locale = params?.locale ?? 'en';
 	const tiers = [
 		{
 			id: 'essential',
 			name: t('pricing.tiers.essential.name'),
 			price: t('pricing.tiers.essential.price'),
 			description: t('pricing.tiers.essential.description'),
-			features: t('pricing.tiers.essential.features', { returnObjects: true }) as string[],
+			features: common.pricing.tiers.essential.features,
 			popular: false,
 		},
 		{
@@ -24,7 +22,7 @@ const Pricing = () => {
 			name: t('pricing.tiers.growth.name'),
 			price: t('pricing.tiers.growth.price'),
 			description: t('pricing.tiers.growth.description'),
-			features: t('pricing.tiers.growth.features', { returnObjects: true }) as string[],
+			features: common.pricing.tiers.growth.features,
 			popular: true,
 		},
 		{
@@ -32,7 +30,7 @@ const Pricing = () => {
 			name: t('pricing.tiers.dedicated.name'),
 			price: t('pricing.tiers.dedicated.price'),
 			description: t('pricing.tiers.dedicated.description'),
-			features: t('pricing.tiers.dedicated.features', { returnObjects: true }) as string[],
+			features: common.pricing.tiers.dedicated.features,
 			popular: false,
 		},
 	];
@@ -92,7 +90,7 @@ const Pricing = () => {
 
 						<div className="mt-auto pt-4">
 							<Link
-								href={`/${locale}/book`}
+								href="/book"
 								className={`block w-full text-center py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300
 									${
 										tier.popular

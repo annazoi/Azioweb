@@ -11,7 +11,7 @@ export default function BookPage() {
 	const { t } = useTranslation();
 
 	return (
-		<div className="min-h-screen text-white bg-[#111318]" style={{ fontFamily: 'Inter, sans-serif' }}>
+		<div className="min-h-screen text-white bg-[#111318]">
 			<Navbar />
 			<main className="pt-24 md:pt-32 pb-12 px-6 max-w-7xl mx-auto relative z-10">
 				<div className="absolute top-0 right-0 -z-10 w-1/3 h-[500px] opacity-20 pointer-events-none overflow-hidden blur-[100px]">
@@ -66,3 +66,4 @@ export default function BookPage() {
 		</div>
 	);
 }
+

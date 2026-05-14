@@ -4,10 +4,11 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { ChevronUpIcon } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import common from '../../../public/locales/en/common.json';
 
 const FAQ = () => {
 	const { t } = useTranslation();
-	const faqs = t('faq.items', { returnObjects: true }) as Array<{ question: string; answer: string }>;
+	const faqs = common.faq.items;
 
 	return (
 		<section id="faq" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 md:mt-20 mt-10">

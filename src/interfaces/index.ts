@@ -15,6 +15,9 @@ export interface Project {
 	tag?: string;
 	highlights?: string[];
 	details?: string;
+	showcaseTags?: string[];
+	showcaseVariant?: 'dark' | 'light';
+	categoryLine?: string;
 }
 
 export interface Site {
