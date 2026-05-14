@@ -1,6 +1,7 @@
 import Navbar from '@/components/ui/navbar';
 import Hero from '@/app/sections/hero';
 import About from '@/app/sections/about';
+import PcScrollReveal from '@/app/sections/pc-scroll-reveal';
 import Services from '@/app/sections/services';
 import Experience from '@/app/sections/experience';
 import Process from '@/app/sections/process';
@@ -47,6 +48,7 @@ export default function Home() {
 			<main className="relative">
 				<Hero />
 				<About />
+				<PcScrollReveal />
 				<ParallaxSection style={{ backgroundColor: '#F2F2F2', backgroundAttachment: 'unset' }}>
 					<Services />
 				</ParallaxSection>
