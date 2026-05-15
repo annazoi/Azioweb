@@ -3,8 +3,10 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import NavbarMenuHover from '@/components/ui/navbar-menu-hover';
 
 function classNames(...classes: (string | false | null | undefined)[]) {
 	return classes.filter(Boolean).join(' ');
@@ -21,6 +23,17 @@ export default function Navbar() {
 		{ name: t('navbar.links.contact'), href: '#', current: false, action: 'open-contact-drawer' as const },
 	];
 
+	const hoverMenuItems = useMemo(
+		() => [
+			{ name: t('navbar.links.home'), href: '/#hero', image: '/img/azioweb.jpg' },
+			{ name: t('navbar.links.services'), href: '/#services', image: '/img/pc.jpg' },
+			{ name: t('navbar.links.process'), href: '/#process', image: '/img/pc.jpg' },
+			{ name: t('navbar.links.work'), href: '/#clients', image: '/img/azioweb.jpg' },
+			{ name: t('navbar.links.contact'), href: '#', image: '/img/azioweb.jpg', action: 'open-contact-drawer' as const },
+		],
+		[t],
+	);
+
 	useEffect(() => {
 		const handleScroll = () => {
 			setScrolled(window.scrollY > 20);
@@ -34,26 +47,18 @@ export default function Navbar() {
 		<Disclosure
 			as="nav"
 			className={classNames(
-				'fixed top-0 z-50 w-full transition-all duration-500',
+				'fixed top-0 z-50 w-full overflow-visible transition-all duration-500',
 				scrolled ? 'bg-black/75 py-3 backdrop-blur-xl' : 'bg-transparent py-4 sm:py-5',
 			)}
 		>
-			<div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div className="relative flex h-11 items-center justify-between sm:h-12">
+			<div className="relative z-10 mx-auto max-w-7xl overflow-visible px-4 sm:px-6 lg:px-8">
+				<div className="relative flex h-11 items-center justify-between overflow-visible sm:h-12">
 					<Link href="/" className="flex shrink-0 items-center gap-2.5">
-						<span className="size-2 shrink-0 rounded-full bg-white" aria-hidden />
+						<Image src="/img/azioweb.png" alt="azioweb" width={32} height={32} />
 						<span className="text-lg font-bold lowercase tracking-tight text-white sm:text-xl">azioweb</span>
 					</Link>
 
-					<div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 sm:block">
-						<DisclosureButton className="pointer-events-auto flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-left text-sm text-white/90 backdrop-blur-md transition-colors hover:bg-white/15">
-							<span className="font-medium tracking-tight text-white">{t('navbar.menuLabel')}</span>
-							<span className="h-4 w-px shrink-0 bg-white/25" aria-hidden />
-							<span className="max-w-[11rem] truncate text-xs font-medium text-white/70 md:max-w-none">
-								{t('navbar.menuAvailability')}
-							</span>
-						</DisclosureButton>
-					</div>
+					<NavbarMenuHover items={hoverMenuItems} />
 
 					<div className="flex shrink-0 items-center gap-2 sm:gap-3">
 						<Link
@@ -80,6 +85,7 @@ export default function Navbar() {
 
 			<DisclosurePanel
 				transition
+				data-lenis-prevent
 				className="fixed inset-0 z-[60] flex h-screen w-full flex-col overflow-y-auto bg-[#0a0a0f] transition duration-300 ease-in-out data-closed:pointer-events-none data-closed:opacity-0"
 			>
 				<div className="flex items-center justify-between border-b border-white/10 px-4 py-4">

@@ -51,9 +51,9 @@ export default function Home() {
 				<ParallaxSection style={{ backgroundColor: '#F2F2F2', backgroundAttachment: 'unset' }}>
 					<Services />
 				</ParallaxSection>
-				<ParallaxSection bgImage="/backgrounds/bg1.jpg">
+				{/* <ParallaxSection bgImage="/backgrounds/bg1.jpg">
 					<Process />
-				</ParallaxSection>
+				</ParallaxSection> */}
 				<ParallaxSection style={{ backgroundColor: '#000000', backgroundAttachment: 'unset' }}>
 					<Experience />
 				</ParallaxSection>

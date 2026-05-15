@@ -3,6 +3,7 @@
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useLenis } from 'lenis/react';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import StatusMessage from '@/components/ui/StatusMessage';
@@ -77,6 +78,7 @@ function Pill({
 
 export default function ContactDrawer() {
 	const { t } = useTranslation();
+	const lenis = useLenis();
 	const [open, setOpen] = useState(false);
 	const [engagementType, setEngagementType] = useState<EngagementType>('project');
 	const [name, setName] = useState('');
@@ -96,6 +98,12 @@ export default function ContactDrawer() {
 			setShowCloseConfirm(false);
 		}
 	}, [open]);
+
+	useEffect(() => {
+		if (!lenis) return;
+		if (open) lenis.stop();
+		else lenis.start();
+	}, [open, lenis]);
 
 	useEffect(() => {
 		const openDrawer = () => setOpen(true);
@@ -237,6 +245,7 @@ export default function ContactDrawer() {
 
 					<form
 						onSubmit={handleSubmit}
+						data-lenis-prevent
 						className="flex flex-1 flex-col overflow-y-auto px-6 py-6 sm:px-8"
 					>
 						<div className="space-y-8">

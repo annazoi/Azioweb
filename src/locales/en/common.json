@@ -7,8 +7,9 @@
 		"locationLabel": "London, UK"
 	},
 	"navbar": {
-		"menuLabel": ":: Menu",
+		"menuLabel": "Menu",
 		"menuAvailability": "2/3 slots for May",
+		"socialLabel": "Social media",
 		"openMenu": "Open main menu",
 		"closeMenu": "Close main menu",
 		"links": {
@@ -265,7 +266,6 @@
 		"titlePrefix": "Frequently Asked",
 		"titleAccent": "Questions",
 		"items": [
-			
 			{
 				"question": "How long does it take to build an application?",
 				"answer": "A simple MVP takes about 4-6 weeks. Larger products take 3-6 months with clear milestones."

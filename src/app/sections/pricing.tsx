@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import common from '../../../public/locales/en/common.json';
+import common from '@/locales/en/common.json';
 
 const Pricing = () => {
 	const { t } = useTranslation();

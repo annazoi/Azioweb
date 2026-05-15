@@ -4,7 +4,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { ChevronUpIcon } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import common from '../../../public/locales/en/common.json';
+import common from '@/locales/en/common.json';
 
 const FAQ = () => {
 	const { t } = useTranslation();

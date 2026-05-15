@@ -1,4 +1,4 @@
-import en from '../../public/locales/en/common.json';
+import en from '@/locales/en/common.json';
 
 type TranslateOptions = Record<string, string | number | undefined>;
 
