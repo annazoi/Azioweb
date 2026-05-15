@@ -5,7 +5,6 @@ import PcScrollReveal from '@/app/sections/pc-scroll-reveal';
 import Services from '@/app/sections/services';
 import Experience from '@/app/sections/experience';
 import Process from '@/app/sections/process';
-import Contact from '@/app/sections/contact';
 import Footer from '@/components/ui/footer';
 
 export const metadata = {
@@ -57,9 +56,6 @@ export default function Home() {
 				</ParallaxSection>
 				<ParallaxSection style={{ backgroundColor: '#000000', backgroundAttachment: 'unset' }}>
 					<Experience />
-				</ParallaxSection>
-				<ParallaxSection bgImage="/backgrounds/bg3.jpg">
-					<Contact />
 				</ParallaxSection>
 			</main>
 			<Footer />

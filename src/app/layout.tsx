@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
-import { CustomCursor } from '@/components/ui/CustomCursor';
+import ContactDrawer from '@/components/ui/contact-drawer';
 
 const dmSans = DM_Sans({
 	subsets: ['latin'],
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<body className={`${dmSans.className} ${dmSans.variable} antialiased selection:bg-primary/30 selection:text-white`}>
-				<CustomCursor />
+				<ContactDrawer />
 				{children}
 			</body>
 		</html>

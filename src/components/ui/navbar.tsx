@@ -18,7 +18,7 @@ export default function Navbar() {
 		{ name: t('navbar.links.services'), href: '/#services', current: false },
 		{ name: t('navbar.links.process'), href: '/#process', current: false },
 		{ name: t('navbar.links.work'), href: '/#clients', current: false },
-		{ name: t('navbar.links.contact'), href: '/#contact', current: false },
+		{ name: t('navbar.links.contact'), href: '#', current: false, action: 'open-contact-drawer' as const },
 	];
 
 	useEffect(() => {
@@ -93,7 +93,20 @@ export default function Navbar() {
 					</DisclosureButton>
 				</div>
 				<div className="flex flex-1 flex-col gap-6 px-6 pb-8 pt-8">
-					{navigation.map((item, index) => (
+					{navigation.map((item, index) =>
+						'action' in item && item.action === 'open-contact-drawer' ? (
+							<DisclosureButton
+								key={item.name}
+								type="button"
+								onClick={() => window.dispatchEvent(new CustomEvent('open-contact-drawer'))}
+								className="group flex items-center gap-6 text-left"
+							>
+								<span className="mt-1 text-[10px] font-black tracking-widest text-slate-600">0{index + 1}</span>
+								<span className="text-3xl font-black tracking-tighter text-slate-500 transition-colors group-hover:text-white">
+									{item.name}
+								</span>
+							</DisclosureButton>
+						) : (
 						<DisclosureButton key={item.name} as={Link} href={item.href} className="group flex items-center gap-6 text-left">
 							<span className="mt-1 text-[10px] font-black tracking-widest text-slate-600">0{index + 1}</span>
 							<span
@@ -105,7 +118,8 @@ export default function Navbar() {
 								{item.name}
 							</span>
 						</DisclosureButton>
-					))}
+						),
+					)}
 				</div>
 				<div className="mt-auto flex flex-col gap-6 px-6 pb-12">
 					<div className="flex flex-col gap-3">

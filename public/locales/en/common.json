@@ -140,6 +140,41 @@
 			}
 		}
 	},
+	"contactDrawer": {
+		"openLabel": "Open contact form",
+		"close": "Close",
+		"title": "Let's build the future of your brand.",
+		"selectType": "Select type",
+		"projectBased": "Project based",
+		"retainerModel": "Retainer model",
+		"personalInfo": "Personal info",
+		"namePlaceholder": "Your name",
+		"emailPlaceholder": "Email",
+		"whatWeBuild": "What we build?",
+		"buildOptions": {
+			"website": "Website",
+			"mobileApp": "Mobile App",
+			"branding": "Branding",
+			"corporate": "Corporate",
+			"other": "Other"
+		},
+		"budgetLabel": "Project budget range",
+		"budgetOptions": {
+			"3-5k": "3-5k",
+			"5-10k": "5-10k",
+			"10k+": "10k+",
+			"other": "Other"
+		},
+		"detailsLabel": "Project details",
+		"detailsPlaceholder": "Tell us about your project, your goals, and what you expect from this collaboration.",
+		"submit": "Submit",
+		"privacy": "By signing up, you're agreeing to our privacy policy.",
+		"confirmClose": {
+			"title": "Forgot to press submit?",
+			"closeAnyway": "Close anyway",
+			"backToForm": "Back to form"
+		}
+	},
 	"contact": {
 		"tag": "Get In Touch",
 		"titlePrefix": "Let's build something",

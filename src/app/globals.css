@@ -57,12 +57,6 @@
 		width: 0;
 		height: 0;
 	}
-
-	@media (hover: hover) and (pointer: fine) {
-		* {
-			cursor: none !important;
-		}
-	}
 }
 
 @theme inline {

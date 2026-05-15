@@ -32,7 +32,7 @@ const Footer = () => {
 
 	return (
 		<footer className="relative overflow-hidden bg-black">
-			<div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pb-16 lg:pt-24">
+			<div className="relative z-10 mx-auto px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pb-16 lg:pt-24">
 				<div className="flex flex-col gap-14 lg:flex-row lg:justify-between lg:gap-12">
 					<div className="max-w-xl shrink-0 lg:max-w-[min(100%,28rem)] lg:pr-8">
 						<p className="text-sm font-medium text-neutral-400">
@@ -131,7 +131,7 @@ const Footer = () => {
 				aria-hidden
 			>
 				<p
-					className="absolute bottom-0 left-1/2 w-[max(100%,28rem)] -translate-x-1/2 translate-y-[38%] select-none text-center text-[clamp(4.5rem,20vw,14rem)] font-black uppercase leading-[0.85] tracking-[-0.04em]"
+					className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[22%] select-none text-center text-[clamp(4.5rem,24vw,30rem)] font-black uppercase leading-[0.85] tracking-[-0.04em]"
 					style={{
 						...watermarkMask,
 						backgroundImage: 'linear-gradient(to bottom, rgba(80, 10, 10, 0.15) 0%, rgba(185, 28, 28, 0.55) 42%, rgb(249, 115, 22) 78%, rgb(234, 88, 12) 100%)',
