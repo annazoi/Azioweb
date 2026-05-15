@@ -1,276 +1,110 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'next/navigation';
 import {
 	ComputerDesktopIcon,
 	DevicePhoneMobileIcon,
 	CloudIcon,
 	PaintBrushIcon,
 	CodeBracketIcon,
-	ChartBarIcon,
-	ServerStackIcon,
 	CpuChipIcon,
-	ArrowRightIcon,
-	ArrowLeftIcon,
+	ServerStackIcon,
+	ChartBarIcon,
+	ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
-import { useParams } from 'next/navigation';
+
+const featuredIds = ['uiux', 'ai', 'web', 'mobile'] as const;
+
+const stackIconConfig: { Icon: typeof CodeBracketIcon; className: string }[] = [
+	{ Icon: CodeBracketIcon, className: 'text-violet-600' },
+	{ Icon: CpuChipIcon, className: 'text-emerald-600' },
+	{ Icon: CloudIcon, className: 'text-sky-600' },
+	{ Icon: PaintBrushIcon, className: 'text-rose-600' },
+	{ Icon: DevicePhoneMobileIcon, className: 'text-amber-600' },
+	{ Icon: ComputerDesktopIcon, className: 'text-indigo-600' },
+	{ Icon: ServerStackIcon, className: 'text-slate-600' },
+	{ Icon: ChartBarIcon, className: 'text-teal-600' },
+];
 
 const Services = () => {
 	const { t } = useTranslation();
 	const params = useParams<{ locale: string }>();
 	const locale = params?.locale ?? 'en';
-	const services = [
-		{
-			id: 'web',
-			name: t('services.cards.web.name'),
-			icon: ComputerDesktopIcon,
-			description: t('services.cards.web.description'),
-		},
-		{
-			id: 'mobile',
-			name: t('services.cards.mobile.name'),
-			icon: DevicePhoneMobileIcon,
-			description: t('services.cards.mobile.description'),
-		},
-		{
-			id: 'saas',
-			name: t('services.cards.saas.name'),
-			icon: CloudIcon,
-			description: t('services.cards.saas.description'),
-		},
-		{
-			id: 'ai',
-			name: t('services.cards.ai.name'),
-			icon: CpuChipIcon,
-			description: t('services.cards.ai.description'),
-		},
-		{
-			id: 'api',
-			name: t('services.cards.api.name'),
-			icon: CodeBracketIcon,
-			description: t('services.cards.api.description'),
-		},
-		{
-			id: 'uiux',
-			name: t('services.cards.uiux.name'),
-			icon: PaintBrushIcon,
-			description: t('services.cards.uiux.description'),
-		},
-		{
-			id: 'cloud',
-			name: t('services.cards.cloud.name'),
-			icon: ServerStackIcon,
-			description: t('services.cards.cloud.description'),
-		},
-		{
-			id: 'seo',
-			name: t('services.cards.seo.name'),
-			icon: ChartBarIcon,
-			description: t('services.cards.seo.description'),
-		},
-	];
+	const bookHref = `/${locale}/book`;
+	const processHref = `/${locale}/#process`;
 
-	// --- Mobile Infinite Slider Logic ---
-	const displayServices = services.length > 0 ? [services[services.length - 1], ...services, services[0]] : [];
-	const [currentIndex, setCurrentIndex] = useState(1);
-	const [transitionEnabled, setTransitionEnabled] = useState(true);
-	const [isTransitioning, setIsTransitioning] = useState(false);
-	const [touchStartX, setTouchStartX] = useState<number | null>(null);
-
-	const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
-	const handleTouchEnd = (e: React.TouchEvent) => {
-		if (touchStartX === null) return;
-		const diff = touchStartX - e.changedTouches[0].clientX;
-		if (Math.abs(diff) > 50) {
-			if (diff > 0) nextSlide();
-			else prevSlide();
-		}
-		setTouchStartX(null);
-	};
-
-	const nextSlide = useCallback(() => {
-		if (isTransitioning || displayServices.length === 0) return;
-		setIsTransitioning(true);
-		setTransitionEnabled(true);
-		setCurrentIndex((prev) => prev + 1);
-	}, [displayServices.length, isTransitioning]);
-
-	const prevSlide = useCallback(() => {
-		if (isTransitioning || displayServices.length === 0) return;
-		setIsTransitioning(true);
-		setTransitionEnabled(true);
-		setCurrentIndex((prev) => prev - 1);
-	}, [displayServices.length, isTransitioning]);
-
-	useEffect(() => {
-		if (displayServices.length === 0) return;
-		let timeout: NodeJS.Timeout;
-
-		if (currentIndex === displayServices.length - 1) {
-			timeout = setTimeout(() => {
-				setTransitionEnabled(false);
-				setCurrentIndex(1);
-				setIsTransitioning(false);
-			}, 500);
-		} else if (currentIndex === 0) {
-			timeout = setTimeout(() => {
-				setTransitionEnabled(false);
-				setCurrentIndex(displayServices.length - 2);
-				setIsTransitioning(false);
-			}, 500);
-		} else {
-			timeout = setTimeout(() => {
-				setIsTransitioning(false);
-			}, 500);
-		}
-
-		return () => clearTimeout(timeout);
-	}, [currentIndex, displayServices.length]);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			nextSlide();
-		}, 4000);
-		return () => clearInterval(interval);
-	}, [nextSlide]);
+	const staggerClass = ['', 'md:-translate-y-7', 'md:translate-y-5', 'md:-translate-y-3'] as const;
 
 	return (
-		<div
-			id="services"
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:pt-20 pt-10 flex flex-col gap-4 relative "
-		>
-			{/* Mastered Crafts Header */}
-			<div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 md:mb-4 mb-0 pb-8">
-				<div className="flex flex-col gap-4 max-w-2xl">
-					<h2 className="header font-bold text-white tracking-tight">
-						{t('services.title')}<span className="text-primary">.</span>
-					</h2>
-					<p className="text-slate-400 text-[15px] leading-relaxed max-w-lg">
-						{t('services.subtitle')}
-					</p>
-				</div>
-				<div className="hidden lg:block pb-2">
-					<p className="text-white/20 font-black font-light tracking-wider text-xl uppercase">#{t('services.hashTag')}</p>
-				</div>
-			</div>
-
-			{/* Mobile Header Text */}
-			<div className="md:hidden -mt-4 mb-2 shrink-0">
-				<p className="text-secondary font-bold tracking-widest uppercase text-xs block">{t('services.explore')}</p>
-			</div>
-
-			{/* DESKTOP: Bento 3x3 Grid (Hidden on Mobile) */}
-			<div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-1 overflow-hidden shadow-2xl relative z-10 w-full">
-				{services.map((service, index) => {
-					const Icon = service.icon;
-					return (
-						<motion.div
-							key={`desktop-${service.id}`}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: index * 0.05 }}
-							className="bg-[#0c0e12] p-10 flex flex-col gap-6 group text-left hover:bg-[#13161c] transition-all duration-500 min-h-[320px] hover:-translate-y-2"
-						>
-							<div className="w-12 h-12 bg-[#181b22] flex items-center justify-center mb-1 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/20">
-								<Icon className="w-6 h-6 text-[#9ba1ac] group-hover:text-primary transition-all duration-500" />
-							</div>
-							<div className="flex flex-col gap-3 relative z-10 gap-2">
-								<h3 className="text-[22px] font-bold text-white tracking-tight">{service.name}</h3>
-								<p className="text-[#848c9b] text-[14px] leading-relaxed max-w-[95%]">{service.description}</p>
-							</div>
-						</motion.div>
-					);
-				})}
-				{/* Desktop CTA Tile (Fills the 9th slot seamlessly) */}
-				<Link
-					href={`/${locale}/book`}
-					className="bg-[#ced4ff] p-10 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[320px] relative overflow-hidden"
-				>
-					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
-						{t('services.cta.title')}
-					</h3>
-					<div className="flex items-center gap-2 text-[#4c1d95] font-bold text-sm z-10 mt-auto group-hover:translate-x-2 transition-transform duration-300">
-						<span>{t('services.cta.action')}</span>
-						<ArrowRightIcon className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-					</div>
-					<div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-				</Link>
-			</div>
-
-			{/* MOBILE: Infinite Slider (Hidden on Desktop) */}
-			<div className="md:hidden flex flex-col gap-2 relative z-10 w-full overflow-hidden">
-				<div
-					className="w-full relative overflow-hidden"
-					onTouchStart={handleTouchStart}
-					onTouchEnd={handleTouchEnd}
-				>
-					<div
-						className="flex w-full will-change-transform items-start pb-4"
-						style={{
-							transform: `translateX(-${currentIndex * 100}%)`,
-							transition: transitionEnabled ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-						}}
-					>
-						{displayServices.map((service, index) => {
-							const Icon = service.icon;
-							return (
-								<div
-									key={`mobile-${service.id}-${index}`}
-									className="w-full flex-shrink-0 flex-grow-0 basis-full"
-								>
-									<div className="bg-[#0c0e12] p-8 flex flex-col gap-6 group text-center hover:bg-[#13161c] transition-all duration-500 min-h-[240px] rounded-3xl">
-										<div className="w-12 h-12 bg-[#181b22] flex items-center justify-center m-auto rounded-xl">
-											<Icon className="w-6 h-6 text-[#9ba1ac] transition-all duration-500" />
-										</div>
-										<div className="flex flex-col gap-3 relative z-10">
-											<h3 className="text-[22px] font-bold text-white tracking-tight">{service.name}</h3>
-											<p className="text-[#848c9b] text-[14px] leading-relaxed max-w-[95%] mx-auto">
-												{service.description}
-											</p>
-										</div>
+		<section id="services" className="relative w-full text-zinc-900">
+			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 md:pt-24 pt-14 md:pb-28 pb-16">
+				<div className="flex flex-col gap-12 md:gap-16">
+					<div className="flex flex-col gap-8 md:gap-10">
+						<h2 className="max-w-5xl font-semibold tracking-tight text-[clamp(2rem,6vw,4.25rem)] leading-[1.08] text-zinc-950">
+							<span className="block">{t('services.showcaseLine1')}</span>
+							<div className="my-5 flex flex-wrap items-center gap-2.5 sm:gap-3 md:my-6">
+								{stackIconConfig.map(({ Icon, className }, i) => (
+									<div
+										key={i}
+										className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-zinc-200/90 bg-white shadow-[0_1px_0_rgba(0,0,0,0.04),0_8px_24px_-12px_rgba(0,0,0,0.18)] sm:h-12 sm:w-12"
+									>
+										<Icon className={`h-5 w-5 sm:h-5 sm:w-5 ${className}`} strokeWidth={1.75} />
 									</div>
+								))}
+							</div>
+							<span className="block text-right">{t('services.showcaseLine2')}</span>
+						</h2>
+
+						<div className="flex max-w-xl flex-col gap-6">
+							<p className="text-[15px] leading-relaxed text-zinc-600 sm:text-base">{t('services.showcaseIntro')}</p>
+							<Link
+								href={processHref}
+								className="group inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-5 py-2.5 text-sm font-medium text-zinc-900 shadow-[0_1px_0_rgba(0,0,0,0.04)] transition hover:border-zinc-300 hover:bg-zinc-50"
+							>
+								<span>{t('services.workCta')}</span>
+								<ArrowTopRightOnSquareIcon className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+							</Link>
+						</div>
+					</div>
+
+					<div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:gap-7">
+						{featuredIds.map((id, index) => (
+							<motion.article
+								key={id}
+								initial={{ opacity: 0, y: 18 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true, margin: '-40px' }}
+								transition={{ duration: 0.45, delay: index * 0.06 }}
+								className={`relative flex flex-col rounded-[1.35rem] border border-zinc-200/80 bg-white p-7 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.35)] sm:p-8 ${staggerClass[index]}`}
+							>
+								<h3 className="text-lg font-semibold tracking-tight text-zinc-950 sm:text-xl">
+									{t(`services.cards.${id}.name`)}
+								</h3>
+								<div className="my-5 h-px w-full bg-zinc-100" />
+								<span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">
+									{t('services.infoLabel')}
+								</span>
+								<p className="mt-2 flex-1 text-[14px] leading-relaxed text-zinc-600 sm:text-[15px]">
+									{t(`services.cards.${id}.description`)}
+								</p>
+								<div className="mt-8 flex justify-end">
+									<Link
+										href={bookHref}
+										className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200/90 bg-zinc-50 text-zinc-500 transition hover:border-zinc-300 hover:bg-white hover:text-zinc-900"
+										aria-label={t('services.cta.action')}
+									>
+										<ArrowTopRightOnSquareIcon className="h-4 w-4" strokeWidth={2} />
+									</Link>
 								</div>
-							);
-						})}
+							</motion.article>
+						))}
 					</div>
-
-					{/* Mobile navigation controls (Inline with slider elements) */}
-					<button
-						onClick={prevSlide}
-						className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center p-2 border border-white/10 rounded-full bg-[#0c0e12]/80 backdrop-blur hover:bg-white/10 transition-colors w-10 h-10"
-						aria-label="Previous slide"
-					>
-						<ArrowLeftIcon className="w-5 h-5 text-white" />
-					</button>
-					<button
-						onClick={nextSlide}
-						className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center p-2 border border-white/10 rounded-full bg-[#0c0e12]/80 backdrop-blur hover:bg-white/10 transition-colors w-10 h-10"
-						aria-label="Next slide"
-					>
-						<ArrowRightIcon className="w-5 h-5 text-white" />
-					</button>
 				</div>
-
-				{/* Mobile CTA Tile */}
-				<Link
-					href={`/${locale}/book`}
-					className="bg-[#ced4ff] md:p-10 p-6 flex flex-col justify-between group hover:bg-[#b0bcff] transition-all duration-500 min-h-[240px] relative overflow-hidden rounded-3xl"
-				>
-					<h3 className="text-[32px] font-bold text-[#140b49] leading-tight max-w-[200px] z-10 tracking-tight">
-						{t('services.cta.title')}
-					</h3>
-					<div className="flex items-center gap-2 text-[#4c1d95] font-bold text-sm z-10 mt-auto group-hover:translate-x-2 transition-transform duration-300">
-						<span>{t('services.cta.action')}</span>
-						<ArrowRightIcon className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-					</div>
-					<div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-				</Link>
 			</div>
-		</div>
+		</section>
 	);
 };
 

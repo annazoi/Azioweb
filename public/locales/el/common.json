@@ -1,5 +1,15 @@
 {
 	"hero": {
+		"menu_label": ":: Menu",
+		"slots": "2/5 θέσεις για {{month}}",
+		"get_in_touch": "+ Επικοινωνήστε",
+		"headline_line1": "Σχεδιασμός για όσους",
+		"headline_line2": "θέλουν να γίνουν μια",
+		"headline_line3": "καλύτερη εκδοχή του εαυτού τους.",
+		"footer_tagline": "Global product design studio",
+		"footer_location": "Λονδίνο, ΗΒ",
+		"scroll_hint": "Κύλιση για περισσότερα",
+		"watermark": "AZIOWEB",
 		"title_part1": "AI προϊόντα για web,",
 		"title_part2": "mobile και έξυπνες ενσωματώσεις.",
 		"description": "Η Azioweb σχεδιάζει και υλοποιεί AI-first web και mobile εφαρμογές, με ουσιαστικές ενσωματώσεις—copilots, αυτοματισμούς, αναζήτηση και custom μοντέλα—εκεί που έχουν πραγματικό αντίκτυπο.",
@@ -31,6 +41,11 @@
 	"services": {
 		"title": "Υπηρεσίες",
 		"subtitle": "Από τον πυρήνα του προϊόντος έως λειτουργίες LLM και data pipelines—σχεδιάζουμε συστήματα που κλιμακώνονται και παραμένουν έξυπνα όσο μεγαλώνει η βάση χρηστών σας.",
+		"showcaseLine1": "Τα εργαλεία μας &",
+		"showcaseLine2": "το προϊόν σας.",
+		"showcaseIntro": "Σχεδιάζουμε προϊόντα για τον ψηφιακό κόσμο: εύληπτο UX, καθαρό UI και πρακτικό AI ενταγμένο στις ροές σας. Από την ανακάλυψη έως το launch, παραδίδουμε εμπειρίες που ξεχωρίζουν και κλιμακώνονται μαζί σας.",
+		"workCta": "Δείτε πώς δουλεύουμε",
+		"infoLabel": "Πληροφορίες",
 		"hashTag": "services",
 		"explore": "Δείτε τις Υπηρεσίες",
 		"cta": {
@@ -183,7 +198,20 @@
 		"visitSite": "Επίσκεψη Ιστότοπου"
 	},
 	"footer": {
-		"copyright": "© {{yearText}} Azioweb."
+		"copyright": "© {{yearText}} Azioweb.",
+		"location_line": "Λονδίνο, ΗΒ",
+		"headline": "Σχεδιασμός για όσους θέλουν να γίνουν μια καλύτερη εκδοχή του εαυτού τους.",
+		"explore_label": "Εξερεύνηση",
+		"socials_label": "Κοινωνικά",
+		"link_home": "Αρχική",
+		"link_pricing": "Τιμολόγηση",
+		"link_how": "Πώς δουλεύουμε",
+		"link_behance": "Behance",
+		"link_linkedin": "LinkedIn",
+		"link_x": "X",
+		"legal_terms": "Όροι",
+		"legal_privacy": "Πολιτική απορρήτου",
+		"copyright_caps": "{{year}} AZIOWEB STUDIO. ΜΕ ΕΠΙΦΥΛΑΞΗ ΠΑΝΤΟΣ ΔΙΚΑΙΩΜΑΤΟΣ."
 	},
 	"pricing": {
 		"tag": "Ευέλικτα Πλάνα",

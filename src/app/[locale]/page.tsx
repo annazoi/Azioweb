@@ -5,7 +5,6 @@ import Experience from '@/app/sections/experience';
 import Process from '@/app/sections/process';
 import Testimonials from '@/app/sections/testimonials';
 import Agency from '@/app/sections/agency';
-import Pricing from '@/app/sections/pricing';
 import FAQ from '@/app/sections/faq';
 import Contact from '@/app/sections/contact';
 
@@ -52,13 +51,11 @@ export const ParallaxSection = ({
 export default function Home() {
 	return (
 		<div>
-			<Navbar />
+			<Navbar initiallyHidden />
 			<main className="relative">
-				<ParallaxSection bgImage="/backgrounds/bg6.jpg">
-					<Hero />
-				</ParallaxSection>
+				<Hero />
 
-				<ParallaxSection style={{ backgroundColor: 'var(--background-secondary)', backgroundAttachment: 'unset' }}>
+				<ParallaxSection style={{ backgroundColor: '#e6e7eb', backgroundAttachment: 'unset' }}>
 					<Services />
 				</ParallaxSection>
 

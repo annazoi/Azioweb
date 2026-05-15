@@ -1,5 +1,15 @@
 {
 	"hero": {
+		"menu_label": ":: Menu",
+		"slots": "2/5 slots for {{month}}",
+		"get_in_touch": "+ Get in touch",
+		"headline_line1": "Design for those who",
+		"headline_line2": "want to become a better",
+		"headline_line3": "version of themselves.",
+		"footer_tagline": "Global product design studio",
+		"footer_location": "London, UK",
+		"scroll_hint": "Scroll to explore",
+		"watermark": "AZIOWEB",
 		"title_part1": "AI-powered products",
 		"title_part2": "web, mobile & smart integrations.",
 		"description": "Azioweb is an AI-focused product studio. We build web and mobile applications with production-ready AI integrations, automation, retrieval, and custom models tailored to your product.",
@@ -31,6 +41,11 @@
 	"services": {
 		"title": "Services We Offer",
 		"subtitle": "From idea to launch, we build simple, AI-ready products that scale.",
+		"showcaseLine1": "Our tools &",
+		"showcaseLine2": "your product.",
+		"showcaseIntro": "We design products that live in the digital world: intuitive UX, sharp UI, and practical AI woven into real workflows. From discovery to launch, we ship bold, seamless experiences that scale with you.",
+		"workCta": "See how we work",
+		"infoLabel": "Info",
 		"hashTag": "Services",
 		"explore": "Explore Services",
 		"cta": {
@@ -177,7 +192,20 @@
 		"visitSite": "Visit Site"
 	},
 	"footer": {
-		"copyright": "© {{yearText}} Azioweb. All rights reserved."
+		"copyright": "© {{yearText}} Azioweb. All rights reserved.",
+		"location_line": "London, UK",
+		"headline": "Design for those who want to become a better version of themselves.",
+		"explore_label": "Explore",
+		"socials_label": "Socials",
+		"link_home": "Home",
+		"link_pricing": "Pricing",
+		"link_how": "How we work",
+		"link_behance": "Behance",
+		"link_linkedin": "LinkedIn",
+		"link_x": "The X",
+		"legal_terms": "Terms",
+		"legal_privacy": "Privacy Policy",
+		"copyright_caps": "{{year}} AZIOWEB STUDIO. ALL RIGHTS RESERVED."
 	},
 	"pricing": {
 		"tag": "Flexible Plans",

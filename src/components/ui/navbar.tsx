@@ -11,8 +11,9 @@ function classNames(...classes: (string | false | null | undefined)[]) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+export default function Navbar({ initiallyHidden = false }: { initiallyHidden?: boolean }) {
 	const [scrolled, setScrolled] = useState(false);
+	const [revealed, setRevealed] = useState(!initiallyHidden);
 	const { t } = useTranslation();
 	const params = useParams<{ locale: string }>();
 	const locale = params?.locale ?? 'en';
@@ -32,12 +33,25 @@ export default function Navbar() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
+	useEffect(() => {
+		if (!initiallyHidden) return;
+		const check = () => {
+			setRevealed(window.scrollY >= window.innerHeight * 0.88);
+		};
+		check();
+		window.addEventListener('scroll', check, { passive: true });
+		return () => window.removeEventListener('scroll', check);
+	}, [initiallyHidden]);
+
+	const navHidden = initiallyHidden && !revealed;
+
 	return (
 		<Disclosure
 			as="nav"
 			className={classNames(
 				'fixed top-0 w-full z-50 transition-all duration-500 py-4',
 				scrolled ? 'backdrop-blur-xl shadow-2xl' : 'backdrop-blur-xl',
+				navHidden ? 'opacity-0 pointer-events-none' : 'opacity-100',
 			)}
 		>
 			<div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
