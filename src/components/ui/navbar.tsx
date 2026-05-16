@@ -4,7 +4,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { Bars3Icon, XMarkIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useLenis } from 'lenis/react';
 import { useTranslation } from 'react-i18next';
 import NavbarMenuHover from '@/components/ui/navbar-menu-hover';
 
@@ -12,8 +13,12 @@ function classNames(...classes: (string | false | null | undefined)[]) {
 	return classes.filter(Boolean).join(' ');
 }
 
+const NAVBAR_HEIGHT = 72;
+
 export default function Navbar() {
 	const [scrolled, setScrolled] = useState(false);
+	const [onLight, setOnLight] = useState(false);
+	const lenis = useLenis();
 	const { t } = useTranslation();
 	const navigation = [
 		{ name: t('navbar.links.home'), href: '/#hero', current: true },
@@ -34,28 +39,59 @@ export default function Navbar() {
 		[t],
 	);
 
+	const updateNavbarTheme = useCallback(() => {
+		const scrollY = lenis?.scroll ?? window.scrollY;
+		setScrolled(scrollY > 20);
+		const lightSection = document.querySelector('[data-navbar-light]');
+		if (!lightSection) {
+			setOnLight(false);
+			return;
+		}
+		const rect = lightSection.getBoundingClientRect();
+		setOnLight(rect.top < NAVBAR_HEIGHT && rect.bottom > 0);
+	}, [lenis]);
+
 	useEffect(() => {
-		const handleScroll = () => {
-			setScrolled(window.scrollY > 20);
-		};
-		handleScroll();
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+		updateNavbarTheme();
+		window.addEventListener('resize', updateNavbarTheme, { passive: true });
+		return () => window.removeEventListener('resize', updateNavbarTheme);
+	}, [updateNavbarTheme]);
+
+	useEffect(() => {
+		if (!lenis) {
+			const onScroll = () => updateNavbarTheme();
+			window.addEventListener('scroll', onScroll, { passive: true });
+			return () => window.removeEventListener('scroll', onScroll);
+		}
+		lenis.on('scroll', updateNavbarTheme);
+		return () => lenis.off('scroll', updateNavbarTheme);
+	}, [lenis, updateNavbarTheme]);
 
 	return (
 		<Disclosure
 			as="nav"
 			className={classNames(
 				'fixed top-0 z-50 w-full overflow-visible transition-all duration-500',
-				scrolled ? 'bg-black/75 py-3 backdrop-blur-xl' : 'bg-transparent py-4 sm:py-5',
+				scrolled ? 'bg-transparent py-3' : 'bg-transparent py-4 sm:py-5',
 			)}
 		>
-			<div className="relative z-10 mx-auto max-w-7xl overflow-visible px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 mx-auto overflow-visible px-4 sm:px-6 lg:px-8">
 				<div className="relative flex h-11 items-center justify-between overflow-visible sm:h-12">
 					<Link href="/" className="flex shrink-0 items-center gap-2.5">
-						<Image src="/img/azioweb.png" alt="azioweb" width={32} height={32} />
-						<span className="text-lg font-bold lowercase tracking-tight text-white sm:text-xl">azioweb</span>
+						<Image
+							src={onLight ? '/img/azioweb_black.png' : '/img/azioweb.png'}
+							alt="azioweb"
+							width={32}
+							height={32}
+						/>
+						<span
+							className={classNames(
+								'text-lg font-bold lowercase tracking-tight sm:text-xl transition-colors duration-300',
+								onLight ? 'text-black' : 'text-white',
+							)}
+						>
+							azioweb
+						</span>
 					</Link>
 
 					<NavbarMenuHover items={hoverMenuItems} />
@@ -63,19 +99,32 @@ export default function Navbar() {
 					<div className="flex shrink-0 items-center gap-2 sm:gap-3">
 						<Link
 							href="/book"
-							className="hidden items-center gap-1 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:inline-flex"
+							className={classNames(
+								'hidden items-center gap-1 rounded-[16px] px-4 py-3 text-sm font-semibold transition-colors duration-300 sm:inline-flex',
+								onLight ? 'bg-black text-white' : 'bg-white text-black',
+							)}
 						>
 							<span className="text-base leading-none">+</span>
 							{t('navbar.cta.getInTouch')}
 						</Link>
 						<Link
 							href="/book"
-							className="inline-flex size-10 items-center justify-center rounded-full bg-white text-sm font-bold text-black sm:hidden"
+							className={classNames(
+								'inline-flex size-10 items-center justify-center rounded-full text-sm font-bold transition-colors duration-300 sm:hidden',
+								onLight ? 'bg-black text-white' : 'bg-white text-black',
+							)}
 							aria-label={t('navbar.cta.getInTouch')}
 						>
 							+
 						</Link>
-						<DisclosureButton className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 p-2.5 text-white/90 transition-colors hover:bg-white/10 sm:hidden">
+						<DisclosureButton
+							className={classNames(
+								'inline-flex items-center justify-center rounded-full border p-2.5 transition-colors duration-300 sm:hidden',
+								onLight
+									? 'border-black/15 bg-black/5 text-black/90 hover:bg-black/10'
+									: 'border-white/15 bg-white/5 text-white/90 hover:bg-white/10',
+							)}
+						>
 							<span className="sr-only">{t('navbar.openMenu')}</span>
 							<Bars3Icon aria-hidden className="size-5" />
 						</DisclosureButton>

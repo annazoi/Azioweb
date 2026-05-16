@@ -50,18 +50,18 @@ const Hero = () => {
 				}}
 			/>
 			<div className="absolute inset-0 z-[1] bg-black/55" aria-hidden />
-			<div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 pb-8 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
+			<div className="relative z-10 mx-auto flex w-full flex-1 flex-col px-4 pb-8 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
 				<motion.p
 					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-					className="ml-auto w-full max-w-[22rem] text-left text-2xl font-medium leading-snug tracking-tight text-white sm:max-w-lg sm:text-3xl md:max-w-xl md:text-4xl lg:max-w-2xl lg:text-[2.65rem] lg:leading-[1.15]"
+					className="absolute top-40 right-80 ml-auto w-full max-w-[22rem] text-left text-2xl font-medium leading-snug tracking-tight text-white sm:max-w-lg sm:text-3xl md:max-w-xl md:text-4xl lg:max-w-[340px] lg:text-[30px] lg:leading-[1.15]"
 				>
 					{t('hero.statement')}
 				</motion.p>
 				<div className="min-h-[4rem] flex-1" aria-hidden />
 				<div className="mt-auto flex flex-col gap-6 sm:gap-10">
-					<div className="flex flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm">
+					<div className="flex flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm absolute left-10 w-full max-w-[100rem] bottom-100">
 						<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
 							<span>{t('hero.studioTag')}</span>
 							<ClockIcon className="size-4 shrink-0 opacity-80" strokeWidth={1.5} />

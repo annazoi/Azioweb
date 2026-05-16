@@ -1,10 +1,10 @@
 {
 	"hero": {
-		"statement": "Design for those who want to become a better version of themselves.",
-		"studioTag": "Global product design studio",
+		"statement": "We build the intelligence inside your next big idea.",
+		"studioTag": "Global product AI studio",
 		"scrollExplore": "Scroll to explore",
 		"watermark": "AZIOWEB",
-		"locationLabel": "London, UK"
+		"locationLabel": "Athens, GR"
 	},
 	"navbar": {
 		"menuLabel": "Menu",
@@ -26,11 +26,16 @@
 		"location": "Athens, GR"
 	},
 	"about": {
-		"headline": "We craft design that turns ambitious ideas into products people trust.",
+		"headlineLine1": "We craft the intelligence",
+		"headlineLine2": "that turns ambitious ideas",
+		"headlineLine3": "into products people trust.",
 		"col1BoldOpen": "About us.",
-		"col1Rest": "Azioweb is a research-driven product studio that treats every project like its own product. We go deep into your market and your users before designing a single screen.",
-		"col1BoldClose": "The result: digital experiences that don't just look sharp, they perform.",
-		"col2": "We design intuitive interfaces for web and mobile products, from first wireframe to development-ready files.",
+		"col1Line2": "At Azioweb, we build smart web and",
+		"col1Line3": "mobile products by putting your users first. We dive deep into ",
+		"col1Line4": "how your business works so we can design custom software that solves your actual problems.",
+		"col1Line5": "The result: digital experiences ",
+		"col1BoldClose": "that don't just look sharp, they use clever AI and automation to make your life easier.",
+		"col2": "From simple, elegant design to clever AI systems, we deliver ready to go software that combines a premium look with seamless performance.",
 		"cta": "Explore our process"
 	},
 	"services": {
@@ -82,11 +87,11 @@
 	},
 	"experience": {
 		"headlineBold": "Our highlights.",
-		"headlineMuted": "Recent projects we're proud of.",
-		"introLeftBefore": "We work with startups, scaleups, and",
-		"introLeftBold": "established brands",
-		"introLeftAfter": "to launch digital products that stand out and convert.",
-		"introRight": "Explore how Azioweb has helped businesses elevate their digital presence.",
+		"headlineMuted": "Built with Precision.",
+		"introLeftBefore": "Whether you are just starting out or already growing fast, we help brands",
+		"introLeftBold": "launch smart digital products",
+		"introLeftAfter": "that stand out and win customers.",
+		"introRight": "Take a look at how Azioweb helps businesses bring their ideas to life.",
 		"projects": {
 			"svyaz": {
 				"description": "Next-gen collaboration and secure messaging system with AI-powered features.",
@@ -209,10 +214,11 @@
 		"visitSite": "Visit Site"
 	},
 	"footer": {
-		"locationLabel": "London, UK",
-		"headline": "Design for those who want to become a better version of themselves.",
+		"locationLabel": "Athens, GR",
+		"headline": "We build the intelligence inside your next big idea.",
 		"getInTouch": "Get in touch",
-		"copyrightCaps": "{{year}} AZIOWEB STUDIO, ALL RIGHTS RESERVED",
+		"copyrightCaps": "{{year}} AZIOWEB STUDIO,",
+		"copyrightLine2": "All rights reserved.",
 		"exploreHeading": "Explore",
 		"socialsHeading": "Socials",
 		"linkHome": "Home",

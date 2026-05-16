@@ -32,19 +32,19 @@ const Footer = () => {
 
 	return (
 		<footer className="relative overflow-hidden bg-black">
-			<div className="relative z-10 mx-auto px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pb-16 lg:pt-24">
+			<div className="relative z-10 mx-auto px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pb-16 lg:pt-24 h-170">
 				<div className="flex flex-col gap-14 lg:flex-row lg:justify-between lg:gap-12">
 					<div className="max-w-xl shrink-0 lg:max-w-[min(100%,28rem)] lg:pr-8">
 						<p className="text-sm font-medium text-neutral-400">
 							<span aria-hidden>☀️ </span>
 							{time} {t('footer.locationLabel')}
 						</p>
-						<h2 className="mt-6 text-balance text-2xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl md:text-[1.85rem] md:leading-snug">
+						<h2 className="mt-6 text-balance text-2xl font-semibold leading-[1] tracking-tight text-white sm:text-3xl md:text-[24px] md:leading-snug">
 							{t('footer.headline')}
 						</h2>
 						<Link
 							href="/book"
-							className="mt-8 inline-flex items-center justify-center gap-1 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+							className="mt-8 inline-flex items-center justify-center gap-1 rounded-[16px] bg-white px-4 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
 						>
 							<span className="text-base font-bold leading-none">+</span>
 							{t('footer.getInTouch')}
@@ -54,19 +54,15 @@ const Footer = () => {
 					<div className="flex flex-wrap gap-16 sm:gap-20 lg:mt-1 lg:shrink-0 lg:gap-24">
 						<div>
 							<p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.exploreHeading')}</p>
-							<ul className="mt-5 flex flex-col gap-3.5 text-[15px] font-medium text-white">
-								<li>
-									<Link href="/" className="transition-opacity hover:opacity-80">
+							<ul className="mt-4 flex flex-col gap-0.2 text-[15px] font-medium text-white">
+								<li className='hover:translate-x-2 transition-all duration-500'>
+									<Link href="/" className="transition-opacity hover:opacity-70 hover:translate-x-10">
 										{t('footer.linkHome')}
 									</Link>
 								</li>
-								<li>
-									<Link href="/#pricing" className="transition-opacity hover:opacity-80">
-										{t('footer.linkPricing')}
-									</Link>
-								</li>
-								<li>
-									<Link href="/#process" className="transition-opacity hover:opacity-80">
+							
+								<li className='hover:translate-x-2 transition-all duration-500'>
+									<Link href="/#process" className="transition-opacity hover:opacity-70">
 										{t('footer.linkHowWeWork')}
 									</Link>
 								</li>
@@ -74,33 +70,23 @@ const Footer = () => {
 						</div>
 						<div>
 							<p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.socialsHeading')}</p>
-							<ul className="mt-5 flex flex-col gap-3.5 text-[15px] font-medium text-white">
-								<li>
-									<a
-										href="https://www.behance.net"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="transition-opacity hover:opacity-80"
-									>
-										{t('footer.linkBehance')}
-									</a>
-								</li>
-								<li>
+							<ul className="mt-4 flex flex-col text-[15px] font-medium text-white">
+								<li className='hover:translate-x-2 transition-all duration-500'>
 									<a
 										href="https://www.linkedin.com/company/azioweb"
 										target="_blank"
 										rel="noopener noreferrer"
-										className="transition-opacity hover:opacity-80"
+										className="transition-opacity hover:opacity-70"
 									>
 										{t('footer.linkLinkedIn')}
 									</a>
 								</li>
-								<li>
+								<li className='hover:translate-x-2 transition-all duration-500'>
 									<a
 										href="https://x.com/azioweb"
 										target="_blank"
 										rel="noopener noreferrer"
-										className="transition-opacity hover:opacity-80"
+										className="transition-opacity hover:opacity-70"
 									>
 										{t('footer.linkX')}
 									</a>
@@ -111,10 +97,13 @@ const Footer = () => {
 				</div>
 
 				<div className="mt-20 flex w-full flex-col gap-8 sm:mt-24 lg:mt-28 lg:flex-row lg:items-start lg:justify-between">
-					<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-						{t('footer.copyrightCaps', { year })}
-					</p>
-					<div className="flex flex-col gap-3 self-end text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
+					<div>
+						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
+							{t('footer.copyrightCaps', { year })}
+						</p>
+						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">{t('footer.copyrightLine2')}</p>
+					</div>
+					<div className="flex flex-col self-end text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
 						<a href="#" className="transition-colors hover:text-neutral-300">
 							{t('footer.terms')}
 						</a>
@@ -134,7 +123,7 @@ const Footer = () => {
 					className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[22%] select-none text-center text-[clamp(4.5rem,24vw,30rem)] font-black uppercase leading-[0.85] tracking-[-0.04em]"
 					style={{
 						...watermarkMask,
-						backgroundImage: 'linear-gradient(to bottom, rgba(80, 10, 10, 0.15) 0%, rgba(185, 28, 28, 0.55) 42%, rgb(249, 115, 22) 78%, rgb(234, 88, 12) 100%)',
+						backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 10%, rgba(71, 74, 102, 0.55) 52%, rgb(105, 104, 177) 78%, rgb(152, 134, 255) 100%)',
 						WebkitBackgroundClip: 'text',
 						backgroundClip: 'text',
 						WebkitTextFillColor: 'transparent',

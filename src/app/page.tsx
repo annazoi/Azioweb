@@ -20,13 +20,18 @@ export const ParallaxSection = ({
 	bgImage,
 	style,
 	className,
+	'data-navbar-light': dataNavbarLight,
 }: {
 	children: React.ReactNode;
 	bgImage?: string;
 	style?: React.CSSProperties;
 	className?: string;
+	'data-navbar-light'?: boolean;
 }) => (
-	<section className="relative w-full overflow-hidden">
+	<section
+		className="relative w-full overflow-hidden"
+		{...(dataNavbarLight ? { 'data-navbar-light': true } : {})}
+	>
 		<div
 			className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat ${className || ''}`}
 			style={{
@@ -48,15 +53,18 @@ export default function Home() {
 				<Hero />
 				<About />
 				<PcScrollReveal />
-				<ParallaxSection style={{ backgroundColor: '#F2F2F2', backgroundAttachment: 'unset' }}>
-					<Services />
-				</ParallaxSection>
 				{/* <ParallaxSection bgImage="/backgrounds/bg1.jpg">
 					<Process />
-				</ParallaxSection> */}
+					</ParallaxSection> */}
 				<ParallaxSection style={{ backgroundColor: '#000000', backgroundAttachment: 'unset' }}>
 					<Experience />
 				</ParallaxSection>
+					<ParallaxSection
+						data-navbar-light
+						style={{ backgroundColor: '#F2F2F2', backgroundAttachment: 'unset', borderRadius: '1.5rem' }}
+					>
+						<Services />
+					</ParallaxSection>
 			</main>
 			<Footer />
 		</div>

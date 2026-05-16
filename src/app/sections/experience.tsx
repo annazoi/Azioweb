@@ -169,7 +169,7 @@ const Experience = () => {
 	const rows = chunkPairs(sites);
 
 	return (
-		<div id="clients" className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
+		<div id="clients" className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-30">
 			<div className="mx-auto max-w-4xl text-center">
 				<h2 className="flex flex-col items-center gap-2 text-balance sm:gap-3">
 					<span className="text-[clamp(1.85rem,4.2vw,3.25rem)] font-bold leading-[1.12] tracking-tight text-white">
@@ -219,7 +219,7 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 			type="button"
 			onClick={() => onProjectClick(site)}
 			className={`group relative w-full cursor-pointer overflow-hidden rounded-[2rem] text-left transition-transform duration-300 hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${
-				isDark ? 'border border-white/[0.08] bg-black shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border border-black/[0.06] bg-[#F2F2F2] shadow-[0_20px_60px_rgba(0,0,0,0.12)]'
+				isDark ? 'bg-[#101010] shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'bg-[#F2F2F2] shadow-[0_20px_60px_rgba(0,0,0,0.12)]'
 			}`}
 		>
 			<div className="absolute right-5 top-5 z-20 flex max-w-[65%] flex-wrap justify-end gap-2 sm:right-6 sm:top-6">
@@ -239,16 +239,16 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 				{isDark ? (
 					<div className="relative h-full min-h-[inherit] p-5 pt-20 sm:p-8 sm:pt-24 md:min-h-[30rem]">
 						{extras[0] && (
-							<div className="absolute left-4 top-28 z-10 hidden h-36 w-24 overflow-hidden rounded-2xl border border-white/10 shadow-xl sm:left-6 sm:top-32 sm:block sm:h-40 sm:w-28 md:h-44 md:w-32">
+							<div className="absolute left-4 top-28 z-10 hidden h-36 w-24 overflow-hidden rounded-2xl shadow-xl sm:left-6 sm:top-32 sm:block sm:h-40 sm:w-28 md:h-44 md:w-32">
 								<Image src={extras[0]} alt="" fill className="object-cover" sizes="128px" />
 							</div>
 						)}
 						{extras[1] && (
-							<div className="absolute bottom-28 right-4 z-10 hidden h-40 w-24 overflow-hidden rounded-2xl border border-white/10 shadow-xl sm:right-6 md:block md:h-44 md:w-28">
+							<div className="absolute bottom-28 right-4 z-10 hidden h-40 w-24 overflow-hidden rounded-2xl shadow-xl sm:right-6 md:block md:h-44 md:w-28">
 								<Image src={extras[1]} alt="" fill className="object-cover" sizes="112px" />
 							</div>
 						)}
-						<div className="absolute left-1/2 top-[48%] z-[5] h-[220px] w-[min(88%,280px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl border border-white/10 shadow-2xl sm:h-[260px] sm:w-[min(85%,300px)] md:h-[280px] md:w-[320px]">
+						<div className="absolute left-1/2 top-[48%] z-[5] h-[220px] w-[min(88%,280px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl shadow-2xl sm:h-[260px] sm:w-[min(85%,300px)] md:h-[280px] md:w-[320px]">
 							<Image src={site.photo} alt={site.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 90vw, 320px" />
 						</div>
 					</div>

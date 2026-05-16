@@ -20,9 +20,9 @@ function MenuGridIcon() {
 	);
 }
 
-const widthTransition = { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const };
-const heightTransition = { duration: 0.34, ease: [0.22, 1, 0.36, 1] as const };
-const fadeTransition = { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const };
+const widthTransition = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
+const heightTransition = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
+const fadeTransition = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
 
 export default function NavbarMenuHover({ items }: { items: NavItem[] }) {
 	const { t } = useTranslation();
@@ -59,12 +59,12 @@ export default function NavbarMenuHover({ items }: { items: NavItem[] }) {
 				initial={false}
 				animate={{ width: open ? 400 : 120 }}
 				transition={widthTransition}
-				className={`pointer-events-auto relative z-[60] overflow-hidden bg-[#1a1a1a] shadow-[0_20px_60px_rgba(0,0,0,0.5)] rounded-[16px]`}
+				className="pointer-events-auto relative z-[60] overflow-hidden rounded-[16px] bg-[#1a1a1a]/65 shadow-[0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl backdrop-saturate-150"
 				style={{
 					boxShadow: open ? '0 20px 60px rgba(0,0,0,0.5)' : 'none',
 				}}
 			>
-				<div className="flex h-13 w-full shrink-0 items-center gap-2.5 px-4">
+				<div className="flex h-13 w-full shrink-0 items-center gap-2.5 px-4 ml-1">
 					<MenuGridIcon />
 					<div className="relative min-h-[22px] min-w-0 flex-1">
 						<AnimatePresence mode="popLayout" initial={false}>
@@ -154,7 +154,7 @@ export default function NavbarMenuHover({ items }: { items: NavItem[] }) {
 									</div>
 									<div
 										aria-hidden
-										className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#1a1a1a] to-transparent"
+										className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#1a1a1a]/90 to-transparent"
 									/>
 								</div>
 							</div>

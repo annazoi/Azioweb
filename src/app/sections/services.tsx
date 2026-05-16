@@ -1,34 +1,104 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRightIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import type { StaticImageData } from 'next/image';
+import adobePhotoshop from '@/assets/brands/adobe_photoshop.png';
+import aistudio from '@/assets/brands/aistudio.png';
+import canva from '@/assets/brands/canva.png';
+import claudeAi from '@/assets/brands/claude_ai.png';
+import cursorAi from '@/assets/brands/cursor_ai.png';
+import lovableAi from '@/assets/brands/lovable_ai.png';
+import n8n from '@/assets/brands/n8n.png';
+import openai from '@/assets/brands/openai.png';
 
-const toolBadges = [
-	{ key: 'wf', abbr: 'Wf', className: 'bg-[#4353FF] text-white' },
-	{ key: 'fg', abbr: 'Fg', className: 'bg-[#F24E1E] text-white' },
-	{ key: 'c4', abbr: 'C4', className: 'bg-[#4A4A4A] text-white' },
-	{ key: 'fr', abbr: 'Fr', className: 'bg-[#0055FF] text-white' },
-	{ key: 'sp', abbr: 'Sp', className: 'bg-[#FF6B9D] text-white' },
-	{ key: 'ae', abbr: 'Ae', className: 'bg-[#9999FF] text-white' },
-	{ key: 'ps', abbr: 'Ps', className: 'bg-[#31A8FF] text-white' },
-	{ key: 'pp', abbr: 'Pp', className: 'bg-[#D24726] text-white' },
-	{ key: 'st', abbr: '', className: 'bg-[#E8E8E8] text-neutral-700', icon: SparklesIcon },
-	{ key: 'ai', abbr: 'Ai', className: 'bg-[#FF9A00] text-white' },
-] as const;
+const brandLogos: { key: string; src: StaticImageData; alt: string }[] = [
+	{ key: 'photoshop', src: adobePhotoshop, alt: 'Photoshop' },
+	{ key: 'aistudio', src: aistudio, alt: 'AI Studio' },
+	{ key: 'canva', src: canva, alt: 'Canva' },
+	{ key: 'claude', src: claudeAi, alt: 'Claude' },
+	{ key: 'cursor', src: cursorAi, alt: 'Cursor' },
+	{ key: 'lovable', src: lovableAi, alt: 'Lovable' },
+	{ key: 'n8n', src: n8n, alt: 'n8n' },
+	{ key: 'openai', src: openai, alt: 'OpenAI' },
+];
+
+const dockSpring = { type: 'spring' as const, stiffness: 460, damping: 80, mass: 0.8 };
+
+function getDockTransform(index: number, hoveredIndex: number | null) {
+	if (hoveredIndex === null) {
+		return { scale: 1, y: 0 };
+	}
+	const distance = Math.abs(index - hoveredIndex);
+	const influence = Math.exp(-(distance * distance) / 1.35);
+	return {
+		scale: 1 + 0.015 * influence,
+		y: -18 * influence,
+	};
+}
+
+function getDockZIndex(index: number, hoveredIndex: number | null) {
+	if (hoveredIndex === null) return 1;
+	return 30 - Math.abs(index - hoveredIndex) * 2;
+}
 
 function ToolBadgeRow({ className }: { className: string }) {
+	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
 	return (
-		<div className={className} aria-hidden>
-			{toolBadges.map((tool) => {
-				const Icon = 'icon' in tool ? tool.icon : null;
+		<div
+			className={`flex items-end justify-center gap-3 sm:gap-10 ${className}`}
+			onMouseLeave={() => setHoveredIndex(null)}
+			aria-hidden
+		>
+			{brandLogos.map((brand, index) => {
+				const dock = getDockTransform(index, hoveredIndex);
+				const isHovered = hoveredIndex === index;
+
 				return (
 					<div
-						key={tool.key}
-						className={`flex size-10 shrink-0 items-center justify-center rounded-xl text-[11px] font-bold sm:size-11 sm:text-xs ${tool.className}`}
+						key={brand.key}
+						className="relative flex flex-col items-center justify-end pb-11"
+						style={{ zIndex: getDockZIndex(index, hoveredIndex) }}
+						onMouseEnter={() => setHoveredIndex(index)}
 					>
-						{Icon ? <Icon className="size-5" strokeWidth={1.8} /> : tool.abbr}
+						<motion.div
+							className="relative size-20 shrink-0 shadow-[0_4px_16px_rgba(0,0,0,0.08)] rounded-[1.3rem]"
+							style={{ transformOrigin: 'bottom center' }}
+							animate={dock}
+							transition={dockSpring}
+						>
+							<div className="size-full overflow-hidden rounded-[1.3rem]">
+								<Image
+									src={brand.src}
+									alt={brand.alt}
+									width={80}
+									height={80}
+									sizes="80px"
+									priority
+									unoptimized
+									className="h-full w-full object-contain"
+								/>
+							</div>
+							<AnimatePresence>
+								{isHovered && (
+									<motion.span
+										initial={{ opacity: 0, y: 0, scaleY: 0 }}
+										animate={{ opacity: 1, y: 10, scaleY: 1 }}
+										exit={{ opacity: 0, y: 4, scaleY: 0 }}
+										transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+										style={{ transformOrigin: 'top center' }}
+										className="pointer-events-none absolute left-1/2 top-full z-20 -translate-x-1/2 overflow-hidden whitespace-nowrap rounded-xl bg-white px-3.5 py-1.5 text-sm font-medium text-neutral-600 shadow-[0_2px_12px_rgba(0,0,0,0.1)]"
+									>
+										{brand.alt}
+									</motion.span>
+								)}
+							</AnimatePresence>
+						</motion.div>
 					</div>
 				);
 			})}
@@ -61,35 +131,37 @@ const Services = () => {
 		},
 	];
 
+	const leftCards = cards.filter((_, i) => i % 2 === 0);
+	const rightCards = cards.filter((_, i) => i % 2 === 1);
+
 	return (
 		<section
 			id="services"
-			className="mx-auto max-w-7xl px-4 pb-16 pt-12 text-black sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-20"
+			className="mx-auto max-w-5xl px-4 pb-16 pt-12 text-black sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-20"
 		>
-			<div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-x-16 lg:gap-y-0">
+			<div className="m-auto flex max-w-4xl flex-col items-center gap-10 lg:gap-x-16 lg:gap-y-10">
 				<div className="flex flex-col gap-5 lg:gap-6">
-					<h2 className="text-[clamp(2rem,5vw,3.75rem)] font-black leading-[1.05] tracking-tight text-black">
+					<h2 className="text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium">
 						{t('services.headlineLine1')}
 					</h2>
-					<ToolBadgeRow className="-mx-1 flex flex-wrap gap-2 px-1 pb-1 sm:gap-2.5 lg:hidden" />
-					<p className="max-w-lg text-[15px] leading-relaxed text-black/90">{t('services.intro')}</p>
-					<Link
-						href="/#process"
-						className="inline-flex w-fit items-center gap-2 rounded-full bg-[#E8E8E8] px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-[#DDDDDD]"
-					>
-						<ArrowUpRightIcon className="size-4 shrink-0 text-neutral-600" strokeWidth={2} />
-						{t('services.ctaWork')}
-					</Link>
-				</div>
-				<div className="flex flex-col gap-5 lg:items-end">
-					<ToolBadgeRow className="hidden flex-wrap justify-end gap-2 sm:gap-2.5 lg:flex" />
-					<h2 className="text-right text-[clamp(2rem,5vw,3.75rem)] font-black leading-[1.05] tracking-tight text-black lg:w-full">
+					<ToolBadgeRow className="hidden w-full lg:flex" />
+					<h2 className="text-right text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium lg:w-full">
 						{t('services.headlineLine2')}
 					</h2>
 				</div>
+				<div className="flex flex-col gap-5 items-start mr-auto max-w-[20rem] group z-100">
+					<p className="max-w-lg text-[18px] leading-6 text-black/90">{t('services.intro')}</p>
+					<Link
+						href="/#process"
+						className="inline-flex w-fit items-center gap-2 rounded-[16px] bg-[#D6D6D6] px-5 py-2.5 text-[16px] font-semibold text-black transition-colors"
+					>
+						<ArrowUpRightIcon className="size-3 shrink-0 text-black group-hover:text-neutral-600 group-hover:scale-105 group-hover:rotate-45 transition-all duration-500" strokeWidth={2} />
+						{t('services.ctaWork')}
+					</Link>
+				</div>
 			</div>
 
-			<div className="mt-14 grid grid-cols-1 gap-6 sm:mt-16 md:grid-cols-2 md:gap-8 lg:mt-20">
+			<div className="mx-auto mt-14 flex w-full max-w-6xl flex-col gap-6 sm:mt-16 md:hidden lg:mt-20">
 				{cards.map((card, index) => (
 					<motion.article
 						key={card.id}
@@ -97,23 +169,78 @@ const Services = () => {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true, margin: '-40px' }}
 						transition={{ duration: 0.45, delay: index * 0.06 }}
-						className={`relative flex flex-col rounded-[1.75rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:p-9 md:p-10 ${index % 2 === 1 ? 'md:mt-12 lg:mt-16' : ''}`}
+						className="flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 hover:scale-95 transition-all duration-500 cursor-pointer"
 					>
-						<h3 className="text-xl font-bold tracking-tight text-black sm:text-[22px]">{card.title}</h3>
-						<div className="my-5 h-px w-full bg-[#E0E0E0]" />
-						<p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#AAAAAA]">
-							{t('services.infoLabel')}
-						</p>
-						<p className="max-w-none pb-14 text-[15px] leading-relaxed text-black/90 sm:pr-4">{card.description}</p>
-						<Link
-							href="/book"
-							className="absolute bottom-8 right-8 flex size-10 items-center justify-center rounded-full border border-[#E0E0E0] bg-white text-neutral-600 transition-colors hover:border-[#CCCCCC] hover:bg-[#FAFAFA] sm:bottom-9 sm:right-9"
-							aria-label={t('services.cardCtaAria')}
-						>
-							<ArrowUpRightIcon className="size-4" strokeWidth={2} />
-						</Link>
+						<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
+						<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
+						<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{t('services.infoLabel')}</p>
+						<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
+						<div className="mt-8 flex justify-end">
+							<Link
+								href="/book"
+								className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors hover:bg-[#DDDDDD] sm:size-11"
+								aria-label={t('services.cardCtaAria')}
+							>
+								<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
+							</Link>
+						</div>
 					</motion.article>
 				))}
+			</div>
+
+			<div className="mx-auto mt-14 hidden w-full max-w-5xl flex-row items-start gap-8 sm:mt-16 md:flex lg:-mt-5 lg:gap-10">
+				<div className="flex flex-1 flex-col gap-8 pt-28 lg:gap-10 lg:pt-36">
+					{leftCards.map((card, index) => (
+						<motion.article
+							key={card.id}
+							initial={{ opacity: 0, y: 24 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, margin: '-40px' }}
+							transition={{ duration: 0.45, delay: index * 0.06 }}
+							className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 cursor-pointer hover:scale-95 transition-all duration-500"
+						>
+							<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
+							<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
+							<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{t('services.infoLabel')}</p>
+							<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
+							<div className="mt-8 flex justify-end">
+								<Link
+									href="/book"
+									className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors sm:size-11"
+									aria-label={t('services.cardCtaAria')}
+								>
+									<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
+								</Link>
+							</div>
+						</motion.article>
+					))}
+				</div>
+				<div className="flex flex-1 flex-col gap-6 md:gap-8 lg:gap-10">
+					{rightCards.map((card, index) => (
+						<motion.article
+							key={card.id}
+							initial={{ opacity: 0, y: 24 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, margin: '-40px' }}
+							transition={{ duration: 0.45, delay: 0.06 + index * 0.06 }}
+							className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 cursor-pointer hover:scale-95 transition-all duration-500"
+						>
+							<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
+							<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
+							<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{t('services.infoLabel')}</p>
+							<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
+							<div className="mt-8 flex justify-end">
+								<Link
+									href="/book"
+									className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors hover:bg-[#DDDDDD] sm:size-11"
+									aria-label={t('services.cardCtaAria')}
+								>
+									<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
+								</Link>
+							</div>
+						</motion.article>
+					))}
+				</div>
 			</div>
 		</section>
 	);
