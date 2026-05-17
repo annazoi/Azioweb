@@ -26,16 +26,17 @@
 		"location": "Athens, GR"
 	},
 	"about": {
-		"headlineLine1": "We craft the intelligence",
-		"headlineLine2": "that turns ambitious ideas",
-		"headlineLine3": "into products people trust.",
+		"headlineLine1": "We craft the intelligence that",
+		"headlineLine2": "turns ambitious ideas into products",
+		"headlineLine3": "people trust.",
 		"col1BoldOpen": "About us.",
-		"col1Line2": "At Azioweb, we build smart web and",
-		"col1Line3": "mobile products by putting your users first. We dive deep into ",
-		"col1Line4": "how your business works so we can design custom software that solves your actual problems.",
-		"col1Line5": "The result: digital experiences ",
-		"col1BoldClose": "that don't just look sharp, they use clever AI and automation to make your life easier.",
-		"col2": "From simple, elegant design to clever AI systems, we deliver ready to go software that combines a premium look with seamless performance.",
+		"col1Line2": "At Azioweb, we build smart web and mobile apps by putting",
+		"col1Line3": "your customers first. We take the time to truly understand how your business runs",
+		"col1Line4": "so we can create tools that solve your real, everyday challenges.",
+		"col1Line4_2": "The result: apps that",
+		"col1Line5": "don't just look great, they use AI and automation to do the heavy lifting for",
+		"col1BoldClose": "you to make your life easier.",
+		"col2": "From simple, beautiful design to smart AI tools, we build ready to use apps that combine a premium look and work flawlessly for your business.",
 		"cta": "Explore our process"
 	},
 	"services": {
@@ -87,11 +88,13 @@
 	},
 	"experience": {
 		"headlineBold": "Our highlights.",
-		"headlineMuted": "Built with Precision.",
-		"introLeftBefore": "Whether you are just starting out or already growing fast, we help brands",
-		"introLeftBold": "launch smart digital products",
-		"introLeftAfter": "that stand out and win customers.",
-		"introRight": "Take a look at how Azioweb helps businesses bring their ideas to life.",
+		"headlineMuted": " Built with precision.",
+		"introLeft1": "Whether you are just starting out or already",
+		"introLeft2": " growing fast, we help brands",
+		"introLeft2Bold": "launch smart digital",
+		"introLeft2BoldAfter": "products",
+		"introLeft3": "that stand out and win customers.",
+		"introRight": "Explore how Azioweb helps businesses bring their ideas to life.",
 		"projects": {
 			"svyaz": {
 				"description": "Next-gen collaboration and secure messaging system with AI-powered features.",

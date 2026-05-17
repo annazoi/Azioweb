@@ -169,25 +169,38 @@ const Experience = () => {
 	const rows = chunkPairs(sites);
 
 	return (
-		<div id="clients" className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-30">
+		<div id="clients" className="relative mx-auto max-w-[100rem] px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-30">
 			<div className="mx-auto max-w-4xl text-center">
-				<h2 className="flex flex-col items-center gap-2 text-balance sm:gap-3">
-					<span className="text-[clamp(1.85rem,4.2vw,3.25rem)] font-bold leading-[1.12] tracking-tight text-white">
+				<h2 className="flex flex-col items-center gap-2 text-balance sm:gap-3 text-[clamp(1.85rem,4.2vw,4.25rem)] font-bold leading-[1.12] tracking-tight text-white">
+					<span className='pr-100'>
 						{t('experience.headlineBold')}
 					</span>
-					<span className="max-w-2xl text-lg font-medium leading-snug text-neutral-500 sm:text-xl md:text-2xl">
+					<span className='pl-40 text-neutral-500'>
 						{t('experience.headlineMuted')}
 					</span>
 				</h2>
 			</div>
-
 			<div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-10 text-left lg:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6">
-				<p className="text-[15px] leading-relaxed text-neutral-400 md:text-base">
-					{t('experience.introLeftBefore')}{' '}
-					<span className="font-bold text-neutral-100">{t('experience.introLeftBold')}</span>{' '}
-					{t('experience.introLeftAfter')}
+				<p className="text-[16px] leading-[1.2] text-neutral-400 md:text-[22px] flex flex-col">
+					<span className="pl-20">
+						{t('experience.introLeft1')}
+					</span>
+					<span className="font-bold">
+						<span>
+						{t('experience.introLeft2')}
+						</span> {' '}
+						<span className="font-bold text-neutral-100">
+						{t('experience.introLeft2Bold')}
+						</span>
+					</span>
+					<span>
+						<span className="font-bold text-neutral-100">
+						{t('experience.introLeft2BoldAfter')} {' '}
+						</span>
+					{t('experience.introLeft3')}
+					</span>
 				</p>
-				<p className="text-sm leading-relaxed text-neutral-600 md:text-[15px] lg:pt-1">{t('experience.introRight')}</p>
+				<p className="text-sm leading-[1] font-medium text-neutral-600 md:text-[18px] lg:pt-1 max-w-[250px] mx-auto">{t('experience.introRight')}</p>
 			</div>
 
 			<div className="mt-14 flex flex-col gap-6 sm:mt-16 lg:mt-20 lg:gap-8">
@@ -237,7 +250,7 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 
 			<div className={`relative min-h-[min(100vw,26rem)] sm:min-h-[28rem] md:min-h-[30rem] ${isDark ? '' : ''}`}>
 				{isDark ? (
-					<div className="relative h-full min-h-[inherit] p-5 pt-20 sm:p-8 sm:pt-24 md:min-h-[30rem]">
+					<div className="relative h-full min-h-[inherit] p-5 pt-20 sm:p-8 sm:pt-24 md:min-h-[45rem]">
 						{extras[0] && (
 							<div className="absolute left-4 top-28 z-10 hidden h-36 w-24 overflow-hidden rounded-2xl shadow-xl sm:left-6 sm:top-32 sm:block sm:h-40 sm:w-28 md:h-44 md:w-32">
 								<Image src={extras[0]} alt="" fill className="object-cover" sizes="128px" />

@@ -2,32 +2,18 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowDownIcon, ClockIcon } from '@heroicons/react/24/outline';
-import { useEffect, useRef, useState } from 'react';
+import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import InfinityOrbsAnimation from '@/components/ui/infinity-orbs-animation';
+import { useLocalTime } from '@/hooks/use-local-time';
 
 const HERO_BG = '/img/azioweb.jpg';
 
 const Hero = () => {
 	const { t } = useTranslation();
 	const sectionRef = useRef<HTMLElement>(null);
-	const [time, setTime] = useState('');
-
-	useEffect(() => {
-		const tick = () => {
-			setTime(
-				new Date().toLocaleTimeString('en-GB', {
-					hour: 'numeric',
-					minute: '2-digit',
-					hour12: true,
-					timeZone: 'Europe/London',
-				}),
-			);
-		};
-		tick();
-		const id = window.setInterval(tick, 30000);
-		return () => window.clearInterval(id);
-	}, []);
+	const { time, hour, theme } = useLocalTime('Europe/Athens');
 
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
@@ -64,7 +50,7 @@ const Hero = () => {
 					<div className="flex flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm absolute left-10 w-full max-w-[100rem] bottom-100">
 						<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
 							<span>{t('hero.studioTag')}</span>
-							<ClockIcon className="size-4 shrink-0 opacity-80" strokeWidth={1.5} />
+							<InfinityOrbsAnimation theme={theme} hour={hour} />
 							<span>
 								{time} {t('hero.locationLabel')}
 							</span>
@@ -76,9 +62,6 @@ const Hero = () => {
 							<span>{t('hero.scrollExplore')}</span>
 							<ArrowDownIcon className="size-4" strokeWidth={2} />
 						</Link>
-					</div>
-					<div className="overflow-hidden pb-2">
-						
 					</div>
 				</div>
 			</div>

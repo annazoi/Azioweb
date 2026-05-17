@@ -16,9 +16,9 @@ const About = () => {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true, margin: '-80px' }}
 					transition={{ duration: 0.5 }}
-					className="w-full max-w-4xl text-left text-[clamp(2rem,5.2vw,4rem)] font-bold leading-[1.02] tracking-[-0.03em] text-white m-auto"
+					className="w-full text-left text-[clamp(2rem,5.2vw,4.75rem)] font-bold leading-[1] tracking-[-0.03em] text-white m-auto"
 				>
-					<span className="block pl-[clamp(3.25rem,2vw,6.75rem)]">{t('about.headlineLine1')}</span>
+					<span className="block pl-40">{t('about.headlineLine1')}</span>
 					<span className="block">{t('about.headlineLine2')}</span>
 					<span className="block">{t('about.headlineLine3')}</span>
 				</motion.h2>
@@ -28,16 +28,16 @@ const About = () => {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true, margin: '-60px' }}
 					transition={{ duration: 0.5, delay: 0.08 }}
-					className="m-auto mt-14 grid w-full max-w-4xl grid-cols-1 gap-10 text-left md:mt-16 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:gap-x-14 lg:mt-20 lg:gap-x-20"
+					className="mt-14 grid w-full grid-cols-1 gap-10 text-left md:mt-16 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:gap-x-14 lg:mt-20 lg:gap-x-20"
 				>
-					<div className="flex flex-col gap-18">
-						<p className="text-[15px] leading-[1.6] text-neutral-400 md:text-[18px]">
-							<span className="block pl-[clamp(3.25rem,11vw,6.75rem)]">
+					<div className="flex flex-col gap-18 max-w-[700px]">
+						<p className="text-[15px] leading-[1.3] text-neutral-400 md:text-[18px]">
+							<span className="block pl-25">
 								<span className="font-bold text-neutral-100">{t('about.col1BoldOpen')}</span>{' '}
 								{t('about.col1Line2')}
 							</span>
 							<span className="block">{t('about.col1Line3')}</span>
-							<span className="block">{t('about.col1Line4')} <span className="font-bold text-neutral-100">{t('about.col1Line5')}</span></span>
+							<span className="block">{t('about.col1Line4')} <span className="font-bold text-neutral-100">{t('about.col1Line4_2')}</span> <span className="font-bold text-neutral-100">{t('about.col1Line5')}</span></span>
 							<span className="block font-bold text-neutral-100">{t('about.col1BoldClose')}</span>
 						</p>
 						<Link
@@ -48,7 +48,7 @@ const About = () => {
 							<span className="group-hover:translate-x-2 transition-all duration-500 group-hover:pr-1">{t('about.cta')}</span>
 						</Link>
 					</div>
-					<p className="text-[15px] leading-relaxed text-neutral-400 md:text-[18px]">
+					<p className="text-[15px] leading-[1.2] text-neutral-400 md:text-[17px] font-light">
 						{t('about.col2')}
 					</p>
 				</motion.div>

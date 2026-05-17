@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocalTime } from '@/hooks/use-local-time';
+import InfinityOrbsAnimation from '@/components/ui/infinity-orbs-animation';
 
 const watermarkMask = {
 	WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)',
@@ -12,32 +13,18 @@ const watermarkMask = {
 const Footer = () => {
 	const { t } = useTranslation();
 	const year = new Date().getFullYear();
-	const [time, setTime] = useState('');
-
-	useEffect(() => {
-		const tick = () => {
-			setTime(
-				new Date().toLocaleTimeString('en-GB', {
-					hour: 'numeric',
-					minute: '2-digit',
-					hour12: true,
-					timeZone: 'Europe/London',
-				}),
-			);
-		};
-		tick();
-		const id = window.setInterval(tick, 30000);
-		return () => window.clearInterval(id);
-	}, []);
+	const { time, hour, theme } = useLocalTime('Europe/Athens');
 
 	return (
 		<footer className="relative overflow-hidden bg-black">
 			<div className="relative z-10 mx-auto px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pb-16 lg:pt-24 h-170">
 				<div className="flex flex-col gap-14 lg:flex-row lg:justify-between lg:gap-12">
 					<div className="max-w-xl shrink-0 lg:max-w-[min(100%,28rem)] lg:pr-8">
-						<p className="text-sm font-medium text-neutral-400">
-							<span aria-hidden>☀️ </span>
-							{time} {t('footer.locationLabel')}
+						<p className="flex items-center gap-1.5 text-sm font-medium text-neutral-400">
+							<InfinityOrbsAnimation theme={theme} hour={hour} />
+							<span>
+								{time} {t('footer.locationLabel')}
+							</span>
 						</p>
 						<h2 className="mt-6 text-balance text-2xl font-semibold leading-[1] tracking-tight text-white sm:text-3xl md:text-[24px] md:leading-snug">
 							{t('footer.headline')}
