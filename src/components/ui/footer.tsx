@@ -107,13 +107,9 @@ const Footer = () => {
 				aria-hidden
 			>
 				<p
-					className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[22%] select-none text-center text-[clamp(4.5rem,24vw,30rem)] font-black uppercase leading-[0.85] tracking-[-0.04em]"
+					className="text-gradient-watermark absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[22%] select-none text-center text-[clamp(4.5rem,24vw,30rem)] font-black uppercase leading-[0.85] tracking-[-0.04em]"
 					style={{
 						...watermarkMask,
-						backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 10%, rgba(71, 74, 102, 0.55) 52%, rgb(105, 104, 177) 78%, rgb(152, 134, 255) 100%)',
-						WebkitBackgroundClip: 'text',
-						backgroundClip: 'text',
-						WebkitTextFillColor: 'transparent',
 						color: 'transparent',
 					}}
 				>

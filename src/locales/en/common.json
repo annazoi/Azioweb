@@ -206,10 +206,13 @@
 		}
 	},
 	"book": {
+		"tag": "Booking",
 		"titlePrefix": "Schedule a",
-		"titleAccent": "Discovery Call.",
+		"titleAccent": "discovery call.",
 		"description": "Pick a time and we will map your goals and best AI opportunities.",
-		"backgroundAlt": "Background"
+		"duration": "30 minutes",
+		"format": "Video call",
+		"commitment": "No commitment"
 	},
 	"terms": {
 		"tag": "Legal",
