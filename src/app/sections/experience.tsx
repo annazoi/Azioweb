@@ -6,36 +6,9 @@ import Image from 'next/image';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import latherlab from '@/assets/projects/latherlab.png';
 import relay from '@/assets/projects/relay.png';
-import svyaz from '@/assets/projects/svyaz/svyaz.jpg';
-import svyazLogin from '@/assets/projects/svyaz/login.jpg';
-import svyazChats from '@/assets/projects/svyaz/chats.jpg';
-import svyazChat from '@/assets/projects/svyaz/chat.jpg';
-import svyazAi from '@/assets/projects/svyaz/ai.jpg';
-import svyazAiProgressing from '@/assets/projects/svyaz/ai-1.jpg';
-import svyazSummary from '@/assets/projects/svyaz/ai-2.jpg';
-import svyazSentimentAnlysis from '@/assets/projects/svyaz/ai-3.jpg';
-import svyazCall from '@/assets/projects/svyaz/call.jpg';
-import svyazCreateChat from '@/assets/projects/svyaz/create-chat.jpg';
 import habitry from '@/assets/projects/habitry/habitry.png';
-import habitryLanding from '@/assets/projects/habitry/landing.jpg';
-import habitryDashboard from '@/assets/projects/habitry/dashboard.jpg';
-import habitryAddActivity from '@/assets/projects/habitry/addActivity.jpg';
-import habitryCalendar from '@/assets/projects/habitry/calendar.jpg';
-import habitryLogin from '@/assets/projects/habitry/login.jpg';
 import drobe from '@/assets/projects/drobe/drobe.png';
-import drobeLogin from '@/assets/projects/drobe/login.jpg';
-import drobeHome from '@/assets/projects/drobe/home.jpg';
-import drobeStudio from '@/assets/projects/drobe/studio.jpg';
-import drobeOutfits from '@/assets/projects/drobe/outfits.jpg';
-import drobeAddPhoto from '@/assets/projects/drobe/add_photo.jpg';
-import drobeClothingCutout from '@/assets/projects/drobe/clothing_cutout.jpg';
-import drobeSaveClothingItem from '@/assets/projects/drobe/save_clothing_item.jpg';
-import drobeArchives from '@/assets/projects/drobe/archives.jpg';
-import drobeClothingOverview from '@/assets/projects/drobe/clothing_overview.jpg';
-import drobeCreatedClothingItem from '@/assets/projects/drobe/created_clothing_item.jpg';
-import domus from '@/assets/projects/domus/domus.jpg';
 
 function chunkPairs<T>(arr: T[]): T[][] {
 	const out: T[][] = [];
@@ -51,107 +24,87 @@ const Experience = () => {
 		{
 			id: 'site-2',
 			name: 'Svyaz Platform',
-			photo: svyaz,
-			photos: [
-				svyazLogin,
-				svyazChats,
-				svyazChat,
-				svyazAi,
-				svyazAiProgressing,
-				svyazSummary,
-				svyazSentimentAnlysis,
-				svyazCall,
-				svyazCreateChat,
-			],
+			photo: "/img/projects/svyaz.png",
+			photos: ["/img/projects/svyaz.png"],
 			description: t('experience.projects.svyaz.description'),
 			url: 'https://svyaz.azioweb.com/',
 			tag: t('experience.projects.svyaz.tag'),
 			highlights: [t('experience.projects.svyaz.highlights.0'), t('experience.projects.svyaz.highlights.1')],
 			details: t('experience.projects.svyaz.details'),
-			showcaseVariant: 'dark',
-			showcaseTags: ['Web design', 'No-code development', 'App concepts'],
+			showcaseTags: ['App design', 'Messaging', 'AI'],
 			categoryLine: 'AI, Collaboration',
 		},
 		{
 			id: 'site-1',
 			name: 'Lather Lab',
-			photo: latherlab,
-			photos: [latherlab],
+			photo: "/img/projects/latherlab.png",
+			photos: ["/img/projects/latherlab.png"],
 			url: 'https://latherlab.azioweb.com/',
 			description: t('experience.projects.latherLab.description'),
 			highlights: [t('experience.projects.latherLab.highlights.0'), t('experience.projects.latherLab.highlights.1')],
 			details: t('experience.projects.latherLab.details'),
-			showcaseVariant: 'light',
 			showcaseTags: ['Web design', 'E-commerce', 'Brand'],
 			categoryLine: 'Commerce, Retail',
 		},
-		{
-			id: 'site-4',
-			name: 'Drobe App',
-			photo: drobe,
-			photos: [
-				drobeLogin,
-				drobeHome,
-				drobeStudio,
-				drobeOutfits,
-				drobeAddPhoto,
-				drobeClothingCutout,
-				drobeSaveClothingItem,
-				drobeArchives,
-				drobeClothingOverview,
-				drobeCreatedClothingItem,
-			],
-			description: t('experience.projects.drobe.description'),
-			url: 'https://drobe.annazoi.dev/',
-			tag: t('experience.projects.drobe.tag'),
-			highlights: [t('experience.projects.drobe.highlights.0'), t('experience.projects.drobe.highlights.1')],
-			details: t('experience.projects.drobe.details'),
-			showcaseVariant: 'dark',
-			showcaseTags: ['App design', 'AI', 'Mobile'],
-			categoryLine: 'Lifestyle, Fashion',
-		},
-		{
-			id: 'site-3',
-			name: 'Habitry App',
-			photo: habitry,
-			photos: [habitryLanding, habitryLogin, habitryDashboard, habitryAddActivity, habitryCalendar],
-			description: t('experience.projects.habitry.description'),
-			url: 'https://habitry.annazoi.dev/',
-			tag: t('experience.projects.habitry.tag'),
-			highlights: [t('experience.projects.habitry.highlights.0'), t('experience.projects.habitry.highlights.1')],
-			details: t('experience.projects.habitry.details'),
-			showcaseVariant: 'light',
-			showcaseTags: ['App design', 'Product', 'Health'],
-			categoryLine: 'Wellness, Habits',
-		},
-		{
-			id: 'site-5',
-			name: 'Relay Platform',
-			photo: relay,
-			photos: [relay],
-			description: t('experience.projects.relay.description'),
-			url: 'https://relay.annazoi.dev/',
-			tag: t('experience.projects.relay.tag'),
-			highlights: [t('experience.projects.relay.highlights.0'), t('experience.projects.relay.highlights.1')],
-			details: t('experience.projects.relay.details'),
-			showcaseVariant: 'dark',
-			showcaseTags: ['Web design', 'Dashboard', 'Analytics'],
-			categoryLine: 'Insights, NLP',
-		},
+
 		{
 			id: 'site-6',
 			name: 'Domus Platform',
-			photo: domus,
-			photos: [domus],
+			photo: '/img/projects/domus.png',
+			photos: ["/img/projects/domus.png"],
 			description: t('experience.projects.domus.description'),
 			url: 'https://domus.azioweb.com/',
 			tag: t('experience.projects.domus.tag'),
 			highlights: [t('experience.projects.domus.highlights.0'), t('experience.projects.domus.highlights.1')],
 			details: t('experience.projects.domus.details'),
-			showcaseVariant: 'light',
 			showcaseTags: ['Web design', 'Platform', 'SaaS'],
 			categoryLine: 'PropTech, Real estate',
 		},
+
+		
+		{
+			id: 'site-5',
+			name: 'Relay Platform',
+			photo: '/img/projects/relay.png',
+			photos: ["/img/projects/relay.png"],
+			description: t('experience.projects.relay.description'),
+			url: 'https://relay.annazoi.dev/',
+			tag: t('experience.projects.relay.tag'),
+			highlights: [t('experience.projects.relay.highlights.0'), t('experience.projects.relay.highlights.1')],
+			details: t('experience.projects.relay.details'),
+			showcaseTags: ['Web design', 'Dashboard', 'Analytics'],
+			categoryLine: 'Insights, NLP',
+		},
+		{
+			id: 'site-4',
+			name: 'Drobe App',
+			photo: "/img/projects/drobe.png",
+			photos: ["/img/projects/drobe.png"],
+			description: t('experience.projects.drobe.description'),
+			url: 'https://drobe.annazoi.dev/',
+			tag: t('experience.projects.drobe.tag'),
+			highlights: [t('experience.projects.drobe.highlights.0'), t('experience.projects.drobe.highlights.1')],
+			details: t('experience.projects.drobe.details'),
+			showcaseTags: ['App design', 'AI', 'Mobile'],
+			categoryLine: 'Lifestyle, Fashion',
+		},
+
+	
+		{
+			id: 'site-3',
+			name: 'Habitry App',
+			photo: "/img/projects/habitry.png",
+			photos: ["/img/projects/habitry.png"],
+			description: t('experience.projects.habitry.description'),
+			url: 'https://habitry.annazoi.dev/',
+			tag: t('experience.projects.habitry.tag'),
+			highlights: [t('experience.projects.habitry.highlights.0'), t('experience.projects.habitry.highlights.1')],
+			details: t('experience.projects.habitry.details'),
+			showcaseTags: ['App design', 'Product', 'Health'],
+			categoryLine: 'Wellness, Habits',
+		},
+	
+	
 	];
 
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -249,9 +202,8 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 			</div>
 
 			<div className={`relative min-h-[min(100vw,26rem)] sm:min-h-[28rem] md:min-h-[30rem] ${isDark ? '' : ''}`}>
-				{isDark ? (
 					<div className="relative h-full min-h-[inherit] p-5 pt-20 sm:p-8 sm:pt-24 md:min-h-[45rem]">
-						{extras[0] && (
+						{/* {extras[0] && (
 							<div className="absolute left-4 top-28 z-10 hidden h-36 w-24 overflow-hidden rounded-2xl shadow-xl sm:left-6 sm:top-32 sm:block sm:h-40 sm:w-28 md:h-44 md:w-32">
 								<Image src={extras[0]} alt="" fill className="object-cover" sizes="128px" />
 							</div>
@@ -260,18 +212,11 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 							<div className="absolute bottom-28 right-4 z-10 hidden h-40 w-24 overflow-hidden rounded-2xl shadow-xl sm:right-6 md:block md:h-44 md:w-28">
 								<Image src={extras[1]} alt="" fill className="object-cover" sizes="112px" />
 							</div>
-						)}
-						<div className="absolute left-1/2 top-[48%] z-[5] h-[220px] w-[min(88%,280px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl shadow-2xl sm:h-[260px] sm:w-[min(85%,300px)] md:h-[280px] md:w-[320px]">
-							<Image src={site.photo} alt={site.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 90vw, 320px" />
+						)} */}
+						<div className="absolute left-1/2 top-[48%] z-[5] w-full h-full -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl shadow-2xl">
+							<Image src={site.photo} alt={site.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105 object-center" />
 						</div>
 					</div>
-				) : (
-					<div className="relative flex min-h-[inherit] flex-col items-center justify-center px-6 pb-28 pt-24 sm:px-10 sm:pb-32 sm:pt-28 md:min-h-[30rem]">
-						<div className="relative mt-4 h-48 w-full max-w-[280px] sm:h-56 sm:max-w-sm md:h-60">
-							<Image src={site.photo} alt={site.name} fill className="object-contain object-center drop-shadow-xl transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width:768px) 90vw, 400px" />
-						</div>
-					</div>
-				)}
 			</div>
 
 			<div

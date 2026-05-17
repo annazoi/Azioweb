@@ -270,7 +270,7 @@ export default function ContactDrawer() {
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 										placeholder={t('contactDrawer.namePlaceholder')}
-										className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-white/20 focus:outline-none"
+										className="w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-white/20 focus:outline-none"
 									/>
 									<input
 										type="email"
@@ -278,7 +278,7 @@ export default function ContactDrawer() {
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
 										placeholder={t('contactDrawer.emailPlaceholder')}
-										className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-white/20 focus:outline-none"
+										className="w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-white/20 focus:outline-none"
 									/>
 								</div>
 							</div>
@@ -317,7 +317,7 @@ export default function ContactDrawer() {
 									onChange={(e) => setDetails(e.target.value)}
 									placeholder={t('contactDrawer.detailsPlaceholder')}
 									rows={5}
-									className="mt-3 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-white/20 focus:outline-none"
+									className="mt-3 w-full resize-none rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-white/20 focus:outline-none"
 								/>
 							</div>
 

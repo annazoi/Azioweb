@@ -6,25 +6,16 @@ import Link from 'next/link';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { StaticImageData } from 'next/image';
-import adobePhotoshop from '@/assets/brands/adobe_photoshop.png';
-import aistudio from '@/assets/brands/aistudio.png';
-import canva from '@/assets/brands/canva.png';
-import claudeAi from '@/assets/brands/claude_ai.png';
-import cursorAi from '@/assets/brands/cursor_ai.png';
-import lovableAi from '@/assets/brands/lovable_ai.png';
-import n8n from '@/assets/brands/n8n.png';
-import openai from '@/assets/brands/openai.png';
 
-const brandLogos: { key: string; src: StaticImageData; alt: string }[] = [
-	{ key: 'photoshop', src: adobePhotoshop, alt: 'Photoshop' },
-	{ key: 'aistudio', src: aistudio, alt: 'AI Studio' },
-	{ key: 'canva', src: canva, alt: 'Canva' },
-	{ key: 'claude', src: claudeAi, alt: 'Claude' },
-	{ key: 'cursor', src: cursorAi, alt: 'Cursor' },
-	{ key: 'lovable', src: lovableAi, alt: 'Lovable' },
-	{ key: 'n8n', src: n8n, alt: 'n8n' },
-	{ key: 'openai', src: openai, alt: 'OpenAI' },
+const brandLogos: { key: string; src: string; alt: string }[] = [
+	{ key: 'photoshop', src: '/img/brands/adobe_photoshop.png', alt: 'Photoshop' },
+	{ key: 'aistudio', src: '/img/brands/aistudio.png', alt: 'AI Studio' },
+	{ key: 'canva', src: '/img/brands/canva.png', alt: 'Canva' },
+	{ key: 'claude', src: '/img/brands/claude_ai.png', alt: 'Claude' },
+	{ key: 'cursor', src: '/img/brands/cursor_ai.png', alt: 'Cursor' },
+	{ key: 'lovable', src: '/img/brands/lovable_ai.png', alt: 'Lovable' },
+	{ key: 'n8n', src: '/img/brands/n8n.png', alt: 'n8n' },
+	{ key: 'openai', src: '/img/brands/openai.png', alt: 'OpenAI' },
 ];
 
 const dockSpring = { type: 'spring' as const, stiffness: 460, damping: 80, mass: 0.8 };
