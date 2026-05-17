@@ -17,6 +17,7 @@
 			"services": "Services",
 			"process": "Process",
 			"work": "Work",
+			"blog": "Blog",
 			"contact": "Contact"
 		},
 		"cta": {
@@ -62,6 +63,195 @@
 			"threeD": {
 				"title": "Performance & SEO",
 				"description": "A great app needs to be fast and easy to find. We optimize your website so it loads instantly, runs flawlessly, and ranks higher on search engines to naturally bring more customers right to your door."
+			}
+		},
+		"learnMore": "Learn more"
+	},
+	"servicePages": {
+		"backToServices": "All services",
+		"deliverablesHeading": "What you get",
+		"processHeading": "How we work",
+		"toolsHeading": "Tools & stack",
+		"relatedHeading": "Explore more",
+		"ctaTitle": "Ready to start?",
+		"ctaDescription": "Tell us about your project and we will map the right approach, timeline, and where this service fits.",
+		"ctaButton": "Book a discovery call",
+		"items": {
+			"web-app-development": {
+				"tag": "Development",
+				"title": "Web & App",
+				"titleAccent": "Development",
+				"subtitle": "Production-ready products built to scale—from first prototype to launch and beyond.",
+				"overview": "We engineer web platforms and mobile apps that feel fast, stay secure, and grow with your business. Every build is structured for maintainability, with clean architecture and thoughtful integrations so your team can ship features without friction.",
+				"metaDescription": "Custom web and mobile app development—Next.js, React Native, APIs, and scalable architecture from Azioweb.",
+				"deliverables": [
+					{
+						"title": "Full-stack web apps",
+						"description": "Responsive platforms with modern frameworks, auth, dashboards, and admin tooling."
+					},
+					{
+						"title": "Mobile applications",
+						"description": "Native-feel iOS and Android experiences with offline support and push notifications."
+					},
+					{
+						"title": "APIs & integrations",
+						"description": "Reliable backends that connect payments, CRMs, analytics, and third-party services."
+					},
+					{
+						"title": "Launch & handoff",
+						"description": "Deployment pipelines, documentation, and a codebase your team can own."
+					}
+				],
+				"process": [
+					{
+						"step": "01",
+						"title": "Scope & architecture",
+						"description": "We define features, tech stack, and milestones aligned with your goals and budget."
+					},
+					{
+						"step": "02",
+						"title": "Iterative build",
+						"description": "Weekly demos, tight feedback loops, and incremental releases you can test early."
+					},
+					{
+						"step": "03",
+						"title": "Ship & scale",
+						"description": "Production launch with monitoring, performance baselines, and room to grow."
+					}
+				],
+				"tools": ["Next.js", "React", "React Native", "TypeScript", "PostgreSQL", "Prisma", "Vercel"]
+			},
+			"ai-automation": {
+				"tag": "Intelligence",
+				"title": "AI &",
+				"titleAccent": "Automation",
+				"subtitle": "Practical AI that removes busywork and surfaces insights your team can act on.",
+				"overview": "We design AI workflows that fit how you actually operate—not demos that sit on a shelf. From custom copilots to automated pipelines, we integrate models and tools that save hours every week while keeping humans in control.",
+				"metaDescription": "AI integration, LLM copilots, workflow automation, and intelligent data systems from Azioweb.",
+				"deliverables": [
+					{
+						"title": "Custom AI assistants",
+						"description": "Copilots trained on your docs, products, and workflows for support and internal teams."
+					},
+					{
+						"title": "Workflow automation",
+						"description": "n8n and API-driven flows that route data, trigger actions, and eliminate manual steps."
+					},
+					{
+						"title": "RAG & knowledge bases",
+						"description": "Searchable intelligence layers over your content with accurate, cited answers."
+					},
+					{
+						"title": "Model strategy",
+						"description": "Right-sized model choices—OpenAI, Claude, or open-source—balanced for cost and quality."
+					}
+				],
+				"process": [
+					{
+						"step": "01",
+						"title": "Opportunity mapping",
+						"description": "We identify high-impact use cases where AI saves time or unlocks new capability."
+					},
+					{
+						"step": "02",
+						"title": "Prototype & validate",
+						"description": "Rapid proofs with real data so you see value before full production investment."
+					},
+					{
+						"step": "03",
+						"title": "Production integration",
+						"description": "Secure deployment, guardrails, monitoring, and ongoing refinement as usage grows."
+					}
+				],
+				"tools": ["OpenAI", "Claude", "n8n", "Vector DBs", "LangChain", "Python", "Webhooks"]
+			},
+			"ux-ui-design": {
+				"tag": "Experience",
+				"title": "UX/UI",
+				"titleAccent": "Design",
+				"subtitle": "Interfaces that convert—clear hierarchy, purposeful motion, and craft your customers feel.",
+				"overview": "Great design is more than aesthetics. We research how people use your product, map flows that reduce friction, and craft visual systems that build trust from the first screen. Every pixel serves a business goal.",
+				"metaDescription": "UX research, UI design, design systems, and prototyping for web and mobile products from Azioweb.",
+				"deliverables": [
+					{
+						"title": "UX research & flows",
+						"description": "User journeys, wireframes, and information architecture grounded in real behavior."
+					},
+					{
+						"title": "High-fidelity UI",
+						"description": "Polished screens with typography, color, and components ready for development."
+					},
+					{
+						"title": "Design systems",
+						"description": "Reusable tokens, components, and documentation that keep products consistent at scale."
+					},
+					{
+						"title": "Interactive prototypes",
+						"description": "Clickable demos to test ideas with stakeholders and users before writing code."
+					}
+				],
+				"process": [
+					{
+						"step": "01",
+						"title": "Discover & define",
+						"description": "Workshops, audits, and competitive insight to align on problems worth solving."
+					},
+					{
+						"step": "02",
+						"title": "Design & iterate",
+						"description": "Collaborative reviews with rapid refinement until the experience feels inevitable."
+					},
+					{
+						"step": "03",
+						"title": "Handoff & support",
+						"description": "Dev-ready specs, assets, and pairing with engineers through implementation."
+					}
+				],
+				"tools": ["Figma", "FigJam", "Adobe", "Prototyping", "Design tokens", "Accessibility"]
+			},
+			"performance-seo": {
+				"tag": "Growth",
+				"title": "Performance",
+				"titleAccent": "& SEO",
+				"subtitle": "Speed, stability, and discoverability—the technical foundation that turns traffic into revenue.",
+				"overview": "Slow sites lose customers before they read a word. We audit performance bottlenecks, fix Core Web Vitals, and structure content so search engines—and humans—find exactly what matters. Measurable gains, not vanity metrics.",
+				"metaDescription": "Web performance optimization, Core Web Vitals, technical SEO, and analytics from Azioweb.",
+				"deliverables": [
+					{
+						"title": "Performance audits",
+						"description": "Deep analysis of load times, rendering, assets, and third-party impact."
+					},
+					{
+						"title": "Core Web Vitals",
+						"description": "LCP, INP, and CLS improvements that directly affect rankings and conversions."
+					},
+					{
+						"title": "Technical SEO",
+						"description": "Schema, sitemaps, crawlability, and on-page structure built for discovery."
+					},
+					{
+						"title": "Analytics setup",
+						"description": "Tracking that shows what works—funnels, events, and actionable dashboards."
+					}
+				],
+				"process": [
+					{
+						"step": "01",
+						"title": "Baseline & audit",
+						"description": "Current scores, competitor benchmarks, and a prioritized fix roadmap."
+					},
+					{
+						"step": "02",
+						"title": "Optimize & implement",
+						"description": "Code, assets, caching, and SEO fixes shipped with before/after proof."
+					},
+					{
+						"step": "03",
+						"title": "Monitor & improve",
+						"description": "Ongoing tracking, search console insights, and iterative tuning as you grow."
+					}
+				],
+				"tools": ["Lighthouse", "PageSpeed", "GSC", "Schema.org", "CDN", "Analytics", "A/B testing"]
 			}
 		}
 	},
@@ -325,6 +515,7 @@
 		"exploreHeading": "Explore",
 		"socialsHeading": "Socials",
 		"linkHome": "Home",
+		"linkBlog": "Blog",
 		"linkPricing": "Pricing",
 		"linkHowWeWork": "How we work",
 		"linkBehance": "Behance",
@@ -392,6 +583,153 @@
 				"answer": "You get weekly updates, a shared project board, and direct contact with our team."
 			}
 		]
+	},
+	"blog": {
+		"tag": "Journal",
+		"titlePrefix": "Insights &",
+		"titleAccent": "Perspectives",
+		"description": "Notes on building AI-powered products, design craft, and shipping software that earns trust.",
+		"readArticle": "Read article",
+		"backToBlog": "All articles",
+		"minRead": "{{minutes}} min read",
+		"relatedHeading": "More to read",
+		"ctaTitle": "Want to build something together?",
+		"ctaDescription": "Tell us about your product idea and we will help you shape the right approach.",
+		"ctaButton": "Book a discovery call",
+		"articles": {
+			"ai-in-production": {
+				"title": "Putting AI in production without the hype tax",
+				"excerpt": "Most teams ship demos. Few ship systems that stay reliable when real users and messy data show up.",
+				"image": "/backgrounds/bg1.jpg",
+				"date": "2026-04-12",
+				"readMinutes": 7,
+				"category": "AI",
+				"metaDescription": "How to move from AI prototypes to production systems with guardrails, observability, and clear ROI.",
+				"content": [
+					{
+						"type": "p",
+						"text": "The gap between a polished demo and a dependable product is where most AI initiatives stall. Stakeholders see the prototype, assume launch is weeks away, and underestimate the work to make outputs traceable, safe, and cost-predictable."
+					},
+					{
+						"type": "h2",
+						"text": "Start with a narrow job"
+					},
+					{
+						"type": "p",
+						"text": "Pick one workflow with measurable outcomes—support triage, document extraction, or lead qualification—and define success in business terms. A smaller surface area lets you invest in evaluation datasets, human review loops, and rollback paths before you scale scope."
+					},
+					{
+						"type": "h2",
+						"text": "Design for failure modes"
+					},
+					{
+						"type": "p",
+						"text": "Production AI needs fallbacks: cached answers, escalation to humans, and rate limits that protect spend. Log prompts, outputs, and latency from day one so you can spot drift early instead of discovering it in a customer thread."
+					},
+					{
+						"type": "p",
+						"text": "When teams treat AI as infrastructure—not magic—the hype tax disappears. You ship features that compound: faster operations, clearer decisions, and experiences users actually trust."
+					}
+				]
+			},
+			"designing-for-trust": {
+				"title": "Designing interfaces people trust on first use",
+				"excerpt": "Clarity beats cleverness. The best product UIs make complex systems feel obvious without hiding what is happening.",
+				"image": "/img/projects/domus.png",
+				"date": "2026-03-08",
+				"readMinutes": 6,
+				"category": "Design",
+				"metaDescription": "Principles for UX that builds confidence: hierarchy, feedback, and honest system states.",
+				"content": [
+					{
+						"type": "p",
+						"text": "Trust is not a brand color—it is the sum of small interactions. When a dashboard loads instantly but never explains a spike, users hesitate. When a form validates late and punishes small mistakes, they abandon."
+					},
+					{
+						"type": "h2",
+						"text": "Show the system state"
+					},
+					{
+						"type": "p",
+						"text": "Loading, saving, syncing, and failing should all have visible states. People forgive delays when they understand them. Skeleton screens, progress cues, and inline confirmations reduce anxiety more than decorative animation."
+					},
+					{
+						"type": "h2",
+						"text": "Reduce cognitive load"
+					},
+					{
+						"type": "p",
+						"text": "Group related actions, use consistent language, and reserve emphasis for what matters. Every extra decision on a screen is a tax on attention—especially in B2B tools used daily under pressure."
+					},
+					{
+						"type": "p",
+						"text": "Interfaces that respect attention earn loyalty. That is how design becomes a growth lever, not a polish pass at the end of a sprint."
+					}
+				]
+			},
+			"shipping-mvps-faster": {
+				"title": "Shipping MVPs faster without cutting the wrong corners",
+				"excerpt": "Speed is a strategy when you know which bets to validate first and which technical debt will block you later.",
+				"image": "/img/pc.jpg",
+				"date": "2026-02-19",
+				"readMinutes": 5,
+				"category": "Product",
+				"metaDescription": "A practical framework for scoping MVPs that validate demand while keeping a path to scale.",
+				"content": [
+					{
+						"type": "p",
+						"text": "An MVP is not the smallest thing you can build—it is the smallest thing that proves a hypothesis. Teams often confuse minimal with incomplete: no analytics, no onboarding, no path to iterate."
+					},
+					{
+						"type": "h2",
+						"text": "Scope to learning"
+					},
+					{
+						"type": "p",
+						"text": "List assumptions in order of risk. If pricing is uncertain, test willingness to pay before perfecting the settings screen. If activation is the bottleneck, instrument the first session before adding secondary features."
+					},
+					{
+						"type": "h2",
+						"text": "Keep the foundation honest"
+					},
+					{
+						"type": "p",
+						"text": "You can defer polish, not data models or auth. Choose a stack your team can extend and document decisions so week six does not become a rewrite. The goal is momentum with optionality."
+					}
+				]
+			},
+			"performance-as-product": {
+				"title": "Performance is a product feature, not a backlog item",
+				"excerpt": "Slow experiences feel broken before users read a single word. Speed is how you signal quality.",
+				"image": "/backgrounds/bg3.jpg",
+				"date": "2026-01-30",
+				"readMinutes": 6,
+				"category": "Engineering",
+				"metaDescription": "Why Core Web Vitals, perceived speed, and lean delivery paths directly affect conversion and retention.",
+				"content": [
+					{
+						"type": "p",
+						"text": "Performance work often lands in the backlog after launch, when traffic is already leaking. By then, fixes are expensive because they touch entrenched patterns—unoptimized images, blocking scripts, and layouts that shift as fonts load."
+					},
+					{
+						"type": "h2",
+						"text": "Measure what users feel"
+					},
+					{
+						"type": "p",
+						"text": "Lighthouse scores help, but field data tells the truth. Track LCP, INP, and CLS on real devices and networks. Pair metrics with session replays to see where hesitation happens."
+					},
+					{
+						"type": "h2",
+						"text": "Ship less, load smarter"
+					},
+					{
+						"type": "p",
+						"text": "Split routes, defer non-critical scripts, and serve images in modern formats. Many wins are incremental—each one compounds into a product that feels instant and credible."
+					}
+				]
+			}
+		}
 	},
 	"examples": {
 		"welcome": "Welcome, {{name}}!",

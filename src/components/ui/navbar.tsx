@@ -25,6 +25,7 @@ export default function Navbar() {
 		{ name: t('navbar.links.services'), href: '/#services', current: false },
 		{ name: t('navbar.links.process'), href: '/#process', current: false },
 		{ name: t('navbar.links.work'), href: '/#clients', current: false },
+		{ name: t('navbar.links.blog'), href: '/blog', current: false },
 		{ name: t('navbar.links.contact'), href: '#', current: false, action: 'open-contact-drawer' as const },
 	];
 
@@ -34,6 +35,7 @@ export default function Navbar() {
 			{ name: t('navbar.links.services'), href: '/#services', image: '/img/pc.jpg' },
 			{ name: t('navbar.links.process'), href: '/#process', image: '/img/pc.jpg' },
 			{ name: t('navbar.links.work'), href: '/#clients', image: '/img/azioweb.jpg' },
+			{ name: t('navbar.links.blog'), href: '/blog', image: '/backgrounds/bg2.jpg' },
 			{ name: t('navbar.links.contact'), href: '#', image: '/img/azioweb.jpg', action: 'open-contact-drawer' as const },
 		],
 		[t],

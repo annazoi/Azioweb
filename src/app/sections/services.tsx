@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getServiceHref } from '@/lib/services';
 
 const brandLogos: { key: string; src: string; alt: string }[] = [
 	{ key: 'photoshop', src: '/img/brands/adobe_photoshop.png', alt: 'Photoshop' },
@@ -97,6 +98,36 @@ function ToolBadgeRow({ className }: { className: string }) {
 	);
 }
 
+function ServiceCard({
+	card,
+	infoLabel,
+	learnMore,
+}: {
+	card: { id: string; title: string; description: string };
+	infoLabel: string;
+	learnMore: string;
+}) {
+	return (
+		<Link
+			href={getServiceHref(card.id)}
+			className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 hover:scale-95 transition-all duration-500"
+		>
+			<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
+			<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
+			<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{infoLabel}</p>
+			<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
+			<div className="mt-8 flex items-center justify-between">
+				<span className="text-sm font-semibold text-black/60 transition-colors group-hover:text-black">
+					{learnMore}
+				</span>
+				<span className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors group-hover:bg-[#DDDDDD] sm:size-11">
+					<ArrowUpRightIcon className="size-3 transition-all duration-300 group-hover:rotate-45" strokeWidth={2} />
+				</span>
+			</div>
+		</Link>
+	);
+}
+
 const Services = () => {
 	const { t } = useTranslation();
 	const cards = [
@@ -153,71 +184,35 @@ const Services = () => {
 			</div>
 
 			<div className="mx-auto mt-14 flex w-full max-w-6xl flex-col gap-6 sm:mt-16 md:hidden lg:mt-20">
-				{cards.map((card, index) => (
-					<article
+				{cards.map((card) => (
+					<ServiceCard
 						key={card.id}
-						className="flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 hover:scale-95 transition-all duration-500 cursor-pointer"
-					>
-						<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
-						<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
-						<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{t('services.infoLabel')}</p>
-						<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
-						<div className="mt-8 flex justify-end">
-							<Link
-								href="/book"
-								className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors hover:bg-[#DDDDDD] sm:size-11"
-								aria-label={t('services.cardCtaAria')}
-							>
-								<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
-							</Link>
-						</div>
-					</article>
+						card={card}
+						infoLabel={t('services.infoLabel')}
+						learnMore={t('services.learnMore')}
+					/>
 				))}
 			</div>
 
 			<div className="mx-auto mt-14 hidden w-full max-w-5xl flex-row items-start gap-8 sm:mt-16 md:flex lg:-mt-5 lg:gap-10">
 				<div className="flex flex-1 flex-col gap-8 pt-28 lg:gap-10 lg:pt-36">
-					{leftCards.map((card, index) => (
-						<article
+					{leftCards.map((card) => (
+						<ServiceCard
 							key={card.id}
-							className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 cursor-pointer hover:scale-95 transition-all duration-500"
-						>
-							<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
-							<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
-							<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{t('services.infoLabel')}</p>
-							<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
-							<div className="mt-8 flex justify-end">
-								<Link
-									href="/book"
-									className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors sm:size-11"
-									aria-label={t('services.cardCtaAria')}
-								>
-									<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
-								</Link>
-							</div>
-						</article>
+							card={card}
+							infoLabel={t('services.infoLabel')}
+							learnMore={t('services.learnMore')}
+						/>
 					))}
 				</div>
 				<div className="flex flex-1 flex-col gap-6 md:gap-8 lg:gap-10">
-					{rightCards.map((card, index) => (
-						<article
+					{rightCards.map((card) => (
+						<ServiceCard
 							key={card.id}
-							className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 cursor-pointer hover:scale-95 transition-all duration-500"
-						>
-							<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
-							<div className="mt-5 h-px w-full bg-[#E0E0E0]" />
-							<p className="mt-5 text-sm font-medium text-[#AAAAAA]">{t('services.infoLabel')}</p>
-							<p className="mt-2 flex-1 text-base leading-relaxed text-black/90">{card.description}</p>
-							<div className="mt-8 flex justify-end">
-								<Link
-									href="/book"
-									className="flex size-10 items-center justify-center rounded-[16px] bg-[#E8E8E8] text-black transition-colors hover:bg-[#DDDDDD] sm:size-11"
-									aria-label={t('services.cardCtaAria')}
-								>
-									<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
-								</Link>
-							</div>
-						</article>
+							card={card}
+							infoLabel={t('services.infoLabel')}
+							learnMore={t('services.learnMore')}
+						/>
 					))}
 				</div>
 			</div>
