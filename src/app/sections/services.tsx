@@ -163,12 +163,8 @@ const Services = () => {
 
 			<div className="mx-auto mt-14 flex w-full max-w-6xl flex-col gap-6 sm:mt-16 md:hidden lg:mt-20">
 				{cards.map((card, index) => (
-					<motion.article
+					<article
 						key={card.id}
-						initial={{ opacity: 0, y: 24 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, margin: '-40px' }}
-						transition={{ duration: 0.45, delay: index * 0.06 }}
 						className="flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 hover:scale-95 transition-all duration-500 cursor-pointer"
 					>
 						<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
@@ -184,19 +180,15 @@ const Services = () => {
 								<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
 							</Link>
 						</div>
-					</motion.article>
+					</article>
 				))}
 			</div>
 
 			<div className="mx-auto mt-14 hidden w-full max-w-5xl flex-row items-start gap-8 sm:mt-16 md:flex lg:-mt-5 lg:gap-10">
 				<div className="flex flex-1 flex-col gap-8 pt-28 lg:gap-10 lg:pt-36">
 					{leftCards.map((card, index) => (
-						<motion.article
+						<article
 							key={card.id}
-							initial={{ opacity: 0, y: 24 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, margin: '-40px' }}
-							transition={{ duration: 0.45, delay: index * 0.06 }}
 							className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 cursor-pointer hover:scale-95 transition-all duration-500"
 						>
 							<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
@@ -212,17 +204,13 @@ const Services = () => {
 									<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
 								</Link>
 							</div>
-						</motion.article>
+						</article>
 					))}
 				</div>
 				<div className="flex flex-1 flex-col gap-6 md:gap-8 lg:gap-10">
 					{rightCards.map((card, index) => (
-						<motion.article
+						<article
 							key={card.id}
-							initial={{ opacity: 0, y: 24 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, margin: '-40px' }}
-							transition={{ duration: 0.45, delay: 0.06 + index * 0.06 }}
 							className="group flex min-h-[260px] flex-col rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:min-h-[280px] sm:p-10 cursor-pointer hover:scale-95 transition-all duration-500"
 						>
 							<h3 className="text-2xl font-bold tracking-tight text-black sm:text-[1.65rem]">{card.title}</h3>
@@ -238,7 +226,7 @@ const Services = () => {
 									<ArrowUpRightIcon className="size-3 group-hover:rotate-45 transition-all duration-300" strokeWidth={2} />
 								</Link>
 							</div>
-						</motion.article>
+						</article>
 					))}
 				</div>
 			</div>
