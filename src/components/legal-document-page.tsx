@@ -4,17 +4,37 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/ui/footer';
-import common from '@/locales/en/common.json';
 import { useLegalSectionNav } from '@/hooks/use-legal-section-nav';
 
-function sectionId(index: number) {
-	return `terms-section-${index}`;
+type LegalSection = {
+	title: string;
+	body: string;
+};
+
+export type LegalContent = {
+	title: string;
+	brandName: string;
+	lastUpdated: string;
+	intro: string;
+	contactPrefix: string;
+	contactLink: string;
+	sections: LegalSection[];
+};
+
+type LegalDocumentPageProps = {
+	content: LegalContent;
+	translationPrefix: 'terms' | 'privacy';
+	sectionIdPrefix: string;
+};
+
+function makeSectionId(prefix: string, index: number) {
+	return `${prefix}-${index}`;
 }
 
-export default function TermsPage() {
+export default function LegalDocumentPage({ content, translationPrefix, sectionIdPrefix }: LegalDocumentPageProps) {
 	const { t } = useTranslation();
-	const sections = common.terms.sections;
-	const { activeIndex, scrollToSection } = useLegalSectionNav('terms-section', sections.length);
+	const sections = content.sections;
+	const { activeIndex, scrollToSection } = useLegalSectionNav(sectionIdPrefix, sections.length);
 
 	return (
 		<div className="min-h-screen bg-black text-white">
@@ -25,10 +45,10 @@ export default function TermsPage() {
 					className="max-w-3xl font-semibold tracking-tight text-white"
 					style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', lineHeight: 1.1 }}
 				>
-					{t('terms.title')}
+					{t(`${translationPrefix}.title`)}
 				</h1>
-				<p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">{t('terms.intro')}</p>
-				<p className="mt-4 text-sm text-neutral-500">{t('terms.lastUpdated')}</p>
+				<p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">{t(`${translationPrefix}.intro`)}</p>
+				<p className="mt-4 text-sm text-neutral-500">{t(`${translationPrefix}.lastUpdated`)}</p>
 			</header>
 
 			<div className="relative z-10 rounded-t-[2rem] bg-[#0a0a0c] md:rounded-t-[2.5rem]">
@@ -54,11 +74,13 @@ export default function TermsPage() {
 					</aside>
 
 					<div className="min-w-0 flex-1">
-						<h2 className="text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]">{t('terms.brandName')}</h2>
+						<h2 className="text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]">
+							{t(`${translationPrefix}.brandName`)}
+						</h2>
 
 						<div className="mt-12 flex flex-col gap-16 md:mt-14 md:gap-20">
 							{sections.map((section, index) => (
-								<section key={section.title} id={sectionId(index)} className="scroll-mt-32">
+								<section key={section.title} id={makeSectionId(sectionIdPrefix, index)} className="scroll-mt-32">
 									<h3 className="text-xl font-semibold tracking-tight text-white md:text-2xl">{section.title}</h3>
 									<p className="mt-5 text-[15px] leading-[1.7] text-neutral-400 md:text-base">{section.body}</p>
 								</section>
@@ -66,9 +88,9 @@ export default function TermsPage() {
 						</div>
 
 						<p className="mt-20 text-[15px] leading-relaxed text-neutral-500">
-							{t('terms.contactPrefix')}{' '}
+							{t(`${translationPrefix}.contactPrefix`)}{' '}
 							<Link href="/book" className="text-neutral-300 underline-offset-4 transition-colors hover:text-white hover:underline">
-								{t('terms.contactLink')}
+								{t(`${translationPrefix}.contactLink`)}
 							</Link>
 							.
 						</p>

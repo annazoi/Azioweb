@@ -8,13 +8,13 @@ import common from '@/locales/en/common.json';
 import { useLegalSectionNav } from '@/hooks/use-legal-section-nav';
 
 function sectionId(index: number) {
-	return `terms-section-${index}`;
+	return `privacy-section-${index}`;
 }
 
-export default function TermsPage() {
+export default function PrivacyPage() {
 	const { t } = useTranslation();
-	const sections = common.terms.sections;
-	const { activeIndex, scrollToSection } = useLegalSectionNav('terms-section', sections.length);
+	const sections = common.privacy.sections;
+	const { activeIndex, scrollToSection } = useLegalSectionNav('privacy-section', sections.length);
 
 	return (
 		<div className="min-h-screen bg-black text-white">
@@ -25,10 +25,10 @@ export default function TermsPage() {
 					className="max-w-3xl font-semibold tracking-tight text-white"
 					style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', lineHeight: 1.1 }}
 				>
-					{t('terms.title')}
+					{t('privacy.title')}
 				</h1>
-				<p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">{t('terms.intro')}</p>
-				<p className="mt-4 text-sm text-neutral-500">{t('terms.lastUpdated')}</p>
+				<p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">{t('privacy.intro')}</p>
+				<p className="mt-4 text-sm text-neutral-500">{t('privacy.lastUpdated')}</p>
 			</header>
 
 			<div className="relative z-10 rounded-t-[2rem] bg-[#0a0a0c] md:rounded-t-[2.5rem]">
@@ -54,7 +54,7 @@ export default function TermsPage() {
 					</aside>
 
 					<div className="min-w-0 flex-1">
-						<h2 className="text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]">{t('terms.brandName')}</h2>
+						<h2 className="text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]">{t('privacy.brandName')}</h2>
 
 						<div className="mt-12 flex flex-col gap-16 md:mt-14 md:gap-20">
 							{sections.map((section, index) => (
@@ -66,9 +66,9 @@ export default function TermsPage() {
 						</div>
 
 						<p className="mt-20 text-[15px] leading-relaxed text-neutral-500">
-							{t('terms.contactPrefix')}{' '}
+							{t('privacy.contactPrefix')}{' '}
 							<Link href="/book" className="text-neutral-300 underline-offset-4 transition-colors hover:text-white hover:underline">
-								{t('terms.contactLink')}
+								{t('privacy.contactLink')}
 							</Link>
 							.
 						</p>
