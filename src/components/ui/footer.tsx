@@ -91,9 +91,9 @@ const Footer = () => {
 						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">{t('footer.copyrightLine2')}</p>
 					</div>
 					<div className="flex flex-col self-end text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-						<a href="#" className="transition-colors hover:text-neutral-300">
+						<Link href="/terms" className="transition-colors hover:text-neutral-300">
 							{t('footer.terms')}
-						</a>
+						</Link>
 						<a href="#" className="transition-colors hover:text-neutral-300">
 							{t('footer.privacy')}
 						</a>

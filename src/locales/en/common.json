@@ -42,26 +42,26 @@
 	"services": {
 		"headlineLine1": "Our tools &",
 		"headlineLine2": "your brand.",
-		"intro": "We design products that live in the digital world: intuitive UX, sharp UI, immersive 3D and motion. From research to launch, we craft bold, seamless experiences.",
+		"intro": "We build smart apps and websites that help your business scale. From beautiful design to clever AI automation, we handle everything from research to launch to give your customers an experience they love.",
 		"ctaWork": "See how we work",
 		"infoLabel": "Info",
 		"cardCtaAria": "Book a consultation",
 		"cards": {
 			"uxui": {
 				"title": "UX/UI Design",
-				"description": "Every screen has a purpose. From wireframes to pixel-perfect UI, we create experiences that guide users and drive business goals."
+				"description": "Every screen we create has a clear purpose. We design simple, elegant interfaces for your apps and websites that look amazing, feel easy for your customers to use, and help win new business."
 			},
 			"nocode": {
-				"title": "No-code Development",
-				"description": "We build responsive, production-ready websites in Webflow and Framer, so your product launches faster without sacrificing quality. One team from concept to live site."
+				"title": "AI & Automation",
+				"description": "We build smart AI tools and automations that handle your repetitive daily tasks. From smart data systems to custom AI integrations, we build solutions that save you time and let you focus on growing your business."
 			},
 			"corporate": {
-				"title": "Corporate Design",
-				"description": "Pitch decks, brand presentations, and visual identities that match the ambition of your business. We design corporate materials that feel modern, polished, and unmistakably yours."
+				"title": "Web & App Development",
+				"description": "We turn your big ideas into smooth, ready-to-use apps and websites. Whether you need a mobile app or a full online platform, we make sure everything runs reliably, stays safe, and is ready to grow right along with your business."
 			},
 			"threeD": {
-				"title": "3D Design",
-				"description": "Immersive 3D visuals and motion design that give your product a cinematic edge. From animated product showcases to interface elements with depth."
+				"title": "Performance & SEO",
+				"description": "A great app needs to be fast and easy to find. We optimize your website so it loads instantly, runs flawlessly, and ranks higher on search engines to naturally bring more customers right to your door."
 			}
 		}
 	},
@@ -210,6 +210,57 @@
 		"titleAccent": "Discovery Call.",
 		"description": "Pick a time and we will map your goals and best AI opportunities.",
 		"backgroundAlt": "Background"
+	},
+	"terms": {
+		"tag": "Legal",
+		"title": "Terms and conditions",
+		"brandName": "Azioweb",
+		"lastUpdated": "Last updated: May 17, 2026",
+		"intro": "These Terms of Service govern your use of the Azioweb website and any engagement with our design, development, and consulting services. By accessing our site or working with us, you agree to these terms.",
+		"contactPrefix": "Questions about these terms?",
+		"contactLink": "Get in touch",
+		"sections": [
+			{
+				"title": "1. Services",
+				"body": "Azioweb provides web and mobile product design, development, AI integration, and related consulting. Scope, deliverables, timelines, and fees are defined in a separate proposal, statement of work, or contract agreed before work begins."
+			},
+			{
+				"title": "2. Client responsibilities",
+				"body": "You agree to provide timely feedback, access to required materials, and accurate information needed to complete the project. Delays caused by missing inputs may affect schedules and are not the responsibility of Azioweb."
+			},
+			{
+				"title": "3. Intellectual property",
+				"body": "Upon full payment for agreed deliverables, ownership of custom work created specifically for you transfers as outlined in your project agreement. Azioweb retains rights to pre-existing tools, frameworks, and general know-how. We may showcase completed work in our portfolio unless you request otherwise in writing before launch."
+			},
+			{
+				"title": "4. Payment",
+				"body": "Invoices are due according to the payment schedule in your agreement. Late payments may pause work. Deposits and milestone payments are non-refundable except where required by applicable law or explicitly stated in writing."
+			},
+			{
+				"title": "5. Confidentiality",
+				"body": "Both parties agree to keep non-public business information shared during a project confidential, except where disclosure is required by law or the information is already public through no fault of the receiving party."
+			},
+			{
+				"title": "6. Warranties and liability",
+				"body": "Services are provided with professional care consistent with industry standards. Except as required by law, Azioweb is not liable for indirect, incidental, or consequential damages. Our total liability for any claim relating to a project is limited to the fees paid for that project."
+			},
+			{
+				"title": "7. Third-party services",
+				"body": "Projects may rely on third-party hosting, APIs, analytics, or AI providers. You are responsible for accounts, licenses, and ongoing costs associated with those services unless otherwise agreed in writing."
+			},
+			{
+				"title": "8. Termination",
+				"body": "Either party may terminate an engagement as set out in the project agreement. Upon termination, you pay for work completed to date and any non-cancellable third-party costs incurred on your behalf."
+			},
+			{
+				"title": "9. Governing law",
+				"body": "These terms are governed by the laws of Greece. Disputes will be subject to the exclusive jurisdiction of the courts of Athens, unless mandatory local law requires otherwise."
+			},
+			{
+				"title": "10. Changes",
+				"body": "We may update these terms from time to time. The date at the top of this page reflects the latest version. Continued use of the site after changes constitutes acceptance of the updated terms."
+			}
+		]
 	},
 	"projectModal": {
 		"highlights": "Highlights",
