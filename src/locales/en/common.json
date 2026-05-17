@@ -48,16 +48,16 @@
 		"cardCtaAria": "Book a consultation",
 		"cards": {
 			"uxui": {
-				"title": "UX/UI Design",
-				"description": "Every screen we create has a clear purpose. We design simple, elegant interfaces for your apps and websites that look amazing, feel easy for your customers to use, and help win new business."
+				"title": "Web & App Development",
+				"description": "We turn your big ideas into smooth, ready-to-use apps and websites. Whether you need a mobile app or a full online platform, we make sure everything runs reliably, stays safe, and is ready to grow right along with your business."
 			},
 			"nocode": {
 				"title": "AI & Automation",
 				"description": "We build smart AI tools and automations that handle your repetitive daily tasks. From smart data systems to custom AI integrations, we build solutions that save you time and let you focus on growing your business."
 			},
 			"corporate": {
-				"title": "Web & App Development",
-				"description": "We turn your big ideas into smooth, ready-to-use apps and websites. Whether you need a mobile app or a full online platform, we make sure everything runs reliably, stays safe, and is ready to grow right along with your business."
+				"title": "UX/UI Design",
+				"description": "Every screen we create has a clear purpose. We design simple, elegant interfaces for your apps and websites that look amazing, feel easy for your customers to use, and help win new business."
 			},
 			"threeD": {
 				"title": "Performance & SEO",
