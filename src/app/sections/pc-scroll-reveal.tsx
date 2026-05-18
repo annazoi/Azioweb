@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
-const IMG = '/img/pc.jpg';
+const IMG = '/img/pc.png';
 const WIDTH_START = 80;
 const WIDTH_END = 100;
 
