@@ -52,6 +52,9 @@ const Footer = () => {
 							</svg>
 							{t('footer.getInTouch')}
 						</Link>
+						<div className='mt-4'>
+						<Link href="mailto:info@azioweb.com" className="mt-4 text-sm text-neutral-400 hover:text-white">info@azioweb.com</Link>
+						</div>
 					</div>
 
 					<div className="flex flex-wrap gap-16 sm:gap-20 lg:mt-1 lg:shrink-0 lg:gap-24">
@@ -104,7 +107,7 @@ const Footer = () => {
 					</div>
 				</div>
 
-				<div className="mt-20 flex w-full flex-col gap-8 sm:mt-24 lg:mt-28 lg:flex-row lg:items-start lg:justify-between">
+				<div className="mt-210 flex w-full flex-col gap-8 sm:mt-20 lg:mt-1f 8 lg:flex-row lg:items-start lg:justify-between">
 					<div>
 						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
 							{t('footer.copyrightCaps', { year })}

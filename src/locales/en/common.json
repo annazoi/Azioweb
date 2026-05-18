@@ -670,7 +670,7 @@
 			"shipping-mvps-faster": {
 				"title": "Shipping MVPs faster without cutting the wrong corners",
 				"excerpt": "Speed is a strategy when you know which bets to validate first and which technical debt will block you later.",
-				"image": "/img/pc.jpg",
+				"image": "/img/pc.png",
 				"date": "2026-02-19",
 				"readMinutes": 5,
 				"category": "Product",
@@ -701,7 +701,7 @@
 			"performance-as-product": {
 				"title": "Performance is a product feature, not a backlog item",
 				"excerpt": "Slow experiences feel broken before users read a single word. Speed is how you signal quality.",
-				"image": "/img/pc.jpg",
+				"image": "/img/pc.png",
 				"date": "2026-01-30",
 				"readMinutes": 6,
 				"category": "Engineering",
