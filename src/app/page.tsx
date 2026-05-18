@@ -4,16 +4,22 @@ import About from '@/app/sections/about';
 import PcScrollReveal from '@/app/sections/pc-scroll-reveal';
 import Services from '@/app/sections/services';
 import Experience from '@/app/sections/experience';
-import Process from '@/app/sections/process';
 import Footer from '@/components/ui/footer';
+import JsonLd from '@/components/seo/json-ld';
+import { buildGraph, createPageMetadata, webPageSchema } from '@/lib/seo';
 
-export const metadata = {
-	title: 'Azioweb | AI-First Product Studio',
-	description:
-		'Azioweb is an AI-focused product studio. We build web and mobile applications with production-ready AI integrations—copilots, automation, retrieval, and custom models tailored to your product.',
-	keywords:
-		'AI software development, AI integration, LLM apps, web development, mobile apps, Next.js, React, React Native, product studio',
-};
+const title = 'Azioweb | AI-First Product Studio';
+const description =
+	'Azioweb is an AI-focused product studio. We build web and mobile applications with production-ready AI integrations—copilots, automation, retrieval, and custom models tailored to your product.';
+
+export const metadata = createPageMetadata({
+	title,
+	description,
+	path: '/',
+	absoluteTitle: true,
+});
+
+const homeJsonLd = buildGraph(webPageSchema('/', title, description));
 
 export const ParallaxSection = ({
 	children,
@@ -48,26 +54,23 @@ export const ParallaxSection = ({
 export default function Home() {
 	return (
 		<div>
+			<JsonLd data={homeJsonLd} />
 			<Navbar />
 			<main className="relative">
 				<Hero />
 				<About />
 				<PcScrollReveal />
-				{/* <ParallaxSection bgImage="/backgrounds/bg1.jpg">
-					<Process />
-					</ParallaxSection> */}
 				<ParallaxSection style={{ backgroundColor: '#000000', backgroundAttachment: 'unset' }}>
 					<Experience />
 				</ParallaxSection>
-					<ParallaxSection
-						data-navbar-light
-						style={{ backgroundColor: '#F2F2F2', backgroundAttachment: 'unset', borderRadius: '1.5rem' }}
-					>
-						<Services />
-					</ParallaxSection>
+				<ParallaxSection
+					data-navbar-light
+					style={{ backgroundColor: '#F2F2F2', backgroundAttachment: 'unset', borderRadius: '1.5rem' }}
+				>
+					<Services />
+				</ParallaxSection>
 			</main>
 			<Footer />
 		</div>
 	);
 }
-

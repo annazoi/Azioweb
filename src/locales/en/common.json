@@ -600,7 +600,7 @@
 			"ai-in-production": {
 				"title": "Putting AI in production without the hype tax",
 				"excerpt": "Most teams ship demos. Few ship systems that stay reliable when real users and messy data show up.",
-				"image": "/backgrounds/bg1.jpg",
+				"image": "/img/azioweb.jpg",
 				"date": "2026-04-12",
 				"readMinutes": 7,
 				"category": "AI",
@@ -701,7 +701,7 @@
 			"performance-as-product": {
 				"title": "Performance is a product feature, not a backlog item",
 				"excerpt": "Slow experiences feel broken before users read a single word. Speed is how you signal quality.",
-				"image": "/backgrounds/bg3.jpg",
+				"image": "/img/pc.jpg",
 				"date": "2026-01-30",
 				"readMinutes": 6,
 				"category": "Engineering",

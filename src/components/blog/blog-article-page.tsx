@@ -43,7 +43,7 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 				<div className="absolute inset-0">
 					<Image
 						src={article.image}
-						alt=""
+						alt={article.title}
 						fill
 						className="object-cover blur-xs brightness-70"
 						sizes="100vw"
@@ -156,7 +156,7 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 											<div className="relative aspect-[16/10] w-full overflow-hidden">
 												<Image
 													src={relatedArticle.image}
-													alt=""
+													alt={relatedArticle.title}
 													fill
 													className="object-cover transition-transform duration-500 group-hover:scale-105"
 													sizes="(max-width: 1024px) 50vw, 33vw"
