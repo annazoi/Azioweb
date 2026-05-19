@@ -139,6 +139,15 @@ export default function ContactDrawer() {
 		setShowCloseConfirm(true);
 	}, []);
 
+	const handleBackdropClose = useCallback(
+		(e: React.MouseEvent) => {
+			if (window.matchMedia('(min-width: 640px)').matches) {
+				promptClose(e);
+			}
+		},
+		[promptClose],
+	);
+
 	const dismissConfirm = useCallback(() => {
 		setShowCloseConfirm(false);
 	}, []);
@@ -211,7 +220,7 @@ export default function ContactDrawer() {
 			<Dialog open={open} onClose={() => {}} className="relative z-[100]">
 				<DialogBackdrop
 					transition
-					onClick={promptClose}
+					onClick={handleBackdropClose}
 					onMouseMove={(e) => {
 						setCursor({ x: e.clientX, y: e.clientY });
 						setBackdropHover(true);
@@ -246,9 +255,19 @@ export default function ContactDrawer() {
 						className="flex h-full w-full flex-col overflow-hidden bg-[#1a1a1a] shadow-2xl will-change-transform"
 					>
 					<div className="border-b border-white/5 px-6 pb-4 pt-6 sm:px-8 sm:pt-8">
-						<DialogTitle className="text-balance text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl">
-							{t('contactDrawer.title')}
-						</DialogTitle>
+						<div className="flex items-start justify-between gap-3">
+							<DialogTitle className="min-w-0 flex-1 text-balance text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl">
+								{t('contactDrawer.title')}
+							</DialogTitle>
+							<button
+								type="button"
+								onClick={forceClose}
+								aria-label={t('contactDrawer.close')}
+								className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-white/5 text-white/90 transition-colors hover:bg-white/10 sm:hidden"
+							>
+								<XMarkIcon className="size-5" strokeWidth={2} />
+							</button>
+						</div>
 					</div>
 
 					<form

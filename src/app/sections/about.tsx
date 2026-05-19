@@ -16,9 +16,9 @@ const About = () => {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true, margin: '-80px' }}
 					transition={{ duration: 0.5 }}
-					className="w-full text-left text-[clamp(2rem,5.2vw,4.75rem)] font-bold leading-[1] tracking-[-0.03em] text-white m-auto"
+					className="w-full text-left text-[clamp(2rem,5.2vw,4.75rem)] font-bold leading-[1] tracking-[-0.03em] text-white lg:m-auto"
 				>
-					<span className="block pl-40">{t('about.headlineLine1')}</span>
+					<span className="block pl-0 lg:pl-40">{t('about.headlineLine1')}</span>
 					<span className="block">{t('about.headlineLine2')}</span>
 					<span className="block">{t('about.headlineLine3')}</span>
 				</motion.h2>
@@ -32,7 +32,7 @@ const About = () => {
 				>
 					<div className="flex flex-col gap-18 max-w-[700px]">
 						<p className="text-[15px] leading-[1.3] text-neutral-400 md:text-[18px]">
-							<span className="block pl-25">
+							<span className="block pl-0 lg:pl-25">
 								<span className="font-bold text-neutral-100">{t('about.col1BoldOpen')}</span>{' '}
 								{t('about.col1Line2')}
 							</span>

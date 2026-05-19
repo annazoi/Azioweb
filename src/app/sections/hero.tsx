@@ -41,13 +41,13 @@ const Hero = () => {
 					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-					className="absolute top-40 right-80 ml-auto w-full max-w-[22rem] text-left text-2xl font-medium leading-snug tracking-tight text-white sm:max-w-lg sm:text-3xl md:max-w-xl md:text-4xl lg:max-w-[340px] lg:text-[30px] lg:leading-[1.15]"
+					className="relative w-full max-w-none text-left text-2xl font-medium leading-snug tracking-tight text-white sm:max-w-lg sm:text-3xl md:max-w-xl md:text-4xl lg:absolute lg:top-40 lg:right-80 lg:ml-auto lg:max-w-[340px] lg:text-[30px] lg:leading-[1.15]"
 				>
 					{t('hero.statement')}
 				</motion.p>
 				<div className="min-h-[4rem] flex-1" aria-hidden />
 				<div className="mt-auto flex flex-col gap-6 sm:gap-10">
-					<div className="flex flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm absolute left-10 w-full max-w-[100rem] bottom-100">
+					<div className="relative flex w-full max-w-none flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm lg:absolute lg:left-10 lg:bottom-100 lg:max-w-[100rem]">
 						<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
 							<span>{t('hero.studioTag')}</span>
 							<InfinityOrbsAnimation theme={theme} hour={hour} />

@@ -161,17 +161,17 @@ const Services = () => {
 			id="services"
 			className="mx-auto max-w-5xl px-4 pb-16 pt-12 text-black sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-20"
 		>
-			<div className="m-auto flex max-w-4xl flex-col items-center gap-10 lg:gap-x-16 lg:gap-y-10">
-				<div className="flex flex-col gap-5 lg:gap-6">
-					<h2 className="text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium">
+			<div className="m-auto flex w-full max-w-4xl flex-col items-start gap-10 md:items-center lg:gap-x-16 lg:gap-y-10">
+				<div className="flex w-full flex-col gap-5 lg:gap-6">
+					<h2 className="text-left text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium">
 						{t('services.headlineLine1')}
 					</h2>
 					<ToolBadgeRow className="hidden w-full lg:flex" />
-					<h2 className="text-right text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium lg:w-full">
+					<h2 className="text-left text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium md:text-right lg:w-full">
 						{t('services.headlineLine2')}
 					</h2>
 				</div>
-				<div className="flex flex-col gap-5 items-start mr-auto max-w-[20rem] group z-100">
+				<div className="z-100 group flex w-full max-w-none flex-col items-start gap-5 md:mr-auto md:max-w-[20rem]">
 					<p className="max-w-lg text-[18px] leading-6 text-black/90">{t('services.intro')}</p>
 					<Link
 						href="/#process"

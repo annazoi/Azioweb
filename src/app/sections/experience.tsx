@@ -123,19 +123,19 @@ const Experience = () => {
 
 	return (
 		<div id="clients" className="relative mx-auto max-w-[100rem] px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-30">
-			<div className="mx-auto max-w-4xl text-center">
-				<h2 className="flex flex-col items-center gap-2 text-balance sm:gap-3 text-[clamp(1.85rem,4.2vw,4.25rem)] font-bold leading-[1.12] tracking-tight text-white">
-					<span className='pr-100'>
+			<div className="mx-auto max-w-4xl text-left md:text-center">
+				<h2 className="flex flex-col items-start gap-2 text-balance sm:gap-3 text-[clamp(1.85rem,4.2vw,4.25rem)] font-bold leading-[1.12] tracking-tight text-white md:items-center">
+					<span className="pr-0 lg:pr-100">
 						{t('experience.headlineBold')}
 					</span>
-					<span className='pl-40 text-neutral-500'>
+					<span className="pl-0 text-neutral-500 lg:pl-40">
 						{t('experience.headlineMuted')}
 					</span>
 				</h2>
 			</div>
 			<div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-10 text-left lg:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6">
 				<p className="text-[16px] leading-[1.2] text-neutral-400 md:text-[22px] flex flex-col">
-					<span className="pl-20">
+					<span className="pl-0 lg:pl-20">
 						{t('experience.introLeft1')}
 					</span>
 					<span className="font-bold">
@@ -153,7 +153,7 @@ const Experience = () => {
 					{t('experience.introLeft3')}
 					</span>
 				</p>
-				<p className="text-sm leading-[1] font-medium text-neutral-600 md:text-[18px] lg:pt-1 max-w-[250px] mx-auto">{t('experience.introRight')}</p>
+				<p className="max-w-none text-sm leading-[1.45] font-medium text-neutral-600 md:text-[18px] lg:mx-auto lg:max-w-[250px] lg:pt-1">{t('experience.introRight')}</p>
 			</div>
 
 			<div className="mt-14 flex flex-col gap-6 sm:mt-16 lg:mt-20 lg:gap-8">
