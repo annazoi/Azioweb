@@ -22,6 +22,22 @@ const Experience = () => {
 	const { t } = useTranslation();
 	const sites: Project[] = [
 		{
+			id: 'site-7',
+			name: 'Fishing Trips Rhodes',
+			photo: '/img/projects/fishingtripsrhodesdimitris.png',
+			photos: ['/img/projects/fishingtripsrhodesdimitris.png'],
+			description: t('experience.projects.fishingTripsRhodes.description'),
+			url: 'https://www.fishingtripsrhodesdimitris.com/',
+			tag: t('experience.projects.fishingTripsRhodes.tag'),
+			highlights: [
+				t('experience.projects.fishingTripsRhodes.highlights.0'),
+				t('experience.projects.fishingTripsRhodes.highlights.1'),
+			],
+			details: t('experience.projects.fishingTripsRhodes.details'),
+			showcaseTags: ['Web design', 'Booking', 'Tourism'],
+			categoryLine: 'Travel, Experiences',
+		},
+		{
 			id: 'site-2',
 			name: 'Svyaz Platform',
 			photo: "/img/projects/svyaz.png",
@@ -35,19 +51,6 @@ const Experience = () => {
 			categoryLine: 'AI, Collaboration',
 		},
 		{
-			id: 'site-1',
-			name: 'Lather Lab',
-			photo: "/img/projects/latherlab.png",
-			photos: ["/img/projects/latherlab.png"],
-			url: 'https://latherlab.azioweb.com/',
-			description: t('experience.projects.latherLab.description'),
-			highlights: [t('experience.projects.latherLab.highlights.0'), t('experience.projects.latherLab.highlights.1')],
-			details: t('experience.projects.latherLab.details'),
-			showcaseTags: ['Web design', 'E-commerce', 'Brand'],
-			categoryLine: 'Commerce, Retail',
-		},
-
-		{
 			id: 'site-6',
 			name: 'Domus Platform',
 			photo: '/img/projects/domus.png',
@@ -60,8 +63,18 @@ const Experience = () => {
 			showcaseTags: ['Web design', 'Platform', 'SaaS'],
 			categoryLine: 'PropTech, Real estate',
 		},
-
-		
+		{
+			id: 'site-1',
+			name: 'Lather Lab',
+			photo: "/img/projects/latherlab.png",
+			photos: ["/img/projects/latherlab.png"],
+			url: 'https://latherlab.azioweb.com/',
+			description: t('experience.projects.latherLab.description'),
+			highlights: [t('experience.projects.latherLab.highlights.0'), t('experience.projects.latherLab.highlights.1')],
+			details: t('experience.projects.latherLab.details'),
+			showcaseTags: ['Web design', 'E-commerce', 'Brand'],
+			categoryLine: 'Commerce, Retail',
+		},
 		{
 			id: 'site-5',
 			name: 'Relay Platform',
@@ -88,8 +101,6 @@ const Experience = () => {
 			showcaseTags: ['App design', 'AI', 'Mobile'],
 			categoryLine: 'Lifestyle, Fashion',
 		},
-
-	
 		{
 			id: 'site-3',
 			name: 'Habitry App',
@@ -103,8 +114,6 @@ const Experience = () => {
 			showcaseTags: ['App design', 'Product', 'Health'],
 			categoryLine: 'Wellness, Habits',
 		},
-	
-	
 	];
 
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);

@@ -327,6 +327,15 @@
 				"highlights": ["Fast search and filters", "Scalable listing architecture"],
 				"details": "Domus helps teams surface the right spaces and workflows with a focused, performance-minded web experience."
 			},
+			"fishingTripsRhodes": {
+				"description": "Booking site for fishing trips and local boat cruises in Rhodes.",
+				"tag": "TOURISM",
+				"highlights": [
+					"Online booking for fishing trips and boat cruises",
+					"Local Rhodes experiences tailored for visitors"
+				],
+				"details": "A clear, conversion-focused site that helps clients book fishing trips on a boat or join local cruises around Rhodes."
+			},
 			"svyazCall": {
 				"description": "Secure, low-latency video and voice calling for modern teams—with room for transcription and AI meeting helpers.",
 				"tag": "COMMUNICATION",
@@ -502,9 +511,9 @@
 		]
 	},
 	"projectModal": {
-		"highlights": "Highlights",
-		"details": "Project Details",
-		"visitSite": "Visit Site"
+		"highlights": "What stands out",
+		"details": "About the build",
+		"visitSite": "Visit site"
 	},
 	"footer": {
 		"locationLabel": "Athens, GR",

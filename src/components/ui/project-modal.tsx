@@ -1,7 +1,7 @@
 'use client';
 
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { XMarkIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { Project } from '@/interfaces';
 import { useTranslation } from 'react-i18next';
@@ -14,92 +14,117 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onOpen, onClose }: ProjectModalProps) {
 	const { t } = useTranslation();
+	const tags = project.showcaseTags ?? [];
+	const category = project.categoryLine ?? project.tag ?? '';
+	const hasLiveUrl = Boolean(project.url && project.url !== '#');
 
 	return (
 		<Dialog open={onOpen} onClose={onClose} className="relative z-[100]">
 			<DialogBackdrop
 				transition
-				className="fixed inset-0 bg-black/90 backdrop-blur-sm transition-opacity duration-300 ease-out data-closed:opacity-0"
+				className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300 ease-out data-closed:opacity-0"
 			/>
 
-			<div className="fixed inset-0 z-10 w-screen h-screen overflow-y-auto">
-				<div className="flex min-h-full items-center justify-center p-4">
+			<div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+				<div className="flex min-h-full items-end justify-center p-0 sm:items-center sm:p-6 lg:p-8">
 					<DialogPanel
 						transition
-						className="relative transform overflow-hidden rounded-[2rem] bg-[#1a1a1a] text-left transition-all duration-300 ease-out data-closed:opacity-0 w-full max-w-2xl shadow-2xl border border-white/5"
+						className="relative w-full max-w-5xl transform overflow-hidden rounded-t-[2rem] bg-[#101010] text-left shadow-[0_40px_120px_rgba(0,0,0,0.65)] transition-all duration-300 ease-out data-closed:translate-y-8 data-closed:opacity-0 sm:rounded-[2rem] sm:data-closed:translate-y-4 sm:data-closed:scale-[0.98]"
 					>
-						{/* Close Button */}
 						<button
+							type="button"
 							onClick={onClose}
-							className="absolute top-4 right-4 p-2.5 rounded-xl bg-black/40 text-white/70 hover:text-white hover:bg-black/60 transition-all z-50 backdrop-blur-md"
+							aria-label={t('contactDrawer.close')}
+							className="absolute right-4 top-4 z-30 inline-flex size-10 items-center justify-center rounded-full bg-black/50 text-white/80 backdrop-blur-md transition-colors hover:bg-black/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:right-5 sm:top-5"
 						>
-							<XMarkIcon className="size-5" />
+							<XMarkIcon className="size-5" strokeWidth={2} />
 						</button>
 
-						{/* Hero Image */}
-						<div className="relative aspect-video w-full overflow-hidden">
-							<Image
-								src={project.photo}
-								alt={project.name || 'Project image'}
-								fill
-								className="object-cover"
-							/>
-							<div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#1a1a1a] to-transparent" />
-						</div>
-
-						{/* Content */}
-						<div className="p-8 md:p-12 -mt-12 relative z-10">
-							<div className="flex flex-col gap-8">
-								{/* Header */}
-								<div className="space-y-4">
-									<DialogTitle
-										as="h3"
-										className="text-4xl font-bold text-white tracking-tight"
-									>
-										{project.name}
-									</DialogTitle>
-									<p className="text-white/50 text-base font-medium leading-relaxed max-w-xl">
-										{project.description}
-									</p>
-								</div>
-
-								{/* Highlights */}
-								{project.highlights && project.highlights.length > 0 && (
-									<div className="space-y-6">
-										<p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('projectModal.highlights')}</p>
-										<ul className="space-y-4">
-											{project.highlights.map((highlight, i) => (
-												<li key={i} className="flex items-start gap-3">
-													<div className="mt-1.5 size-1.5 rounded-full bg-primary shrink-0" />
-													<span className="text-white/80 text-sm font-medium leading-relaxed">{highlight}</span>
-												</li>
-											))}
-										</ul>
+						<div className="grid grid-cols-1 lg:grid-cols-2">
+							<div className="relative aspect-[4/3] w-full overflow-hidden bg-[#0a0a0a] sm:aspect-[16/11] lg:aspect-auto lg:min-h-[32rem]">
+								<Image
+									src={project.photo}
+									alt={project.name || 'Project image'}
+									fill
+									className="object-cover object-center"
+									sizes="(max-width: 1024px) 100vw, 50vw"
+									priority
+								/>
+								<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-black/20 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#101010]/90" />
+								{tags.length > 0 && (
+									<div className="absolute left-4 top-4 z-10 flex max-w-[75%] flex-wrap gap-2 sm:left-5 sm:top-5">
+										{tags.map((tag) => (
+											<span
+												key={tag}
+												className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-tight text-white backdrop-blur-md sm:text-xs"
+											>
+												{tag}
+											</span>
+										))}
 									</div>
 								)}
+							</div>
 
-								{/* Project Details */}
-								{project.details && (
-									<div className="space-y-4">
-										<p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('projectModal.details')}</p>
-										<p className="text-white/80 text-sm font-medium leading-relaxed">
-											{project.details}
+							<div className="flex flex-col justify-between gap-8 px-6 pb-8 pt-6 sm:px-8 sm:pb-10 sm:pt-8 lg:px-10 lg:py-10">
+								<div className="space-y-6">
+									<div className="space-y-3 pr-10">
+										{category && (
+											<p className="text-sm font-medium text-white/45">{category}</p>
+										)}
+										<DialogTitle
+											as="h3"
+											className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl"
+										>
+											{project.name}
+										</DialogTitle>
+										<p className="max-w-md text-[15px] font-medium leading-relaxed text-neutral-400 sm:text-base">
+											{project.description}
 										</p>
 									</div>
-								)}
 
-								{/* Actions */}
-								<div className="pt-4">
-									<a
-										href={project.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-br from-primary to-[#8A5CF5] text-white font-bold text-sm transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/20 active:scale-95 group"
-									>
-										{t('projectModal.visitSite')}
-										<ArrowTopRightOnSquareIcon className="size-4 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-									</a>
+									{project.highlights && project.highlights.length > 0 && (
+										<div className="space-y-3">
+											<p className="text-xs font-medium text-neutral-500">
+												{t('projectModal.highlights')}
+											</p>
+											<ul className="flex flex-col gap-2.5">
+												{project.highlights.map((highlight, i) => (
+													<li
+														key={i}
+														className="rounded-2xl bg-white/[0.04] px-4 py-3.5 text-sm font-medium leading-relaxed text-white/80 ring-1 ring-white/[0.04]"
+													>
+														{highlight}
+													</li>
+												))}
+											</ul>
+										</div>
+									)}
+
+									{project.details && (
+										<div className="space-y-3 border-t border-white/5 pt-6">
+											<p className="text-xs font-medium text-neutral-500">
+												{t('projectModal.details')}
+											</p>
+											<p className="text-sm font-medium leading-relaxed text-neutral-400">
+												{project.details}
+											</p>
+										</div>
+									)}
 								</div>
+
+								{hasLiveUrl && (
+									<div className="pt-2">
+										<a
+											href={project.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="group inline-flex w-full items-center justify-center gap-2 rounded-[16px] bg-white px-6 py-3.5 text-[15px] font-semibold text-black transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 sm:w-auto"
+										>
+											{t('projectModal.visitSite')}
+											<ArrowUpRightIcon className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
+										</a>
+									</div>
+								)}
 							</div>
 						</div>
 					</DialogPanel>
