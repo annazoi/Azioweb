@@ -56,7 +56,7 @@ const Experience = () => {
 			photo: '/img/projects/domus.png',
 			photos: ["/img/projects/domus.png"],
 			description: t('experience.projects.domus.description'),
-			url: 'https://domus.azioweb.com/',
+			url: 'https://hozya.com/',
 			tag: t('experience.projects.domus.tag'),
 			highlights: [t('experience.projects.domus.highlights.0'), t('experience.projects.domus.highlights.1')],
 			details: t('experience.projects.domus.details'),
