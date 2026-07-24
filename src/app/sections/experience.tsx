@@ -143,7 +143,7 @@ const Experience = () => {
 				</h2>
 			</div>
 			<div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-10 text-left lg:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6">
-				<p className="text-[16px] leading-[1.2] text-neutral-400 md:text-[22px] flex flex-col">
+				<p className="text-[18px] leading-[1.2] text-neutral-400 md:text-[22px] flex flex-col">
 					<span className="pl-0 lg:pl-20">
 						{t('experience.introLeft1')}
 					</span>
@@ -162,7 +162,7 @@ const Experience = () => {
 					{t('experience.introLeft3')}
 					</span>
 				</p>
-				<p className="max-w-none text-sm leading-[1.45] font-medium text-neutral-600 md:text-[18px] lg:mx-auto lg:max-w-[250px] lg:pt-1">{t('experience.introRight')}</p>
+				<p className="max-w-none text-base leading-[1.45] font-medium text-neutral-600 md:text-[18px] lg:mx-auto lg:max-w-[250px] lg:pt-1">{t('experience.introRight')}</p>
 			</div>
 
 			<div className="mt-14 flex flex-col gap-6 sm:mt-16 lg:mt-20 lg:gap-8">
@@ -201,7 +201,7 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 				{tags.map((tag) => (
 					<span
 						key={tag}
-						className={`rounded-full px-3 py-1 text-[11px] font-semibold tracking-tight sm:text-xs ${
+						className={`rounded-full px-3 py-1 text-[14px] font-semibold tracking-tight sm:text-xs ${
 							isDark ? 'bg-white/10 text-white' : 'bg-neutral-300/95 text-neutral-900'
 						}`}
 					>
@@ -237,7 +237,7 @@ function ShowcaseCard({ site, onProjectClick }: { site: Project; onProjectClick:
 					<h3 className={`text-xl font-bold tracking-tight sm:text-2xl md:text-3xl ${isDark ? 'text-white' : 'text-neutral-900'}`}>
 						{site.name}
 					</h3>
-					<p className={`mt-1 text-sm font-medium ${isDark ? 'text-white/50' : 'text-neutral-500'}`}>{category}</p>
+					<p className={`mt-1 text-base font-medium ${isDark ? 'text-white/50' : 'text-neutral-500'}`}>{category}</p>
 				</div>
 				{!isDark && (
 					<span

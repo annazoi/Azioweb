@@ -1,6 +1,7 @@
 import common from '@/locales/en/common.json';
 
 export const BLOG_SLUGS = [
+	'fishing-trips-rhodes-live',
 	'ai-in-production',
 	'designing-for-trust',
 	'shipping-mvps-faster',

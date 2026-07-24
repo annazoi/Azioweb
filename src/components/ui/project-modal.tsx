@@ -56,7 +56,7 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 										{tags.map((tag) => (
 											<span
 												key={tag}
-												className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-tight text-white backdrop-blur-md sm:text-xs"
+												className="rounded-full bg-white/10 px-3 py-1 text-[18px] font-semibold tracking-tight text-white backdrop-blur-md sm:text-xs"
 											>
 												{tag}
 											</span>
@@ -77,7 +77,7 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 										>
 											{project.name}
 										</DialogTitle>
-										<p className="max-w-md text-[15px] font-medium leading-relaxed text-neutral-400 sm:text-base">
+										<p className="max-w-md text-[18px] font-medium leading-relaxed text-neutral-400 sm:text-base">
 											{project.description}
 										</p>
 									</div>
@@ -118,7 +118,7 @@ export default function ProjectModal({ project, onOpen, onClose }: ProjectModalP
 											href={project.url}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="group inline-flex w-full items-center justify-center gap-2 rounded-[16px] bg-white px-6 py-3.5 text-[15px] font-semibold text-black transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 sm:w-auto"
+											className="group inline-flex w-full items-center justify-center gap-2 rounded-[16px] bg-white px-6 py-3.5 text-[18px] font-semibold text-black transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 sm:w-auto"
 										>
 											{t('projectModal.visitSite')}
 											<ArrowUpRightIcon className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />

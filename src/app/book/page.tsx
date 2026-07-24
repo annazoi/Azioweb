@@ -38,7 +38,7 @@ export default function BookPage() {
 				/>
 				<motion.p
 					{...fadeUp}
-					className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500"
+					className="text-[18px] font-semibold uppercase tracking-[0.16em] text-neutral-500"
 				>
 					{t('book.tag')}
 				</motion.p>

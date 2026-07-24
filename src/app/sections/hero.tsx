@@ -1,8 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
-import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import InfinityOrbsAnimation from '@/components/ui/infinity-orbs-animation';
@@ -28,13 +27,20 @@ const Hero = () => {
 			className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-black"
 		>
 			<motion.div
-				className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat will-change-transform"
-				style={{
-					backgroundImage: `url('${HERO_BG}')`,
-					y: bgY,
-					scale: 1.12,
-				}}
-			/>
+				className="absolute inset-0 z-0 will-change-transform"
+				style={{ y: bgY }}
+			>
+				<div className="absolute inset-0 scale-100 min-[1500px]:scale-[1.12]">
+					<Image
+						src={HERO_BG}
+						alt=""
+						fill
+						priority
+						sizes="100vw"
+						className="object-contain object-bottom min-[1500px]:object-cover"
+					/>
+				</div>
+			</motion.div>
 			<div className="absolute inset-0 z-[1] bg-black/55" aria-hidden />
 			<div className="relative z-10 mx-auto flex w-full flex-1 flex-col px-4 pb-8 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
 				<motion.p
@@ -45,23 +51,13 @@ const Hero = () => {
 				>
 					{t('hero.statement')}
 				</motion.p>
-				<div className="min-h-[4rem] flex-1" aria-hidden />
-				<div className="mt-auto flex flex-col gap-6 sm:gap-10">
-					<div className="relative flex w-full max-w-none flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:flex-row sm:items-center sm:text-sm lg:absolute lg:left-10 lg:bottom-100 lg:max-w-[100rem]">
-						<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-							<span>{t('hero.studioTag')}</span>
-							<InfinityOrbsAnimation theme={theme} hour={hour} />
-							<span>
-								{time} {t('hero.locationLabel')}
-							</span>
-						</div>
-						<Link
-							href="#services"
-							className="flex items-center gap-2 self-start transition-opacity hover:opacity-70 sm:self-auto"
-						>
-							<span>{t('hero.scrollExplore')}</span>
-							<ArrowDownIcon className="size-4" strokeWidth={2} />
-						</Link>
+				<div className="absolute bottom-[22%] left-4 right-4 flex w-auto max-w-none flex-col justify-between gap-6 text-xs font-medium text-white/90 sm:left-6 sm:right-6 sm:flex-row sm:items-center sm:text-sm lg:bottom-100 lg:left-10 lg:right-auto lg:max-w-[100rem]">
+					<div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+						<span>{t('hero.studioTag')}</span>
+						<InfinityOrbsAnimation theme={theme} hour={hour} />
+						<span>
+							{time} {t('hero.locationLabel')}
+						</span>
 					</div>
 				</div>
 			</div>

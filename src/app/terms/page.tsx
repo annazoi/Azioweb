@@ -41,7 +41,7 @@ export default function TermsPage() {
 										<button
 											type="button"
 											onClick={() => scrollToSection(index)}
-											className={`w-full text-left text-[13px] font-medium leading-snug transition-colors ${
+											className={`w-full text-left text-[18px] font-medium leading-snug transition-colors ${
 												activeIndex === index ? 'text-white' : 'text-neutral-500 hover:text-neutral-300'
 											}`}
 										>
@@ -60,12 +60,12 @@ export default function TermsPage() {
 							{sections.map((section, index) => (
 								<section key={section.title} id={sectionId(index)} className="scroll-mt-32">
 									<h3 className="text-xl font-semibold tracking-tight text-white md:text-2xl">{section.title}</h3>
-									<p className="mt-5 text-[15px] leading-[1.7] text-neutral-400 md:text-base">{section.body}</p>
+									<p className="mt-5 text-[18px] leading-[1.7] text-neutral-400 md:text-base">{section.body}</p>
 								</section>
 							))}
 						</div>
 
-						<p className="mt-20 text-[15px] leading-relaxed text-neutral-500">
+						<p className="mt-20 text-[18px] leading-relaxed text-neutral-500">
 							{t('terms.contactPrefix')}{' '}
 							<Link href="/book" className="text-neutral-300 underline-offset-4 transition-colors hover:text-white hover:underline">
 								{t('terms.contactLink')}

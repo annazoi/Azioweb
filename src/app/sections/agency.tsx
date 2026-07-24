@@ -23,7 +23,7 @@ const Agency = () => {
 	return (
 		<div id="agency" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
-				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">Who We Are</h3>
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[18px] italic">Who We Are</h3>
 				<h2 className="header">
 					The Azioweb <span className="text-gradient">Story</span>
 				</h2>
@@ -65,7 +65,7 @@ const Agency = () => {
 							className="bg-slate-950/40 border border-white/5 rounded-2xl p-6 hover:bg-primary/5 transition-colors"
 						>
 							<h4 className="text-sm font-black text-white mb-2 uppercase tracking-widest">{val.title}</h4>
-							<p className="text-slate-400 text-[12px] leading-relaxed italic">{val.description}</p>
+							<p className="text-slate-400 text-[18px] leading-relaxed italic">{val.description}</p>
 						</motion.div>
 					))}
 				</div>

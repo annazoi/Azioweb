@@ -67,7 +67,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 							<motion.p
 								{...fadeUp}
 								transition={{ ...fadeUp.transition, delay: 0.04 }}
-								className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500"
+								className="text-[18px] font-semibold uppercase tracking-[0.16em] text-neutral-500"
 							>
 								{data.tag}
 							</motion.p>
@@ -128,7 +128,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 						transition={{ duration: 0.5, delay: 0.05 }}
 						className="mt-20 md:mt-28"
 					>
-						<h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
+						<h2 className="text-[18px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
 							{t('servicePages.deliverablesHeading')}
 						</h2>
 						<div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -148,7 +148,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 										{item.title}
 									</h3>
 									<div className="mt-4 h-px w-full bg-[#E0E0E0]" />
-									<p className="mt-4 flex-1 text-[15px] leading-relaxed text-black/80">
+									<p className="mt-4 flex-1 text-[18px] leading-relaxed text-black/80">
 										{item.description}
 									</p>
 								</motion.article>
@@ -163,14 +163,11 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 						transition={{ duration: 0.5 }}
 						className="mt-20 md:mt-28"
 					>
-						<h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
+						<h2 className="text-[18px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
 							{t('servicePages.processHeading')}
 						</h2>
 						<div className="relative mt-10 flex flex-col gap-0 md:flex-row md:gap-0">
-							<div
-								className="absolute left-[1.35rem] top-8 hidden h-[calc(100%-4rem)] w-px bg-[#E0E0E0] md:left-1/2 md:top-12 md:block md:h-px md:w-[calc(100%-8rem)] md:-translate-x-1/2"
-								aria-hidden
-							/>
+						
 							{data.process.map((step, i) => (
 								<motion.div
 									key={step.step}
@@ -187,7 +184,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 										<h3 className="text-lg font-bold tracking-tight text-black md:text-xl">
 											{step.title}
 										</h3>
-										<p className="mt-2 text-[15px] leading-relaxed text-black/75">
+										<p className="mt-2 text-[18px] leading-relaxed text-black/75">
 											{step.description}
 										</p>
 									</div>
@@ -203,7 +200,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 						transition={{ duration: 0.5 }}
 						className="mt-20 md:mt-28"
 					>
-						<h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
+						<h2 className="text-[18px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
 							{t('servicePages.toolsHeading')}
 						</h2>
 						<div className="mt-6 flex flex-wrap gap-2.5">
@@ -225,7 +222,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 						transition={{ duration: 0.5 }}
 						className="mt-20 md:mt-28"
 					>
-						<h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
+						<h2 className="text-[18px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
 							{t('servicePages.relatedHeading')}
 						</h2>
 						<div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -236,7 +233,7 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 									<Link
 										key={relatedSlug}
 										href={`/services/${relatedSlug}`}
-										className="group inline-flex items-center gap-2 rounded-[16px] bg-white px-5 py-3 text-[15px] font-semibold text-black shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-300 hover:bg-[#E8E8E8]"
+										className="group inline-flex items-center gap-2 rounded-[16px] bg-white px-5 py-3 text-[18px] font-semibold text-black shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-300 hover:bg-[#E8E8E8]"
 									>
 										{title}
 										<ArrowUpRightIcon
@@ -256,13 +253,13 @@ export default function ServiceDetailPage({ slug }: { slug: ServiceSlug }) {
 							<h2 className="text-2xl font-bold tracking-tight text-black md:text-3xl">
 								{t('servicePages.ctaTitle')}
 							</h2>
-							<p className="mt-3 text-[15px] leading-relaxed text-black/70 md:text-base">
+							<p className="mt-3 text-[18px] leading-relaxed text-black/70 md:text-base">
 								{t('servicePages.ctaDescription')}
 							</p>
 						</div>
 						<Link
 							href="/book"
-							className="group inline-flex shrink-0 items-center gap-2 rounded-[16px] bg-black px-6 py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+							className="group inline-flex shrink-0 items-center gap-2 rounded-[16px] bg-black px-6 py-3.5 text-[18px] font-semibold text-white transition-opacity hover:opacity-90"
 						>
 							{t('servicePages.ctaButton')}
 							<ArrowUpRightIcon

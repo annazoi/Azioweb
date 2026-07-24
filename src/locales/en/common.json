@@ -526,7 +526,7 @@
 		"linkHome": "Home",
 		"linkBlog": "Blog",
 		"linkPricing": "Pricing",
-		"linkHowWeWork": "How we work",
+		"linkHowWeWork": "Services",
 		"linkBehance": "Behance",
 		"linkLinkedIn": "LinkedIn",
 		"linkX": "The X",
@@ -606,6 +606,37 @@
 		"ctaDescription": "Tell us about your product idea and we will help you shape the right approach.",
 		"ctaButton": "Book a discovery call",
 		"articles": {
+			"fishing-trips-rhodes-live": {
+				"title": "Fishing Trips Rhodes is live",
+				"excerpt": "Our new booking site for fishing trips and boat cruises in Rhodes is online—ready for guests to discover trips and book with confidence.",
+				"image": "/img/projects/fishingtripsrhodesdimitris.png",
+				"date": "2026-07-24",
+				"readMinutes": 3,
+				"category": "Launch",
+				"metaDescription": "Fishing Trips Rhodes is live: a conversion-focused booking site for fishing trips and local boat cruises around Rhodes.",
+				"content": [
+					{
+						"type": "p",
+						"text": "Fishing Trips Rhodes is live. Visitors can now explore fishing trips and local boat cruises around Rhodes, see what’s on offer, and book online without friction."
+					},
+					{
+						"type": "h2",
+						"text": "Built to convert, not just look good"
+					},
+					{
+						"type": "p",
+						"text": "The site focuses on clarity: trip details, availability, and a straightforward booking path. Guests should understand what they’re getting and feel confident taking the next step—whether that’s a half-day on the water or a longer cruise."
+					},
+					{
+						"type": "h2",
+						"text": "What’s next"
+					},
+					{
+						"type": "p",
+						"text": "We’ll keep refining the experience as real bookings come in—tuning copy, flows, and performance so every visit feels fast and trustworthy. You can visit the live site at fishingtripsrhodesdimitris.com."
+					}
+				]
+			},
 			"ai-in-production": {
 				"title": "Putting AI in production without the hype tax",
 				"excerpt": "Most teams ship demos. Few ship systems that stay reliable when real users and messy data show up.",

@@ -11,7 +11,7 @@ export default function Textarea({ name, label, value, onChange, required }: Tex
 		<div className="w-full group">
 			<label
 				htmlFor={name}
-				className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 italic mb-3 ml-1 group-focus-within:text-primary transition-colors"
+				className="block text-[18px] font-black uppercase tracking-[0.2em] text-slate-400 italic mb-3 ml-1 group-focus-within:text-primary transition-colors"
 			>
 				{label}
 			</label>

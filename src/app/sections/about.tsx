@@ -31,7 +31,7 @@ const About = () => {
 					className="mt-14 grid w-full grid-cols-1 gap-10 text-left md:mt-16 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:gap-x-14 lg:mt-20 lg:gap-x-20"
 				>
 					<div className="flex flex-col gap-18 max-w-[700px]">
-						<p className="text-[15px] leading-[1.3] text-neutral-400 md:text-[18px]">
+						<p className="text-[18px] leading-[1.3] text-neutral-400 md:text-[18px]">
 							<span className="block pl-0 lg:pl-25">
 								<span className="font-bold text-neutral-100">{t('about.col1BoldOpen')}</span>{' '}
 								{t('about.col1Line2')}
@@ -48,7 +48,7 @@ const About = () => {
 							<span className="group-hover:translate-x-2 transition-all duration-500 group-hover:pr-1">{t('about.cta')}</span>
 						</Link>
 					</div>
-					<p className="text-[15px] leading-[1.2] text-neutral-400 md:text-[17px] font-light">
+					<p className="text-[18px] leading-[1.2] text-neutral-400 md:text-[18px] font-light">
 						{t('about.col2')}
 					</p>
 				</motion.div>

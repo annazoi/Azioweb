@@ -43,16 +43,16 @@ function ArticleCard({
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: '-60px' }}
 			transition={{ duration: 0.5, delay: index * 0.06 }}
-			className={featured ? 'lg:col-span-2 lg:row-span-2' : ''}
+			className={featured ? 'lg:col-span-2' : ''}
 		>
 			<Link
 				href={`/blog/${slug}`}
 				className={`group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-[0_8px_40px_rgba(0,0,0,0.07)] transition-transform duration-500 hover:scale-[0.985] ${
-					featured ? 'min-h-[420px] lg:min-h-[520px]' : 'min-h-[340px]'
+					featured ? 'min-h-[360px]' : 'min-h-[320px]'
 				}`}
 			>
 				<div
-					className={`relative w-full overflow-hidden ${featured ? 'h-[52%] min-h-[200px] lg:h-[58%]' : 'h-[48%] min-h-[160px]'}`}
+					className={`relative w-full overflow-hidden ${featured ? 'h-[200px] sm:h-[350px]' : 'h-[160px] sm:h-[180px]'}`}
 				>
 					<Image
 						src={article.image}
@@ -62,23 +62,23 @@ function ArticleCard({
 						sizes={featured ? '(max-width: 1024px) 100vw, 66vw' : '(max-width: 1024px) 100vw, 33vw'}
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-					<span className="absolute left-5 top-5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-black">
+					<span className="absolute left-5 top-5 rounded-full bg-white/95 px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-black">
 						{article.category}
 					</span>
 				</div>
-				<div className="flex flex-1 flex-col p-6 md:p-8">
-					<time className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#AAAAAA]">
+				<div className="flex flex-1 flex-col p-5 md:p-6">
+					<time className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#AAAAAA]">
 						{formatDate(article.date)}
 					</time>
 					<h2
-						className={`mt-3 font-bold tracking-tight text-black ${
-							featured ? 'text-2xl sm:text-3xl md:text-[2rem] md:leading-tight' : 'text-xl sm:text-2xl'
+						className={`mt-2 font-bold tracking-tight text-black ${
+							featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
 						}`}
 					>
 						{article.title}
 					</h2>
 					<p
-						className={`mt-3 flex-1 leading-relaxed text-black/70 ${featured ? 'text-base md:text-[17px]' : 'text-[15px]'}`}
+						className={`mt-2 flex-1 leading-relaxed text-black/70 ${featured ? 'text-[15px] sm:text-base' : 'text-[15px]'}`}
 					>
 						{article.excerpt}
 					</p>
@@ -112,7 +112,7 @@ export default function BlogPage() {
 					aria-hidden
 				/>
 				<div className="relative mx-auto max-w-6xl px-6 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36">
-					<motion.p {...fadeUp} className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">
+					<motion.p {...fadeUp} className="text-[16px] font-semibold uppercase tracking-[0.16em] text-neutral-500">
 						{t('blog.tag')}
 					</motion.p>
 					<div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -160,11 +160,11 @@ export default function BlogPage() {
 					<div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-6 py-14 md:flex-row md:items-center md:px-10 md:py-16">
 						<div className="max-w-xl">
 							<h2 className="text-2xl font-bold tracking-tight text-black md:text-3xl">{t('blog.ctaTitle')}</h2>
-							<p className="mt-3 text-[15px] leading-relaxed text-black/70 md:text-base">{t('blog.ctaDescription')}</p>
+							<p className="mt-3 text-[18px] leading-relaxed text-black/70 md:text-base">{t('blog.ctaDescription')}</p>
 						</div>
 						<Link
 							href="/book"
-							className="group inline-flex shrink-0 items-center gap-2 rounded-[16px] bg-black px-6 py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+							className="group inline-flex shrink-0 items-center gap-2 rounded-[16px] bg-black px-6 py-3.5 text-[18px] font-semibold text-white transition-opacity hover:opacity-90"
 						>
 							{t('blog.ctaButton')}
 							<ArrowUpRightIcon

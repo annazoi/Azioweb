@@ -1,7 +1,7 @@
 'use client';
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -13,6 +13,46 @@ function classNames(...classes: (string | false | null | undefined)[]) {
 	return classes.filter(Boolean).join(' ');
 }
 
+function CalendarIcon({ className }: { className?: string }) {
+	return (
+		<svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+			<path
+				d="M14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C20.1752 21.4816 19.3001 21.7706 18 21.8985"
+				stroke="currentColor"
+				strokeWidth={1.5}
+				strokeLinecap="round"
+			/>
+			<path d="M7 4V2.5" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+			<path d="M17 4V2.5" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+			<path d="M21.5 9H16.625H10.75M2 9H5.875" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+			<path
+				d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
+}
+
 const NAVBAR_HEIGHT = 72;
 
 export default function Navbar() {
@@ -20,23 +60,20 @@ export default function Navbar() {
 	const [onLight, setOnLight] = useState(false);
 	const lenis = useLenis();
 	const { t } = useTranslation();
-	const navigation = [
-		{ name: t('navbar.links.home'), href: '/#hero', current: true },
-		{ name: t('navbar.links.services'), href: '/#services', current: false },
-		{ name: t('navbar.links.process'), href: '/#process', current: false },
-		{ name: t('navbar.links.work'), href: '/#clients', current: false },
-		{ name: t('navbar.links.blog'), href: '/blog', current: false },
-		{ name: t('navbar.links.contact'), href: '#', current: false, action: 'open-contact-drawer' as const },
-	];
 
 	const hoverMenuItems = useMemo(
 		() => [
-			{ name: t('navbar.links.home'), href: '/#hero', image: '/img/azioweb.jpg' },
-			{ name: t('navbar.links.services'), href: '/#services', image: '/img/pc.jpg' },
-			{ name: t('navbar.links.process'), href: '/#process', image: '/img/pc.jpg' },
-			{ name: t('navbar.links.work'), href: '/#clients', image: '/img/azioweb.jpg' },
-			{ name: t('navbar.links.blog'), href: '/blog', image: '/backgrounds/bg2.jpg' },
-			{ name: t('navbar.links.contact'), href: '#', image: '/img/azioweb.jpg', action: 'open-contact-drawer' as const },
+			{ name: t('navbar.links.home'), href: '/#hero', image: '/favicon_io/android-chrome-512x512.png' },
+			{ name: t('navbar.links.services'), href: '/#services', image: '/favicon_io/android-chrome-512x512.png' },
+			// { name: t('navbar.links.process'), href: '/#process', image: '/favicon_io/android-chrome-512x512.png' },
+			{ name: t('navbar.links.work'), href: '/#clients', image: '/favicon_io/android-chrome-512x512.png' },
+			{ name: t('navbar.links.blog'), href: '/blog', image: '/favicon_io/android-chrome-512x512.png' },
+			{
+				name: t('navbar.links.contact'),
+				href: '#',
+				image: '/favicon_io/android-chrome-512x512.png',
+				action: 'open-contact-drawer' as const,
+			},
 		],
 		[t],
 	);
@@ -106,41 +143,7 @@ export default function Navbar() {
 								onLight ? 'bg-black text-white' : 'bg-white text-black',
 							)}
 						>
-							<svg className="size-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
-									<path
-										d="M14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C20.1752 21.4816 19.3001 21.7706 18 21.8985"
-										stroke="currentColor"
-										strokeWidth="1.5"
-										strokeLinecap="round"
-									/>
-									<path d="M7 4V2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-									<path d="M17 4V2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-									<path d="M21.5 9H16.625H10.75M2 9H5.875" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-									<path
-										d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"
-										fill="currentColor"
-									/>
-									<path
-										d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"
-										fill="currentColor"
-									/>
-									<path
-										d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"
-										fill="currentColor"
-									/>
-									<path
-										d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"
-										fill="currentColor"
-									/>
-									<path
-										d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"
-										fill="currentColor"
-									/>
-									<path
-										d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"
-										fill="currentColor"
-									/>
-							</svg>
+							<CalendarIcon className="size-5 shrink-0" />
 							{t('navbar.cta.getInTouch')}
 						</Link>
 						<Link
@@ -151,41 +154,7 @@ export default function Navbar() {
 							)}
 							aria-label={t('navbar.cta.getInTouch')}
 						>
-							<svg className="size-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
-								<path
-									d="M14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C20.1752 21.4816 19.3001 21.7706 18 21.8985"
-									stroke="currentColor"
-									strokeWidth={1.5}
-									strokeLinecap="round"
-								/>
-								<path d="M7 4V2.5" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
-								<path d="M17 4V2.5" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
-								<path d="M21.5 9H16.625H10.75M2 9H5.875" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
-								<path
-									d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"
-									fill="currentColor"
-								/>
-								<path
-									d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"
-									fill="currentColor"
-								/>
-								<path
-									d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"
-									fill="currentColor"
-								/>
-								<path
-									d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"
-									fill="currentColor"
-								/>
-								<path
-									d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"
-									fill="currentColor"
-								/>
-								<path
-									d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"
-									fill="currentColor"
-								/>
-							</svg>
+							<CalendarIcon className="size-5 shrink-0" />
 						</Link>
 						<DisclosureButton
 							className={classNames(
@@ -205,74 +174,95 @@ export default function Navbar() {
 			<DisclosurePanel
 				transition
 				data-lenis-prevent
-				className="fixed inset-0 z-[60] flex h-screen w-full flex-col overflow-y-auto bg-[#0a0a0f] transition duration-300 ease-in-out data-closed:pointer-events-none data-closed:opacity-0"
+				className="fixed inset-0 z-[60] flex h-dvh w-full flex-col overflow-hidden bg-black transition duration-300 ease-out data-closed:pointer-events-none data-closed:opacity-0 data-closed:translate-y-2 sm:hidden"
 			>
-				<div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
+				<div className="flex shrink-0 items-center justify-between px-4 pb-3 pt-[max(1rem,env(safe-area-inset-top))]">
 					<Link href="/" className="flex items-center gap-2.5">
 						<Image src="/img/azioweb.png" alt="azioweb" width={32} height={32} />
-						<span className="text-lg font-bold lowercase text-white">azioweb</span>
+						<span className="text-lg font-bold lowercase tracking-tight text-white">azioweb</span>
 					</Link>
-					<DisclosureButton className="rounded-full border border-white/15 p-2 text-white/90 hover:bg-white/5">
+					<DisclosureButton className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:bg-white/10">
 						<span className="sr-only">{t('navbar.closeMenu')}</span>
-						<XMarkIcon aria-hidden className="size-6" />
+						<XMarkIcon aria-hidden className="size-5" />
 					</DisclosureButton>
 				</div>
-				<div className="flex flex-1 flex-col gap-6 px-6 pb-8 pt-8">
-					{navigation.map((item, index) =>
-						'action' in item && item.action === 'open-contact-drawer' ? (
+
+				<nav className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-4">
+					<ul className="mt-2 overflow-hidden rounded-[16px] border border-white/10 bg-[#1a1a1a]/80 backdrop-blur-xl">
+						{hoverMenuItems.map((item, index) => {
+							const rowClass =
+								'group flex w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors active:bg-white/[0.06]';
+							const rowContent = (
+								<>
+									<span className="text-[18px] font-semibold tracking-tight text-white">{item.name}</span>
+									<span className="relative size-11 shrink-0 overflow-hidden rounded-lg bg-white p-1.5">
+										<Image src={item.image} alt="" fill className="object-contain p-1.5" sizes="44px" />
+									</span>
+								</>
+							);
+
+							return (
+								<li
+									key={item.name}
+									className={classNames(index < hoverMenuItems.length - 1 && 'border-b border-white/8')}
+								>
+									{'action' in item && item.action === 'open-contact-drawer' ? (
+										<DisclosureButton
+											type="button"
+											onClick={() => window.dispatchEvent(new CustomEvent('open-contact-drawer'))}
+											className={rowClass}
+										>
+											{rowContent}
+										</DisclosureButton>
+									) : (
+										<DisclosureButton as={Link} href={item.href} className={rowClass}>
+											{rowContent}
+										</DisclosureButton>
+									)}
+								</li>
+							);
+						})}
+					</ul>
+
+					<div className="mt-auto flex flex-col gap-5 pt-8 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+						<div>
+							<p className="text-[18px] font-medium uppercase tracking-[0.14em] text-white/35">{t('navbar.cta.ready')}</p>
 							<DisclosureButton
-								key={item.name}
-								type="button"
-								onClick={() => window.dispatchEvent(new CustomEvent('open-contact-drawer'))}
-								className="group flex items-center gap-6 text-left"
+								as={Link}
+								href="/book"
+								className="mt-3 flex w-full items-center justify-center gap-2 rounded-[16px] bg-white py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
 							>
-								<span className="mt-1 text-[10px] font-black tracking-widest text-slate-600">0{index + 1}</span>
-								<span className="text-3xl font-black tracking-tighter text-slate-500 transition-colors group-hover:text-white">
-									{item.name}
-								</span>
+								<CalendarIcon className="size-5 shrink-0" />
+								{t('navbar.cta.getInTouch')}
 							</DisclosureButton>
-						) : (
-						<DisclosureButton key={item.name} as={Link} href={item.href} className="group flex items-center gap-6 text-left">
-							<span className="mt-1 text-[10px] font-black tracking-widest text-slate-600">0{index + 1}</span>
-							<span
-								className={classNames(
-									item.current ? 'text-white' : 'text-slate-500 group-hover:text-white',
-									'text-3xl font-black tracking-tighter transition-colors',
-								)}
-							>
-								{item.name}
-							</span>
-						</DisclosureButton>
-						),
-					)}
-				</div>
-				<div className="mt-auto flex flex-col gap-6 px-6 pb-12">
-					<div className="flex flex-col gap-3">
-						<span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{t('navbar.cta.ready')}</span>
-						<DisclosureButton
-							as={Link}
-							href="/book"
-							className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#96a0ff] py-4 text-sm font-bold tracking-wide text-white transition-colors hover:bg-[#a6b0ff]"
-						>
-							{t('navbar.cta.getInTouch')}
-							<EnvelopeIcon className="size-4" />
-						</DisclosureButton>
-					</div>
-					<div className="flex flex-col gap-4">
-						<div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-slate-400">
-							<a href="https://twitter.com/azioweb" target="_blank" rel="noreferrer" className="hover:text-white">
-								Twitter
-							</a>
-							<a href="https://linkedin.com/company/azioweb" target="_blank" rel="noreferrer" className="hover:text-white">
-								LinkedIn
-							</a>
 						</div>
-						<div className="flex items-center gap-2 text-xs text-slate-500">
-							<MapPinIcon className="size-3 shrink-0" />
-							<span>{t('navbar.location')}</span>
+
+						<div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+							<div>
+								<p className="text-[18px] font-medium uppercase tracking-[0.14em] text-white/35">{t('navbar.socialLabel')}</p>
+								<div className="mt-2.5 flex gap-5">
+									<a
+										href="https://twitter.com/azioweb"
+										target="_blank"
+										rel="noreferrer"
+										className="text-[18px] font-medium text-white/75 transition-colors hover:text-white"
+									>
+										Twitter
+									</a>
+									<a
+										href="https://linkedin.com/company/azioweb"
+										target="_blank"
+										rel="noreferrer"
+										className="text-[18px] font-medium text-white/75 transition-colors hover:text-white"
+									>
+										LinkedIn
+									</a>
+								</div>
+							</div>
+							<p className="text-right text-xs text-white/40">{t('navbar.location')}</p>
 						</div>
 					</div>
-				</div>
+				</nav>
 			</DisclosurePanel>
 		</Disclosure>
 	);

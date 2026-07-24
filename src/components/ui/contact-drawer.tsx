@@ -80,6 +80,7 @@ export default function ContactDrawer() {
 	const { t } = useTranslation();
 	const lenis = useLenis();
 	const [open, setOpen] = useState(false);
+	const [onLight, setOnLight] = useState(false);
 	const [engagementType, setEngagementType] = useState<EngagementType>('project');
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -91,6 +92,32 @@ export default function ContactDrawer() {
 	const [cursor, setCursor] = useState({ x: 0, y: 0 });
 	const [showCloseConfirm, setShowCloseConfirm] = useState(false);
 	const [confirmAnchor, setConfirmAnchor] = useState({ x: 0, y: 0 });
+
+	const updateButtonTheme = useCallback(() => {
+		const lightSection = document.querySelector('[data-navbar-light]');
+		if (!lightSection) {
+			setOnLight(false);
+			return;
+		}
+		const rect = lightSection.getBoundingClientRect();
+		setOnLight(rect.top < window.innerHeight - 40 && rect.bottom > window.innerHeight - 120);
+	}, []);
+
+	useEffect(() => {
+		updateButtonTheme();
+		window.addEventListener('resize', updateButtonTheme, { passive: true });
+		return () => window.removeEventListener('resize', updateButtonTheme);
+	}, [updateButtonTheme]);
+
+	useEffect(() => {
+		if (!lenis) {
+			const onScroll = () => updateButtonTheme();
+			window.addEventListener('scroll', onScroll, { passive: true });
+			return () => window.removeEventListener('scroll', onScroll);
+		}
+		lenis.on('scroll', updateButtonTheme);
+		return () => lenis.off('scroll', updateButtonTheme);
+	}, [lenis, updateButtonTheme]);
 
 	useEffect(() => {
 		if (!open) {
@@ -204,7 +231,11 @@ export default function ContactDrawer() {
 				type="button"
 				onClick={() => setOpen(true)}
 				aria-label={t('contactDrawer.openLabel')}
-				className={`fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full bg-white/40 backdrop-blur-sm text-2xl font-bold leading-none text-white shadow-lg shadow-black/30 transition-all hover:scale-105 active:scale-95 ${open ? 'pointer-events-none scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+				className={`fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full text-2xl font-bold leading-none shadow-lg transition-all hover:scale-105 active:scale-95 ${
+					onLight
+						? 'bg-black text-white shadow-black/25'
+						: 'bg-white/40 text-white shadow-black/30 backdrop-blur-sm'
+				} ${open ? 'pointer-events-none scale-0 opacity-0' : 'scale-100 opacity-100'}`}
 			>
 				<svg className="size-10" viewBox="0 0 24 24" fill="none" aria-hidden>
 					<path

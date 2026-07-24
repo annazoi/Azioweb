@@ -71,7 +71,7 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 						transition={{ ...fadeUp.transition, delay: 0.05 }}
 						className="mt-10 flex flex-wrap items-center gap-3"
 					>
-						<span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-neutral-300">
+						<span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[18px] font-semibold uppercase tracking-[0.12em] text-neutral-300">
 							{article.category}
 						</span>
 						<time className="text-sm text-neutral-500">{formatDate(article.date)}</time>
@@ -125,7 +125,7 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true, margin: '-40px' }}
 									transition={{ duration: 0.45, delay: 0.02 }}
-									className="mt-5 text-[17px] leading-[1.75] text-black/80 md:text-lg"
+									className="mt-5 text-[18px] leading-[1.75] text-black/80 md:text-lg"
 								>
 									{block.text}
 								</motion.p>
@@ -141,7 +141,7 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 							transition={{ duration: 0.5 }}
 							className="border-t border-[#E0E0E0] pb-16 pt-14 md:pb-20 md:pt-16"
 						>
-							<h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
+							<h2 className="text-[18px] font-semibold uppercase tracking-[0.16em] text-[#AAAAAA]">
 								{t('blog.relatedHeading')}
 							</h2>
 							<div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -163,7 +163,7 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 												/>
 											</div>
 											<div className="flex flex-1 flex-col p-5">
-												<span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#AAAAAA]">
+												<span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#AAAAAA]">
 													{relatedArticle.category}
 												</span>
 												<h3 className="mt-2 text-lg font-bold tracking-tight text-black">
@@ -189,11 +189,11 @@ export default function BlogArticlePage({ slug }: { slug: BlogSlug }) {
 					<div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-6 py-14 md:flex-row md:items-center md:px-10 md:py-16">
 						<div className="max-w-xl">
 							<h2 className="text-2xl font-bold tracking-tight text-black md:text-3xl">{t('blog.ctaTitle')}</h2>
-							<p className="mt-3 text-[15px] leading-relaxed text-black/70 md:text-base">{t('blog.ctaDescription')}</p>
+							<p className="mt-3 text-[18px] leading-relaxed text-black/70 md:text-base">{t('blog.ctaDescription')}</p>
 						</div>
 						<Link
 							href="/book"
-							className="group inline-flex shrink-0 items-center gap-2 rounded-[16px] bg-black px-6 py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+							className="group inline-flex shrink-0 items-center gap-2 rounded-[16px] bg-black px-6 py-3.5 text-[18px] font-semibold text-white transition-opacity hover:opacity-90"
 						>
 							{t('blog.ctaButton')}
 							<ArrowUpRightIcon

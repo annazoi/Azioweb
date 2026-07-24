@@ -1,8 +1,9 @@
 'use client';
 
 import { cancelFrame, frame } from 'framer-motion';
-import { ReactLenis } from 'lenis/react';
+import { ReactLenis, useLenis } from 'lenis/react';
 import type { LenisRef } from 'lenis/react';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import 'lenis/dist/lenis.css';
 
@@ -13,6 +14,29 @@ const LENIS_OPTIONS = {
 	autoToggle: true,
 	anchors: { offset: -88 },
 } as const;
+
+function NativeScrollToTopOnNavigate() {
+	const pathname = usePathname();
+
+	useEffect(() => {
+		if (window.location.hash) return;
+		window.scrollTo(0, 0);
+	}, [pathname]);
+
+	return null;
+}
+
+function LenisScrollToTopOnNavigate() {
+	const pathname = usePathname();
+	const lenis = useLenis();
+
+	useEffect(() => {
+		if (window.location.hash) return;
+		lenis?.scrollTo(0, { immediate: true });
+	}, [pathname, lenis]);
+
+	return null;
+}
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
 	const lenisRef = useRef<LenisRef>(null);
@@ -39,11 +63,17 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 	}, [enabled]);
 
 	if (!enabled) {
-		return <>{children}</>;
+		return (
+			<>
+				<NativeScrollToTopOnNavigate />
+				{children}
+			</>
+		);
 	}
 
 	return (
 		<ReactLenis root options={LENIS_OPTIONS} ref={lenisRef}>
+			<LenisScrollToTopOnNavigate />
 			{children}
 		</ReactLenis>
 	);

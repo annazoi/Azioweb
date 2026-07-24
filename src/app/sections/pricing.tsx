@@ -38,7 +38,7 @@ const Pricing = () => {
 	return (
 		<div id="pricing" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-25 flex flex-col gap-16">
 			<div className="flex flex-col items-center gap-4 text-center">
-				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">{t('pricing.tag')}</h3>
+				<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[18px] italic">{t('pricing.tag')}</h3>
 				<h2 className="header">
 					{t('pricing.titlePrefix')} <span className="text-gradient">{t('pricing.titleAccent')}</span>
 				</h2>
@@ -65,7 +65,7 @@ const Pricing = () => {
 					>
 						{tier.popular && (
 							<div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-								<span className="bg-primary text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-lg shadow-lg shadow-primary/40 italic">
+								<span className="bg-primary text-white text-[18px] font-black uppercase tracking-widest px-6 py-2 rounded-lg shadow-lg shadow-primary/40 italic">
 									{t('pricing.mostPopular')}
 								</span>
 							</div>

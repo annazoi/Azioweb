@@ -100,9 +100,9 @@ export default function NavbarMenuHover({ items }: { items: NavItem[] }) {
 
 										const rowContent = (
 											<>
-												<span className="text-[17px] font-semibold tracking-tight text-white">{item.name}</span>
-												<div className="relative size-10 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-white/5">
-													<Image src={item.image} alt="" fill className="object-cover" sizes="40px" />
+												<span className="text-[18px] font-semibold tracking-tight text-white">{item.name}</span>
+												<div className="relative size-10 shrink-0 overflow-hidden rounded-lg bg-white p-1.5">
+													<Image src={item.image} alt="" fill className="object-contain p-1.5" sizes="40px" />
 												</div>
 											</>
 										);
@@ -133,13 +133,13 @@ export default function NavbarMenuHover({ items }: { items: NavItem[] }) {
 								</ul>
 
 								<div className="relative px-4 pb-4 pt-3">
-									<p className="text-[10px] font-medium uppercase tracking-[0.14em] text-white/30">{t('navbar.socialLabel')}</p>
+									<p className="text-[18px] font-medium uppercase tracking-[0.14em] text-white/30">{t('navbar.socialLabel')}</p>
 									<div className="mt-2.5 flex flex-col gap-1.5">
 										<a
 											href="https://twitter.com/azioweb"
 											target="_blank"
 											rel="noreferrer"
-											className="text-[13px] font-medium text-white/75 transition-colors hover:text-white"
+											className="text-[18px] font-medium text-white/75 transition-colors hover:text-white"
 										>
 											Twitter
 										</a>
@@ -147,7 +147,7 @@ export default function NavbarMenuHover({ items }: { items: NavItem[] }) {
 											href="https://linkedin.com/company/azioweb"
 											target="_blank"
 											rel="noreferrer"
-											className="text-[13px] font-medium text-white/75 transition-colors hover:text-white"
+											className="text-[18px] font-medium text-white/75 transition-colors hover:text-white"
 										>
 											LinkedIn
 										</a>

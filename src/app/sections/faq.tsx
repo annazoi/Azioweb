@@ -16,7 +16,7 @@ const FAQ = () => {
 				<div className="pointer-events-none absolute -top-24 -right-20 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
 
 				<div className="relative mb-6 md:mb-8 flex flex-col gap-3 text-center">
-					<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[10px] italic">{t('faq.tag')}</h3>
+					<h3 className="text-primary font-black tracking-[0.2em] uppercase text-[18px] italic">{t('faq.tag')}</h3>
 					<h2 className="header">
 						{t('faq.titlePrefix')} <span className="text-gradient">{t('faq.titleAccent')}</span>
 					</h2>

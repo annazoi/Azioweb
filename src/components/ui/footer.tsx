@@ -31,7 +31,7 @@ const Footer = () => {
 						</h2>
 						<Link
 							href="/book"
-							className="mt-8 inline-flex w-full items-center justify-center gap-1 rounded-[16px] bg-white px-4 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:w-auto"
+							className="max-w-fit mt-8 inline-flex w-full items-center justify-center gap-1 rounded-[16px] bg-white px-4 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:w-auto"
 						>
 							<svg className="size-5" viewBox="0 0 24 24" fill="none" aria-hidden>
 								<path
@@ -53,14 +53,14 @@ const Footer = () => {
 							{t('footer.getInTouch')}
 						</Link>
 						<div className='mt-4'>
-						<Link href="mailto:info@azioweb.com" className="mt-4 text-sm text-neutral-400 hover:text-white">info@azioweb.com</Link>
+						<Link href="mailto:info@azioweb.com" className="mt-4 text-lg text-neutral-400 hover:text-white">info@azioweb.com</Link>
 						</div>
 					</div>
 
 					<div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:gap-x-14 lg:mt-1 lg:flex lg:shrink-0 lg:gap-24">
 						<div>
-							<p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.exploreHeading')}</p>
-							<ul className="mt-4 flex flex-col gap-1 text-[15px] font-medium text-white lg:gap-0.2">
+							<p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.exploreHeading')}</p>
+							<ul className="mt-4 flex flex-col gap-4 text-[18px] font-medium text-white lg:gap-0.2">
 								<li className='hover:translate-x-2 transition-all duration-500'>
 									<Link href="/" className="transition-opacity hover:opacity-70 hover:translate-x-10">
 										{t('footer.linkHome')}
@@ -68,7 +68,7 @@ const Footer = () => {
 								</li>
 							
 								<li className='hover:translate-x-2 transition-all duration-500'>
-									<Link href="/#process" className="transition-opacity hover:opacity-70">
+									<Link href="/#services" className="transition-opacity hover:opacity-70">
 										{t('footer.linkHowWeWork')}
 									</Link>
 								</li>
@@ -80,9 +80,9 @@ const Footer = () => {
 							</ul>
 						</div>
 						<div>
-							<p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.socialsHeading')}</p>
-							<ul className="mt-4 flex flex-col text-[15px] font-medium text-white">
-								<li className='hover:translate-x-2 transition-all duration-500'>
+							<p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.socialsHeading')}</p>
+							<ul className="mt-4 flex flex-col text-[18px] font-medium text-white lg:gap-0.2 gap-4">
+								<li className='hover:translate-x-2 transition-all duration-500 '>
 									<a
 										href="https://www.linkedin.com/company/azioweb"
 										target="_blank"
@@ -109,12 +109,12 @@ const Footer = () => {
 
 				<div className="mt-auto flex w-full flex-col gap-6 pt-14 sm:gap-8 sm:pt-16 lg:mt-18 lg:flex-row lg:items-start lg:justify-between lg:gap-8 lg:pt-0">
 					<div className="min-w-0">
-						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
+						<p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
 							{t('footer.copyrightCaps', { year })}
 						</p>
-						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">{t('footer.copyrightLine2')}</p>
+						<p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-neutral-500">{t('footer.copyrightLine2')}</p>
 					</div>
-					<div className="flex flex-row flex-wrap items-center gap-x-6 gap-y-2 self-start text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500 sm:gap-x-8 lg:flex-col lg:self-end lg:text-right">
+					<div className="flex flex-row flex-wrap items-center gap-x-6 gap-y-2 self-start text-[14px] font-semibold uppercase tracking-[0.14em] text-neutral-500 sm:gap-x-8 lg:flex-col lg:self-end lg:text-right">
 						<Link href="/terms" className="transition-colors hover:text-neutral-300">
 							{t('footer.terms')}
 						</Link>
@@ -123,21 +123,6 @@ const Footer = () => {
 						</Link>
 					</div>
 				</div>
-			</div>
-
-			<div
-				className="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex h-[min(38vh,260px)] justify-center overflow-hidden sm:h-[min(44vh,320px)] lg:h-[min(52vh,420px)]"
-				aria-hidden
-			>
-				<p
-					className="text-gradient-watermark absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[18%] select-none text-center text-[clamp(3.75rem,22vw,30rem)] font-black uppercase leading-[0.85] tracking-[-0.04em] sm:translate-y-[20%] lg:translate-y-[22%]"
-					style={{
-						...watermarkMask,
-						color: 'transparent',
-					}}
-				>
-					{t('footer.watermark')}
-				</p>
 			</div>
 		</footer>
 	);

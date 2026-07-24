@@ -38,12 +38,12 @@ function getDockZIndex(index: number, hoveredIndex: number | null) {
 	return 30 - Math.abs(index - hoveredIndex) * 2;
 }
 
-function ToolBadgeRow({ className }: { className: string }) {
+function ToolBadgeRow({ className }: { className?: string }) {
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
 	return (
 		<div
-			className={`flex items-end justify-center gap-3 sm:gap-10 ${className}`}
+			className={`flex w-full flex-wrap items-end justify-start lg:justify-center gap-2 sm:gap-6 lg:gap-10 ${className ?? ''}`}
 			onMouseLeave={() => setHoveredIndex(null)}
 			aria-hidden
 		>
@@ -54,23 +54,23 @@ function ToolBadgeRow({ className }: { className: string }) {
 				return (
 					<div
 						key={brand.key}
-						className="relative flex flex-col items-center justify-end pb-11"
+						className="relative flex flex-col items-center justify-end pb-6 sm:pb-11 sm:pt-0 pt-6"
 						style={{ zIndex: getDockZIndex(index, hoveredIndex) }}
 						onMouseEnter={() => setHoveredIndex(index)}
 					>
 						<motion.div
-							className="relative size-20 shrink-0 shadow-[0_4px_16px_rgba(0,0,0,0.08)] rounded-[1.3rem]"
+							className="relative size-11 shrink-0 rounded-[0.9rem] shadow-[0_4px_16px_rgba(0,0,0,0.08)] sm:size-16 sm:rounded-[1.15rem] lg:size-20 lg:rounded-[1.3rem]"
 							style={{ transformOrigin: 'bottom center' }}
 							animate={dock}
 							transition={dockSpring}
 						>
-							<div className="size-full overflow-hidden rounded-[1.3rem]">
+							<div className="size-full overflow-hidden rounded-[inherit]">
 								<Image
 									src={brand.src}
 									alt={brand.alt}
 									width={80}
 									height={80}
-									sizes="80px"
+									sizes="(max-width: 640px) 44px, (max-width: 1024px) 64px, 80px"
 									priority
 									unoptimized
 									className="h-full w-full object-contain"
@@ -166,7 +166,7 @@ const Services = () => {
 					<h2 className="text-left text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium">
 						{t('services.headlineLine1')}
 					</h2>
-					<ToolBadgeRow className="hidden w-full lg:flex" />
+					<ToolBadgeRow />
 					<h2 className="text-left text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium md:text-right lg:w-full">
 						{t('services.headlineLine2')}
 					</h2>
@@ -175,7 +175,7 @@ const Services = () => {
 					<p className="max-w-lg text-[18px] leading-6 text-black/90">{t('services.intro')}</p>
 					<Link
 						href="/#process"
-						className="inline-flex w-fit items-center gap-2 rounded-[16px] bg-[#D6D6D6] px-5 py-2.5 text-[16px] font-semibold text-black transition-colors"
+						className="inline-flex w-fit items-center gap-2 rounded-[16px] bg-[#D6D6D6] px-5 py-2.5 text-[18px] font-semibold text-black transition-colors"
 					>
 						<ArrowUpRightIcon className="size-3 shrink-0 text-black group-hover:text-neutral-600 group-hover:scale-105 group-hover:rotate-45 transition-all duration-500" strokeWidth={2} />
 						{t('services.ctaWork')}
