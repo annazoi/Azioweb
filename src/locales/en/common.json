@@ -322,11 +322,11 @@
 				],
 				"details": "Operations and marketing teams use Relay to monitor brand health, trigger alerts on sentiment shifts, and act on NLP-driven summaries instead of drowning in raw feeds."
 			},
-			"domus": {
+			"hozya": {
 				"description": "Property and workspace discovery platform with listings, search, and tools for modern teams.",
 				"tag": "SAAS",
 				"highlights": ["Fast search and filters", "Scalable listing architecture"],
-				"details": "Domus helps teams surface the right spaces and workflows with a focused, performance-minded web experience."
+				"details": "hozya helps teams surface the right spaces and workflows with a focused, performance-minded web experience."
 			},
 			"fishingTripsRhodes": {
 				"description": "Booking site for fishing trips and local boat cruises in Rhodes.",
@@ -676,7 +676,7 @@
 			"designing-for-trust": {
 				"title": "Designing interfaces people trust on first use",
 				"excerpt": "Clarity beats cleverness. The best product UIs make complex systems feel obvious without hiding what is happening.",
-				"image": "/img/projects/domus.png",
+				"image": "/img/projects/hozya.png",
 				"date": "2026-03-08",
 				"readMinutes": 6,
 				"category": "Design",
