@@ -8,7 +8,7 @@ export const siteConfig = {
 		'https://www.linkedin.com/company/azioweb',
 		'https://x.com/azioweb',
 	],
-} as const;s
+} as const;
 
 export function absoluteUrl(path: string): string {
 	const normalized = path.startsWith('/') ? path : `/${path}`;
