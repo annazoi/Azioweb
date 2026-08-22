@@ -279,12 +279,10 @@
 	},
 	"experience": {
 		"headlineBold": "Our highlights.",
-		"headlineMuted": " Built with precision.",
-		"introLeft1": "Whether you are just starting out or already",
-		"introLeft2": " growing fast, we help brands",
-		"introLeft2Bold": "launch smart digital",
-		"introLeft2BoldAfter": "products",
-		"introLeft3": "that stand out and win customers.",
+		"headlineMuted": "Built with precision.",
+		"introLeftBefore": "Whether you are just starting out or already growing fast, we help brands ",
+		"introLeftHighlight": "launch smart digital products",
+		"introLeftAfter": " that stand out and win customers.",
 		"introRight": "Explore how Azioweb helps businesses bring their ideas to life.",
 		"projects": {
 			"svyaz": {
@@ -520,7 +518,7 @@
 		"locationLabel": "Athens, GR",
 		"headline": "We build the intelligence inside your next big idea.",
 		"getInTouch": "Get in touch",
-		"copyrightCaps": "{{year}} AZIOWEB STUDIO,",
+		"copyrightCaps": "{{year}} azioweb.com",
 		"copyrightLine2": "All rights reserved.",
 		"exploreHeading": "Explore",
 		"socialsHeading": "Socials",

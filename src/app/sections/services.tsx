@@ -38,15 +38,11 @@ function getDockZIndex(index: number, hoveredIndex: number | null) {
 	return 30 - Math.abs(index - hoveredIndex) * 2;
 }
 
-function ToolBadgeRow({ className }: { className?: string }) {
+function ToolBadgeRow({ className }: { className: string }) {
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
 	return (
-		<div
-			className={`flex w-full flex-wrap items-end justify-start lg:justify-center gap-2 sm:gap-6 lg:gap-10 ${className ?? ''}`}
-			onMouseLeave={() => setHoveredIndex(null)}
-			aria-hidden
-		>
+		<div className={className} onMouseLeave={() => setHoveredIndex(null)} aria-hidden>
 			{brandLogos.map((brand, index) => {
 				const dock = getDockTransform(index, hoveredIndex);
 				const isHovered = hoveredIndex === index;
@@ -54,7 +50,7 @@ function ToolBadgeRow({ className }: { className?: string }) {
 				return (
 					<div
 						key={brand.key}
-						className="relative flex flex-col items-center justify-end pb-6 sm:pb-11 sm:pt-0 pt-6"
+						className="relative flex flex-col items-center justify-end pb-6 sm:pb-8 lg:pb-11"
 						style={{ zIndex: getDockZIndex(index, hoveredIndex) }}
 						onMouseEnter={() => setHoveredIndex(index)}
 					>
@@ -166,7 +162,8 @@ const Services = () => {
 					<h2 className="text-left text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium">
 						{t('services.headlineLine1')}
 					</h2>
-					<ToolBadgeRow />
+					<ToolBadgeRow className="grid w-full grid-cols-4 justify-items-center gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-8 lg:hidden" />
+					<ToolBadgeRow className="hidden w-full justify-center gap-3 sm:gap-10 lg:flex" />
 					<h2 className="text-left text-[clamp(2rem,5vw,5rem)] font-black leading-[1.05] tracking-tight text-black font-medium md:text-right lg:w-full">
 						{t('services.headlineLine2')}
 					</h2>

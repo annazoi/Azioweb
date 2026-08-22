@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useLocalTime } from '@/hooks/use-local-time';
@@ -17,8 +18,22 @@ const Footer = () => {
 
 	return (
 		<footer className="relative overflow-hidden bg-black">
+			<div
+				className="pointer-events-none absolute inset-x-0 top-16 bottom-52 hidden items-center justify-center lg:flex lg:bottom-56"
+				aria-hidden
+			>
+				<div className="relative size-[min(34vw,19rem)] opacity-[0.07]" style={watermarkMask}>
+					<Image
+						src="/img/azioweb.png"
+						alt=""
+						fill
+						sizes="(max-width: 1280px) 34vw, 304px"
+						className="object-contain"
+					/>
+				</div>
+			</div>
 			<div className="relative z-10 mx-auto flex h-auto min-h-0 flex-col px-4 pb-28 pt-16 sm:px-6 sm:pb-32 sm:pt-20 lg:h-170 lg:min-h-0 lg:px-8 lg:pb-16 lg:pt-24">
-				<div className="flex flex-col gap-10 sm:gap-12 lg:flex-row lg:justify-between lg:gap-12">
+				<div className="flex flex-col gap-10 sm:gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
 					<div className="max-w-xl shrink-0 lg:max-w-[min(100%,28rem)] lg:pr-8">
 						<p className="flex items-center gap-1.5 text-sm font-medium text-neutral-400">
 							<InfinityOrbsAnimation theme={theme} hour={hour} />
@@ -52,8 +67,10 @@ const Footer = () => {
 							</svg>
 							{t('footer.getInTouch')}
 						</Link>
-						<div className='mt-4'>
-						<Link href="mailto:info@azioweb.com" className="mt-4 text-lg text-neutral-400 hover:text-white">info@azioweb.com</Link>
+						<div className="mt-4">
+							<Link href="mailto:info@azioweb.com" className="mt-4 text-lg text-neutral-400 hover:text-white">
+								info@azioweb.com
+							</Link>
 						</div>
 					</div>
 
@@ -61,18 +78,17 @@ const Footer = () => {
 						<div>
 							<p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.exploreHeading')}</p>
 							<ul className="mt-4 flex flex-col gap-4 text-[18px] font-medium text-white lg:gap-0.2">
-								<li className='hover:translate-x-2 transition-all duration-500'>
+								<li className="transition-all duration-500 hover:translate-x-2">
 									<Link href="/" className="transition-opacity hover:opacity-70 hover:translate-x-10">
 										{t('footer.linkHome')}
 									</Link>
 								</li>
-							
-								<li className='hover:translate-x-2 transition-all duration-500'>
+								<li className="transition-all duration-500 hover:translate-x-2">
 									<Link href="/#services" className="transition-opacity hover:opacity-70">
 										{t('footer.linkHowWeWork')}
 									</Link>
 								</li>
-								<li className='hover:translate-x-2 transition-all duration-500'>
+								<li className="transition-all duration-500 hover:translate-x-2">
 									<Link href="/blog" className="transition-opacity hover:opacity-70">
 										{t('footer.linkBlog')}
 									</Link>
@@ -81,8 +97,8 @@ const Footer = () => {
 						</div>
 						<div>
 							<p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-neutral-500">{t('footer.socialsHeading')}</p>
-							<ul className="mt-4 flex flex-col text-[18px] font-medium text-white lg:gap-0.2 gap-4">
-								<li className='hover:translate-x-2 transition-all duration-500 '>
+							<ul className="mt-4 flex flex-col gap-4 text-[18px] font-medium text-white lg:gap-0.2">
+								<li className="transition-all duration-500 hover:translate-x-2">
 									<a
 										href="https://www.linkedin.com/company/azioweb"
 										target="_blank"
@@ -92,7 +108,7 @@ const Footer = () => {
 										{t('footer.linkLinkedIn')}
 									</a>
 								</li>
-								<li className='hover:translate-x-2 transition-all duration-500'>
+								<li className="transition-all duration-500 hover:translate-x-2">
 									<a
 										href="https://x.com/azioweb"
 										target="_blank"
@@ -107,14 +123,14 @@ const Footer = () => {
 					</div>
 				</div>
 
-				<div className="mt-auto flex w-full flex-col gap-6 pt-14 sm:gap-8 sm:pt-16 lg:mt-18 lg:flex-row lg:items-start lg:justify-between lg:gap-8 lg:pt-0">
+				<div className="relative z-20 mt-auto flex flex-col gap-5 border-t border-white/[0.08] pt-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:pt-10">
 					<div className="min-w-0">
 						<p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
 							{t('footer.copyrightCaps', { year })}
 						</p>
 						<p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-neutral-500">{t('footer.copyrightLine2')}</p>
 					</div>
-					<div className="flex flex-row flex-wrap items-center gap-x-6 gap-y-2 self-start text-[14px] font-semibold uppercase tracking-[0.14em] text-neutral-500 sm:gap-x-8 lg:flex-col lg:self-end lg:text-right">
+					<div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-neutral-500 sm:justify-end">
 						<Link href="/terms" className="transition-colors hover:text-neutral-300">
 							{t('footer.terms')}
 						</Link>
